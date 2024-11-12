@@ -1,0 +1,6 @@
+Overview
+========
+The FXLS8741Q Interrupt example application demonstrates the use of the FXLS8741Q sensor in interrupt mode.
+The example demonstrates configuration of all registers required to put the sensor in a interrupt mode and read out a sample via spi.
+
+The application waits for the interrupt signal and read the sample when interrupt is asserted.

@@ -1,0 +1,101 @@
+---
+__hierarchy__:
+  mode: post-process-app
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        config:
+          __common__:
+            cc-define: 
+            cx-define: 
+            cc-include: 
+          debug:
+            cc-define:
+              DEBUG: 
+            cx-define:
+              DEBUG: 
+      iar:
+        config:
+          __common__:
+            cc-flags: 
+          release:
+            cc-define: 
+            cx-define: 
+      mdk:
+        config:
+          release:
+            cc-define: 
+            cx-define: 
+  hardware-init:
+    modules:
+      clock_config:
+        required: true
+        virtual-dir: board
+        files:
+        - source: boards/${board}/clock_config.c
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.h
+          release-dir: project-root-path
+  modules:
+    mode: post-process-lib
+    common:
+      required: true
+      virtual-dir: drivers
+      cc-include:
+      - path: platform/drivers/common
+      files:
+      - source: platform/drivers/common/fsl_common.h
+      - source: platform/drivers/common/fsl_common.c
+    readme:
+      files:
+      - source: project-root-path/readme.txt
+        virtual-dir: doc
+        toolchains: iar mdk mcux
+fxas21002_fifo:
+  configuration:
+    tools:
+      __common__:
+        config:
+          __common__: {}
+    document:
+      name: fxas21002_fifo
+    outdir: issdk_examples/fxas21002_fifo
+  modules:
+    cmsis:
+      files:
+      - source: middleware/issdk/drivers/gpio/Driver_GPIO_IRQ.c
+        project_path: cmsis
+      - source: middleware/issdk/drivers/gpio/Driver_GPIO_SDK.c
+        project_path: cmsis
+      - source: middleware/issdk/cmsis_drivers/Driver_I2C_SDK2.c
+        project_path: cmsis
+      required: true
+    interface:
+      files:
+      - source: middleware/issdk/sensors/register_io_i2c.c
+        project_path: interface
+      - source: middleware/issdk/sensors/sensor_io_i2c.c
+        project_path: interface
+      required: true
+    sensors:
+      required: true
+      cc-include:
+      - path: middleware/issdk/sensors
+        project_path: sensors
+      - path: boards/${board}/issdk_examples/fxas21002_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        project_path: sensors
+      - source: middleware/issdk/sensors/fxas21002_drv.h
+        project_path: sensors
+      - source: middleware/issdk/sensors/fxas21002_drv.c
+        project_path: sensors
+      - source: boards/${board}/issdk_examples/fxas21002_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}/issdk_examples/fxas21002_fifo/pin_mux.h
+        project_path: board
+  section-type: application
+  __requires__:
+  - driver.port driver.uart driver.gpio driver.i2c driver.smc

@@ -1,0 +1,116 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/add_issdk_sensors.yml
+- middleware/issdk/yml_v2/common/add_issdk_algorithms.yml
+- middleware/issdk/yml_v2/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v2/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v2/common/add_issdk_utils.yml
+- middleware/issdk/yml_v2/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v2/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v2/common/add_issdk_tools.yml
+- middleware/issdk/yml_v2/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_algorithm_examples_set:
+    section-type: application
+    configuration:
+      tools:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--vla"
+    modules:
+      boardset:
+        required: true
+        cc-include:
+        - path: boards/${board}
+          package_path: project-root-path
+          project_path: board
+        files:
+        - source: boards/${board}/clock_config.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/clock_config.h
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/board.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/board.h
+          package_path: project-root-path
+          project_path: board
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          toolchains: iar mdk mcux
+          project_path: doc
+pedometer_mma8451:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-MMA8451-PEDOMETER.srec
+        config:
+          __common__: {}
+    document:
+      category: issdk/algorithms
+      name: pedometer_mma8451
+    outdir: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451
+  modules:
+    pedometer_mma8451_source:
+      required: true
+      cc-include:
+      - path: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451
+        project_path: board
+      files:
+      - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_mma8451.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451/pin_mux.c
+        project_path: board
+      - source: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451/pin_mux.h
+        project_path: board
+      - source: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis_kl27z driver.port driver.lpuart driver.gpio driver.i2c driver.spi driver.lpsci driver.lptmr
+    driver.smc driver.i2c_dma driver.cmsis_i2c driver.dmamux driver.dma driver.spi_dma
+    driver.cmsis_spi driver.lpsci_dma driver.cmsis_lpsci driver.lpuart_dma
+    driver.cmsis_lpuart cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.algorithms.pedometer.common
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.mma845x middleware.issdk.algorithms.pedometer.lib_cm0
+pedometer_agmp03:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-PEDOMETER.srec
+        config:
+          __common__: {}
+    document:
+      category: issdk/algorithms
+      name: pedometer_agmp03
+    outdir: boards/${board}_agmp03/issdk_examples/algorithms/pedometer/pedometer_agmp03
+  modules:
+    pedometer_agmp03_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/algorithms/pedometer/pedometer_agmp03
+        project_path: board
+      files:
+      - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_fxls8962.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/pedometer/pedometer_agmp03/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/pedometer/pedometer_agmp03/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/pedometer/pedometer_agmp03/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis_kl27z driver.port driver.lpuart driver.gpio driver.i2c driver.spi driver.lpsci driver.lptmr
+    driver.smc driver.i2c_dma driver.cmsis_i2c driver.dmamux driver.dma driver.spi_dma
+    driver.cmsis_spi driver.lpsci_dma driver.cmsis_lpsci driver.lpuart_dma
+    driver.cmsis_lpuart cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.algorithms.pedometer.common
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxls8962 middleware.issdk.algorithms.pedometer.lib_cm0

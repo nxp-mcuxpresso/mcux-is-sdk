@@ -1,0 +1,6 @@
+Overview
+========
+The FXLS8741Q Normal example application demonstrates the use of the FXLS8741Q sensor in the normal mode.
+The example demonstrates configuration of all registers required to put the sensor into normal mode and read out samples via SPI.
+
+The application constantly checks for the data ready flag and read the samples when its ready.

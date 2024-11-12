@@ -1,0 +1,30 @@
+__hierarchy__:
+  tmp_common_issdk_host:
+    section-type: component
+    meta-path:
+      - path : middleware\issdk\issdk_host.meta
+
+middleware.issdk.drivers.host:
+  section-type: component
+  meta-name: middleware.issdk.drivers.host
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/host
+    virtual-dir       : host
+    files:
+      - source        : middleware/issdk/sensors/host_io_uart.c
+      - source        : middleware/issdk/sensors/host_io_uart.h
+      - source        : middleware/issdk/drivers/host/comm_if_uart.c
+      - source        : middleware/issdk/drivers/host/comm_interface.h
+      - source        : middleware/issdk/drivers/host/data_format_hdlc.c
+      - source        : middleware/issdk/drivers/host/data_format_hdlc.h
+      - source        : middleware/issdk/drivers/host/data_format_json.c
+      - source        : middleware/issdk/drivers/host/data_format_json.h
+      - source        : middleware/issdk/drivers/host/data_format_service.h
+      - source        : middleware/issdk/drivers/host/host_interface_service.c
+      - source        : middleware/issdk/drivers/host/host_interface_service.h
+    component_info:
+      meta:
+        description: "ISSDK Host Interface Service"
+        user_visible: false
+        manifest_name: issdk_host #IDE will show this as component name

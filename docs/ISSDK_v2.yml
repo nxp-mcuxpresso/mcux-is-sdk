@@ -1,0 +1,73 @@
+---
+docs.ISSDK.kit:
+  section-type: component
+  meta-name: docs.ISSDK.kit
+  component_info:
+    manifest:
+      version: 1.0.0
+      type: documentation
+      full_name: Docs issdk kit
+      description: Docs issdk kit
+      manifest_name: kit
+  __requires__:
+  - middleware.issdk.ui_control
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk
+    project_base_path: ISSDK
+    files:
+    - source: "*.pdf"
+    - source: ISSDK API Reference Manual/*.*
+docs.ISSDK.board:
+  section-type: component
+  meta-name: docs.ISSDK.board
+  component_info:
+    manifest:
+      version: 1.0.0
+      type: documentation
+      full_name: Docs issdk board
+      description: Docs issdk board
+      manifest_name: board
+  __requires__:
+  - middleware.issdk.ui_control
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk
+    project_base_path: ISSDK
+    files:
+    - source: "*.pdf"
+    - source: ISSDK API Reference Manual/*.*
+docs.ISSDK.SensorFusion.kit:
+  section-type: component
+  meta-name: docs.ISSDK.SensorFusion.kit
+  component_info:
+    manifest:
+      version: 1.0.0
+      type: documentation
+      full_name: Docs issdk sensorfusion kit
+      description: Docs issdk sensorfusion kit
+      manifest_name: kit
+  __requires__:
+  - middleware.issdk.ui_control
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk/SensorFusion
+    project_base_path: ISSDK/SensorFusion
+    files:
+    - source: "*.pdf"
+    - source: SensorFusion API Reference Manual/*.*
+docs.ISSDK.SensorFusion.board:
+  section-type: component
+  meta-name: docs.ISSDK.SensorFusion.board
+  component_info:
+    manifest:
+      version: 1.0.0
+      type: documentation
+      full_name: Docs issdk sensorfusion board
+      description: Docs issdk sensorfusion board
+      manifest_name: board
+  __requires__:
+  - middleware.issdk.ui_control
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk/SensorFusion
+    project_base_path: ISSDK/SensorFusion
+    files:
+    - source: "*.pdf"
+    - source: SensorFusion API Reference Manual/*.*

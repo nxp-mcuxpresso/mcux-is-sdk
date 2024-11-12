@@ -1,0 +1,242 @@
+---
+__load__:
+- bin/generator/records_v1/msdk/options/evkmimxrt595_cm33.yml
+- bin/generator/records_v1/msdk/components/socs/MIMXRT595S/components.yml
+- middleware/issdk/yml_v1/common/sensor_examples_evkmimxrt595.yml
+__variable__:
+  ConfigName_var: ConfigName
+__hierarchy__:
+  tmp_evkmimxrt595_configurations_components:
+    configuration:
+      tools:
+        __common__:
+          binary-file: sdk20-app.bin
+          config:
+            __common__:
+              cc-include:
+              - path: CMSIS/Include
+              - path: devices
+              cc-define:
+                PRINTF_ADVANCED_ENABLE=1:
+                MIMXRT500_AGM01:
+        iar:
+          project-templates:
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+          - bin/generator/templates/iar/app_cmsisdap/generic_dsp.ewp
+          - bin/generator/templates/iar/general.eww
+        mdk:
+          project-templates:
+          - bin/generator/templates/mdk/app_evkmimxrt595/app_evkmimxrt595.uvoptx
+          - bin/generator/templates/mdk/app_evkmimxrt595/app_evkmimxrt595.uvprojx
+          - bin/generator/templates/mdk/app_evkmimxrt595/JLinkSettings.ini
+        armgcc:
+        mcux:
+          project-templates:
+          - bin/generator/templates/mcux/cproject/mcux_template.xml
+          memory-config:
+            partnumber: MIMXRT595S
+            sections:
+              QSPI_FLASH:
+                access: RO
+                type: ExtFlash
+                addr: '08000000'
+                size: '04000000'
+                driver: devices/MIMXRT595S/mcuxpresso/MIMXRT500_SFDP_MXIC_OSPI.cfx
+              SRAM:
+                access: RW
+                type: RAM
+                addr: '20080000'
+                size: '00280000'
+              USB_RAM:
+                access: RW
+                type: RAM
+                addr: '40140000'
+                size: '00004000'
+      document:
+        platform_devices_soc_name: MIMXRT595S
+        board: evkmimxrt595
+        board_kit: evkmimxrt595_agm01
+        core: cm33
+        core_id: cm33
+        device_id: MIMXRT595S
+        compilers:
+        - armclang
+    modules:
+      linker-file:
+        files:
+        - source: devices/MIMXRT595S/iar/MIMXRT595Sxxxx_cm33_ram.icf
+          attribute: linker-file
+          toolchains: iar
+          targets: debug release
+        - source: devices/MIMXRT595S/arm/MIMXRT595Sxxxx_cm33_ram.scf
+          attribute: linker-file
+          toolchains: mdk
+          targets: debug release
+        - source: devices/MIMXRT595S/gcc/MIMXRT595Sxxxx_cm33_ram.ld
+          attribute: linker-file
+          toolchains: armgcc
+          targets: debug release
+        - source: devices/MIMXRT595S/iar/MIMXRT595Sxxxx_cm33_flash.icf
+          attribute: linker-file
+          toolchains: iar
+          targets: flash_debug flash_release
+        - source: devices/MIMXRT595S/arm/MIMXRT595Sxxxx_cm33_flash.scf
+          attribute: linker-file
+          toolchains: mdk
+          targets: flash_debug flash_release
+        - source: devices/MIMXRT595S/gcc/MIMXRT595Sxxxx_cm33_flash.ld
+          attribute: linker-file
+          toolchains: armgcc
+          targets: flash_debug flash_release
+    __requires__:
+    - evkmimxrt595_options driver.clock driver.common device.${platform_devices_soc_name}_CMSIS
+      utility.debug_console utility.assert component.usart_adapter driver.power driver.flexspi
+      driver.cache_cache64 component.serial_manager(component.serial_manager_uart)
+      component.serial_manager_uart(driver.flexcomm_usart) component.lists evkmimxrt595_flash_options
+      driver.flash_config device.${platform_devices_soc_name}_startup driver.flexcomm_usart
+      driver.flexcomm driver.lpc_iopctl driver.lpc_gpio driver.reset
+    section-type: application
+fxas21002_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+      - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+      - source: boards/evkmimxrt595_agm01/issdk_hal.h
+      - source: boards/evkmimxrt595_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.EVK-MIMXRT595-AGM01
+fxas21002_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+      - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+      - source: boards/evkmimxrt595_agm01/issdk_hal.h
+      - source: boards/evkmimxrt595_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXAS21002 Poll example application demonstrates the use of the FXAS21002
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+  __requires__: middleware.issdk.support.EVK-MIMXRT595-AGM01
+fxos8700_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+      - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+      - source: boards/evkmimxrt595_agm01/issdk_hal.h
+      - source: boards/evkmimxrt595_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.EVK-MIMXRT595-AGM01
+fxos8700_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+      - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+      - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+      - source: boards/evkmimxrt595_agm01/issdk_hal.h
+      - source: boards/evkmimxrt595_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXOS8700 Poll example application demonstrates the use of the FXOS8700
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+  __requires__: middleware.issdk.support.EVK-MIMXRT595-AGM01
+kit.evkmimxrt595_agm01.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.EVK-MIMXRT595-AGM01
+  contents:
+  - key: description
+    bindings: kit.EVK-MIMXRT595-AGM01
+    content: "\nSensor Toolbox Development Platform for FXAS21002C and FXOS8700C 9-Axis
+      Solution\n        "
+  - key: href
+    value: http://www.nxp.com/FRDM-STBC-AGM01
+    bindings: kit.EVK-MIMXRT595-AGM01
+  - key: image
+    value: docs/images/EVK-MIMXRT595-AGM01.gif
+    bindings: kit.EVK-MIMXRT595-AGM01
+  - key: vendor
+    value: NXP
+    bindings: kit.EVK-MIMXRT595-AGM01
+  - key: html
+    bindings: kit.EVK-MIMXRT595-AGM01
+    content: |2
+
+      EVK-MIMXRT595 with FRDM-STBC-AGM01 Custom Kit (FRDM-STBC-AGM01 Sensor Shield Development Board with EVK-MIMXRT595 Board):
+      <ul>
+      <li> FRDM-STBC-AGM01 Sensor Shield board is a sensor expansion board enabling NXP’s 9-axis solution (FXAS21002C 3-Axis Gyroscope with FXOS8700CQ 3-Axis Accelerometer + 3-Axis Magnetometer).</li>
+      </ul>
+BOARD_Project_Template.evkmimxrt595_agm01:
+  section-type: component
+  meta-name: project_template.evkmimxrt595_agm01
+  component_info:
+    common:
+      type: project_template
+      component_bundle: bundles.board_project_templates
+      variant: evkmimxrt595_agm01
+      manifest_name: evkmimxrt595_agm01
+      version: 1.0.0
+      full_name: Board_project_template evkmimxrt595_agm01 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      description: Board_project_template evkmimxrt595_agm01 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+  __requires__:
+  - device.${platform_devices_soc_name} device.${platform_devices_soc_name}_startup
+    driver.power board.${board} driver.flexcomm_usart driver.common driver.lpc_iopctl
+    driver.lpc_gpio driver.reset utility.debug_console driver.clock driver.flash_config
+    component.usart_adapter component.serial_manager_uart component.serial_manager driver.flexspi
+    driver.cache_cache64 kit.EVK-MIMXRT595-AGM01
+  contents:
+    cc-define:
+      FSL_SDK_DRIVER_QUICK_ACCESS_ENABLE: 1
+    files:
+    - source: boards/evkmimxrt595_agm01/project_template/board.c
+    - source: boards/evkmimxrt595_agm01/project_template/board.h
+    - source: boards/evkmimxrt595_agm01/project_template/clock_config.c
+    - source: boards/evkmimxrt595_agm01/project_template/clock_config.h
+    - source: boards/evkmimxrt595_agm01/project_template/pin_mux.c
+    - source: boards/evkmimxrt595_agm01/project_template/pin_mux.h
+    - source: boards/evkmimxrt595_agm01/project_template/peripherals.c
+    - source: boards/evkmimxrt595_agm01/project_template/peripherals.h

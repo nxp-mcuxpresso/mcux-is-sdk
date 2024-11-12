@@ -1,0 +1,17 @@
+middleware.issdk.sensor.driverexamples.agm01:
+  section-type: component
+  meta-name: middleware.issdk.sensor.driverexamples.agm01
+  meta-path:
+    - path: middleware/issdk/issdk_driverexamples_agm01.meta
+  contents:
+    files:
+      - source:  middleware/issdk/driverexamples/fxas21002/*c
+      - source:  middleware/issdk/driverexamples/fxos8700/*.c
+    component_info:
+      __common__:
+        description: "ISSDK Sensor Driver Examples files for sensors on FRDM-STBC-AGM01"
+        manifest_name: issdk_driverexamples_agm01 #IDE will show this as component name
+      meta:
+        type: other
+        user_visible: false
+        ignore_dependency: true

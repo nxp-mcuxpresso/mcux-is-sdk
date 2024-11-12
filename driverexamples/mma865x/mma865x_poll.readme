@@ -1,0 +1,7 @@
+Overview
+========
+The MMA865x Poll example application demonstrates the use of the MMA865x sensor in the Poll (Non-Buffered) Mode.
+The example demonstrates configuration of all registers reguired to put the sensor into Normal Mode and read out samples.
+
+The sensor reads samples as per the configured ODR and sets a Flag.
+The application consistently checks the Flag and when set reads out the sample.

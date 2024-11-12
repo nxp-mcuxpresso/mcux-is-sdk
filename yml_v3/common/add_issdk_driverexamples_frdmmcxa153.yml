@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+container.middleware.issdk.sensor.driverexamples.frdmmcxa153:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: driverexamples/mcx/frdmmcxa153/fxls8974cf/*c
+    - source: driverexamples/mcx/frdmmcxa153/mpl3115/*c
+    - source: driverexamples/mcx/frdmmcxa153/nmh1000/*c
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - frdmmcxa153_a8974
+      - frdmmcxa153_p3115
+      - frdmmcxa153_nmh1000

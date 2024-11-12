@@ -1,0 +1,364 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+__load__:
+- middleware/issdk/yml_v3/common/add_issdk_tools.yml
+- middleware/issdk/yml_v3/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v3/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v3/common/add_issdk_utils.yml
+- middleware/issdk/yml_v3/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v3/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v3/common/add_issdk_sensors.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_set:
+    section-type: application
+    contents:
+      configuration:
+        tools:
+          iar:
+            config:
+              __common__:
+                cc-flags:
+                - "--vla"
+      modules:
+        boardset:
+          required: true
+          cc-include:
+          - path: boards/${board}
+            package_path: project-root-path
+            project_path: board
+          files:
+          - source: boards/${board}/clock_config.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.h
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.h
+            package_path: project-root-path
+            project_path: board
+        readme:
+          files:
+          - source: project-root-path/readme.txt
+            toolchains: iar mdk mcux
+            project_path: doc
+fxas21002_fifo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.clock
+  - driver.gpio
+  - driver.edma
+  - driver.dmamux
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.cmsis_lpuart
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4
+    configuration:
+      tools:
+        __common__:
+          binary-file: FRDM-K32L3A6-AGM01-FXAS21002-FIFO.bin
+          config:
+            __common__: {}
+    modules:
+      fxas21002_fifo_sources:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxas21002_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.clock
+  - driver.gpio
+  - driver.edma
+  - driver.dmamux
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.cmsis_lpuart
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxas21002_interrupt
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/cm4
+    configuration:
+      tools:
+        __common__:
+          binary-file: FRDM-K32L3A6-FXAS21002-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxas21002_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/cm4/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxas21002_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.clock
+  - driver.gpio
+  - driver.edma
+  - driver.dmamux
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.cmsis_lpuart
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4
+    configuration:
+      tools:
+        __common__:
+          binary-file: FRDM-K32L3A6-FXAS21002-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxas21002_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxos8700_fifo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.clock
+  - driver.gpio
+  - driver.edma
+  - driver.dmamux
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.cmsis_lpuart
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4
+    configuration:
+      tools:
+        __common__:
+          binary-file: FRDM-K32L3A6-FXOS8700-FIFO.bin
+          config:
+            __common__: {}
+    modules:
+      k22f_agm01_fxos8700_fifo_sources:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxos8700_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.clock
+  - driver.gpio
+  - driver.edma
+  - driver.dmamux
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.cmsis_lpuart
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxos8700_interrupt
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/cm4
+    configuration:
+      tools:
+        __common__:
+          binary-file: FRDM-K32L3A6-FXOS8700-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxos8700_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.c
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.h
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/cm4/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxos8700_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.clock
+  - driver.gpio
+  - driver.edma
+  - driver.dmamux
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.cmsis_lpuart
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4
+    configuration:
+      tools:
+        __common__:
+          binary-file: FRDM-K32L3A6-FXOS8700-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxos8700_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+          package_path: project-root-path
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4/readme.txt
+          project_path: doc
+          package_path: project-root-path

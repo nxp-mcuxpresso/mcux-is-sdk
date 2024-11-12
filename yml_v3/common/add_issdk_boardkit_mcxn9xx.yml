@@ -1,0 +1,15 @@
+---
+container.middleware.issdk.sensor.boardkit.mcxn9xx:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: boardkit/mcxn9xxevk/*.*
+      project_relative_path: "./"
+    - source: boardkit/mcxn9xxevk/frdm-stbi-a8974/*.*
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - mcxn9xxevk_a8974

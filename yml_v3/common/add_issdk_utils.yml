@@ -1,0 +1,222 @@
+---
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+__load__:
+- middleware/issdk/docs/ISSDK_v3.yml
+
+middleware.issdk.drivers.systick_utils:
+  section-type: component
+  meta-name: middleware.issdk.drivers.systick_utils
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: utilities
+    cc-include:
+    - repo_relative_path: drivers/systick
+      project_relative_path: "./"
+    files:
+    - source: drivers/systick/systick_utils.c
+      project_relative_path: "./"
+    - source: drivers/systick/systick_utils.h
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  section_info:
+    description: ISSDK Utils
+    version: "1.8.0"
+    full_name: Middleware issdk drivers systick_utils
+    type: middleware
+    display_name: systick_utils
+    taxonomy:
+      belong_to: issdk_utils
+      csub: systick_utils
+set.middleware.issdk:
+  section-type: set
+  belong_to: set.middleware.issdk
+  section_info:
+    fixed_id: nxp_iot_sensing_sdk
+    type: middleware
+    version: "1.8.0"
+    display_name: ISSDK
+    description: IoT Sensing SDK (ISSDK) provides sensor drivers and reference examples
+      for NXP's IoT sensors.
+    set_location:
+      repo_base_path: middleware/issdk
+    vendor: NXP
+    component_taxonomy:
+      issdk_driver:
+        cclass: Sensors
+        cgroup: drivers
+      issdk_algorithms:
+        cclass: Sensors
+        cgroup: algorithms
+      issdk_sensor:
+        cclass: Sensors
+        cgroup: sensors
+      issdk_utils:
+        cclass: Sensors
+        cgroup: utils
+      issdk_misc:
+        cclass: Sensors
+        cgroup: misc
+    product:
+      kex_package:
+        kex_web_ui:
+          ui_control: true
+          ui_release_specific: true
+          ui_control_default: false
+          ui_category: Middleware
+          ui_control_hiding: true
+        scr:
+        - scr.middleware.issdk
+        - scr.middleware.issdk.Pedometer_Library
+      cmsis_pack:
+        vendor: NXP
+        # supported: true
+        pack_root:
+          pack_type: SWP
+          pack_name: ISSDK
+          pack_version: 1.0.0
+        scr:
+        - scr.middleware.issdk
+        - scr.middleware.issdk.Pedometer_Library
+  dependency:
+    anyOf:
+      - board:
+        - lpcxpresso54114
+        - lpcxpresso55s69
+        - lpcxpresso55s36
+        - lpcxpresso55s16
+        - lpcxpresso55s06
+        - frdmk22f
+        - frdmk64f
+        - frdmkl25z
+        - frdmkl27z
+        - frdmke15z
+        - frdmk32w042
+        - frdmk32l3a6
+        - k32w148evk
+        - kw45b41zevk
+        - evkmcimx7ulp
+        - evkmimxrt1050
+        - evkbimxrt1050
+        - evkmimxrt1020
+        - evkmimxrt1024
+        - evkmimxrt1060
+        - evkbmimxrt1060
+        - evkcmimxrt1060
+        - evkmimxrt1040
+        - evkmimxrt1064
+        - evkmimxrt1015
+        - evkmimxrt1010
+        - evkmimxrt685
+        - evkmimxrt1170
+        - evkbmimxrt1170
+        - evkmimxrt1180
+        - evkmimxrt1160
+        - evkmimxrt595
+        - mekmimx8qm
+        - mcxn9xxevk
+        - mcxn5xxevk
+        - frdmmcxn947
+        - frdmmcxa156
+        - frdmmcxa153
+        - frdmmcxw71
+        - mimxrt700evk
+      - kit:
+        - frdmk22f_agm01
+        - frdmk64f_agm01
+        - frdmk64f_mult2b
+        - frdmkl25z_a8471
+        - frdmkl25z_a8491
+        - frdmkl25z_p3115
+        - frdmkl27z_b3115
+        - frdmkl27z_agmp03
+        - frdmkl27z_a8471
+        - frdmkl27z_a8491
+        - frdmkl27z_p3115
+        - frdmk22f_sa9500
+        - frdmk22f_agmp03
+        - frdmk64f_agm04
+        - lpcxpresso54114_agmp03
+        - lpcxpresso54114_agm01
+        - frdmke15z_dp5004
+        - frdmke15z_pa7250
+        - frdmke15z_pd7250
+        - frdmke15z_dp300x
+        - frdmke15z_nmh1000
+        - frdmk32w042_agm01
+        - evkbimxrt1050_agm01
+        - evkmimxrt1020_agm01
+        - evkmimxrt1050_agm01
+        - evkmimxrt1060_agm01
+        - evkbmimxrt1060_agm01
+        - evkcmimxrt1060_a8974
+        - evkmimxrt1064_agm01
+        - evkmimxrt1015_agm01
+        - evkmimxrt1010_agm01
+        - lpcxpresso55s69_agm01
+        - lpcxpresso55s16_agm01
+        - lpcxpresso55s16_a8974
+        - lpcxpresso55s16_a8964
+        - lpcxpresso55s16_a8967
+        - lpcxpresso55s16_a8961
+        - lpcxpresso55s16_a8971
+        - lpcxpresso55s06_agm01
+        - frdmk32l3a6_agm01
+        - evkmimxrt685_agm01
+        - evkmimxrt1170_agm01
+        - evkmimxrt1160_agm01
+        - evkmimxrt1024_agm01
+        - evkmimxrt595_agm01
+        - frdmk22f_a8964
+        - frdmk22f_a8974
+        - frdmk22f_a8967
+        - evkmimxrt1040_a8974
+        - evkmimxrt1180_a8974
+        - evkbmimxrt1170_a8974
+        - mcxn9xxevk_a8974
+        - mcxn5xxevk_a8974
+        - frdmmcxn947_a8974
+        - frdmmcxn947_p3115
+        - frdmmcxn947_nmh1000
+        - frdmmcxa156_a8974
+        - frdmmcxa153_a8974
+        - frdmmcxa153_p3115
+        - frdmmcxa153_nmh1000        
+        - k32w148evk_a8974
+        - kw45b41zevk_a8964
+        - frdmmcxw71_a8974
+        - mimxrt700evk_a8974
+scr.middleware.issdk:
+  belong_to: set.middleware.issdk
+  section-type: scr
+  contents:
+    license:
+    - license.bsd-3
+    Name: ISSDK
+    Version: "1.8"
+    Format: source code
+    Description: NXP IoT Sensing SDK. It combines a set of robust Sensor Drivers and
+      algorithms along with example applications.
+    Location: middleware/issdk
+    Origin: NXP (BSD-3-Clause)
+scr.middleware.issdk.Pedometer_Library:
+  belong_to: set.middleware.issdk
+  section-type: scr
+  contents:
+    license:
+    - license.EULA
+    Name: Pedometer Library
+    Version: "1.0.0"
+    Format: binary library
+    Description: NXP issdk pedometer algorithm library for Arm Cortex M0+ and M4 processors
+    Location: middleware/issdk/algorithms/pedometer/lib
+    Origin: KEYnetik, Inc
+  dependency:
+    allOf:
+    - board:
+      - evkmcimx7ulp
+      - frdmk22f
+      - frdmk64f
+      - frdmkl25z
+      - frdmkl27z
+      - lpcxpresso54114

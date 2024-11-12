@@ -1,0 +1,56 @@
+:: Build Projects.
+unittests\harness\BambooScripts\BuildKExIARprojects.cmd
+
+:: Run KL27Z ONBOARD MMA845x Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteOnBoardKL27Z KL27Z 0 | Tee-Object -file ISSDK_KL27Z_ExampleSuiteMMA845x.log
+
+:: Run B3115 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteB3115        KL27Z 0 | Tee-Object -file ISSDK_KL27Z_ExampleSuiteB3115.log
+
+:: Run AGMP03 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGMP03_nonDAP KL27Z 0 | Tee-Object -file ISSDK_KL27Z_ExampleSuiteAGMP03.log
+
+:: Run KL25Z ONBOARD MMA845x Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteOnBoardKL25Z KL25Z 0 | Tee-Object -file ISSDK_KL25Z_ExampleSuiteMMA845x.log
+
+:: Run A8471 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteA8471        KL25Z 0 | Tee-Object -file ISSDK_KL25Z_ExampleSuiteA8471.log
+
+:: Run A8491 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteA8491        KL25Z 0 | Tee-Object -file ISSDK_KL25Z_ExampleSuiteA8491.log
+
+:: Run P3115 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteP3115        KL25Z 0 | Tee-Object -file ISSDK_KL25Z_ExampleSuiteP3115.log
+
+
+:: Run DP5004 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteDP5004       KE15Z 0 | Tee-Object -file ISSDK_KE15Z_ExampleSuiteDP5004.log
+
+:: Run DP300x Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteDP300x       KE15Z 0 | Tee-Object -file ISSDK_KE15Z_ExampleSuiteDP300x.log
+
+:: Run LPC-54114_AGMP03 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGMP03_LPC   LPC54114  0 | Tee-Object -file ISSDK_LPC54114_ExampleSuiteAGMP03.log
+
+:: Run LPC-54114_AGM01 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGM01_LPC    LPC54114  0 | Tee-Object -file ISSDK_LPC54114_ExampleSuiteAGM01.log
+
+
+:: Run K22F_AGMP03 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGMP03       K22F  0 | Tee-Object -file ISSDK_K22F_ExampleSuiteAGMP03.log
+
+:: Run K22F_AGM01 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGM01        K22F  0 | Tee-Object -file ISSDK_K22F_ExampleSuiteAGM01.log
+
+:: Run SA9500 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteSA9500       K22F  0 | Tee-Object -file ISSDK_K22F_ExampleSuiteSA9500.log
+
+
+:: Run K64F_AGM01 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGM01        K64F  0 | Tee-Object -file ISSDK_K64F_ExampleSuiteAGM01.log
+
+:: Run K64F_AGM04 Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteAGM04        K64F  0 | Tee-Object -file ISSDK_K64F_ExampleSuiteAGM04.log
+
+:: Run K64F_MULT2B Example Suite.
+unittests\harness\BambooScripts\RunTests_ISSDK.cmd ISSDK_ExampleSuiteMult2B       K64F  0 | Tee-Object -file ISSDK_K64F_ExampleSuiteMult2B.log

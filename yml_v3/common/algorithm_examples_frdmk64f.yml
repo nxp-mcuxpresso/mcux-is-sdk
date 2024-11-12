@@ -1,0 +1,533 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+__load__:
+- middleware/issdk/yml_v3/common/add_issdk_tools.yml
+- middleware/issdk/yml_v3/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v3/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v3/common/add_issdk_utils.yml
+- middleware/issdk/yml_v3/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v3/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v3/common/add_issdk_algorithms.yml
+- middleware/issdk/yml_v3/common/add_issdk_sensors.yml
+__hierarchy__:
+  tmp_issdk_algorithm_examples_set:
+    section-type: application
+    contents:
+      configuration:
+        tools:
+          iar:
+            config:
+              __common__:
+                cc-flags:
+                - "--vla"
+      modules:
+        boardset:
+          required: true
+          cc-include:
+          - path: boards/${board}
+            package_path: project-root-path
+            project_path: board
+          files:
+          - source: boards/${board}/clock_config.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.h
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.h
+            package_path: project-root-path
+            project_path: board
+        readme:
+          files:
+          - source: project-root-path/readme.txt
+            toolchains: iar mdk mcux
+            project_path: doc
+sensorfusion_freertos_agm01:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.i2c_freertos
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.flash
+  - driver.smc
+  - driver.pit
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.sensor_fusion_agm01.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  - middleware.issdk.sensor.fxos8700
+  - middleware.issdk.sensor.mpl3115
+  - middleware.freertos-kernel
+  - middleware.freertos-kernel.heap_1
+  contents:
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_freertos_agm01
+    project-root-path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-AGM01-SENSORFUSION-FREERTOS.bin
+          config:
+            __common__: {}
+    modules:
+      sensorfusion_freertos_agm01_sources:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+          project_path: source
+        - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+          project_path: board
+        as-include:
+        - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+          project_path: source
+        files:
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/build.h
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/FreeRTOSConfig.h
+          project_path: source
+        - source: middleware/issdk/algorithms/sensorfusion/sources/main_agm01_freertos_two_tasks.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/readme.txt
+          project_path: doc
+          package_path: project-root-path
+sensorfusion_bm_agm01:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.flash
+  - driver.smc
+  - driver.pit
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.sensor_fusion_agm01.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  - middleware.issdk.sensor.fxos8700
+  - middleware.issdk.sensor.mpl3115
+  contents:
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_bm_agm01
+    project-root-path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-AGM01-SENSORFUSION-BAREMETAL.bin
+          config:
+            __common__: {}
+    modules:
+      sensorfusion_bm_agm01_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01
+          project_path: source
+        - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01
+          project_path: board
+        files:
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01/build.h
+          project_path: source
+        - source: middleware/issdk/algorithms/sensorfusion/sources/main_baremetal.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/baremetal_agm01/readme.txt
+          project_path: doc
+          package_path: project-root-path
+sensorfusion_freertos_mult2b:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.i2c_freertos
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.flash
+  - driver.smc
+  - driver.pit
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.sensor_fusion_mult2b.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  - middleware.issdk.sensor.fxos8700
+  - middleware.issdk.sensor.mpl3115
+  - middleware.freertos-kernel
+  - middleware.freertos-kernel.heap_1
+  contents:
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_freertos_mult2b
+    project-root-path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-MULT2B-SENSORFUSION-FREERTOS.bin
+          config:
+            __common__: {}
+    modules:
+      sensorfusion_freertos_mult2b_sources:
+        required: true
+        cc-include:
+        - path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b
+          project_path: source
+        - path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b
+          project_path: board
+        as-include:
+        - path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b
+          project_path: source
+        files:
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b/build.h
+          project_path: source
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b/FreeRTOSConfig.h
+          project_path: source
+        - source: middleware/issdk/algorithms/sensorfusion/sources/main_freertos_two_tasks.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/freertos_mult2b/readme.txt
+          project_path: doc
+          package_path: project-root-path
+sensorfusion_bm_mult2b:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.flash
+  - driver.smc
+  - driver.pit
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.sensor_fusion_mult2b.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  - middleware.issdk.sensor.fxos8700
+  - middleware.issdk.sensor.mpl3115
+  contents:
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_bm_mult2b
+    project-root-path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-MULT2B-SENSORFUSION-BAREMETAL.bin
+          config:
+            __common__: {}
+    modules:
+      sensorfusion_bm_mult2b_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b
+          project_path: source
+        - path: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b
+          project_path: board
+        files:
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b/build.h
+          project_path: source
+        - source: middleware/issdk/algorithms/sensorfusion/sources/main_baremetal.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/sensorfusion/baremetal_mult2b/readme.txt
+          project_path: doc
+          package_path: project-root-path
+sensorfusion_freertos_agm04:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.i2c_freertos
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.flash
+  - driver.smc
+  - driver.pit
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.sensor_fusion_agm04.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.mma865x
+  - middleware.issdk.sensor.mag3110
+  - middleware.issdk.sensor.fxas21002
+  - middleware.freertos-kernel
+  - middleware.freertos-kernel.heap_1
+  contents:
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_freertos_agm04
+    project-root-path: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-AGM04-SENSORFUSION-FREERTOS.bin
+          config:
+            __common__: {}
+    modules:
+      sensorfusion_freertos_agm04_sources:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04
+          project_path: source
+        - path: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04
+          project_path: board
+        as-include:
+        - path: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04
+          project_path: source
+        files:
+        - source: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04/build.h
+          project_path: source
+        - source: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04/FreeRTOSConfig.h
+          project_path: source
+        - source: middleware/issdk/algorithms/sensorfusion/sources/main_agm04_freertos_two_tasks.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm04/issdk_examples/algorithms/sensorfusion/freertos_agm04/readme.txt
+          project_path: doc
+          package_path: project-root-path
+pedometer_agm01:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.smc
+  - driver.pit
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.pedometer.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  - middleware.issdk.algorithms.pedometer.lib_cm4
+  contents:
+    document:
+      category: issdk/algorithms
+      name: pedometer_agm01
+    project-root-path: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-AGM01-PEDOMETER.bin
+          config:
+            __common__: {}
+    modules:
+      pedometer_agm01_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01
+          project_path: board
+        files:
+        - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_fxos8700.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01/readme.txt
+          project_path: doc
+          package_path: project-root-path
+pedometer_agm04:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.smc
+  - driver.pit
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.pedometer.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.mma865x
+  - middleware.issdk.algorithms.pedometer.lib_cm4
+  contents:
+    document:
+      category: issdk/algorithms
+      name: pedometer_agm04
+    project-root-path: boards/${board}_agm04/issdk_examples/algorithms/pedometer/pedometer_agm04
+    configuration:
+      tools:
+        __common__:
+          binary-file: K64F-AGM04-PEDOMETER.bin
+          config:
+            __common__: {}
+    modules:
+      pedometer_agm04_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm04/issdk_examples/algorithms/pedometer/pedometer_agm04
+          project_path: board
+        files:
+        - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_mma8652.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm04/issdk_examples/algorithms/pedometer/pedometer_agm04/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm04/issdk_examples/algorithms/pedometer/pedometer_agm04/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm04/issdk_examples/algorithms/pedometer/pedometer_agm04/readme.txt
+          project_path: doc
+          package_path: project-root-path
+pedometer_mult2b:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.uart_edma
+  - driver.cmsis_uart
+  - driver.gpio
+  - driver.i2c
+  - driver.i2c_edma
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.edma
+  - driver.dspi
+  - driver.dspi_edma
+  - driver.cmsis_dspi
+  - driver.smc
+  - driver.pit
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.pedometer.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  - middleware.issdk.algorithms.pedometer.lib_cm4
+  contents:
+    document:
+      category: issdk/algorithms
+      name: pedometer_mult2b
+    project-root-path: boards/${board}_mult2b/issdk_examples/algorithms/pedometer/pedometer_mult2b
+    configuration:
+      tools:
+        __common__:
+          binary-file: K22F-MULT2B-PEDOMETER.bin
+          config:
+            __common__: {}
+    modules:
+      pedometer_mult2b_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_mult2b/issdk_examples/algorithms/pedometer/pedometer_mult2b
+          project_path: board
+        files:
+        - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_fxos8700.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/pedometer/pedometer_mult2b/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/pedometer/pedometer_mult2b/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_mult2b/issdk_examples/algorithms/pedometer/pedometer_mult2b/readme.txt
+          project_path: doc
+          package_path: project-root-path

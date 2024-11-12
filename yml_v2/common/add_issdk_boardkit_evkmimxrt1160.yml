@@ -1,0 +1,22 @@
+---
+middleware.issdk.sensor.boardkit.evkmimxrt1160:
+  section-type: component
+  meta-name: middleware.issdk.sensor.boardkit.evkmimxrt1160
+  __requires__:
+  - middleware.issdk.support.MIMXRT1160-EVK-AGM01
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: issdk_boardkit
+    files:
+    - source: boardkit/evk-mimxrt1160/*.*
+      project_relative_path: "./"
+    - source: boardkit/evk-mimxrt1160/frdm-stbc-agm01/*.*
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Board-Kit files for RT1160 kit
+      manifest_name: issdk_boardkit_evkmimxrt1160
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk sensor boardkit evkmimxrt1160

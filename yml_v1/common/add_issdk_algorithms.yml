@@ -1,0 +1,382 @@
+---
+__hierarchy__:
+  tmp_issdk_algorithms:
+    section-type: component
+    __requires__:
+    - middleware.issdk.ui_control
+middleware.issdk.algorithms.sensor_fusion_agm01.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.sensor_fusion_agm01
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/sensorfusion/sources
+    virtual-dir: sensor_fusion
+    files:
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/DecodeCommandBytes.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXAS21002.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXOS8700.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MPL3115.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_systick.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/drivers.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/hal_frdm_fxs_mult2_b.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/output_stream.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.h
+  component_info:
+    common:
+      description: ISSDK Sensor Fusion Algorithm Common for Kinetis MCU with AGM01
+      manifest_name: sensor_fusion_agm01
+      version: 1.7.0
+      full_name: Middleware issdk algorithms sensor_fusion_agm01 common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.sensor_fusion_lpc_agm01.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.sensor_fusion_lpc_agm01
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/sensorfusion/sources/
+    virtual-dir: sensor_fusion
+    files:
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control_lpc.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/DecodeCommandBytes.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXAS21002.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXOS8700.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MPL3115.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_systick.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/drivers.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/hal_frdm_fxs_mult2_b.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/output_stream.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.h
+  component_info:
+    common:
+      description: ISSDK Sensor Fusion Algorithm Common for LPC MCU with AGM01
+      manifest_name: sensor_fusion_lpc_agm01
+      version: 1.7.0
+      full_name: Middleware issdk algorithms sensor_fusion_lpc_agm01 common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.sensor_fusion_agm04.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.sensor_fusion_agm04
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/sensorfusion/sources
+    virtual-dir: sensor_fusion
+    files:
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/DecodeCommandBytes.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXAS21002.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MMA8652.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MAG3110.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_systick.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/drivers.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/hal_frdm_fxs_mult2_b.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/output_stream.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.h
+  component_info:
+    common:
+      description: ISSDK Sensor Fusion Algorithm Common for Kinetis MCU with AGM04
+      user_visible: false
+      manifest_name: sensor_fusion_agm04
+      version: 1.7.0
+      full_name: Middleware issdk algorithms sensor_fusion_agm04 common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.sensor_fusion_agmp03.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.sensor_fusion_agmp03
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/sensorfusion/sources
+    virtual-dir: sensor_fusion
+    files:
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/DecodeCommandBytes.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXAS21002.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXLS8962.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MAG3110.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MPL3115.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_systick.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/drivers.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/hal_frdm_fxs_mult2_b.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/output_stream.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.h
+  component_info:
+    common:
+      description: ISSDK Sensor Fusion Algorithm Common for Kinetis MCU with AGMP03
+      user_visible: false
+      manifest_name: sensor_fusion_agmp03
+      version: 1.7.0
+      full_name: Middleware issdk algorithms sensor_fusion_agmp03 common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.sensor_fusion_lpc_agmp03.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.sensor_fusion_lpc_agmp03
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/sensorfusion/sources
+    virtual-dir: sensor_fusion
+    files:
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control_lpc.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/DecodeCommandBytes.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXAS21002.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXLS8962.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MAG3110.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MPL3115.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_systick.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/drivers.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/hal_frdm_fxs_mult2_b.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/output_stream.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.h
+  component_info:
+    common:
+      description: ISSDK Sensor Fusion Algorithm Common for LPC MCU with AGMP03
+      user_visible: false
+      manifest_name: sensor_fusion_lpc_agmp03
+      version: 1.7.0
+      full_name: Middleware issdk algorithms sensor_fusion_lpc_agmp03 common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.sensor_fusion_mult2b.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.sensor_fusion_mult2b
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/sensorfusion/sources
+    virtual-dir: sensor_fusion
+    files:
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/approximations.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/calibration_storage.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/control.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/debug.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/DecodeCommandBytes.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXAS21002.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_FXOS8700.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_MPL3115.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_KSDK_NVM.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_pit.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/driver_systick.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/drivers.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/hal_frdm_fxs_mult2_b.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/magnetic.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/matrix.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/orientation.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/output_stream.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/precisionAccelerometer.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.h
+    - source: middleware/issdk/algorithms/sensorfusion/sources/sensor_fusion.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.c
+    - source: middleware/issdk/algorithms/sensorfusion/sources/status.h
+  component_info:
+    common:
+      description: ISSDK Sensor Fusion Algorithm Common for Kinetis MCU with MULT2B
+      user_visible: false
+      manifest_name: sensor_fusion_mult2b
+      version: 1.7.0
+      full_name: Middleware issdk algorithms sensor_fusion_mult2b common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.pedometer.common:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.pedometer
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/algorithms/pedometer/source/
+    - path: middleware/issdk/algorithms/pedometer/include/
+    - path: middleware/issdk/algorithms/pedometer/include/libinclude/
+    virtual-dir: pedometer
+    files:
+    - source: middleware/issdk/algorithms/pedometer/source/pedometer.c
+    - source: middleware/issdk/algorithms/pedometer/include/pedometer.h
+    - source: middleware/issdk/algorithms/pedometer/include/libinclude/KeynetikPedometer.h
+  component_info:
+    common:
+      description: ISSDK Pedometer Algorithm Common
+      user_visible: false
+      manifest_name: pedometer
+      version: 1.7.0
+      full_name: Middleware issdk algorithms pedometer common # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.algorithms.pedometer.lib_cm4:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.pedometer.lib_cm4
+  contents:
+    files:
+    - source: middleware/issdk/algorithms/pedometer/lib/libpedometerm4.a
+      virtual-dir: libs
+      attribute: extra-libraries
+  component_info:
+    common:
+      description: ISSDK Pedometer Algorithm Library for CM4
+      user_visible: false
+      manifest_name: pedometer_lib_cm4
+      version: 1.7.0
+      full_name: Middleware issdk algorithms pedometer lib_cm4 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+  __requires__:
+  - middleware.issdk.cm4_cm4f.support
+middleware.issdk.algorithms.pedometer.lib_cm0:
+  section-type: component
+  meta-name: middleware.issdk.algorithms.pedometer.lib_cm0
+  contents:
+    files:
+    - source: middleware/issdk/algorithms/pedometer/lib/libpedometerm0.a
+      virtual-dir: libs
+      attribute: extra-libraries
+  component_info:
+    common:
+      description: ISSDK Pedometer Algorithm Library for CM0
+      user_visible: false
+      manifest_name: pedometer_lib_cm0
+      version: 1.7.0
+      full_name: Middleware issdk algorithms pedometer lib_cm0 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+  __requires__:
+  - middleware.issdk.cm0.support
+middleware.issdk.cm4_cm4f.support:
+  section-type: component_support
+  __requires__:
+  - core.cm4
+  - core.cm4f
+middleware.issdk.cm0.support:
+  section-type: component_support
+  __requires__:
+  - core.cm0p

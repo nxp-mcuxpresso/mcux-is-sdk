@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>2893625362</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_ctimer.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_common.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_flashiap.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_common.c</file>
+      <file>$PROJ_DIR$\debug\obj\control_lpc.o</file>
+      <file>$PROJ_DIR$\debug\obj\debug.o</file>
+      <file>$PROJ_DIR$\debug\obj\DecodeCommandBytes.o</file>
+      <file>$PROJ_DIR$\debug\obj\driver_FXAS21002.o</file>
+      <file>$PROJ_DIR$\debug\obj\driver_FXOS8700.o</file>
+      <file>$PROJ_DIR$\debug\obj\calibration_storage.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\debug\obj\clock_config.o</file>
+      <file>$PROJ_DIR$\debug\obj\board.o</file>
+      <file>$PROJ_DIR$\debug\obj\pin_mux.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_i2c_cmsis.o</file>
+      <file>$PROJ_DIR$\debug\obj\lpc54114.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_clock.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_common.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_flashiap.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_flexcomm.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_gpio.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_i2c.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_inputmux.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_power.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_reset.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_usart.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_clock.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_pit.h</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_common.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_flexcomm.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_flashiap.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_power.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_gpio.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_i2c.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_inputmux.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_usart.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_reset.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\debug.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\control_lpc.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\approximations.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\driver_FXOS8700.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\DecodeCommandBytes.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\main_baremetal.o</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\drivers\gpio\Driver_GPIO.h</file>
+      <file>$PROJ_DIR$\debug\obj\main_baremetal.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\debug\obj\sensor_fusion.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\sensor_io_i2c.pbi</file>
+      <file>$PROJ_DIR$\debug\main.out</file>
+      <file>$PROJ_DIR$\debug\obj\status.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\register_io_i2c.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\driver_ctimer.o</file>
+      <file>$PROJ_DIR$\debug\obj\driver_ctimer.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\cmsis_drivers\fsl_spi_cmsis.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_usart_dma.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_spi_dma.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Driver\Include\Driver_SPI.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Driver\Include\Driver_USART.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\cmsis_drivers\fsl_usart_cmsis.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_spi.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_gint.h</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_ctimer.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_ctimer.o</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Include\core_cmInstr.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\fsl_device_registers.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\assert.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_dma.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\LPC54114_cm4_features.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_i2c_dma.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\LPC54114_cm4.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Include\core_cm4.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Include\core_cmSimd.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Include\core_cmFunc.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\sensor_io_spi.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\fxos8700_drv.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_power.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\drivers\systick\systick_utils.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_inputmux_connections.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_ctimer.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\clock_config.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\board.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\board.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\clock_config.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\frdm-stbc-agm01\frdm_stbc_agm01_shield.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\frdm-stbc-agm01\issdk_hal.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\lpc54114.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\lpc54114.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\pin_mux.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\pin_mux.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\RTE_Device.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Driver\Include\Driver_Common.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\CMSIS\Driver\Include\Driver_I2C.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\cmsis_drivers\fsl_i2c_cmsis.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\cmsis_drivers\fsl_i2c_cmsis.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_clock.c</file>
+      <file>$PROJ_DIR$\..\..\readme.txt</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_clock.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_flashiap.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_flexcomm.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_flexcomm.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_gpio.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_gpio.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_i2c.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_i2c.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_inputmux.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_inputmux.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_iocon.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_power.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_reset.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_reset.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_usart.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_usart.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\approximations.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\approximations.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\calibration_storage.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\calibration_storage.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\control.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\control_lpc.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\debug.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\debug.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\DecodeCommandBytes.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_ctimer.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_FXAS21002.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_FXOS8700.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_KSDK_NVM.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_KSDK_NVM.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_systick.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\drivers.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\fusion.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\fusion.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\hal_frdm_fxs_mult2_b.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\magnetic.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\magnetic.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\matrix.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\matrix.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\orientation.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\orientation.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\output_stream.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\precisionAccelerometer.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\precisionAccelerometer.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\sensor_fusion.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\sensor_fusion.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\status.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\status.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\fxas21002.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\fxos8700.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\register_io_i2c.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\register_io_i2c.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\sensor_drv.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\sensor_io_i2c.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\sensor_io_i2c.h</file>
+      <file>$PROJ_DIR$\..\..\build.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\main_baremetal.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\iar\startup_LPC54114_cm4.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\system_LPC54114_cm4.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\system_LPC54114_cm4.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\utilities\fsl_debug_console.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\utilities\fsl_debug_console.h</file>
+      <file>$PROJ_DIR$\debug\obj\driver_systick.o</file>
+      <file>$PROJ_DIR$\debug\obj\fusion.o</file>
+      <file>$PROJ_DIR$\debug\obj\main.pbd</file>
+      <file>$PROJ_DIR$\debug\obj\matrix.o</file>
+      <file>$PROJ_DIR$\debug\obj\precisionAccelerometer.o</file>
+      <file>$PROJ_DIR$\debug\obj\output_stream.o</file>
+      <file>$PROJ_DIR$\debug\obj\orientation.o</file>
+      <file>$PROJ_DIR$\debug\obj\sensor_fusion.o</file>
+      <file>$PROJ_DIR$\debug\obj\hal_frdm_fxs_mult2_b.o</file>
+      <file>$PROJ_DIR$\debug\obj\magnetic.o</file>
+      <file>$PROJ_DIR$\debug\obj\sensor_io_i2c.o</file>
+      <file>$PROJ_DIR$\debug\obj\register_io_i2c.o</file>
+      <file>$PROJ_DIR$\debug\obj\status.o</file>
+      <file>$PROJ_DIR$\debug\obj\system_LPC54114_cm4.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_debug_console.o</file>
+      <file>$PROJ_DIR$\debug\obj\startup_LPC54114_cm4.o</file>
+      <file>$PROJ_DIR$\debug\obj\board.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\clock_config.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\pin_mux.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\lpc54114.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\output_stream.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\precisionAccelerometer.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\system_LPC54114_cm4.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\mpl3115.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_debug_console.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\xtgmath.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\drivers\gpio\lpc\gpio_driver.h</file>
+      <file>$PROJ_DIR$\debug\obj\hal_frdm_fxs_mult2_b.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$PROJ_DIR$\debug\obj\driver_KSDK_NVM.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\fusion.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\driver_systick.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\magnetic.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\matrix.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\orientation.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\register_io_spi.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ymath.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\time.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+      <file>$PROJ_DIR$\debug\obj\driver_KSDK_NVM.o</file>
+      <file>$PROJ_DIR$\debug\obj\fsl_i2c_cmsis.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\driver_FXAS21002.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\approximations.o</file>
+      <file>$PROJ_DIR$\debug\obj\calibration_storage.o</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\main_baremetal_agmp03.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\frdm-stbc-agmp03\issdk_hal.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\frdm-stbc-agmp03\frdm_stbc_agmp03_shield.h</file>
+      <file>$PROJ_DIR$\debug\obj\main_baremetal_agmp03.pbi</file>
+      <file>$PROJ_DIR$\debug\obj\main_baremetal_agmp03.o</file>
+      <file>$PROJ_DIR$\debug\obj\driver_MAG3110.o</file>
+      <file>$PROJ_DIR$\debug\obj\driver_FXLS8962.o</file>
+      <file>$PROJ_DIR$\debug\obj\driver_FXLS8962.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+      <file>$PROJ_DIR$\debug\obj\driver_MAG3110.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+      <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
+      <file>$PROJ_DIR$\LPC54114J256_cm4.icf</file>
+      <file>$PROJ_DIR$\debug\list\main.map</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\iar\iar_lib_power.a</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\fxls8962.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\sensors\mag3110.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_FXLS8962.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sources\driver_MAG3110.c</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_ctimer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 194 65 190 158 211 64 1 45 112 10 193 68 73 212 204 99 205 201 202 206 70 71 74 81 63 72 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 81 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_flashiap.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 30</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 194 65 190 158 211 64 45 112 10 193 68 73 1 212 204 99 205 201 202 206 70 71 74 100 63 72 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 100 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_common.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 17</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 212 10 190 74 194 193 68 72 204 99 211 158 63 160 65 45 64 112 205 201 202 206 70 71 73 1 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 160</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 48 232</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\debug\main.out</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 232</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 231 216 12 217 11 4 5 6 51 7 224 213 223 161 16 17 62 175 18 19 20 21 14 22 23 24 25 162 169 15 170 222 164 167 166 13 165 172 168 171 176 173 174 233 228 226 230 229</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\clock_config.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 178</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 11</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45 66 65 190 201 202 203 71 85 1 64 112 205 206 193 70 73 99 194 212 204 10 211 68 158 63 72 77 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 77 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 85</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\board.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 177</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45 206 212 194 160 205 203 190 71 64 85 201 202 204 99 193 70 73 1 84 10 65 112 211 68 158 63 72 74 104 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 45 203 190 205 202 206 201 10 1 65 194 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 85 84 104 160</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\lpc54114.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 180</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 15</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 206 194 99 63 65 191 104 205 203 93 204 193 158 66 64 91 43 45 190 201 202 212 211 68 92 1 60 10 112 70 71 72 89 73 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 89 91 92 191 93 204 203 190 205 202 206 201 10 193 45 194 43 1 65 212 211 64 70 71 63 66 74 73 72 158 68 99 112 104 60</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\boardkit\lpcxpresso54114\pin_mux.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 202 190 201 71 212 203 194 45 79 108 204 112 205 206 193 70 74 109 91 65 64 99 10 211 68 158 73 1 63 72 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 109 108 79 91</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\cmsis_drivers\fsl_i2c_cmsis.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 214</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 14</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 205 203 63 64 204 190 65 92 194 99 206 158 66 67 1 102 212 201 202 68 45 94 106 69 112 10 193 211 70 71 72 93 96 73 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 96 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_clock.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 16</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 190 65 158 66 203 64 211 63 77 45 112 10 193 68 99 194 212 204 205 201 202 206 70 71 72 1 73 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 77</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_flexcomm.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 29</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 19</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 194 99 211 204 190 158 63 65 212 10 193 68 72 45 64 102 112 205 201 202 206 70 71 73 66 1 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_gpio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 20</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 194 205 203 204 190 99 206 193 70 73 64 1 212 201 202 71 45 65 112 10 211 68 158 63 72 74 104 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 104 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 21</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 201 202 68 190 204 210 64 205 206 158 72 45 194 99 102 212 1 193 10 70 71 63 66 106 73 74 65 112 211</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 106 204 203 190 205 202 206 201 10 193 64 70 71 45 63 66 74 73 72 158 68 1 65 194 212 211 99 112 102 210</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_inputmux.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 22</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 190 65 64 112 206 193 70 73 1 45 205 203 66 201 202 71 79 194 212 204 99 10 211 68 158 63 72 108 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 108 79 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_power.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 31</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 23</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 45 204 190 158 63 64 194 99 211 212 10 193 68 72 65 77 112 205 201 202 206 70 71 73 66 1 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 77</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_reset.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 36</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 24</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 65 204 190 158 63 194 99 211 66 212 10 193 68 72 45 112 64 205 201 202 206 70 71 73 1 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\drivers\fsl_usart.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 25</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 10 190 73 1 64 112 45 193 68 102 65 211 158 194 212 204 99 205 201 202 206 70 71 74 114 63 72 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 114 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 102</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\approximations.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 216</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 45 188 190 210 116 208 10 201 185 205 202 206 193</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 185 203 208 190 205 202 206 201 10 188 210 193 45 116</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\calibration_storage.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 9</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 217</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 63 137 190 67 54 58 64 45 69 112 158 65 10 135 203 66 106 59 102 93 128 189 186 188 1 92 60 56 144 118 193 205 201 202 206 185 87 139 96 86 94 68 72 194 154 142 207 208 53 89 212 204 99 211 70 71 73 74 55 57 114 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 203 190 205 202 206 201 10 193 189 144 185 208 188 194 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 128 118</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\control_lpc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 188 203 74 1 186 204 190 201 71 194 86 144 212 94 93 104 91 99 205 211 45 135 137 189 96 56 84 114 119 65 64 112 10 193 70 73 185 87 139 58 106 69 59 102 67 92 54 43 151 160 202 206 68 158 63 72 66 85 154 142 207 208 53 89 55 57 191 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 160 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 84 85 104 91 114 144 185 208 188 186 189 219 96 94 93 92 106 102 69 67 53 59 56 55 58 57 54 89 191 43 60 220 154 135 142 139 207 151 137 119</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\debug.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 94 142 65 1 56 206 93 45 190 86 68 72 67 92 193 210 194 154 207 208 205 203 96 119 185 186 87 135 139 201 202 189 58 106 69 64 112 158 63 66 59 102 54 60 144 137 188 10 53 89 212 204 99 211 70 71 73 74 55 57 114 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 119 210</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\DecodeCommandBytes.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 41</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 6</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 56 65 154 190 189 194 207 106 45 66 1 92 60 132 142 201 202 58 69 64 112 203 158 63 59 102 67 54 93 119 118 185 186 87 135 139 208 205 206 96 86 94 68 72 144 137 188 10 193 53 89 212 204 99 211 70 71 73 74 55 57 114 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 119 132 118</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_ctimer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 52</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 96 1 211 194 85 86 94 65 71 64 55 114 81 58 106 69 45 112 10 190 193 70 73 67 92 59 91 84 53 89 102 212 204 99 205 201 202 206 68 158 74 93 57 191 60 87 63 72 66 56 54 43 104</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 96 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 84 85 81</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_FXAS21002.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 215</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 219 56 45 190 64 67 54 94 201 202 203 106 59 102 130 212 68 72 185 139 58 69 92 151 194 204 99 205 206 158 63 66 65 186 135 137 188 189 96 220 93 60 144 153 147 85 104 112 10 193 211 70 71 73 74 154 142 207 208 53 89 55 57 114 91 191 43 150 84</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84 85 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 104 144 185 208 188 186 189 219 96 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 60 220 154 135 142 139 207 151 137 153 150 130 147</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_FXOS8700.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 40</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 8</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 194 206 96 99 158 65 93 94 190 63 137 56 66 64 135 189 76 204 205 203 186 188 86 45 150 153 146 212 201 202 68 72 185 87 139 58 106 69 59 102 67 92 54 144 148 130 85 104 112 10 193 211 70 71 73 74 154 142 207 208 53 89 55 57 114 60 84 91 191 43 151 75</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84 85 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 104 144 185 208 188 186 189 219 96 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 60 220 154 135 142 139 207 151 137 153 150 148 76 75 130 146</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_KSDK_NVM.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 195</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 213</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 185 137 193 191 45 139 203 114 87 92 194 99 204 57 104 186 135 188 10 190 53 71 74 212 1 93 128 100 154 142 207 89 102 211 70 73 64 67 55 59 91 43 151 144 208 205 201 202 206 189 96 58 86 94 106 69 65 112 68 158 63 72 66 56 54 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 128 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_systick.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 161</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 102 154 212 64 194 55 114 207 203 151 45 142 89 1 190 211 193 70 73 67 92 59 91 43 130 185 186 87 135 139 137 188 10 53 204 99 71 74 93 57 191 104 56 144 208 205 201 202 206 189 96 58 86 94 106 69 65 112 68 158 63 72 66 54 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 130</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\fusion.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 162</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 190 10 203 137 67 92 43 130 135 194 99 132 186 53 204 193 70 73 1 59 91 210 189 208 185 87 139 89 102 212 211 71 45 74 64 55 114 151 144 116 119 205 201 202 206 188 154 142 207 96 58 86 94 106 69 65 112 68 158 63 72 66 93 57 191 104 56 54 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 203 190 205 202 206 201 10 193 189 185 208 188 210 144 194 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 132 116 130 119</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\hal_frdm_fxs_mult2_b.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 192</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 96 45 87 203 185 139 208 205 190 93 1 186 135 206 86 94 65 68 72 56 67 92 194 154 142 207 201 202 189 58 106 69 64 112 158 63 66 59 102 54 60 144 137 188 10 193 53 89 212 204 99 211 70 71 73 74 55 57 114 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\magnetic.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 198</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 170</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 194 1 203 93 207 102 212 56 154 89 190 211 193 70 73 67 92 210 45 142 188 10 53 204 99 71 185 209 186 87 135 139 137 208 205 201 202 206 189 96 58 86 94 106 69 65 64 112 68 158 63 72 66 59 54 60 144 74 55 57 114 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 210 209</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\matrix.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 199</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 164</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 53 203 73 91 204 70 186 193 67 59 194 144 201 202 190 135 137 92 99 64 43 210 205 206 188 185 87 139 89 102 212 211 71 45 74 55 114 151 209 189 10 208 154 142 207 96 58 86 94 106 69 65 112 68 158 63 72 66 93 57 191 104 56 54 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 203 190 205 202 206 201 10 193 189 185 208 188 210 209 144 194 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\orientation.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 200</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 167</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 66 203 142 190 106 45 64 137 193 158 63 65 1 212 10 211 58 69 112 210 139 189 208 194 154 207 96 86 94 68 72 93 56 67 92 144 185 209 132 116 205 201 202 206 188 186 87 135 53 89 102 204 99 70 71 73 74 59 54 60 55 57 114 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 203 190 205 202 206 201 10 193 189 185 208 188 210 209 212 211 144 194 45 219 96 1 65 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 132 116</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\output_stream.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 166</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 193 10 190 212 1 186 188 203 53 204 71 74 194 93 56 135 137 92 99 45 57 114 191 104 122 185 87 139 89 102 211 70 73 64 67 55 59 91 43 119 154 142 207 208 205 201 202 206 189 96 58 86 94 106 69 65 112 68 158 63 72 66 54 60 144 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 144 185 203 208 190 205 202 206 201 10 188 194 186 193 189 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 119 122</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\precisionAccelerometer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 182</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 165</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 68 1 185 203 86 72 139 94 65 56 93 190 10 87 96 45 67 92 144 132 189 186 135 137 188 58 106 69 64 112 158 63 66 59 102 54 193 205 201 202 206 194 154 142 207 208 53 89 212 204 99 211 70 71 73 74 55 57 114 60 91 191 43 104 151</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 203 190 205 202 206 201 10 193 189 144 185 208 188 194 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 132</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\sensor_fusion.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 168</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64 203 135 102 190 106 59 93 189 66 56 137 58 69 112 158 63 65 67 54 151 186 188 45 1 92 60 144 119 10 185 87 139 96 86 94 68 72 204 130 146 132 193 205 201 202 206 194 154 142 207 208 53 89 212 99 211 70 71 73 74 55 57 114 91 191 43 104</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 203 190 205 202 206 201 10 193 189 144 185 208 188 194 45 219 96 1 65 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 154 135 142 139 207 151 137 130 146 119 132</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\status.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 173</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 154 93 203 193 91 1 59 146 65 71 74 194 102 67 92 56 144 85 211 45 207 208 89 55 114 104 204 130 64 112 10 190 70 73 142 53 57 191 43 151 84 99 205 201 202 206 68 158 63 72 66 185 186 87 135 139 137 188 189 96 58 86 94 106 69 54 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84 85 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 104 144 185 208 188 186 189 219 96 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 60 220 154 135 142 139 207 151 137 130 146</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\sensors\register_io_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 172</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 203 190 45 58 69 64 112 193 66 92 106 71 65 43 87 10 96 86 94 70 63 59 102 67 54 194 212 150 201 205 202 206 211 53 89 204 99 68 158 72 93 56 104 151 210 73 74 55 57 114 91 191 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 210 203 190 205 202 206 201 10 193 212 211 219 96 1 65 194 45 204 64 70 71 63 66 74 73 72 158 68 99 112 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 104 60 220 150 151</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\sensors\sensor_io_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 171</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 190 201 45 205 151 93 204 194 203 193 202 206 94 78 153 150</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 94 93 204 203 190 205 202 206 201 10 193 45 194 151 78 153 150</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\main_baremetal.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 64 207 27 96 212 68 72 59 102 144 190 201 202 203 45 85 151 93 194 208 89 67 54 104 56 91 106 184 146 204 99 205 206 158 63 66 65 92 154 193 84 81 150 147 148 119 130 112 10 211 70 71 73 74 94 69 142 53 43 160 185 186 87 135 139 137 188 189 58 86 55 57 114 191 60</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\iar\startup_LPC54114_cm4.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 176</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\system_LPC54114_cm4.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 183</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 174</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 190 66 203 70 71 73 64 205 201 202 206 68 158 45 63 72 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 45 203 190 205 202 206 201 10 64 70 71 63 66 74 73 72 158 68</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\..\SDK_2.2.1_LPC54114J256\devices\LPC54114\utilities\fsl_debug_console.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 187</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 175</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74 114 206 201 203 71 194 205 212 185 202 190 208 193 45 210 160 10 188 204 99 70 73 64 80 1 65 112 211 68 158 63 72 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 210 203 190 205 202 206 201 10 193 185 208 188 160 1 65 194 45 212 211 204 64 70 71 63 66 74 73 72 158 68 99 112 114</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\main_baremetal_agmp03.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 221</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 222</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 64 45 27 106 185 203 234 212 68 72 92 139 59 102 144 190 201 202 85 204 87 89 67 54 104 56 91 150 146 194 99 205 206 158 63 66 65 151 93 186 135 137 188 193 84 81 147 235 96 119 130 112 10 211 70 71 73 74 94 69 154 142 207 208 53 43 160 189 58 86 55 57 114 191 60</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 160 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 84 85 104 91 81 106 147 234 235 150 151 94 93 96 92 102 69 67 144 185 208 188 186 189 219 53 59 56 55 58 57 114 54 89 191 43 60 220 154 135 142 139 207 137 119 146 130 27</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_FXLS8962.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 225</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 224</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 93 203 194 45 64 112 204 104 10 190 92 1 234 193 70 73 142 53 57 114 191 43 153 85 65 211 71 74 212 154 207 208 89 102 67 55 59 91 151 144 130 99 205 201 202 206 68 158 63 72 66 185 186 219 135 139 137 188 189 96 58 220 94 106 69 56 54 60 150 84</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84 85 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 104 144 185 208 188 186 189 219 96 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 60 220 154 135 142 139 207 151 137 153 150 234 130</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sources\driver_MAG3110.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 227</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 223</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 85 139 130 212 68 72 185 203 58 69 45 1 92 94 151 104 190 201 202 219 106 64 59 102 67 54 56 144 153 235 194 204 99 205 206 158 63 66 65 186 135 137 188 189 96 220 93 60 84 112 10 193 211 70 71 73 74 154 142 207 208 53 89 55 57 114 91 191 43 150</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84 85 1 65 203 190 205 202 206 201 10 194 45 212 193 211 204 64 70 71 63 66 74 73 72 158 68 99 112 104 144 185 208 188 186 189 219 96 94 93 92 106 102 69 67 53 59 56 55 58 57 114 54 89 91 191 43 60 220 154 135 142 139 207 151 137 153 150 130 235</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

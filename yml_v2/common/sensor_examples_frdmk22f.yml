@@ -1,0 +1,1814 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/add_issdk_sensors.yml
+- middleware/issdk/yml_v2/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v2/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v2/common/add_issdk_utils.yml
+- middleware/issdk/yml_v2/common/add_issdk_ads.yml
+- middleware/issdk/yml_v2/common/add_issdk_host.yml
+- middleware/issdk/yml_v2/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v2/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v2/common/add_issdk_tools.yml
+- middleware/issdk/yml_v2/common/add_issdk_cmsis_drivers.yml
+- middleware/freemaster/yml_v2/add_fmstr.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_set:
+    section-type: application
+    configuration:
+      tools:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--vla"
+    modules:
+      boardset:
+        required: true
+        cc-include:
+        - path: boards/${board}
+          package_path: project-root-path
+          project_path: board
+        files:
+        - source: boards/${board}/clock_config.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/clock_config.h
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/board.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/board.h
+          package_path: project-root-path
+          project_path: board
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          toolchains: iar mdk mcux
+          project_path: doc
+config_usb_stack_bm:
+  section-type: configuration
+  configuration:
+    tools:
+      __common__:
+        config:
+          __common__:
+            cc-define:
+              USB_STACK_BM: 1
+config_stack_0x2000:
+  section-type: configuration
+  configuration:
+    tools:
+      iar:
+        config:
+          __common__:
+            ad-flags:
+            - __stack_size__=0x2000
+      mdk:
+        config:
+          __common__:
+            ad-flags:
+            - --predefine="-D__stack_size__=0x2000"
+      armgcc:
+        config:
+          __common__:
+            ad-flags:
+            - "-Xlinker --defsym=__stack_size__=0x2000"
+      mcux:
+        config:
+          __common__:
+            ad-flags:
+            - "-Xlinker --defsym=__stack_size__=0x2000"
+config_heap_0x1000:
+  section-type: configuration
+  configuration:
+    tools:
+      iar:
+        config:
+          __common__:
+            ad-flags:
+            - __heap_size__=0x1000
+      mdk:
+        config:
+          __common__:
+            ad-flags:
+            - --predefine="-D__heap_size__=0x1000"
+      armgcc:
+        config:
+          __common__:
+            ad-flags:
+            - "-Xlinker --defsym=__heap_size__=0x1000"
+      mcux:
+        config:
+          __common__:
+            ad-flags:
+            - "-Xlinker --defsym=__heap_size__=0x1000"
+fxas21002_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-FXAS21002-FIFO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fxas21002_fifo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+fxas21002_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-FXAS21002-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_interrupt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    fxas21002_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+fxas21002_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-FXAS21002-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    fxas21002_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+fxos8700_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-FXOS8700-FIFO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+  modules:
+    fxos8700_fifo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+fxos8700_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-FXOS8700-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxos8700_interrupt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+  modules:
+    fxos8700_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+fxos8700_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-FXOS8700-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+  modules:
+    fxos8700_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+fxlc95000_accel_i2c:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-SA9500-ACCEL-I2C.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxlc95000_accel_i2c
+    outdir: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_i2c
+  modules:
+    fxlc95000_accel_i2c_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_i2c
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxlc95000/fxlc95000_accel_i2c.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_i2c/pin_mux.c
+        project_path: board
+      - source: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_i2c/pin_mux.h
+        project_path: board
+      - source: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_i2c/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxlc95000
+fxlc95000_accel_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-SA9500-ACCEL-SPI.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxlc95000_accel_spi
+    outdir: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_spi
+  modules:
+    fxlc95000_accel_spi_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_spi
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxlc95000/fxlc95000_accel_spi.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_spi/pin_mux.c
+        project_path: board
+      - source: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_spi/pin_mux.h
+        project_path: board
+      - source: boards/${board}_sa9500/issdk_examples/sensors/fxlc95000/fxlc95000_accel_spi/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxlc95000
+fxls8962_freefall:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXLS8962-FREEFALL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8962_freefall
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall
+  modules:
+    fxls8962_freefall_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_freefall.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+fxls8962_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXLS8962-NORMAL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8962_normal
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal
+  modules:
+    fxls8962_normal_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_normal.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+fxls8962_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXLS8962-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8962_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt
+  modules:
+    fxls8962_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+fxls8962_freemaster_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXLS8962-FREEMASTER.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8962_freemaster_demo
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freemaster_demo
+  modules:
+    fxls8962_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freemaster_demo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_freemaster_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: middleware/issdk/driverexamples/fxls8962/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freemaster_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freemaster_demo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freemaster_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962 middleware.fmstr middleware.fmstr.platform_gen32le
+fxls8962_normal_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXLS8962-NORMAL-SPI.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8962_normal_spi
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi
+  modules:
+    fxls8962_normal_spi_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_normal_spi.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+fifo_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXAS21002-FIFO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fifo_fxas21002
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fifo_fxas21002_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+interrupt_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXAS21002-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: interrupt_fxas21002
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    interrupt_fxas21002_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+poll_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXAS21002-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: poll_fxas21002
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    poll_fxas21002_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+fxas21002_poll_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-FXAS21002-POLL-SPI.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll_spi
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi
+  modules:
+    fxas21002_poll_spi_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll_spi.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+mag3110_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MAG3110-NORMAL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: k22f_agmp03_mag3110_normal
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal
+  modules:
+    mag3110_normal_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+mag3110_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MAG3110-NORMAL-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt
+  modules:
+    mag3110_normal_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+mag3110_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MAG3110-ONESHOT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mag3110_oneshot
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot
+  modules:
+    mag3110_oneshot_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_oneshot.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+mpl3115_altitude:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MPL3115-ALTITUDE.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mpl3115_altitude
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude
+  modules:
+    mpl3115_altitude_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_altitude.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+mpl3115_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MPL3115-FIFO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo
+  modules:
+    mpl3115_fifo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+mpl3115_fifo_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MPL3115-FIFO-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt
+  modules:
+    mpl3115_fifo_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+mpl3115_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MPL3115-NORMAL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal
+  modules:
+    mpl3115_normal_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+mpl3115_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MPL3115-NORMAL-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt
+  modules:
+    mpl3115_normal_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+mpl3115_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-MPL3115-ONESHOT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: mpl3115_oneshot
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot
+  modules:
+    mpl3115_oneshot_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_oneshot.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.pit driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+fxls8964af_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8964-FXLS8964-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8964af_poll
+    outdir: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+  modules:
+    fxls8964af_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8964af_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8964-FXLS8964-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8964af_interrupt
+    outdir: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+  modules:
+    fxls8964af_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8964af_freemaster_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8964-FXLS8964-FREEMASTER.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8964af_freemaster_demo
+    outdir: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+  modules:
+    fxls8964af_freemaster_demo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_freemaster_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: middleware/issdk/driverexamples/fxls896xaf/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf middleware.fmstr middleware.fmstr.platform_gen32le
+fxls8964af_freemaster_usb_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8964-FXLS8964-FREEMASTER_USB.bin
+        config:
+          __common__: {}
+      mdk:
+        config:
+          __common__:
+            ld-flags:
+            - --legacyalign
+            - --diag_suppress=3912
+    document:
+      category: issdk/sensors
+      name: fxls8964af_freemaster_usb_demo
+    outdir: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo
+  modules:
+    fxls8964af_freemaster_usb_demo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo
+        project_path: board
+      - path: middleware/freemaster/boards/${board}/fmstr_usb_cdc
+        package_path: project-root-path
+        project_path: board
+      - path: middleware/freemaster/boards/${board}/fmstr_usb_cdc
+        package_path: project-root-path
+        project_path: source
+      - path: middleware/freemaster/src/support/mcuxsdk_usb
+        project_path: source/support_usb
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_freemaster_usb_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/pin_mux.h
+        project_path: board
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb.c
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb_device_descriptor.c
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb_device_descriptor.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/usb_device_config.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/usb_device_descriptor.h
+        project_path: source/support_usb
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf middleware.fmstr middleware.fmstr.platform_gen32le
+    utility.debug_console_lite utility.assert_lite
+  remove_components:
+  - utility.debug_console utility.assert
+    component.serial_manager component.serial_manager_uart
+fxls8964af_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8964-FXLS8964-POLL-SPI.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8964af_spi
+    outdir: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+  modules:
+    fxls8964af_spi_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_spi.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8964af_motion_wakeup:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8964-FXLS8964-Motion-WAKEUP.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8964af_motion_wakeup
+    outdir: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+  modules:
+    fxls8964af_motion_wakeup_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_motion_wakeup.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8967af_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8967-FXLS8967-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8967af_poll
+    outdir: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+  modules:
+    fxls8967af_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8967af_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8967-FXLS8967-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8967af_interrupt
+    outdir: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+  modules:
+    fxls8967af_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8967af_freemaster_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8967-FXLS8967-FREEMASTER.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8967af_freemaster_demo
+    outdir: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+  modules:
+    fxls8967af_freemaster_demo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_freemaster_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: middleware/issdk/driverexamples/fxls896xaf/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf middleware.fmstr middleware.fmstr.platform_gen32le
+fxls8967af_freemaster_usb_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8967-FXLS8967-FREEMASTER_USB.bin
+        config:
+          __common__: {}
+      mdk:
+        config:
+          __common__:
+            ld-flags:
+            - --legacyalign
+            - --diag_suppress=3912
+    document:
+      category: issdk/sensors
+      name: fxls8967af_freemaster_usb_demo
+    outdir: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo
+  modules:
+    fxls8964af_freemaster_usb_demo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo
+        project_path: board
+      - path: middleware/freemaster/boards/${board}/fmstr_usb_cdc
+        package_path: project-root-path
+        project_path: board
+      - path: middleware/freemaster/boards/${board}/fmstr_usb_cdc
+        package_path: project-root-path
+        project_path: source
+      - path: middleware/freemaster/src/support/mcuxsdk_usb
+        project_path: source/support_usb
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_freemaster_usb_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/pin_mux.h
+        project_path: board
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb.c
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb_device_descriptor.c
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb_device_descriptor.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/usb_device_config.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/usb_device_descriptor.h
+        project_path: source/support_usb
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_usb_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf middleware.fmstr middleware.fmstr.platform_gen32le
+    utility.debug_console_lite utility.assert_lite
+  remove_components:
+  - utility.debug_console utility.assert
+    component.serial_manager component.serial_manager_uart
+fxls8967af_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8967-FXLS8967-POLL-SPI.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8967af_spi
+    outdir: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+  modules:
+    fxls8967af_spi_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_spi.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8967af_motion_wakeup:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8967-FXLS8967-Motion-WAKEUP.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8967af_motion_wakeup
+    outdir: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+  modules:
+    fxls8967af_motion_wakeup_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_motion_wakeup.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls896xaf
+fxls8974cf_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8974-FXLS8974-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_poll
+    outdir: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll
+  modules:
+    fxls8974cf_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8974cf
+fxls8974cf_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8974-FXLS8974-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_interrupt
+    outdir: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt
+  modules:
+    fxls8974cf_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8974cf
+fxls8974cf_freemaster_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8974-FXLS8974-FREEMASTER.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_freemaster_demo
+    outdir: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo
+  modules:
+    fxls8974cf_freemaster_demo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_freemaster_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: middleware/issdk/driverexamples/fxls8974cf/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8974cf middleware.fmstr middleware.fmstr.platform_gen32le
+fxls8974cf_freemaster_usb_demo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8974-FXLS8974-FREEMASTER_USB.bin
+        config:
+          __common__: {}
+      mdk:
+        config:
+          __common__:
+            ld-flags:
+            - --legacyalign
+            - --diag_suppress=3912
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_freemaster_usb_demo
+    outdir: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_usb_demo
+  modules:
+    fxls8974cf_freemaster_usb_demo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_usb_demo
+        project_path: board
+      - path: middleware/freemaster/boards/${board}/fmstr_usb_cdc
+        package_path: project-root-path
+        project_path: board
+      - path: middleware/freemaster/boards/${board}/fmstr_usb_cdc
+        package_path: project-root-path
+        project_path: source
+      - path: middleware/freemaster/src/support/mcuxsdk_usb
+        project_path: source/support_usb
+      files:
+      - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_freemaster_usb_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_usb_demo/freemaster_cfg.h
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_usb_demo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_usb_demo/pin_mux.h
+        project_path: board
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb.c
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb_device_descriptor.c
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/freemaster_usb_device_descriptor.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/usb_device_config.h
+        project_path: source/support_usb
+      - source: middleware/freemaster/src/support/mcuxsdk_usb/usb_device_descriptor.h
+        project_path: source/support_usb
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_usb_demo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8974cf middleware.fmstr middleware.fmstr.platform_gen32le
+    utility.debug_console_lite utility.assert_lite
+  remove_components:
+  - utility.debug_console utility.assert
+    component.serial_manager component.serial_manager_uart
+fxls8974cf_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8974-FXLS8974-POLL-SPI.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_spi
+    outdir: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi
+  modules:
+    fxls8974cf_spi_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_spi.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8974cf
+fxls8974cf_motion_wakeup:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-A8974-FXLS8974-Motion-WAKEUP.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_motion_wakeup
+    outdir: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup
+  modules:
+    fxls8974cf_motion_wakeup_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_motion_wakeup.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/pin_mux.c
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/pin_mux.h
+        project_path: board
+      - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.gpio driver.i2c driver.i2c_edma driver.cmsis_i2c
+    driver.dmamux driver.edma driver.dspi driver.dspi_edma driver.cmsis_dspi driver.smc
+    driver.lptmr driver.uart driver.uart_edma driver.cmsis_uart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8974cf
+hostdemo_agm01:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGM01-HOST-DEMO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: hostdemo_agm01
+    outdir: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agm01_sources:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+        project_path: doc
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.uart_edma driver.cmsis_uart driver.gpio driver.i2c
+    driver.i2c_edma driver.cmsis_i2c driver.dmamux driver.edma driver.dspi driver.dspi_edma
+    driver.cmsis_dspi driver.smc driver.lptmr cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs middleware.issdk.drivers.ads middleware.issdk.drivers.host
+hostdemo_sa9500:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-SA9500-HOST-DEMO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: hostdemo_sa9500
+    outdir: boards/${board}_sa9500/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_sa9500_sources:
+      required: true
+      cc-include:
+      - path: boards/${board}_sa9500/issdk_examples/sensors/hostdemo/host_demo_template
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_sa9500/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        project_path: board
+      - source: boards/${board}_sa9500/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        project_path: board
+      - source: boards/${board}_sa9500/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+        project_path: doc
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.uart_edma driver.cmsis_uart driver.gpio driver.i2c
+    driver.i2c_edma driver.cmsis_i2c driver.dmamux driver.edma driver.dspi driver.dspi_edma
+    driver.cmsis_dspi driver.smc driver.lptmr cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs middleware.issdk.drivers.ads middleware.issdk.drivers.host
+hostdemo_agmp03:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K22F-AGMP03-HOST-DEMO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: hostdemo_agmp03
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agmp03_sources:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+        project_path: doc
+  __requires__:
+  - middleware.issdk.drivers.gpio_kinetis driver.port driver.uart driver.uart_edma driver.cmsis_uart driver.gpio driver.i2c
+    driver.i2c_edma driver.cmsis_i2c driver.dmamux driver.edma driver.dspi driver.dspi_edma
+    driver.cmsis_dspi driver.smc driver.lptmr cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs middleware.issdk.drivers.ads middleware.issdk.drivers.host

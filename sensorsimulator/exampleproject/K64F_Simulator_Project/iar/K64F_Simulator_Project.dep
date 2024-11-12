@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>2462482288</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\..\..\issdk_sim_fxas21002.c</file>
+      <file>$PROJ_DIR$\..\..\..\issdk_sim_fxos8700.c</file>
+      <file>$PROJ_DIR$\..\..\..\issdk_sim_mpl3115.c</file>
+      <file>$PROJ_DIR$\..\..\..\issdk_sim_slave.c</file>
+      <file>$PROJ_DIR$\..\..\..\main.c</file>
+    </outputs>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

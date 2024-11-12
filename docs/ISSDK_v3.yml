@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=../../../../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+docs.ISSDK.kit:
+  section-type: component
+  meta-name: docs.ISSDK.kit
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk
+    project_base_path: ISSDK
+    files:
+    - source: "*.pdf"
+    - source: ISSDK API Reference Manual/*.*
+  belong_to: set.middleware.issdk
+  section_info:
+    version: 1.0.0
+    type: documentation
+    full_name: Docs issdk kit
+    description: Docs issdk kit
+    taxonomy:
+      cclass: docs
+      cgroup: kit
+    product:
+      cmsis_pack:
+        supported: false
+    display_name: kit
+docs.ISSDK.board:
+  section-type: component
+  meta-name: docs.ISSDK.board
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk
+    project_base_path: ISSDK
+    files:
+    - source: "*.pdf"
+    - source: ISSDK API Reference Manual/*.*
+  belong_to: set.middleware.issdk
+  section_info:
+    version: 1.0.0
+    type: documentation
+    full_name: Docs issdk board
+    description: Docs issdk board
+    taxonomy:
+      cclass: docs
+      cgroup: board
+    product:
+      cmsis_pack:
+        supported: false
+    display_name: board
+docs.ISSDK.SensorFusion.kit:
+  section-type: component
+  meta-name: docs.ISSDK.SensorFusion.kit
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk/SensorFusion
+    project_base_path: ISSDK/SensorFusion
+    files:
+    - source: "*.pdf"
+    - source: SensorFusion API Reference Manual/*.*
+  belong_to: set.middleware.issdk
+  section_info:
+    version: 1.0.0
+    type: documentation
+    full_name: Docs issdk sensorfusion kit
+    description: Docs issdk sensorfusion kit
+    taxonomy:
+      cclass: docs
+      cgroup: kit
+    product:
+      cmsis_pack:
+        supported: false
+    display_name: kit
+docs.ISSDK.SensorFusion.board:
+  section-type: component
+  meta-name: docs.ISSDK.SensorFusion.board
+  contents:
+    repo_base_path: middleware/issdk/docs/issdk/SensorFusion
+    project_base_path: ISSDK/SensorFusion
+    files:
+    - source: "*.pdf"
+    - source: SensorFusion API Reference Manual/*.*
+  belong_to: set.middleware.issdk
+  section_info:
+    version: 1.0.0
+    type: documentation
+    full_name: Docs issdk sensorfusion board
+    description: Docs issdk sensorfusion board
+    taxonomy:
+      cclass: docs
+      cgroup: board
+    product:
+      cmsis_pack:
+        supported: false
+    display_name: board

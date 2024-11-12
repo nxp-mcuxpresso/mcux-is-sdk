@@ -1,0 +1,176 @@
+
+menu "issdk"
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.interface.common
+        bool "Component middleware.issdk.sensor.interface.common"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+
+    config MCUX_COMPONENT_middleware.issdk.drivers.systick_utils
+        bool "Component middleware.issdk.drivers.systick_utils"
+
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_kinetis
+        bool "Component middleware.issdk.drivers.gpio_kinetis"
+        depends on MCUX_HW_DEVICE_MK22F12810 || MCUX_HW_DEVICE_MK22F25612 || MCUX_HW_DEVICE_MK22F51212 || MCUX_HW_DEVICE_MK02F12810 || MCUX_HW_DEVICE_MK24F12 || MCUX_HW_DEVICE_MK63F12 || MCUX_HW_DEVICE_MK63F12WS || MCUX_HW_DEVICE_MK64F12 || MCUX_HW_DEVICE_MKL14Z4 || MCUX_HW_DEVICE_MKL15Z4 || MCUX_HW_DEVICE_MKL24Z4 || MCUX_HW_DEVICE_MKL25Z4 || MCUX_HW_DEVICE_MKL17Z644 || MCUX_HW_DEVICE_MKL27Z644 || MCUX_HW_DEVICE_MKE14Z7 || MCUX_HW_DEVICE_MKE15Z7 || MCUX_HW_DEVICE_K32W032S1M2 || MCUX_HW_DEVICE_K32L3A60 || MCUX_HW_DEVICE_KW45B41Z82 || MCUX_HW_DEVICE_KW45B41Z83 || MCUX_HW_DEVICE_KW45B41Z52 || MCUX_HW_DEVICE_KW45B41Z53 || MCUX_HW_DEVICE_KW45Z41052 || MCUX_HW_DEVICE_KW45Z41053 || MCUX_HW_DEVICE_KW45Z41082 || MCUX_HW_DEVICE_KW45Z41083 || MCUX_HW_DEVICE_K32W1480
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_kinetis_kl27z
+        bool "Component middleware.issdk.drivers.gpio_kinetis_kl27z"
+        depends on MCUX_HW_DEVICE_MKL17Z644 || MCUX_HW_DEVICE_MKL27Z644
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_kinetis_ke15z
+        bool "Component middleware.issdk.drivers.gpio_kinetis_ke15z"
+        depends on MCUX_HW_DEVICE_MKE14Z7 || MCUX_HW_DEVICE_MKE15Z7
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_kinetis_kw45b41z
+        bool "Component middleware.issdk.drivers.gpio_kinetis_kw45b41z"
+        depends on MCUX_HW_DEVICE_KW45B41Z82 || MCUX_HW_DEVICE_KW45B41Z83 || MCUX_HW_DEVICE_KW45B41Z52 || MCUX_HW_DEVICE_KW45B41Z53 || MCUX_HW_DEVICE_KW45Z41052 || MCUX_HW_DEVICE_KW45Z41053 || MCUX_HW_DEVICE_KW45Z41082 || MCUX_HW_DEVICE_KW45Z41083
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_kinetis_k32w148
+        bool "Component middleware.issdk.drivers.gpio_kinetis_k32w148"
+        depends on MCUX_HW_DEVICE_K32W1480
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_kinetis_kw41z
+        bool "Component middleware.issdk.drivers.gpio_kinetis_kw41z"
+        depends on MCUX_HW_DEVICE_MKW21Z4 || MCUX_HW_DEVICE_MKW31Z4 || MCUX_HW_DEVICE_MKW41Z4
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_lpc
+        bool "Component middleware.issdk.drivers.gpio_lpc"
+        depends on MCUX_HW_DEVICE_LPC54114 || MCUX_HW_DEVICE_LPC54113 || MCUX_HW_DEVICE_LPC55S69 || MCUX_HW_DEVICE_LPC55S66 || MCUX_HW_DEVICE_LPC55S36 || MCUX_HW_DEVICE_LPC5534 || MCUX_HW_DEVICE_LPC5536 || MCUX_HW_DEVICE_LPC55S16 || MCUX_HW_DEVICE_LPC55S14 || MCUX_HW_DEVICE_LPC5512 || MCUX_HW_DEVICE_LPC5514 || MCUX_HW_DEVICE_LPC5516 || MCUX_HW_DEVICE_LPC5502 || MCUX_HW_DEVICE_LPC5504 || MCUX_HW_DEVICE_LPC5506 || MCUX_HW_DEVICE_LPC55S04 || MCUX_HW_DEVICE_LPC55S06 || MCUX_HW_DEVICE_LPC5502CPXXXX || MCUX_HW_DEVICE_LPC5504CPXXXX || MCUX_HW_DEVICE_LPC5506CPXXXX
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_imx
+        bool "Component middleware.issdk.drivers.gpio_imx"
+        depends on MCUX_HW_DEVICE_MIMXRT1051 || MCUX_HW_DEVICE_MIMXRT1052 || MCUX_HW_DEVICE_MIMXRT1021 || MCUX_HW_DEVICE_MIMXRT1024 || MCUX_HW_DEVICE_MIMXRT1061 || MCUX_HW_DEVICE_MIMXRT1062 || MCUX_HW_DEVICE_MIMXRT1041 || MCUX_HW_DEVICE_MIMXRT1042 || MCUX_HW_DEVICE_MIMXRT1064 || MCUX_HW_DEVICE_MIMXRT1015 || MCUX_HW_DEVICE_MIMXRT1011 || MCUX_HW_DEVICE_MIMXRT685S || MCUX_HW_DEVICE_MIMXRT633S || MCUX_HW_DEVICE_MIMXRT1171 || MCUX_HW_DEVICE_MIMXRT1172 || MCUX_HW_DEVICE_MIMXRT1173 || MCUX_HW_DEVICE_MIMXRT1175 || MCUX_HW_DEVICE_MIMXRT1176 || MCUX_HW_DEVICE_MIMXRT1181 || MCUX_HW_DEVICE_MIMXRT1182 || MCUX_HW_DEVICE_MIMXRT1187 || MCUX_HW_DEVICE_MIMXRT1189 || MCUX_HW_DEVICE_MIMXRT1165 || MCUX_HW_DEVICE_MIMXRT1166 || MCUX_HW_DEVICE_MIMXRT533S || MCUX_HW_DEVICE_MIMXRT555S || MCUX_HW_DEVICE_MIMXRT595S || MCUX_HW_DEVICE_MIMX8QM6
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_imx8
+        bool "Component middleware.issdk.drivers.gpio_imx8"
+        depends on MCUX_HW_DEVICE_MIMXRT1051 || MCUX_HW_DEVICE_MIMXRT1052 || MCUX_HW_DEVICE_MIMXRT1021 || MCUX_HW_DEVICE_MIMXRT1024 || MCUX_HW_DEVICE_MIMXRT1061 || MCUX_HW_DEVICE_MIMXRT1062 || MCUX_HW_DEVICE_MIMXRT1041 || MCUX_HW_DEVICE_MIMXRT1042 || MCUX_HW_DEVICE_MIMXRT1064 || MCUX_HW_DEVICE_MIMXRT1015 || MCUX_HW_DEVICE_MIMXRT1011 || MCUX_HW_DEVICE_MIMXRT685S || MCUX_HW_DEVICE_MIMXRT633S || MCUX_HW_DEVICE_MIMXRT1171 || MCUX_HW_DEVICE_MIMXRT1172 || MCUX_HW_DEVICE_MIMXRT1173 || MCUX_HW_DEVICE_MIMXRT1175 || MCUX_HW_DEVICE_MIMXRT1176 || MCUX_HW_DEVICE_MIMXRT1181 || MCUX_HW_DEVICE_MIMXRT1182 || MCUX_HW_DEVICE_MIMXRT1187 || MCUX_HW_DEVICE_MIMXRT1189 || MCUX_HW_DEVICE_MIMXRT1165 || MCUX_HW_DEVICE_MIMXRT1166 || MCUX_HW_DEVICE_MIMXRT533S || MCUX_HW_DEVICE_MIMXRT555S || MCUX_HW_DEVICE_MIMXRT595S || MCUX_HW_DEVICE_MIMX8QM6
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_imxrt600
+        bool "Component middleware.issdk.drivers.gpio_imxrt600"
+        depends on MCUX_HW_DEVICE_MIMXRT1051 || MCUX_HW_DEVICE_MIMXRT1052 || MCUX_HW_DEVICE_MIMXRT1021 || MCUX_HW_DEVICE_MIMXRT1024 || MCUX_HW_DEVICE_MIMXRT1061 || MCUX_HW_DEVICE_MIMXRT1062 || MCUX_HW_DEVICE_MIMXRT1041 || MCUX_HW_DEVICE_MIMXRT1042 || MCUX_HW_DEVICE_MIMXRT1064 || MCUX_HW_DEVICE_MIMXRT1015 || MCUX_HW_DEVICE_MIMXRT1011 || MCUX_HW_DEVICE_MIMXRT685S || MCUX_HW_DEVICE_MIMXRT633S || MCUX_HW_DEVICE_MIMXRT1171 || MCUX_HW_DEVICE_MIMXRT1172 || MCUX_HW_DEVICE_MIMXRT1173 || MCUX_HW_DEVICE_MIMXRT1175 || MCUX_HW_DEVICE_MIMXRT1176 || MCUX_HW_DEVICE_MIMXRT1181 || MCUX_HW_DEVICE_MIMXRT1182 || MCUX_HW_DEVICE_MIMXRT1187 || MCUX_HW_DEVICE_MIMXRT1189 || MCUX_HW_DEVICE_MIMXRT1165 || MCUX_HW_DEVICE_MIMXRT1166 || MCUX_HW_DEVICE_MIMXRT533S || MCUX_HW_DEVICE_MIMXRT555S || MCUX_HW_DEVICE_MIMXRT595S || MCUX_HW_DEVICE_MIMX8QM6
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_imxrt700
+        bool "Component middleware.issdk.drivers.gpio_imxrt700"
+        depends on MCUX_HW_DEVICE_MIMXRT1051 || MCUX_HW_DEVICE_MIMXRT1052 || MCUX_HW_DEVICE_MIMXRT1021 || MCUX_HW_DEVICE_MIMXRT1024 || MCUX_HW_DEVICE_MIMXRT1061 || MCUX_HW_DEVICE_MIMXRT1062 || MCUX_HW_DEVICE_MIMXRT1041 || MCUX_HW_DEVICE_MIMXRT1042 || MCUX_HW_DEVICE_MIMXRT1064 || MCUX_HW_DEVICE_MIMXRT1015 || MCUX_HW_DEVICE_MIMXRT1011 || MCUX_HW_DEVICE_MIMXRT685S || MCUX_HW_DEVICE_MIMXRT633S || MCUX_HW_DEVICE_MIMXRT1171 || MCUX_HW_DEVICE_MIMXRT1172 || MCUX_HW_DEVICE_MIMXRT1173 || MCUX_HW_DEVICE_MIMXRT1175 || MCUX_HW_DEVICE_MIMXRT1176 || MCUX_HW_DEVICE_MIMXRT1181 || MCUX_HW_DEVICE_MIMXRT1182 || MCUX_HW_DEVICE_MIMXRT1187 || MCUX_HW_DEVICE_MIMXRT1189 || MCUX_HW_DEVICE_MIMXRT1165 || MCUX_HW_DEVICE_MIMXRT1166 || MCUX_HW_DEVICE_MIMXRT533S || MCUX_HW_DEVICE_MIMXRT555S || MCUX_HW_DEVICE_MIMXRT595S || MCUX_HW_DEVICE_MIMX8QM6 || MCUX_HW_DEVICE_MIMXRT798S
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_imxrt1180
+        bool "Component middleware.issdk.drivers.gpio_imxrt1180"
+        depends on MCUX_HW_DEVICE_MIMXRT1051 || MCUX_HW_DEVICE_MIMXRT1052 || MCUX_HW_DEVICE_MIMXRT1021 || MCUX_HW_DEVICE_MIMXRT1024 || MCUX_HW_DEVICE_MIMXRT1061 || MCUX_HW_DEVICE_MIMXRT1062 || MCUX_HW_DEVICE_MIMXRT1041 || MCUX_HW_DEVICE_MIMXRT1042 || MCUX_HW_DEVICE_MIMXRT1064 || MCUX_HW_DEVICE_MIMXRT1015 || MCUX_HW_DEVICE_MIMXRT1011 || MCUX_HW_DEVICE_MIMXRT685S || MCUX_HW_DEVICE_MIMXRT633S || MCUX_HW_DEVICE_MIMXRT1171 || MCUX_HW_DEVICE_MIMXRT1172 || MCUX_HW_DEVICE_MIMXRT1173 || MCUX_HW_DEVICE_MIMXRT1175 || MCUX_HW_DEVICE_MIMXRT1176 || MCUX_HW_DEVICE_MIMXRT1181 || MCUX_HW_DEVICE_MIMXRT1182 || MCUX_HW_DEVICE_MIMXRT1187 || MCUX_HW_DEVICE_MIMXRT1189 || MCUX_HW_DEVICE_MIMXRT1165 || MCUX_HW_DEVICE_MIMXRT1166 || MCUX_HW_DEVICE_MIMXRT533S || MCUX_HW_DEVICE_MIMXRT555S || MCUX_HW_DEVICE_MIMXRT595S || MCUX_HW_DEVICE_MIMX8QM6
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_imxrt
+        bool "Component middleware.issdk.drivers.gpio_imxrt"
+        depends on MCUX_HW_DEVICE_MIMXRT1051 || MCUX_HW_DEVICE_MIMXRT1052 || MCUX_HW_DEVICE_MIMXRT1021 || MCUX_HW_DEVICE_MIMXRT1024 || MCUX_HW_DEVICE_MIMXRT1061 || MCUX_HW_DEVICE_MIMXRT1062 || MCUX_HW_DEVICE_MIMXRT1041 || MCUX_HW_DEVICE_MIMXRT1042 || MCUX_HW_DEVICE_MIMXRT1064 || MCUX_HW_DEVICE_MIMXRT1015 || MCUX_HW_DEVICE_MIMXRT1011 || MCUX_HW_DEVICE_MIMXRT685S || MCUX_HW_DEVICE_MIMXRT633S || MCUX_HW_DEVICE_MIMXRT1171 || MCUX_HW_DEVICE_MIMXRT1172 || MCUX_HW_DEVICE_MIMXRT1173 || MCUX_HW_DEVICE_MIMXRT1175 || MCUX_HW_DEVICE_MIMXRT1176 || MCUX_HW_DEVICE_MIMXRT1181 || MCUX_HW_DEVICE_MIMXRT1182 || MCUX_HW_DEVICE_MIMXRT1187 || MCUX_HW_DEVICE_MIMXRT1189 || MCUX_HW_DEVICE_MIMXRT1165 || MCUX_HW_DEVICE_MIMXRT1166 || MCUX_HW_DEVICE_MIMXRT533S || MCUX_HW_DEVICE_MIMXRT555S || MCUX_HW_DEVICE_MIMXRT595S || MCUX_HW_DEVICE_MIMX8QM6
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_mcx
+        bool "Component middleware.issdk.drivers.gpio_mcx"
+        depends on MCUX_HW_DEVICE_MCXN947 || MCUX_HW_DEVICE_MCXN946 || MCUX_HW_DEVICE_MCXN547 || MCUX_HW_DEVICE_MCXN546 || MCUX_HW_DEVICE_MCXA156 || MCUX_HW_DEVICE_MCXA155 || MCUX_HW_DEVICE_MCXA154 || MCUX_HW_DEVICE_MCXA146 || MCUX_HW_DEVICE_MCXA145 || MCUX_HW_DEVICE_MCXA144
+    
+    config MCUX_COMPONENT_middleware.issdk.drivers.gpio_mcxw71
+        bool "Component middleware.issdk.drivers.gpio_mcxw71"
+        depends on MCUX_HW_DEVICE_MCXW716C
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.allregdefs
+        bool "Component middleware.issdk.sensor.allregdefs"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxas21002
+        bool "Component middleware.issdk.sensor.fxas21002"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxos8700
+        bool "Component middleware.issdk.sensor.fxos8700"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.mpl3115
+        bool "Component middleware.issdk.sensor.mpl3115"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxlc95000
+        bool "Component middleware.issdk.sensor.fxlc95000"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.mma8491q
+        bool "Component middleware.issdk.sensor.mma8491q"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxls8471q
+        bool "Component middleware.issdk.sensor.fxls8471q"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.mag3110
+        bool "Component middleware.issdk.sensor.mag3110"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.mma845x
+        bool "Component middleware.issdk.sensor.mma845x"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.mma865x
+        bool "Component middleware.issdk.sensor.mma865x"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxpq3115
+        bool "Component middleware.issdk.sensor.fxpq3115"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxls8962
+        bool "Component middleware.issdk.sensor.fxls8962"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.mma9553
+        bool "Component middleware.issdk.sensor.mma9553"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.nps300x
+        bool "Component middleware.issdk.sensor.nps300x"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.isl29023
+        bool "Component middleware.issdk.sensor.isl29023"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxps7250d4
+        bool "Component middleware.issdk.sensor.fxps7250d4"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxls896xaf
+        bool "Component middleware.issdk.sensor.fxls896xaf"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxls8974cf
+        bool "Component middleware.issdk.sensor.fxls8974cf"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxls8961af
+        bool "Component middleware.issdk.sensor.fxls8961af"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.fxls8971cf
+        bool "Component middleware.issdk.sensor.fxls8971cf"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+    
+    config MCUX_COMPONENT_middleware.issdk.sensor.nmh1000
+        bool "Component middleware.issdk.sensor.nmh1000"
+        select MCUX_COMPONENT_CMSIS_Driver_Include.I2C
+        select MCUX_COMPONENT_CMSIS_Driver_Include.SPI
+endmenu

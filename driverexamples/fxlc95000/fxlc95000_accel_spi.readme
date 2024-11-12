@@ -1,0 +1,13 @@
+Overview
+========
+The FXLC95000CL Intelligent, Motion-Sensing Platform is a device with the integration of a 3-axis MEMS accelerometer and a 32-bit ColdFire MCU.
+This environment allows users with widely varying and growing functional requirements the ability to add user-specific functionality to the system.
+
+A software framework hosted on the FXLC95000CL provides a common, easy to use interface which empowers users to quickly develop hardware-independent, portable, real-time application code.
+This framework is named the Xtrinsic Intelligent Sensing Framework (ISF).
+
+The FXLC95000L Accelerometer SPI example application demonstrates the use of the FXLC95000L as an Accelerometer in SPI Mode with ISF1P195K GetAccelDataWithCI is running on 32-bit ColdFire MCU.
+
+The example demonstrates all commands reguired to put the sensor into Active Mode and read out Accelerometer samples.
+The Accelerometer reads samples as per the configured ODR and updates the output mailbox registers.
+The application reads out samples when its ODR Timer expires.

@@ -1,0 +1,19 @@
+---
+middleware.issdk.drivers.systick_utils.mekmimx8qm:
+  section-type: component
+  meta-name: middleware.issdk.drivers.systick_utils.mekmimx8qm
+  contents:
+    cc-include:
+    - path: middleware/issdk/drivers/systick
+    virtual-dir: utilities
+    files:
+    - source: middleware/issdk/drivers/systick/systick_utils.c
+    - source: middleware/issdk/drivers/systick/systick_utils.h
+  component_info:
+    common:
+      description: ISSDK Utils
+      manifest_name: systick_utils
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk drivers systick_utils mekmimx8qm # This value is temporarily added, please replace it with suitable value and then remove this comment.

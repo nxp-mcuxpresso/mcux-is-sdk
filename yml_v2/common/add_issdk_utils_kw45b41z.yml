@@ -1,0 +1,373 @@
+---
+__load__:
+- middleware/issdk/docs/ISSDK_v2.yml
+
+middleware.issdk.drivers.systick_utils:
+  section-type: component
+  meta-name: middleware.issdk.drivers.systick_utils
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: utilities
+    cc-include:
+    - repo_relative_path: drivers/systick
+      project_relative_path: "./"
+    files:
+    - source: drivers/systick/systick_utils.c
+      project_relative_path: "./"
+    - source: drivers/systick/systick_utils.h
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Utils
+      manifest_name: systick_utils
+      version: 1.8.0
+      full_name: Middleware issdk drivers systick_utils
+      type: middleware
+      user_visible: false
+  __requires__:
+  - middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K22F-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K64F-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K64F-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K64F-MULT2B:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K64F-MULT2B middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL25-A8471:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL25-A8471 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL25-A8491:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL25-A8491 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL25-P3115:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL25-P3115 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL27-B3115:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL27-B3115 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL27-AGMP03:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL27-AGMP03 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL27-A8471:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL27-A8471 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL27-A8491:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL27-A8491 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKL27-P3115:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKL27-P3115 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K22F-SA9500:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-SA9500 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K22F-AGMP03:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-AGMP03 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K64F-AGM04:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K64F-AGM04 middleware.issdk.ui_control
+middleware.issdk.support.LPCXPRESSO54114-AGMP03:
+  section-type: component_support
+  __requires__:
+  - kit.LPCXPRESSO54114-AGMP03 middleware.issdk.ui_control
+middleware.issdk.support.LPCXPRESSO54114-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.LPCXPRESSO54114-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.LPCXPRESSO55S69-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.LPCXPRESSO55S69-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.LPCXPRESSO55S36-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.LPCXPRESSO55S36-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.LPCXPRESSO55S16-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.LPCXPRESSO55S16-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.LPCXPRESSO55S06-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.LPCXPRESSO55S06-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKE15-DP5004:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKE15-DP5004 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKE15-PA7250:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKE15-PA7250 middleware.issdk.ui_control
+middleware.issdk.support.FRDMKE15-DP300x:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKE15-DP300x middleware.issdk.ui_control
+middleware.issdk.support.FRDMKE15-PD7250:
+  section-type: component_support
+  __requires__:
+  - kit.FRDMKE15-PD7250 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K32W042-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K32W042-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT1050-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT1050-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVKB-IMXRT1050-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVKB-IMXRT1050-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT1020-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT1020-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1024-EVK-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1024-EVK-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT1060-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT1060-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1060-EVKB-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1060-EVKB-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1040-EVK-A8974:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1040-EVK-A8974 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT1064-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT1064-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT1015-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT1015-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT1010-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT1010-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT685-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT685-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K32L3A6-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K32L3A6-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1170-EVK-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1170-EVK-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1170-EVKB-A8974:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1170-EVKB-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1180-EVK-A8974:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1180-EVK-A8974 middleware.issdk.ui_control
+middleware.issdk.support.EVK-MIMXRT595-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.EVK-MIMXRT595-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.MIMXRT1160-EVK-AGM01:
+  section-type: component_support
+  __requires__:
+  - kit.MIMXRT1160-EVK-AGM01 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K22F-A8964:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-A8964 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K22F-A8974:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-A8974 middleware.issdk.ui_control
+middleware.issdk.support.FRDM-K22F-A8967:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-A8967 middleware.issdk.ui_control
+middleware.issdk.support.KW45B41Z-EVK-A8964:
+  section-type: component_support
+  __requires__:
+  - kit.KW45B41Z-EVK-A8964 middleware.issdk.ui_control
+middleware.issdk.kinetis.support:
+  section-type: component_support
+  __requires__:
+  - board.frdmk22f
+  - board.frdmk64f
+  - board.frdmkl25z
+  - board.frdmkl27z
+  - board.frdmke15z
+  - board.frdmk32w042
+  - board.frdmk32l3a6
+  - board.kw45b41zevk
+middleware.issdk.lpc.support:
+  section-type: component_support
+  __requires__:
+  - board.lpcxpresso54114
+  - board.lpcxpresso55s69
+  - board.lpcxpresso55s36
+  - board.lpcxpresso55s16
+  - board.lpcxpresso55s06
+middleware.issdk.imx.support:
+  section-type: component_support
+  __requires__:
+  - board.evkmimxrt1050
+  - board.evkbimxrt1050
+  - board.evkmimxrt1020
+  - board.evkmimxrt1024
+  - board.evkmimxrt1060
+  - board.evkbmimxrt1060
+  - board.evkmimxrt1040
+  - board.evkmimxrt1064
+  - board.evkmimxrt1015
+  - board.evkmimxrt1010
+  - board.evkmimxrt685
+  - board.evkmimxrt1170
+  - board.evkbmimxrt1170
+  - board.evkmimxrt1180
+  - board.evkmimxrt1160
+  - board.evkmimxrt595
+  - board.mekmimx8qm
+middleware.issdk.board.support:
+  section-type: component_support
+  __requires__:
+  - board.lpcxpresso54114
+  - board.lpcxpresso55s69
+  - board.lpcxpresso55s36
+  - board.lpcxpresso55s16
+  - board.lpcxpresso55s06
+  - board.frdmk22f
+  - board.frdmk64f
+  - board.frdmkl25z
+  - board.frdmkl27z
+  - board.frdmke15z
+  - board.frdmk32w042
+  - board.frdmk32l3a6
+  - board.kw45b41zevk
+  - board.evkmcimx7ulp
+  - board.evkmimxrt1050
+  - board.evkbimxrt1050
+  - board.evkmimxrt1020
+  - board.evkmimxrt1024
+  - board.evkmimxrt1060
+  - board.evkbmimxrt1060
+  - board.evkmimxrt1040
+  - board.evkmimxrt1064
+  - board.evkmimxrt1015
+  - board.evkmimxrt1010
+  - board.evkmimxrt685
+  - board.evkmimxrt1170
+  - board.evkbmimxrt1170
+  - board.evkmimxrt1180
+  - board.evkmimxrt1160
+  - board.evkmimxrt595
+  - board.mekmimx8qm
+middleware.issdk.board.frdmkl27z.support:
+  section-type: component_support
+  __requires__:
+  - board.frdmkl27z
+middleware.issdk.board.frdmke15z.support:
+  section-type: component_support
+  __requires__:
+  - board.frdmke15z
+middleware.issdk.board.frdmkw41z.support:
+  section-type: component_support
+  __requires__:
+  - board.frdmkw41z
+middleware.issdk.board.kw45b41zevk.support:
+  section-type: component_support
+  __requires__:
+  - board.kw45b41zevk
+middleware.issdk.board.k32w148evk.support:
+  section-type: component_support
+  __requires__:
+  - board.k32w148evk
+middleware.issdk.kit.support:
+  section-type: component_support
+  __requires__:
+  - kit.FRDM-K22F-AGM01
+  - kit.FRDM-K64F-AGM01
+  - kit.FRDM-K64F-MULT2B
+  - kit.FRDMKL25-A8471
+  - kit.FRDMKL25-A8491
+  - kit.FRDMKL25-P3115
+  - kit.FRDMKL27-B3115
+  - kit.FRDMKL27-AGMP03
+  - kit.FRDMKL27-A8471
+  - kit.FRDMKL27-A8491
+  - kit.FRDMKL27-P3115
+  - kit.FRDM-K22F-SA9500
+  - kit.FRDM-K22F-AGMP03
+  - kit.FRDM-K64F-AGM04
+  - kit.LPCXPRESSO54114-AGMP03
+  - kit.LPCXPRESSO54114-AGM01
+  - kit.FRDMKE15-DP5004
+  - kit.FRDMKE15-PA7250
+  - kit.FRDMKE15-PD7250
+  - kit.FRDMKE15-DP300x
+  - kit.FRDM-K32W042-AGM01
+  - kit.EVKB-IMXRT1050-AGM01
+  - kit.EVK-MIMXRT1020-AGM01
+  - kit.EVK-MIMXRT1050-AGM01
+  - kit.EVK-MIMXRT1060-AGM01
+  - kit.MIMXRT1060-EVKB-AGM01
+  - kit.EVK-MIMXRT1064-AGM01
+  - kit.EVK-MIMXRT1015-AGM01
+  - kit.EVK-MIMXRT1010-AGM01
+  - kit.LPCXPRESSO55S69-AGM01
+  - kit.LPCXPRESSO55S36-AGM01
+  - kit.LPCXPRESSO55S16-AGM01
+  - kit.LPCXPRESSO55S06-AGM01
+  - kit.FRDM-K32L3A6-AGM01
+  - kit.EVK-MIMXRT685-AGM01
+  - kit.MIMXRT1170-EVK-AGM01
+  - kit.MIMXRT1160-EVK-AGM01
+  - kit.MIMXRT1024-EVK-AGM01
+  - kit.EVK-MIMXRT595-AGM01
+  - kit.FRDM-K22F-A8964
+  - kit.FRDM-K22F-A8974
+  - kit.FRDM-K22F-A8967
+  - kit.KW45B41Z-EVK-A8964
+  - kit.MIMXRT1040-EVK-A8974
+  - kit.MIMXRT1180-EVK-A8974
+  - kit.MIMXRT1170-EVKB-A8974
+middleware.issdk.ui_control:
+  section-type: component_support
+  component_info:
+    common:
+      fixed_id: nxp_iot_sensing_sdk
+      type: middleware
+      provides: middleware.issdk
+      ui_name: ISSDK
+      ui_description: IoT Sensing SDK (ISSDK) provides sensor drivers and reference
+        examples for NXP's IoT sensors.
+      ui_category: Middleware
+      ui_control: true
+      ui_control_default: false
+      ui_release_specific: true
+      ui_control_hiding: true
+      version: 1.8.0
+  __requires__:
+  - middleware.issdk.board.support
+  - middleware.issdk.kit.support

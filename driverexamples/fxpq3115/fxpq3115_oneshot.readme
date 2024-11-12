@@ -1,0 +1,7 @@
+Overview
+========
+The FXPQ3115BV One-Shot example application demonstrates the use of the FXPQ3115BV sensor in the One-Shot (on demand sampling) Mode.
+The example demonstrates configuration of all registers reguired to put the sensor into One-Shot Mode and read out a Pressure+Temperature sample.
+
+The sensor reads samples when it is requested by the host then and sets a Flag.
+The application then checks the Flag and when set reads out the sample.

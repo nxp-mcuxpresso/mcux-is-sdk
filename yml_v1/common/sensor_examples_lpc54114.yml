@@ -1,0 +1,1292 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__load__:
+  - middleware/issdk/yml_v1/common/add_issdk_sensors.yml
+  - middleware/issdk/yml_v1/common/add_issdk_interfaces.yml
+  - middleware/issdk/yml_v1/common/add_issdk_gpio_drivers.yml
+  - middleware/issdk/yml_v1/common/add_issdk_utils.yml
+  - middleware/issdk/yml_v1/common/add_issdk_ads.yml
+  - middleware/issdk/yml_v1/common/add_issdk_host.yml
+  - middleware/issdk/yml_v1/common/add_issdk_boardkit.yml
+  - middleware/issdk/yml_v1/common/add_issdk_driverexamples.yml
+  - middleware/issdk/yml_v1/common/add_issdk_tools.yml
+  - middleware/issdk/yml_v1/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensors_example_lpc54114_set:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+              cx-define:
+              cc-include:
+              - path: boards/${board}
+            debug:
+              cc-define:
+                DEBUG:
+              cx-define:
+                DEBUG:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--vla"
+              ld-flags:
+              - --fill 0xFF;0x00-0x2fb
+    modules:
+      boardset:
+        required: true
+        virtual-dir: board
+        files:
+        - source: boards/${board}/board.c
+          release-dir: project-root-path
+        - source: boards/${board}/board.h
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.c
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.h
+          release-dir: project-root-path
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          virtual-dir: doc
+          toolchains: iar mdk mcux
+    __requires__:
+    - driver.common driver.clock driver.power driver.lpc_iocon driver.inputmux driver.inputmux_connections
+################################ LPCXpresso54114 with AGM01 kit projects ######################
+################################## fxas21002_fifo ##############################
+fxas21002_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-FXAS21002-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fxas21002_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_interrupt ##############################
+fxas21002_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-FXAS21002-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxas21002_interrupt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    fxas21002_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll ##############################
+fxas21002_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-FXAS21002-POLL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    fxas21002_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxos8700_fifo ##############################
+fxos8700_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-FXOS8700-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+  modules:
+    fxos8700_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_interrupt ##############################
+fxos8700_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-FXOS8700-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxos8700_interrupt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+  modules:
+    fxos8700_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_poll ##############################
+fxos8700_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-FXOS8700-POLL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+  modules:
+    fxos8700_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################ LPCXpresso54114 with AGMP03 kit projects ######################
+################################## fxls8962_freefall ##############################
+fxls8962_freefall:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXLS8962-FREEFALL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/
+    document:
+      category: issdk/sensors
+      name: fxls8962_freefall
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall
+  modules:
+    fxls8962_freefall_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_freefall.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fxls8962_normal ##############################
+fxls8962_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXLS8962-NORMAL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/
+    document:
+      category: issdk/sensors
+      name: fxls8962_normal
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal
+  modules:
+    fxls8962_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fxls8962_interrupt ##############################
+fxls8962_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXLS8962-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxls8962_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt
+  modules:
+    fxls8962_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fxls8962_normal_spi ##############################
+fxls8962_normal_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXLS8962-NORMAL-SPI.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/
+    document:
+      category: issdk/sensors
+      name: fxls8962_normal_spi
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi
+  modules:
+    fxls8962_normal_spi_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_normal_spi.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fifo_fxas21002 ##############################
+fifo_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXAS21002-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fifo_fxas21002
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fifo_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## interrupt_fxas21002 ##############################
+interrupt_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXAS21002-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/
+    document:
+      category: issdk/sensors
+      name: interrupt_fxas21002
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    interrupt_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## poll_fxas21002 ##############################
+poll_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXAS21002-POLL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: poll_fxas21002
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    poll_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll_spi ##############################
+fxas21002_poll_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-FXAS21002-POLL-SPI.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll_spi
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi
+  modules:
+    fxas21002_poll_spi_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll_spi.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## mag3110_normal_interrupt ##############################
+mag3110_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MAG3110-NORMAL-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_interrupt_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt
+  modules:
+    mag3110_normal_interrupt_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_normal ##############################
+mag3110_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MAG3110-NORMAL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal
+  modules:
+    mag3110_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_oneshot ##############################
+mag3110_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MAG3110-ONESHOT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/
+    document:
+      category: issdk/sensors
+      name: mag3110_oneshot
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot
+  modules:
+    mag3110_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mpl3115_altitude ##############################
+mpl3115_altitude:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MPL3115-ALTITUDE.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/
+    document:
+      category: issdk/sensors
+      name: mpl3115_altitude
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude
+  modules:
+    mpl3115_altitude_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_altitude.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo ##############################
+mpl3115_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MPL3115-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo
+  modules:
+    mpl3115_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo_interrupt ##############################
+mpl3115_fifo_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MPL3115-FIFO-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt
+  modules:
+    mpl3115_fifo_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_normal ##############################
+mpl3115_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MPL3115-NORMAL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal
+  modules:
+    mpl3115_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_normal_interrupt ##############################
+mpl3115_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MPL3115-NORMAL-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal_interrupt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt
+  modules:
+    mpl3115_normal_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_oneshot ##############################
+mpl3115_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-MPL3115-ONESHOT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/
+    document:
+      category: issdk/sensors
+      name: mpl3115_oneshot
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot
+  modules:
+    mpl3115_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################# STB-CE Host I/O Demo Project Templates #######################
+################################## hostdemo_agm01 ##############################
+hostdemo_agm01:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_agm01
+    outdir: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agm01_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+        virtual-dir: doc
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.flashiap
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads_lpc
+    middleware.issdk.drivers.host
+################################## hostdemo_agmp03 ##############################
+hostdemo_agmp03:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_agmp03
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agmp03_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+        virtual-dir: doc
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.flexcomm
+    driver.gint
+    driver.flashiap
+    driver.i2c
+    driver.i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.spi
+    driver.spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.usart
+    driver.usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads_lpc
+    middleware.issdk.drivers.host

@@ -1,0 +1,266 @@
+---
+__load__:
+- bin/generator/records_v3/set/device/LPC55S06/index.yml
+- bin/generator/records_v3/set/board/lpcxpresso55s06/project_segment_lpcxpresso55s06.yml
+- middleware/issdk/yml_v3/common/sensor_examples_lpc55s06.yml
+- middleware/issdk/yml_v3/agm01.yml
+__variable__:
+  LPCX_ConfigName_var: ConfigName
+  ProjName: "${ProjName}"
+  config_name: "${ProjName}: ${config_name:${ProjName}}"
+  TOOLCHAIN_DIR: "${TOOLCHAIN_DIR}"
+__hierarchy__:
+  tmp_lpcxpresso55s06_m33_configurations_components:
+    section-type: application
+    dependency:
+    - driver.clock
+    - driver.common
+    - device.${platform_devices_soc_name}_CMSIS
+    - device.${platform_devices_soc_name}_startup
+    - driver.flexcomm_usart
+    - driver.flexcomm
+    - driver.lpc_iocon
+    - driver.lpc_gpio
+    - driver.power
+    - utility.assert
+    - utility.debug_console
+    - component.usart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - component.lists
+    merge_segment:
+    - lpcxpresso55s06_options
+    contents:
+      document:
+        platform_devices_soc_name: LPC55S06
+        board: lpcxpresso55s06
+        core: cm33
+        fpu: SP_FPU
+        compilers:
+        - armclang
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define:
+                  PRINTF_ADVANCED_ENABLE=1:
+          iar:
+            project-templates:
+            - bin/generator/templates/iar/app_cmsisdap_m33/generic.ewd
+            - bin/generator/templates/iar/app_cmsisdap_m33/generic.ewp
+            - bin/generator/templates/iar/general.eww
+          mdk:
+            project-templates:
+            - bin/generator/templates/mdk/app_xpresso55s06/app_xpresso55s06.uvprojx
+            - bin/generator/templates/mdk/app_xpresso55s06/app_xpresso55s06.uvoptx
+            - bin/generator/templates/mdk/app_xpresso55s06/JLinkSettings.JLinkScript
+            - bin/generator/templates/mdk/app_xpresso55s06/JLinkSettings.ini
+          armgcc:
+          mcux:
+            project-templates:
+            - bin/generator/templates/mcux/cproject/mcux_template.xml
+      modules:
+        linker-file:
+          files:
+          - source: devices/LPC55S06/iar/LPC55S06_flash.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: debug release
+            project_path: LPC55S06/iar
+          - source: devices/LPC55S06/arm/LPC55S06_flash.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: debug release
+            project_path: LPC55S06/arm
+          - source: devices/LPC55S06/gcc/LPC55S06_flash.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: debug release
+            project_path: LPC55S06/gcc
+fxas21002_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.lpcxpresso55s06_agm01.issdk
+  contents:
+    document:
+      board_kit: lpcxpresso55s06_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/lpcxpresso55s06_agm01
+          project_path: board
+        files:
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxas21002_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.lpcxpresso55s06_agm01.issdk
+  contents:
+    document:
+      board_kit: lpcxpresso55s06_agm01
+      brief: The FXAS21002 Poll example application demonstrates the use of the FXAS21002
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/lpcxpresso55s06_agm01
+          project_path: board
+        files:
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxos8700_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.lpcxpresso55s06_agm01.issdk
+  contents:
+    document:
+      board_kit: lpcxpresso55s06_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/lpcxpresso55s06_agm01
+          project_path: board
+        files:
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxos8700_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.lpcxpresso55s06_agm01.issdk
+  contents:
+    document:
+      board_kit: lpcxpresso55s06_agm01
+      brief: The FXOS8700 Poll example application demonstrates the use of the FXOS8700
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/lpcxpresso55s06_agm01
+          project_path: board
+        files:
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/lpc55s06.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/lpcxpresso55s06_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.lpcxpresso55s06_agm01:
+  section-type: component
+  meta-name: project_template.lpcxpresso55s06_agm01
+  belong_to: set.kit.lpcxpresso55s06_agm01.issdk
+  contents:
+    repo_base_path: boards/lpcxpresso55s06_agm01/project_template
+    project_base_path: lpcxpresso55s06_agm01/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template lpcxpresso55s06_agm01
+    description: Board_project_template lpcxpresso55s06_agm01
+    user_visible: never
+    taxonomy:
+      csub: lpcxpresso55s06_agm01
+      belong_to: board_project_templates
+    display_name: lpcxpresso55s06_agm01
+  dependency:
+    allOf:
+    - driver.flexcomm_usart
+    - driver.flexcomm
+    - driver.lpc_iocon
+    - driver.lpc_gpio
+    - driver.common
+    - driver.clock
+    - driver.power
+    - utility.debug_console
+    - component.usart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - device.LPC55S06_startup

@@ -1,0 +1,272 @@
+---
+__load__:
+- bin/generator/records_v3/set/device/MCXN947/index_cm33_core0.yml
+- bin/generator/records_v3/set/board/mcxn9xxevk/project_segment_mcxn9xxevk_cm33_core0.yml
+- middleware/issdk/yml_v3/common/sensor_examples_mcxn9xxevk_cm33_core0.yml
+- middleware/issdk/yml_v3/a8974.yml
+
+__variable__:
+  MCX_ConfigName_var: ConfigName
+  ProjName: "${ProjName}"
+  config_name: "${ProjName}: ${config_name:${ProjName}}"
+  TOOLCHAIN_DIR: "${TOOLCHAIN_DIR}"
+__hierarchy__:
+  tmp_mcxnxxxevk_m33_configurations_components:
+    section-type: application
+    merge_segment:
+    - mcxn9xxevk_options
+    - mcxn9xxevk_toolchain_template
+    - mcxn9xxevk_boardset
+    - mcxn9xxevk_linkerfile
+multicore_primary_core_common_settings:
+  section-type: project_segment
+  belong_to: set.board.${board}
+  contents:
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              as-define:
+                NO_CRP:
+        armgcc:
+          config:
+            __common__:
+              cc-define:
+                CORE1_IMAGE_COPY_TO_RAM:
+            debug:
+              as-include:
+              - path: project-root-path/../cm33_core1/armgcc/debug
+                targets: debug
+            release:
+              as-include:
+              - path: project-root-path/../cm33_core1/armgcc/release
+                targets: release
+        mdk:
+          config:
+            __common__:
+              cc-define:
+                CORE1_IMAGE_COPY_TO_RAM:
+            debug:
+              as-include:
+              - path: project-root-path/../cm33_core1/mdk/debug
+                targets: debug
+            release:
+              as-include:
+              - path: project-root-path/../cm33_core1/mdk/release
+                targets: release
+        mcux:
+          memory-config:
+            partnumber: MCXN947
+            sections:
+              PROGRAM_FLASH:
+                access: RO
+                type: Flash
+                addr: '00000000'
+                size: 000C0000
+              Ram0:
+                access: RW
+                type: RAM
+                addr: '20000000'
+                size: 0004C000
+              Ram1:
+                access: RW
+                type: RAM
+                addr: 2004E000
+                size: 0001A000
+              rpmsg_sh_mem:
+                access: RW
+                type: RAM
+                addr: 2004C000
+                size: '00002000'
+          config:
+            __common__:
+              multicore-configuration: Master
+
+fxls8974cf_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.mcxn9xxevk_a8974.issdk
+  contents:
+    document:
+      board_kit: mcxn9xxevk_a8974
+      brief: The FXLS8974CF POLL example application demonstrates the use of the FXLS8974CF
+        sensor in polling Mode using I2C interface.The example demonstrates configuration
+        sensor registers reguired to put the sensor in Poll Mode and read out samples.
+        The polls for dataready and when samples are available sensor reads samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/mcxn9xxevk_a8974
+          project_path: board
+        files:
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8974cf_spi:
+  section-type: application
+  required: true
+  belong_to: set.kit.mcxn9xxevk_a8974.issdk
+  contents:
+    document:
+      board_kit: mcxn9xxevk_a8974
+      brief: The FXLS8974CF SPI example application demonstrates the use of the FXLS8974CF
+        sensor in polling Mode using SPI interface.The example demonstrates configuration
+        sensor registers reguired to put the sensor in Poll Mode and read out samples.
+        The polls for dataready and when samples are available sensor reads samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/mcxn9xxevk_a8974
+          project_path: board
+        files:
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8974cf_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.kit.mcxn9xxevk_a8974.issdk
+  contents:
+    document:
+      board_kit: mcxn9xxevk_a8974
+      brief: The FXLS8974CF Interrupt example application demonstrates the use of the FXLS8974CF
+        sensor in interrupt Mode using I2C interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Interrupt Mode and read out samples. An interrupt
+        is raised when sensor data is ready and MCU reads the sensor samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/mcxn9xxevk_a8974
+          project_path: board
+        files:
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8974cf_motion_wakeup:
+  section-type: application
+  required: true
+  belong_to: set.kit.mcxn9xxevk_a8974.issdk
+  contents:
+    document:
+      board_kit: mcxn9xxevk_a8974
+      brief: The FXLS8974CF motion wakeup example application demonstrates motion detection
+        and Auto-Wake/Sleep features of FXLS8974CF sensor.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/mcxn9xxevk_a8974
+          project_path: board
+        files:
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/mcxn9xxevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/mcxn9xxevk_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.mcxn9xxevk_a8974:
+  section-type: component
+  contents:
+    repo_base_path: boards/mcxn9xxevk_a8974/project_template
+    project_base_path: mcxn9xxevk_a8974/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  meta-name: project_template.mcxn9xxevk_a8974
+  belong_to: set.device.${platform_devices_soc_name}
+  section_info:
+    version: 1.0.0
+    description: BOARD_Project_Template mcxn9xxevk_a8974
+    full_name: BOARD_Project_Template mcxn9xxevk_a8974
+    type: project_template
+    taxonomy:
+      csub: mcxn9xxevk_a8974
+      cvariant: mcxn9xxevk_a8974
+      belong_to: board_project_templates
+    display_name: mcxn9xxevk_a8974
+  dependency:
+    allOf:
+    - component.gpio_adapter
+    - component.lists
+    - component.lpi2c_adapter
+    - component.lpuart_adapter
+    - component.mrt_adapter
+    - component.serial_manager
+    - component.serial_manager_uart
+    - device.${platform_devices_soc_name}_CMSIS
+    - device.${platform_devices_soc_name}_startup
+    - driver.clock
+    - driver.common
+    - driver.gpio
+    - driver.inputmux
+    - driver.lpi2c
+    - driver.lpuart
+    - driver.pint
+    - driver.port
+    - utility.assert
+    - utility.debug_console

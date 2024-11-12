@@ -1,0 +1,45 @@
+---
+middleware.issdk.drivers.host:
+  section-type: component
+  meta-name: middleware.issdk.drivers.host
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: host
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    - repo_relative_path: drivers/host
+      project_relative_path: "./"
+    files:
+    - source: sensors/host_io_uart.c
+      project_relative_path: "./"
+    - source: sensors/host_io_uart.h
+      project_relative_path: "./"
+    - source: drivers/host/comm_if_uart.c
+      project_relative_path: "./"
+    - source: drivers/host/comm_interface.h
+      project_relative_path: "./"
+    - source: drivers/host/data_format_hdlc.c
+      project_relative_path: "./"
+    - source: drivers/host/data_format_hdlc.h
+      project_relative_path: "./"
+    - source: drivers/host/data_format_json.c
+      project_relative_path: "./"
+    - source: drivers/host/data_format_json.h
+      project_relative_path: "./"
+    - source: drivers/host/data_format_service.h
+      project_relative_path: "./"
+    - source: drivers/host/host_interface_service.c
+      project_relative_path: "./"
+    - source: drivers/host/host_interface_service.h
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Host Interface Service
+      manifest_name: issdk_host
+      version: 1.7.0
+      full_name: Middleware issdk drivers host
+      type: middleware
+      user_visible: false
+  __requires__:
+  - driver.common middleware.issdk.ui_control middleware.issdk.drivers.cmsis_drivers

@@ -1,0 +1,325 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/add_issdk_sensors.yml
+- middleware/issdk/yml_v2/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v2/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v2/common/add_issdk_utils_evkmimxrt1064.yml
+- middleware/issdk/yml_v2/common/add_issdk_ads.yml
+- middleware/issdk/yml_v2/common/add_issdk_host.yml
+- middleware/issdk/yml_v2/common/add_issdk_boardkit_evkmimxrt1064.yml
+- middleware/issdk/yml_v2/common/add_issdk_driverexamples_agm01.yml
+- middleware/issdk/yml_v2/common/add_issdk_tools.yml
+- middleware/issdk/yml_v2/common/add_issdk_utils.yml
+- middleware/issdk/yml_v2/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_imx_set:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+              cx-define:
+            debug:
+              cc-define:
+                DEBUG:
+              cx-define:
+                DEBUG:
+        iar:
+          config:
+            __common__:
+            release:
+              cc-define:
+              cx-define:
+        mdk:
+          config:
+            release:
+              cc-define:
+              cx-define:
+    modules:
+      boardset:
+        required: true
+        cc-include:
+        - path: boards/${board}
+          package_path: project-root-path
+          project_path: board
+        files:
+        - source: boards/${board}/board.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/board.h
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/clock_config.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/clock_config.h
+          package_path: project-root-path
+          project_path: board
+      device_configuration_data:
+        required: false
+        cc-include:
+        - path: boards/${board}
+          package_path: project-root-path
+          project_path: board
+        files:
+        - source: boards/${board}/dcd.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/dcd.h
+          package_path: project-root-path
+          project_path: board
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          toolchains: iar mdk mcux
+          project_path: doc
+    __requires__:
+    - driver.common
+fxas21002_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-FXAS21002-FIFO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fxas21002_fifo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxas21002
+fxas21002_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-FXAS21002-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_interrupt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    fxas21002_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxas21002
+fxas21002_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-FXAS21002-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    fxas21002_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxas21002
+fxos8700_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-FXOS8700-FIFO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+  modules:
+    fxos8700_fifo_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxos8700
+fxos8700_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-FXOS8700-INTERRUPT.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxos8700_interrupt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+  modules:
+    fxos8700_interrupt_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxos8700
+fxos8700_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-FXOS8700-POLL.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+  modules:
+    fxos8700_poll_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxos8700
+hostdemo_agm01:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: EVKMIMXRT1064-AGM01-HOST-DEMO.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/sensors
+      name: hostdemo_agm01
+    outdir: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agm01_sources:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template
+        project_path: board
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+        project_path: doc
+  __requires__:
+  - middleware.issdk.drivers.gpio_imx driver.port driver.clock driver.msmc driver.dma driver.edma driver.dmamux driver.lpi2c
+    driver.lpi2c_edma driver.cmsis_lpi2c driver.intmux driver.gpio
+    driver.lpspi driver.lpspi_edma driver.cmsis_lpspi driver.lpuart
+    driver.lpuart_edma driver.lpuart_dma driver.cmsis_lpuart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.evkmimxrt1064
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.allregdefs middleware.issdk.drivers.ads_imx
+    middleware.issdk.drivers.host

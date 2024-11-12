@@ -1,0 +1,1128 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__load__:
+  - middleware/issdk/yml_v1/common/add_issdk_utils.yml
+  - middleware/issdk/yml_v1/common/add_issdk_sensors.yml
+  - middleware/issdk/yml_v1/common/add_issdk_interfaces.yml
+  - middleware/issdk/yml_v1/common/add_issdk_gpio_drivers.yml
+  - middleware/issdk/yml_v1/common/add_issdk_utils_mekmimx8qm.yml
+  - middleware/issdk/yml_v1/common/add_issdk_ads.yml
+  - middleware/issdk/yml_v1/common/add_issdk_host.yml
+  - middleware/issdk/yml_v1/common/add_issdk_boardkit_mekmimx8qm.yml
+  - middleware/issdk/yml_v1/common/add_issdk_driverexamples_mekmimx8qm.yml
+  - middleware/issdk/yml_v1/common/add_issdk_tools.yml
+  - middleware/issdk/yml_v1/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_imx8_set:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+              cx-define:
+              cc-include:
+              - path: boards/${board}
+            debug:
+              cc-define:
+                DEBUG:
+              cx-define:
+                DEBUG:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--vla"
+            release:
+              cc-define:
+              cx-define:
+        mdk:
+          config:
+            release:
+              cc-define:
+              cx-define:
+    modules:
+      boardset:
+        required: true
+        virtual-dir: board
+        files:
+        - source: boards/${board}/board.c
+          release-dir: project-root-path
+        - source: boards/${board}/board.h
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.c
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.h
+          release-dir: project-root-path
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          virtual-dir: doc
+          toolchains: iar mdk mcux
+    __requires__:
+    - driver.common
+################################ mekmimx8qm on-board sensor projects #############################
+################################## fxas21002_fifo_core0 ##############################
+fxas21002_fifo_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXAS21002-FIFO-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core0/
+            - path: CMSIS/Driver/Include
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo_core0
+    outdir: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core0
+  modules:
+    fxas21002_fifo_core0_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_fifo_core1 ##############################
+fxas21002_fifo_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXAS21002-FIFO-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core1/
+            - path: CMSIS/Driver/Include
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo_core1
+    outdir: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core1
+  modules:
+    fxas21002_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_fifo/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll_core0 ##############################
+fxas21002_poll_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXAS21002-POLL-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core0/
+            - path: CMSIS/Driver/Include
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll_core0
+    outdir: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core0
+  modules:
+    fxas21002_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll_core1 ##############################
+fxas21002_poll_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXAS21002-POLL-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core1/
+            - path: CMSIS/Driver/Include
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll_core1
+    outdir: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core1
+  modules:
+    fxas21002_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxas21002/fxas21002_poll/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxos8700_fifo_core0 ##############################
+fxos8700_fifo_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXOS8700-FIFO-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo_core0
+    outdir: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core0/
+  modules:
+    fxos8700_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxos8700/fxos8700_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_fifo_core1 ##############################
+fxos8700_fifo_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXOS8700-FIFO-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo_core1
+    outdir: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core1/
+  modules:
+    fxos8700_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxos8700/fxos8700_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_fifo/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_poll_core0 ##############################
+fxos8700_poll_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXOS8700-POLL-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll_core0
+    outdir: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core0/
+  modules:
+    fxos8700_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxos8700/fxos8700_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_poll_core1 ##############################
+fxos8700_poll_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-FXOS8700-POLL-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll_core1
+    outdir: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core1/
+  modules:
+    fxos8700_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/fxos8700/fxos8700_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/fxos8700/fxos8700_poll/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## mpl3115_poll_core0 ##############################
+mpl3115_poll_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-POLL-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: mpl3115_poll_core0
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core0/
+  modules:
+    mpl3115_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_poll_core1 ##############################
+mpl3115_poll_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-POLL-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: mpl3115_poll_core1
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core1/
+  modules:
+    mpl3115_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_poll/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_altitude_core0 ##############################
+mpl3115_altitude_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-ALTITUDE-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: mpl3115_altitude_core0
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core0/
+  modules:
+    mpl3115_altitude_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_altitude.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_altitude_core1 ##############################
+mpl3115_altitude_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-ALTITUDE-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: mpl3115_altitude_core1
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core1/
+  modules:
+    mpl3115_altitude_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_altitude.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_altitude/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo_core0 ##############################
+mpl3115_fifo_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-FIFO-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_core0
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core0/
+  modules:
+    mpl3115_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo_core1 ##############################
+mpl3115_fifo_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-FIFO-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_core1
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core1/
+  modules:
+    mpl3115_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_fifo/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_oneshot_core0 ##############################
+mpl3115_oneshot_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-ONESHOT-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: mpl3115_oneshot_core0
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core0/
+  modules:
+    mpl3115_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_oneshot_core1 ##############################
+mpl3115_oneshot_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-MPL3115-ONESHOT-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: mpl3115_oneshot_core1
+    outdir: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core1/
+  modules:
+    mpl3115_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/mpl3115_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mpl3115/mpl3115_oneshot/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## isl29023_poll_core0 ##############################
+isl29023_poll_core0:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-ISL29023-POLL-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core0/
+    document:
+      category: issdk/sensors
+      name: isl29023_poll_core0
+    outdir: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core0/
+  modules:
+    isl29023_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/isl29023/isl29023_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core0/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core0/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core0/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.isl29023
+################################## isl29023_poll_core1 ##############################
+isl29023_poll_core1:
+  configuration:
+    tools:
+      __common__:
+        binary-file: MEKMIMX8QM-ONBOARD-ISL29023-POLL-CORE1.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: CMSIS/Driver/Include
+            - path: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core1/
+    document:
+      category: issdk/sensors
+      name: isl29023_poll_core1
+    outdir: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core1/
+  modules:
+    isl29023_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/imx/mekmimx8qm/isl29023/isl29023_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core1/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core1/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/isl29023/isl29023_poll/cm4_core1/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.clock
+    driver.msmc
+    driver.dma
+    driver.edma
+    driver.dmamux
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.intmux
+    driver.gpio
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.lpuart_dma
+    driver.cmsis_lpuart_edma
+    driver.irqsteer
+    driver.memory
+    driver.dma3
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils.mekmimx8qm
+    middleware.issdk.drivers.gpio_imx8
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.isl29023

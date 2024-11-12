@@ -1,0 +1,485 @@
+/*
+ * Copyright (c) 2015-2016, Freescale Semiconductor, Inc.
+ * Copyright 2016-2017 NXP
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * o Redistributions of source code must retain the above copyright notice, this list
+ *   of conditions and the following disclaimer.
+ *
+ * o Redistributions in binary form must reproduce the above copyright notice, this
+ *   list of conditions and the following disclaimer in the documentation and/or
+ *   other materials provided with the distribution.
+ *
+ * o Neither the name of the copyright holder nor the names of its
+ *   contributors may be used to endorse or promote products derived from this
+ *   software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+/**
+ * @file fxls8962.h
+ * @brief This file contains the FXLS8962 Accelerometer register definitions, access macros, and
+ * device access functions.
+ */
+#ifndef FXLS8962_H_
+#define FXLS8962_H_
+#include <stddef.h>
+#include <stdint.h>
+#include <stdbool.h>
+/**
+ * @brief The FXLS8962 types
+ */
+
+/**
+ **
+ **  @brief The FXLS8962 Sensor Internal Register Map.
+ */
+enum {
+      FXLS8962_INT_STATUS       = 0x00,
+      FXLS8962_TEMP_OUT         = 0x01,
+      FXLS8962_VECM_LSB         = 0x02,
+      FXLS8962_VECM_MSB         = 0x03,
+      FXLS8962_OUT_X_LSB        = 0x04,
+      FXLS8962_OUT_X_MSB        = 0x05,
+      FXLS8962_OUT_Y_LSB        = 0x06,
+      FXLS8962_OUT_Y_MSB        = 0x07,
+      FXLS8962_OUT_Z_LSB        = 0x08,
+      FXLS8962_OUT_Z_MSB        = 0x09,
+      FXLS8962_PROD_REV         = 0x12,
+      FXLS8962_WHO_AM_I         = 0x13,
+      FXLS8962_SYS_MODE         = 0x14,
+      FXLS8962_SENS_CONFIG1     = 0x15,
+      FXLS8962_SENS_CONFIG2     = 0x16,
+      FXLS8962_SENS_CONFIG3     = 0x17,
+      FXLS8962_SENS_CONFIG4     = 0x18,
+      FXLS8962_SENS_CONFIG5     = 0x19,      
+      FXLS8962_WAKE_IDLE_LSB    = 0x1A,
+      FXLS8962_WAKE_IDLE_MSB    = 0x1B,
+      FXLS8962_SLEEP_IDLE_LSB   = 0x1C,
+      FXLS8962_SLEEP_IDLE_MSB   = 0x1D,
+      FXLS8962_ASLP_COUNT_LSB   = 0x1E,
+      FXLS8962_ASLP_COUNT_MSB   = 0x1F,
+      FXLS8962_INT_EN           = 0x20,
+      FXLS8962_INT_PIN_SEL      = 0x21,
+      FXLS8962_OFF_X            = 0x22,
+      FXLS8962_OFF_Y            = 0x23,
+      FXLS8962_OFF_Z            = 0x24,
+      FXLS8962_ORIENT_STATUS    = 0x28,
+      FXLS8962_ORIENT_CONFIG    = 0x29,
+      FXLS8962_ORIENT_DBCOUNT   = 0x2A,
+      FXLS8962_ORIENT_BF_ZCOMP  = 0x2B,
+      FXLS8962_ORIENT_THS_REG   = 0x2C,
+      FXLS8962_SDCD_INT_SRC1    = 0x2D,
+      FXLS8962_SDCD_INT_SRC2    = 0x2E,      
+      FXLS8962_SDCD_CONFIG1     = 0x2F,
+      FXLS8962_SDCD_CONFIG2     = 0x30,
+      FXLS8962_SDCD_OT_DBCNT    = 0x31,
+      FXLS8962_SDCD_WT_DBCNT    = 0x32,
+      FXLS8962_SDCD_LTHS_LSB    = 0x33,
+      FXLS8962_SDCD_LTHS_MSB    = 0x34,
+      FXLS8962_SDCD_UTHS_LSB    = 0x35,
+      FXLS8962_SDCD_UTHS_MSB    = 0x36,
+};
+
+#define FXLS8962_DEVICE_ADDRESS_SA0_0   (0x18)     /*!< Device Address Value. */
+#define FXLS8962_DEVICE_ADDRESS_SA0_1   (0x19)     /*!< Device Address Value. */
+#define FXLS8962_WHOAMI_VALUE           (0x60)     /*!< Who AM I address. */
+#define FXLS8962_TBOOT_MAX              20         /*!< Maximum safe value for TBOOT1/2 in ms (1ms, 17.7ms)=~20ms. */
+
+// INT_STATUS       : 0x00 Interrupt and system status event flags.
+#add src_drdy         0x80 Output data ready event flag.
+#add src_ovf          0x40 Output data overflow event flag.
+#add src_sdcd_ot      0x10 SDCD outside of threshold condition event flag.
+#add src_sdcd_wt      0x08 SDCD within thresholds condition event flag.
+#add src_orient       0x04 Orientation change event flag.
+#add src_aslp         0x02 Auto-Wake/Sleep event status flag.
+#add src_boot         0x01 System boot complete event flag.
+
+// TEMP_OUT         : 0x01 Temperature output data.
+// VECM_LSB         : 0x02 12-bit unsigned vector magnitude LSB.
+// VECM_MSB         : 0x03 12-bit unsigned vector magnitude MSB.
+// OUT_X_LSB        : 0x04 LSB of current 12-bit X-axis accelerometer output data.
+// OUT_X_MSB        : 0x05 MSB of current 12-bit X-axis accelerometer output data.
+// OUT_Y_LSB        : 0x06 LSB of current 12-bit Y-axis accelerometer output data.
+// OUT_Y_MSB        : 0x07 MSB of current 12-bit Y-axis accelerometer output data.
+// OUT_Z_LSB        : 0x08 LSB of current 12-bit Z-axis accelerometer output data.
+// OUT_Z_MSB        : 0x09 MSB of current 12-bit Z-axis accelerometer output data.
+
+// PROD_REV         : 0x12 Product revision number in BCD format.
+#add prod_rev_maj     0xF0 Product revision info, major product revision value with range 1 to 9 in BCD format.
+#add prod_rev_min     0x0F Product revision info, minor product revision value with range 0 to 9 in BCD format.
+
+// WHO_AM_I         : 0x13 8-bit NXP unique sensor Product ID.
+
+// SYS_MODE         : 0x14 Current System Operating Mode.
+#add sys_mode         0x03 Current System operating mode.
+#val STANDBY          0    Standby Mode.
+#val WAKE             1    Wake Mode.
+#val SLEEP            2    Sleep Mode.
+#val EXT_TRIG         3    External Trigger Mode.
+
+// SENS_CONFIG1     : 0x15 Configuration register 1.
+#add rst              0x80 The RST bit may be used to initiate a software reset.
+#val RST              1    Trigger Reset
+#add st_axis_sel      0x60 Self-Test Axis Selection
+#val DISABLED         0    Self-Test function is disabled
+#val EN_X             1    Self-Test function is enabled for X-axis
+#val EN_Y             2    Self-Test function is enabled for Y-axis
+#val EN_Z             3    Self-Test function is enabled for Z-axis
+#add st_pol           0x10 Self-Test Displacement Polarity
+#val POSITIVE         0    Proof mass displacement for the selected axis is in the positive direction.
+#val NEGATIVE         1    Proof mass displacement for the selected axis is in the negative direction.
+#add spi_m            0x08 SPI interface mode selection; selects between 3- and 4-wire operating modes for the SPI interface.
+#val FOUR             0    4-wire interface mode is selected.
+#val THREE            1    3-wire interface mode is selected.
+#add fsr              0x06 Full-scale measurement range (FSR) selection.
+#val 2G               0    ±2g;  0.98 mg/LSB (1024 LSB/g) nominal sensitivity.
+#val 4G               1    ±4g;  1.95 mg/LSB (512 LSB/g)  nominal sensitivity.
+#val 8G               2    ±8g;  3.91 mg/LSB (256 LSB/g)  nominal sensitivity.
+#val 16G              3    ±16g; 7.81 mg/LSB (128 LSB/g)  nominal sensitivity.
+#add active           0x01 Standby/Active mode selection
+#val STANDBY          0    Standby mode.
+#val ACTIVE           1    Active mode.
+
+// SENS_CONFIG2     : 0x16 Configuration register 2.
+#add wake_pm          0xC0 WAKE power mode selection.
+#val LOW_POWER        0    Low Power mode is selected.
+#val HIGH_PERF        1    High Performance Mode is selected.
+#val FLEX_PERF        2    Flexible Performance Mode is selected.
+#add sleep_pm         0x30 SLEEP power mode selection.
+#val LOW_POWER        0    Low Power mode is selected.
+#val HIGH_PERF        1    High Performance Mode is selected.
+#val FLEX_PERF        2    Flexible Performance Mode is selected.
+#add le_be            0x08 Little/Big-endian output mode selection.
+#val LE               0    Little-endian output mode is selected.
+#val BE               1    Big-endian output mode is selected.
+#add anic_temp        0x02 Temperature output data auto-increment control.
+#val DIS              0    TEMP_OUT register content is not included in auto-increment address range.
+#val EN               1    TEMP_OUT register content is included in auto-increment address range.
+#add f_read           0x01 Fast-read mode selection.
+#val NORMAL           0    Normal read mode.
+#val FAST             1    Fast read mode.
+
+// SENS_CONFIG3     : 0x17 Configuration register 3.
+#add wake_odr         0xF0 Wake ODR
+#val  3200HZ          0
+#val  1600HZ          1
+#val   800HZ          2
+#val   400HZ          3
+#val   200HZ          4
+#val   100HZ          5
+#val    50HZ          6
+#val    25HZ          7
+#val  12_5HZ          8
+#val  6_25HZ          9     6.25 HZ
+#val 3_125HZ          10   3.125 HZ
+#val 1_563HZ          11   1.563 HZ
+#val 0_781HZ          12   0.781 HZ
+#add sleep_odr        0x0F Sleep ODR
+#val  3200HZ          0
+#val  1600HZ          1
+#val   800HZ          2
+#val   400HZ          3
+#val   200HZ          4
+#val   100HZ          5
+#val    50HZ          6
+#val    25HZ          7
+#val  12_5HZ          8
+#val  6_25HZ          9     6.25 HZ
+#val 3_125HZ          10   3.125 HZ
+#val 1_563HZ          11   1.563 HZ
+#val 0_781HZ          12   0.781 HZ
+
+// SENS_CONFIG4     : 0x18 Configuration register 4.
+#add ext_trig_m       0x80 External trigger function acquisition mode.
+#val SINGLE           0    Each positive going trigger edge causes a single ADC acquisition to be made.
+#val MULTIPLE         1    Each positive going trigger edge causes the number of acquisitions.
+#add wk_sdcd_wt       0x40 SDCD within thresholds event Auto-WAKE/SLEEP transition source enable.
+#val DIS              0    SDCD within thresholds event is not used to prevent entry into/trigger.
+#val EN               1    SDCD within thresholds event is used to prevent entry into/trigger an exit from SLEEP mode.
+#add wk_sdcd_ot       0x20 SDCD outside of thresholds event Auto-WAKE/SLEEP transition source enable.
+#val DIS              0    SDCD outside thresholds event is not used to prevent entry into/trigger.
+#val EN               1    SDCD outside thresholds event is used to prevent entry into/trigger an exit from SLEEP mode.
+#add wk_orient        0x10 Orientation change event Auto-WAKE/SLEEP transition source enable.
+#val DIS              0    Orientation change condition is not used as an event to prevent entry into /trigger an exit from SLEEP mode.
+#val EN               1    Orientation change condition is used as an event to prevent entry into/trigger an exit from SLEEP mode.
+#add drdy_pul         0x08 Pulse generation option for DRDY event.
+#val DIS              0    A SRC_DRDY event is output on the INTx pin as an active high or active low signal.
+#val EN               1    A 32 μs (nominal) duration pulse is output on the configured INTx pin once per ODR cycle.
+#add int2_func        0x04 INT2 output / EXT_TRIG input pin selection.
+#val INT2             0    INT2/EXT_TRIG pin is configured for the INT2 output function.
+#val EXT_TRIG         1    INT2/EXT_TRIG pin is configured as the EXT_TRIG input function.
+#add int_pp_od        0x02 INT1 and INT2 pins output driver selection.
+#val PUSH_PULL        0    INTx output pin driver is push-pull type.
+#val OPEN_DRAIN       1    INTx output pin driver is open-drain/open-source type.
+#add int_pol          0x01 Interrupt logic polarity on INT1 and INT2 pins.
+#val ACT_LOW          0    Active low:Interrupt events are signaled with a logical 0 level.
+#val ACT_HIGH         1    Active high: interrupt events are signaled with a logical 1 level.
+
+// SENS_CONFIG5     : 0x19 Configuration register 5.
+#add vecm_en          0x10 Vector Magnitude calculation enable.
+#val DIS              0    12-bit vector magnitude result is not calculated on every ODR cycle.
+#val EN               1    12-bit vector magnitude result is calculated on every ODR cycle.
+#add x_dis            0x08 X-axis auto-increment disable.
+#val EN               0    X-axis measurement is included in the auto-increment address range.
+#val DIS              1    X-axis measurement is excluded from the auto-increment address range.
+#add y_dis            0x04 Y-axis auto-increment disable.
+#val EN               0    Y-axis measurement is included in the auto-increment address range.
+#val DIS              1    Y-axis measurement is excluded from the auto-increment address range.
+#add z_dis            0x02 Z-axis auto-increment disable.
+#val EN               0    Z-axis measurement is included in the auto-increment address range.
+#val DIS              1    Z-axis measurement is excluded from the auto-increment address range.
+#add hibernate_en     0x01 Hibernate mode enable.
+#val DIS              0    Hibernate mode not enabled.
+#val EN               1    Commands device to enter Hibernate mode.
+
+// WAKE_IDLE_LSB    : 0x1A LSB of 12-bit user programmable wake mode idle.
+// WAKE_IDLE_MSB    : 0x1B MSB of 12-bit user programmable wake mode idle.
+// SLEEP_IDLE_LSB   : 0x1C LSB of 12-bit user programmable sleep mode idle.
+// SLEEP_IDLE_MSB   : 0x1D MSB of 12-bit user programmable sleep mode idle.
+// ASLP_COUNT_LSB   : 0x1E LSB of inactivity time-out count value used for transitioning into Auto-SLEEP mode.
+// ASLP_COUNT_MSB   : 0x1F MSB of inactivity time-out count value used for transitioning into Auto-SLEEP mode.
+
+// INT_EN           : 0x20 Interrupt output enable register.
+#add drdy_en          0x80 Data Ready interrupt output enable.
+#val DIS              0    Interrupt is disabled.
+#val EN               1    Interrupt enabled.
+#add sdcd_ot_en       0x20 SDCD outside of thresholds interrupt output enable.
+#val DIS              0    Interrupt is disabled.
+#val EN               1    Interrupt is routed to either the INT1 or INT2.
+#add sdcd_wt_en       0x10 SDCD within thresholds interrupt output enable.
+#val DIS              0    Interrupt is disabled.
+#val EN               1    Interrupt is routed to either the INT1 or INT2.
+#add orient_en        0x08 Orientation interrupt output enable.
+#val DIS              0    Interrupt is disabled.
+#val EN               1    Interrupt is enabled and signaled on either the INT1 or INT2.
+#add aslp_en          0x04 Auto-WAKE/SLEEP interrupt output enable.
+#val DIS              0    Interrupt is disabled.
+#val EN               1    Interrupt is enabled and signaled on either the INT1 or INT2.
+#add boot_dis         0x02 Boot interrupt output disable.
+#val EN               0    Boot interrupt is enabled and routed to either the INT1 or INT2.
+#val DIS              1    Interrupt is disabled and not routed to the INTx output pins.
+#add wake_out_en      0x01 WAKE power state output enable.
+#val DIS              0    The device does not signal the WAKE operating mode on the INTx output pin.
+#val EN               1    The device signals that it is currently in WAKE mode via the INT1 or INT2 pin.
+
+// INT_PIN_SEL      : 0x21 Interrupt output pin routing register, INT1 or INT2.
+#add drdy_int2        0x80 Data Ready interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+#add sdcd_ot_int2     0x20 SDCD outside of thresholds event interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+#add sdcd_wt_int2     0x10 SDCD within thresholds event interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+#add orient_int2      0x08 ORIENT event interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+#add aslp_int2        0x04 Auto-WAKE/SLEEP event interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+#add boot_int2        0x02 BOOT event interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+#add wk_out_int2      0x01 WAKE power state interrupt routing.
+#val DIS              0    Interrupt signal is routed to INT1 pin if it is enabled.
+#val EN               1    Interrupt signal is routed to INT2 pin if it is enabled.
+
+// OFF_X            : 0x22 X-Acceleration zero-g offset.
+// OFF_Y            : 0x23 Y-Acceleration zero-g offset.
+// OFF_Z            : 0x24 Z-Acceleration zero-g offset.
+
+// ORIENT_STATUS    : 0x28 Orientation event status.
+#add new_orient       0x80 Orientation status change flag.
+#val NO_CHANGE        0    No change in orientation detected.
+#val CHANGED          1    BAFRO and/or LAPO and/or Z-tilt lockout value has changed.
+#add lo               0x40 Z-tilt angle lockout.
+#val NOT_DETECTED     0    Lockout condition has not been detected.
+#val DETECTED         1    Z-tilt lockout trip angle has been exceeded. Lockout condition has been detected.
+#add lapo             0x06 Landscape/Portrait orientation.
+#val UP               0    Portrait up.
+#val DOWN             1    Portrait down.
+#val RIGHT            2    Landscape right.
+#val LEFT             3    Landscape left.
+#add bafro            0x01 Back or front orientation.
+#val FRONT            0    The device is in the front-facing orientation.
+#val BACK             1    The device is in the back-facing orientation.
+
+// ORIENT_CONFIG    : 0x29 Orientation detection function configuration.
+#add orient_dbcntm    0x80 Orientation debounce counter mode selection.
+#val DEC              0    Orientation debounce counter is decremented whenever the current orientation is different thanthe previous one.
+#val CLR              1    Orientation debounce counter is cleared whenever the current orientation is different than the previous one.
+#add orient_enable    0x40 Orientation detection function enable.
+#val DIS              0    Orientation detection function is disabled.
+#val EN               1    Orientation detection function is enabled.
+
+// ORIENT_DBCOUNT   : 0x2A Orientation detection debounce counter.
+
+// ORIENT_BF_ZCOMP  : 0x2B Orientation back/front and Z-tilt angle compensation register.
+#add orient_bkfr      0xC0 Back-Up / Front-Up trip angle threshold.
+#val BF_80_280_FB_100_260  0  Back to front Z < 80° or Z > 280° and Front to back  Z > 100° and Z < 260°
+#val BF_75_285_FB_105_255  1  Back to front Z < 75° or Z > 285° and Front to back  Z > 105° and Z < 255°
+#val BF_70_290_FB_110_250  2  Back to front Z < 70° or Z > 290° and Front to back  Z > 110° and Z < 250°
+#val BF_65_295_FB_115_245  3  Back to front Z < 65° or Z > 295° and Front to back  Z > 115° and Z < 250°
+#add orient_zlock     0x07 Z-lock out angle threshold.
+#val 13_6             0    Resultant angle 13.6
+#val 17_1             1    Resultant angle 17.1
+#val 20_7             2    Resultant angle 20.7
+#val 24_4             3    Resultant angle 24.4
+#val 28_1             4    Resultant angle 28.1
+#val 32_0             5    Resultant angle 32.0
+#val 36_1             6    Resultant angle 36.1
+#val 40_4             7    Resultant angle 40.4
+
+// ORIENT_THS_REG   : 0x2C Orientation detection state change threshold angle (Portrait/Landscape) and hysteresis settings.
+#add orient_ths       0xF8 ORIENT_THS[4:0] value
+#val 0_0              0x00  0.0°
+#val 1_8              0x01  1.8°
+#val 3_8              0x02  3.8°
+#val 5_9              0x03  5.9°
+#val 8_1              0x04  8.1°
+#val 10_5             0x05  10.5°
+#val 13_0             0x06  13.0°
+#val 15_6             0x07  15.6°
+#val 18_4             0x08  18.4°
+#val 21_4             0x09  21.4°
+#val 24_4             0x0A  24.4°
+#val 27_6             0x0B  27.6°
+#val 31_0             0x0C  31.0°
+#val 34_4             0x0D  34.4°
+#val 37_9             0x0E  37.9°
+#val 41_4             0x0F  41.4°
+#val 45_0             0x10  45.0°
+#val 48_6             0x11  48.6°
+#val 52_1             0x12  52.1°
+#val 55_6             0x13  55.6°
+#val 59_0             0x14  59.0°
+#val 62_4             0x15  62.4°
+#val 65_6             0x16  65.6°
+#val 68_6             0x17  68.6°
+#val 71_6             0x18  71.6°
+#val 74_4             0x19  74.4°
+#val 77_0             0x1A  77.0°
+#val 79_5             0x1B  79.5°
+#val 81_9             0x1C  81.9°
+#val 84_1             0x1D  84.1°
+#val 86_2             0x1E  86.2°
+#val 88_2             0x1F  88.2°
+#add hys              0x07 ORIENT_HYS[2:0]
+#val 45_45            0  L-to-P 45° P-to-L 45°
+#val 49_41            1  L-to-P 49° P-to-L 41°
+#val 52_38            2  L-to-P 52° P-to-L 38°
+#val 56_34            3  L-to-P 56° P-to-L 34°
+#val 59_31            4  L-to-P 59° P-to-L 31°
+#val 62_28            5  L-to-P 62° P-to-L 28°
+#val 66_24            6  L-to-P 66° P-to-L 24°
+#val 69_21            7  L-to-P 69° P-to-L 21°
+
+// SDCD_INT_SRC1    : 0x2D Sensor data change detection function 1.
+#add ot_ea            0x80 SDCD outside of thresholds event active flag.
+#val INSIDE           0    Event flag has not been asserted.
+#val OUTSIDE          1    Event flag has been asserted.
+#add x_ot_ef          0x20 X-axis data or delta outside of upper and lower thresholds event flag.
+#val EVENT_NO         0    Event has not occured.
+#val EVENT_YES        1    Event has occured.
+#add x_ot_pol         0x10 X-axis outside of thresholds polarity flag.
+#val LT_THS           0    Less than lower Threshold.
+#val GT_THS           1    Greater than upper threshold.
+#add y_ot_ef          0x08 Y-axis data or delta outside of upper and lower thresholds event flag.
+#val EVENT_NO         0    Event has not occured.
+#val EVENT_YES        1    Event has occured.
+#add y_ot_pol         0x04 Y-axis outside of thresholds polarity flag.
+#val LT_THS           0    Less than lower Threshold.
+#val GT_THS           1    Greater than upper threshold.
+#add z_ot_ef          0x02 Z-axis data or delta outside of upper and lower thresholds event flag.
+#val EVENT_NO         0    Event has not occured.
+#val EVENT_YES        1    Event has occured.
+#add z_ot_pol         0x01 Z-axis outside of thresholds polarity flag.
+#val LT_THS           0    Less than lower Threshold.
+#val GT_THS           1    Greater than upper threshold.
+
+// SDCD_INT_SRC2    : 0x2E Sensor data change detection function 2.
+#add wt_ea            0x80 SDCD within-thresholds event active flag.
+#val EVENT_NO         0    Event has not occured.
+#val EVENT_YES        1    Event has occured.
+#add x_wt_ef          0x20 X-axis data or delta inside of upper and lower thresholds event flag.
+#val IN_RANGE         0    X-axis data or delta is >= SDCD_UTHS or =< SDCD_LTHS values.
+#val OUT_RANGE        1    X-axis data or delta is < SDCD_UTHS and > SDCD_LTHS value.
+#add y_wt_ef          0x08 Y-axis data or delta inside of upper and lower thresholds event flag.
+#val IN_RANGE         0    Y-axis data or delta is >= SDCD_UTHS or =< SDCD_LTHS values.
+#val OUT_RANGE        1    Y-axis data or delta is < SDCD_UTHS and > SDCD_LTHS value.
+#add z_wt_ef          0x02 Z-axis data or delta inside of upper and lower thresholds event flag.
+#val IN_RANGE         0    Z-axis data or delta is >= SDCD_UTHS or =< SDCD_LTHS values.
+#val OUT_RANGE        1    Z-axis data or delta is < SDCD_UTHS and > SDCD_LTHS value.
+
+// SDCD_CONFIG1     : 0x2F Sensor data change detection function 1 register.
+#add ot_ele           0x80 SDCD outside of thresholds event latch enable.
+#val DIS              0    Outside of thresholds event flag latching is disabled.
+#val EN               1    Outside of thresholds event flag latching is enabled.
+#add wt_ele           0x40 SDCD within thresholds event latch enable.
+#val DIS              0    Within thresholds event flag latching is disabled.
+#val EN               1    Within thresholds event flag latching is enabled.
+#add x_ot_en          0x20 SDCD function X-axis outside of thresholds condition enable.
+#val DIS              0    X-axis data or delta is not used in the outside of thresholds condition evaluation.
+#val EN               1    X-axis data or delta is used in the outside of thresholds condition evaluation.
+#add y_ot_en          0x10 SDCD function Y-axis outside of thresholds condition enable.
+#val DIS              0    Y-axis data or delta is not used in the outside of thresholds condition evaluation.
+#val EN               1    Y-axis data or delta is used in the outside of thresholds condition evaluation.
+#add z_ot_en          0x08 SDCD function Z-axis outside of thresholds condition enable.
+#val DIS              0    Z-axis data or delta is not used in the outside of thresholds condition evaluation.
+#val EN               1    Z-axis data or delta is used in the outside of thresholds condition evaluation.
+#add x_wt_en          0x04 SDCD function X-axis within thresholds condition enable.
+#val DIS              0    X-axis data or delta is not used in the outside of thresholds condition evaluation.
+#val EN               1    X-axis data or delta is used in the outside of thresholds condition evaluation.
+#add y_wt_en          0x02 SDCD function Y-axis within thresholds condition enable.
+#val DIS              0    Y-axis data or delta is not used in the outside of thresholds condition evaluation.
+#val EN               1    Y-axis data or delta is used in the outside of thresholds condition evaluation.
+#add z_wt_en          0x01 SDCD function Z-axis within thresholds condition enable.
+#val DIS              0    Z-axis data or delta is not used in the outside of thresholds condition evaluation.
+#val EN               1    Z-axis data or delta is used in the outside of thresholds condition evaluation.
+
+// SDCD_CONFIG2     : 0x30 Sensor data change detection function 2 register.
+#add sdcd_en          0x80 SDCD function.
+#val DIS              0    SDCD function is disabled.
+#val EN               1    SDCD function is Enabled.
+#add ref_updm         0x60 SDCD internal reference values update mode.
+#val 12_BIT           0    The function stores the first 12-bit X/Y/Z decimated and trimmed input data.
+#val FIRST            1    The function stores the first decimated and trimmed X/Y/Z acceleration input data.
+#val SDCD_REF         2    The function updates the SDCD_REF_X/Y/Z values with the current decimated and trimmed X/Y/Z acceleration input data after the function evaluation.
+#val FIXED_VAL        3    The function uses a fixed value of 0 for each of the SDCD_REF_X/Y/Z registers.
+#add ot_dbctm         0x10 SDCD outside of threshold event debounce counter behavior.
+#val DECREMENT        0    Debounce counter is decremented by 1 when the current outside of thresholds result for the enabled axes is false.
+#val CLEARED          1    Debounce counter is cleared whenever the current outside of thresholds result for the enabled axes is false.
+#add wt_dbctm         0x08 SDCD within thresholds event debounce counter behavior.
+#val DECREMENT        0    Debounce counter is decremented by 1 when the current outside of thresholds result for the enabled axes is false.
+#val CLEARED          1    Debounce counter is cleared whenever the current outside of thresholds result for the enabled axes is false.
+#add wt_log_sel       0x04 SDCD within thresholds event logic selection.
+#val AND              0    Function uses the logical AND of the enabled axes.
+#val OR               1    Function uses the logical OR of the enabled axes.
+#add mode             0x02 SDCD input data mode.
+#val XYZ              0    Function uses X, Y, Z acceleration data for the window comparison.
+#val VECM             1    Function uses Vector magnitude data for the window comparison on the X-axis channel only.
+#add ref_upd          0x01 SDCD synchronous X/Y/Z reference values update bit.
+#val NO_PENDING       0    No reference update pending or reference update has completed.
+#val SYNC_UPDATE      1    Triggers a synchronous update of the internal X/Y/Z reference registers.
+
+// SDCD_OT_DBCNT    : 0x31 Sensor Data Change Detection outside of thresholds condition debounce count value.
+// SDCD_WT_DBCNT    : 0x32 Sensor Data Change Detection within thresholds condition debounce count value.
+// SDCD_LTHS_LSB    : 0x33 Sensor Data Change Detection lower threshold value LSB.
+// SDCD_LTHS_MSB    : 0x34 Sensor Data change Detection lower threshold value MSB.
+// SDCD_UTHS_LSB    : 0x35 Sensor Data change detection upper threshold value LSB.
+// SDCD_UTHS_MSB    : 0x36 Sensor Data change detection upper threshold value MSB.
+
+#endif /* FXLS8962_H_ */

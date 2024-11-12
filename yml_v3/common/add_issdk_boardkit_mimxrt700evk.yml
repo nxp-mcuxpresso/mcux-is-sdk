@@ -1,0 +1,15 @@
+---
+container.middleware.issdk.sensor.boardkit.mimxrt700evk:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: boardkit/mimxrt700evk/*.*
+      project_relative_path: "./"
+    - source: boardkit/mimxrt700evk/frdm-stbi-a8974/*.*
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - mimxrt700evk_a8974

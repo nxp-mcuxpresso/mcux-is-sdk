@@ -1,0 +1,584 @@
+---
+__hierarchy__:
+  tmp_issdk_sensors:
+    section-type: component
+    __requires__:
+    - middleware.issdk.ui_control
+middleware.issdk.sensor.allregdefs:
+  section-type: component
+  meta-name: middleware.issdk.sensor.allregdefs
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxas21002.h
+      project_relative_path: "./"
+    - source: sensors/fxos8700.h
+      project_relative_path: "./"
+    - source: sensors/mpl3115.h
+      project_relative_path: "./"
+    - source: sensors/fxlc95000.h
+      project_relative_path: "./"
+    - source: sensors/fxls8471q.h
+      project_relative_path: "./"
+    - source: sensors/fxls8962.h
+      project_relative_path: "./"
+    - source: sensors/fxpq3115.h
+      project_relative_path: "./"
+    - source: sensors/mag3110.h
+      project_relative_path: "./"
+    - source: sensors/mma845x.h
+      project_relative_path: "./"
+    - source: sensors/mma865x.h
+      project_relative_path: "./"
+    - source: sensors/mma8491q.h
+      project_relative_path: "./"
+    - source: sensors/mma9553.h
+      project_relative_path: "./"
+    - source: sensors/diff_p.h
+      project_relative_path: "./"
+    - source: sensors/dbap.h
+      project_relative_path: "./"
+    - source: sensors/fxls896x.h
+      project_relative_path: "./"
+    - source: sensors/fxls8974.h
+      project_relative_path: "./"
+    - source: sensors/fxls8961.h
+      project_relative_path: "./"
+    - source: sensors/fxls8971.h
+      project_relative_path: "./"
+    - source: sensors/nmh1000.h
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Sensors RegDefs
+      manifest_name: issdk_allregdefs
+      version: 1.8.0
+      full_name: Middleware issdk sensor allregdefs
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxas21002:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxas21002
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxas21002.h
+      project_relative_path: "./"
+    - source: sensors/fxas21002_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxas21002_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXAS21002 Sensor Driver Files
+      manifest_name: issdk_fxas21002
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxas21002
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxos8700:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxos8700
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxos8700.h
+      project_relative_path: "./"
+    - source: sensors/fxos8700_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxos8700_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXOS8700 Sensor Driver Files
+      manifest_name: issdk_fxos8700
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxos8700
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.mpl3115:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mpl3115
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/mpl3115.h
+      project_relative_path: "./"
+    - source: sensors/mpl3115_drv.h
+      project_relative_path: "./"
+    - source: sensors/mpl3115_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK MPL3115 Sensor Driver Files
+      manifest_name: issdk_mpl3115
+      version: 1.8.0
+      full_name: Middleware issdk sensor mpl3115
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxlc95000:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxlc95000
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxlc95000.h
+      project_relative_path: "./"
+    - source: sensors/fxlc95000_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxlc95000_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLC95000 Sensor Driver Files
+      manifest_name: issdk_fxlc95000
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxlc95000
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.mma8491q:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma8491q
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/mma8491q.h
+      project_relative_path: "./"
+    - source: sensors/mma8491q_drv.h
+      project_relative_path: "./"
+    - source: sensors/mma8491q_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK MMA8491 Sensor Driver Files
+      manifest_name: issdk_mma8491q
+      version: 1.8.0
+      full_name: Middleware issdk sensor mma8491q
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxls8471q:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8471q
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxls8471q.h
+      project_relative_path: "./"
+    - source: sensors/fxls8471q_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxls8471q_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLS8471 Sensor Driver Files
+      manifest_name: issdk_fxls8471q
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxls8471q
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.mag3110:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mag3110
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/mag3110.h
+      project_relative_path: "./"
+    - source: sensors/mag3110_drv.h
+      project_relative_path: "./"
+    - source: sensors/mag3110_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK MAG3110 Sensor Driver Files
+      manifest_name: issdk_mag3110
+      version: 1.8.0
+      full_name: Middleware issdk sensor mag3110
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.mma845x:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma845x
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/mma845x.h
+      project_relative_path: "./"
+    - source: sensors/mma845x_drv.h
+      project_relative_path: "./"
+    - source: sensors/mma845x_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK MMA845x Sensor Driver Files
+      manifest_name: issdk_mma845x
+      version: 1.8.0
+      full_name: Middleware issdk sensor mma845x
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.mma865x:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma865x
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/mma865x.h
+      project_relative_path: "./"
+    - source: sensors/mma865x_drv.h
+      project_relative_path: "./"
+    - source: sensors/mma865x_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK MMA865x Sensor Driver Files
+      manifest_name: issdk_mma865x
+      version: 1.8.0
+      full_name: Middleware issdk sensor mma865x
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxpq3115:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxpq3115
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxpq3115.h
+      project_relative_path: "./"
+    - source: sensors/fxpq3115_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxpq3115_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXPQ3115 Sensor Driver Files
+      manifest_name: issdk_fxpq3115
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxpq3115
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxls8962:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8962
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxls8962.h
+      project_relative_path: "./"
+    - source: sensors/fxls8962_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxls8962_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLS8962 Sensor Driver Files
+      manifest_name: issdk_fxls8962
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxls8962
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.mma9553:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma9553
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/mma9553.h
+      project_relative_path: "./"
+    - source: sensors/mma9553_drv.h
+      project_relative_path: "./"
+    - source: sensors/mma9553_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK MMA9553 Sensor Driver Files
+      manifest_name: issdk_mma9553
+      version: 1.8.0
+      full_name: Middleware issdk sensor mma9553
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.nps300x:
+  section-type: component
+  meta-name: middleware.issdk.sensor.nps300x
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/diff_p.h
+      project_relative_path: "./"
+    - source: sensors/diff_p_drv.h
+      project_relative_path: "./"
+    - source: sensors/diff_p_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK nps300x Sensor Driver Files
+      user_visible: false
+      manifest_name: issdk_nps300x
+      version: 1.8.0
+      full_name: Middleware issdk sensor nps300x
+      type: middleware
+middleware.issdk.sensor.isl29023:
+  section-type: component
+  meta-name: middleware.issdk.sensor.isl29023
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/isl29023.h
+      project_relative_path: "./"
+    - source: sensors/isl29023_drv.h
+      project_relative_path: "./"
+    - source: sensors/isl29023_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK ISL29023 Sensor Driver Files
+      user_visible: false
+      manifest_name: issdk_isl29023
+      version: 1.8.0
+      full_name: Middleware issdk sensor isl29023
+      type: middleware
+middleware.issdk.sensor.fxps7250d4:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxps7250d4
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/dbap.h
+      project_relative_path: "./"
+    - source: sensors/dbap_drv.h
+      project_relative_path: "./"
+    - source: sensors/dbap_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK fxps7250d4 Sensor Driver Files
+      user_visible: false
+      manifest_name: issdk_fxps7250d4
+      version: 1.8.0
+      full_name: Middleware issdk sensor fxps7250d4
+      type: middleware
+middleware.issdk.sensor.fxls896xaf:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls896xaf
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxls896x.h
+      project_relative_path: "./"
+    - source: sensors/fxls896x_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxls896x_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLS896xAF Sensor Driver Files
+      manifest_name: issdk_fxls896xaf
+      version: 1.8.0
+      full_name: Middleware issdk sensor FXLS896xAF
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxls8974cf:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8974cf
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxls8974.h
+      project_relative_path: "./"
+    - source: sensors/fxls8974_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxls8974_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLS8974CF Sensor Driver Files
+      manifest_name: issdk_fxls8974cf
+      version: 1.8.0
+      full_name: Middleware issdk sensor FXLS8974CF
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxls8961af:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8961af
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxls8961.h
+      project_relative_path: "./"
+    - source: sensors/fxls8961_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxls8961_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLS8961AF Sensor Driver Files
+      manifest_name: issdk_fxls8961af
+      version: 1.8.0
+      full_name: Middleware issdk sensor FXLS8961AF
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.fxls8971cf:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8971cf
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/fxls8971.h
+      project_relative_path: "./"
+    - source: sensors/fxls8971_drv.h
+      project_relative_path: "./"
+    - source: sensors/fxls8971_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK FXLS8971CF Sensor Driver Files
+      manifest_name: issdk_fxls8971cf
+      version: 1.8.0
+      full_name: Middleware issdk sensor FXLS8971CF
+      type: middleware
+      user_visible: false
+middleware.issdk.sensor.nmh1000:
+  section-type: component
+  meta-name: middleware.issdk.sensor.nmh1000
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: sensors
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/nmh1000.h
+      project_relative_path: "./"
+    - source: sensors/nmh1000_drv.h
+      project_relative_path: "./"
+    - source: sensors/nmh1000_drv.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK NMH1000 Sensor Driver Files
+      manifest_name: issdk_nmh1000
+      version: 1.8.0
+      full_name: Middleware issdk sensor NMH1000
+      type: middleware
+      user_visible: false

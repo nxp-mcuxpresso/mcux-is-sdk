@@ -1,0 +1,44 @@
+---
+set.kit.${board}_pd7250.issdk:
+  section-type: set
+  belong_to: set.kit.${board}_pd7250.issdk
+  dependency:
+    allOf:
+    - set.middleware.issdk
+    - kit:
+      - "${board}_pd7250"
+  section_info:
+    fixed_id: kit.${board}.pd7250
+    display_name: pd7250
+    full_name: NXP kit ${board} pd7250
+    description: NXP MCUXpresso kit ${board} pd7250
+    type: kit
+    version: 1.0.0
+    vendor: NXP
+    component_taxonomy:
+      board_project_templates:
+        cclass: Sensors
+        cgroup: ISSDK project template
+    set_location:
+      repo_base_path: boards/${board}_pd7250
+    product:
+      cmsis_pack:
+        supported: true
+        pack_root:
+          pack_type: sBSP
+          pack_name: "${board}_pd7250_BSP"
+          pack_version: 1.0.0
+        scr:
+        - scr.kit.${board}_pd7250.issdk
+scr.kit.${board}_pd7250.issdk:
+  section-type: scr
+  belong_to: set.kit.${board}_pd7250.issdk
+  contents:
+    Name: ISSDK ${board} pd7250 example
+    Version: NA
+    license:
+    - license.bsd-3
+    Format: source code, linker files
+    Description: ISSDK ${board} pd7250 example
+    Location: boards/${board}_pd7250
+    Origin: NXP (BSD-3-Clause)

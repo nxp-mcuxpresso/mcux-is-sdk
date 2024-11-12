@@ -1,0 +1,7 @@
+Overview
+========
+The MAG3110 Normal example application demonstrates the use of the MAG3110 sensor in the Normal Mode.
+The example demonstrates configuration of all registers reguired to put the sensor into Standard Mode and read out a MagneticField sample.
+
+The sensor reads samples as per the configured Auto acquisition time step and sets a Flag.
+The application consistently checks the Flag and when set reads out the sample.

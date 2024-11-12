@@ -1,0 +1,184 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__hierarchy__:
+  mode: post-process-app
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        libraries: 
+        include: 
+        config:
+          __common__:
+            cc-define: 
+            cx-define: 
+            cc-include: 
+          debug:
+            cc-define:
+              DEBUG: 
+            cx-define:
+              DEBUG: 
+      iar:
+        config:
+          __common__:
+            cc-flags:
+            - "--misra2004"
+          release:
+            cc-define: 
+            cx-define: 
+      mdk:
+        config:
+          release:
+            cc-define: 
+            cx-define: 
+  hardware-init:
+    modules:
+      clock_config:
+        required: true
+        virtual-dir: board
+        files:
+        - source: boards/${board}/clock_config.c
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.h
+          release-dir: project-root-path
+  modules:
+    mode: post-process-lib
+    common:
+      required: true
+      virtual-dir: drivers
+      cc-include:
+      - path: platform/drivers/common
+      files:
+      - source: platform/drivers/common/fsl_common.h
+      - source: platform/drivers/common/fsl_common.c
+  tools:
+    __common__:
+      files:
+      - source: "../readme.txt"
+        rootdir: project-path
+        virtual-dir: doc
+    armgcc:
+      __remove__:
+        files:
+          - source        : ../readme.txt
+            rootdir       : project-path
+            virtual-dir   : doc
+################################################################################
+# WARNING: DO NOT TOUCH === END
+################################################################################
+################################################################################
+#                  APPS PROJECTS FOR SDK2.0(platform independent)
+#   Example of how to add a new app demo
+#
+#   demo_name:
+#     __add__:
+#       - ksdk\shared\add_utilities.yml
+#       - ksdk\shared\add_startup.yml
+#     document:
+#       name: demo_name        // This name controls both the workspace and project name.
+#     outdir: demo_apps/demo   // This controls the directory of generated project.
+#     configuration:
+#       section-type: application // This line in necessary for both demos and unit test.
+#       // Put the library projects which current demo depends on.
+#       section-depends:
+#         - AnotherLib
+#       tools:
+#         __common__:
+#           config:
+#             //for all toolchains and target
+#             __common__:
+#               cc-include:
+#               // Add common include path here.
+#                 - path: folder1/folder2
+#               // Add pre-defined macro here.
+#               cc-define:
+#                  TOWER:
+#               cc-flags:
+#               ld-flags:
+#         // only add following lines if necessary for specific tools setting
+#         iar:
+#           config:
+#             // for all target of IAR output
+#             __common__:
+#               cc-include:
+#             debug:
+#               cc-define:
+#             release:
+#               ld-flags:
+#     // Add files needed in current app.
+#     modules:
+#       //driver modules dependence
+#       gpio:
+#         attribute: "required"
+#       // sources for this example
+#       demo_name:
+#         // module name should be aligned with project name.
+#
+#         // If all files under module_name tag should be put in the same group,
+#         // then use the virtual-dir tag at the same level with files. While, if
+#         // only for specifc file, use it at the same level with source as below.
+#         virtual-dir       : source
+#         files:
+#           - source        : folder1/folder2/foo.h
+#             virtual-dir   : source // This is the group name created in IDE.
+#       pinset:
+#         files:
+#           // Words wrapped by "${}" are variables, which would be replaced in process-app.
+#           // It actual value is defined in options/<platform>.yaml, under __variable__ tag.
+#           - source        : boards/${board}/demo_apps/hello_world/hardware_init.c
+#             virtual-dir   : hardware
+################################################################################
+
+################################## fxas21002_fifo ##############################
+fxas21002_fifo:
+  configuration:
+    tools:
+      __common__:
+        libraries: 
+        include: 
+        config:
+          __common__:
+            cc-include:
+            - path: middleware/issdk/drivers/gpio
+            - path: boards/${board}/issdk_examples/fxas21002_fifo/
+            - path: middleware/issdk/cmsis_drivers/
+            - path: CMSIS/Driver/Include
+            - path: middleware/issdk/sensors/
+    document:
+      name: fxas21002_fifo
+    outdir: issdk_examples/fxas21002_fifo
+  modules:
+    cmsis:
+      virtual-dir: cmsis
+      files:
+      - source: middleware/issdk/drivers/gpio/Driver_GPIO_IRQ.c
+      - source: middleware/issdk/drivers/gpio/Driver_GPIO_SDK.c
+      - source: middleware/issdk/cmsis_drivers/Driver_I2C_SDK2.c
+      required: true
+    interface:
+      virtual-dir: interface
+      files:
+      - source: middleware/issdk/sensors/register_io_i2c.c
+      - source: middleware/issdk/sensors/sensor_io_i2c.c
+      required: true
+    sensors:
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: sensors
+      - source: middleware/issdk/sensors/fxas21002_drv.h
+        virtual-dir: sensors
+      - source: middleware/issdk/sensors/fxas21002_drv.c
+        virtual-dir: sensors
+      - source: boards/${board}/issdk_examples/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+      required: true
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.smc

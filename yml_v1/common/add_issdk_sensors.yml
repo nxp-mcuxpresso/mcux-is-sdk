@@ -1,0 +1,339 @@
+---
+__hierarchy__:
+  tmp_issdk_sensors:
+    section-type: component
+    __requires__:
+    - middleware.issdk.ui_control
+middleware.issdk.sensor.allregdefs:
+  section-type: component
+  meta-name: middleware.issdk.sensor.allregdefs
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxas21002.h
+    - source: middleware/issdk/sensors/fxos8700.h
+    - source: middleware/issdk/sensors/mpl3115.h
+    - source: middleware/issdk/sensors/fxlc95000.h
+    - source: middleware/issdk/sensors/fxls8471q.h
+    - source: middleware/issdk/sensors/fxls8962.h
+    - source: middleware/issdk/sensors/fxpq3115.h
+    - source: middleware/issdk/sensors/mag3110.h
+    - source: middleware/issdk/sensors/mma845x.h
+    - source: middleware/issdk/sensors/mma865x.h
+    - source: middleware/issdk/sensors/mma8491q.h
+    - source: middleware/issdk/sensors/mma9553.h
+    - source: middleware/issdk/sensors/diff_p.h
+  component_info:
+    common:
+      description: ISSDK Sensors RegDefs
+      manifest_name: issdk_allregdefs
+      version: 1.7.0
+      full_name: Middleware issdk sensor allregdefs # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxas21002:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxas21002
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxas21002.h
+    - source: middleware/issdk/sensors/fxas21002_drv.h
+    - source: middleware/issdk/sensors/fxas21002_drv.c
+  component_info:
+    common:
+      description: ISSDK FXAS21002 Sensor Driver Files
+      manifest_name: issdk_fxas21002
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxas21002 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxos8700:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxos8700
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxos8700.h
+    - source: middleware/issdk/sensors/fxos8700_drv.h
+    - source: middleware/issdk/sensors/fxos8700_drv.c
+  component_info:
+    common:
+      description: ISSDK FXOS8700 Sensor Driver Files
+      manifest_name: issdk_fxos8700
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxos8700 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.mpl3115:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mpl3115
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/mpl3115.h
+    - source: middleware/issdk/sensors/mpl3115_drv.h
+    - source: middleware/issdk/sensors/mpl3115_drv.c
+  component_info:
+    common:
+      description: ISSDK MPL3115 Sensor Driver Files
+      manifest_name: issdk_mpl3115
+      version: 1.7.0
+      full_name: Middleware issdk sensor mpl3115 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxlc95000:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxlc95000
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxlc95000.h
+    - source: middleware/issdk/sensors/fxlc95000_drv.h
+    - source: middleware/issdk/sensors/fxlc95000_drv.c
+  component_info:
+    common:
+      description: ISSDK FXLC95000 Sensor Driver Files
+      manifest_name: issdk_fxlc95000
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxlc95000 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.mma8491q:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma8491q
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/mma8491q.h
+    - source: middleware/issdk/sensors/mma8491q_drv.h
+    - source: middleware/issdk/sensors/mma8491q_drv.c
+  component_info:
+    common:
+      description: ISSDK MMA8491 Sensor Driver Files
+      manifest_name: issdk_mma8491q
+      version: 1.7.0
+      full_name: Middleware issdk sensor mma8491q # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxls8471q:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8471q
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxls8471q.h
+    - source: middleware/issdk/sensors/fxls8471q_drv.h
+    - source: middleware/issdk/sensors/fxls8471q_drv.c
+  component_info:
+    common:
+      description: ISSDK FXLS8471 Sensor Driver Files
+      manifest_name: issdk_fxls8471q
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxls8471q # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.mag3110:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mag3110
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/mag3110.h
+    - source: middleware/issdk/sensors/mag3110_drv.h
+    - source: middleware/issdk/sensors/mag3110_drv.c
+  component_info:
+    common:
+      description: ISSDK MAG3110 Sensor Driver Files
+      manifest_name: issdk_mag3110
+      version: 1.7.0
+      full_name: Middleware issdk sensor mag3110 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.mma845x:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma845x
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/mma845x.h
+    - source: middleware/issdk/sensors/mma845x_drv.h
+    - source: middleware/issdk/sensors/mma845x_drv.c
+  component_info:
+    common:
+      description: ISSDK MMA845x Sensor Driver Files
+      manifest_name: issdk_mma845x
+      version: 1.7.0
+      full_name: Middleware issdk sensor mma845x # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.mma865x:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma865x
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/mma865x.h
+    - source: middleware/issdk/sensors/mma865x_drv.h
+    - source: middleware/issdk/sensors/mma865x_drv.c
+  component_info:
+    common:
+      description: ISSDK MMA865x Sensor Driver Files
+      manifest_name: issdk_mma865x
+      version: 1.7.0
+      full_name: Middleware issdk sensor mma865x # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxpq3115:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxpq3115
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxpq3115.h
+    - source: middleware/issdk/sensors/fxpq3115_drv.h
+    - source: middleware/issdk/sensors/fxpq3115_drv.c
+  component_info:
+    common:
+      description: ISSDK FXPQ3115 Sensor Driver Files
+      manifest_name: issdk_fxpq3115
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxpq3115 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxls8962:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxls8962
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/fxls8962.h
+    - source: middleware/issdk/sensors/fxls8962_drv.h
+    - source: middleware/issdk/sensors/fxls8962_drv.c
+  component_info:
+    common:
+      description: ISSDK FXLS8962 Sensor Driver Files
+      manifest_name: issdk_fxls8962
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxls8962 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.mma9553:
+  section-type: component
+  meta-name: middleware.issdk.sensor.mma9553
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/mma9553.h
+    - source: middleware/issdk/sensors/mma9553_drv.h
+    - source: middleware/issdk/sensors/mma9553_drv.c
+  component_info:
+    common:
+      description: ISSDK MMA9553 Sensor Driver Files
+      manifest_name: issdk_mma9553
+      version: 1.7.0
+      full_name: Middleware issdk sensor mma9553 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.nps300x:
+  section-type: component
+  meta-name: middleware.issdk.sensor.nps300x
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/diff_p.h
+    - source: middleware/issdk/sensors/diff_p_drv.h
+    - source: middleware/issdk/sensors/diff_p_drv.c
+  component_info:
+    common:
+      description: ISSDK nps300x Sensor Driver Files
+      user_visible: false
+      manifest_name: issdk_nps300x
+      version: 1.7.0
+      full_name: Middleware issdk sensor nps300x # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.isl29023:
+  section-type: component
+  meta-name: middleware.issdk.sensor.isl29023
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/isl29023.h
+    - source: middleware/issdk/sensors/isl29023_drv.h
+    - source: middleware/issdk/sensors/isl29023_drv.c
+  component_info:
+    common:
+      description: ISSDK ISL29023 Sensor Driver Files
+      user_visible: false
+      manifest_name: issdk_isl29023
+      version: 1.7.0
+      full_name: Middleware issdk sensor isl29023 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.
+middleware.issdk.sensor.fxps7250d4:
+  section-type: component
+  meta-name: middleware.issdk.sensor.fxps7250d4
+  __requires__:
+  - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+    - path: middleware/issdk/sensors
+    virtual-dir: sensors
+    files:
+    - source: middleware/issdk/sensors/dbap.h
+    - source: middleware/issdk/sensors/dbap_drv.h
+    - source: middleware/issdk/sensors/dbap_drv.c
+  component_info:
+    common:
+      description: ISSDK fxps7250d4 Sensor Driver Files
+      user_visible: false
+      manifest_name: issdk_fxps7250d4
+      version: 1.7.0
+      full_name: Middleware issdk sensor fxps7250d4 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+      type: middleware # This value is temporarily added, please replace it with suitable value and then remove this comment.

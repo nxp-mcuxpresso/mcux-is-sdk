@@ -1,0 +1,1575 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+__load__:
+- middleware/issdk/yml_v3/common/add_issdk_tools.yml
+- middleware/issdk/yml_v3/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v3/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v3/common/add_issdk_host.yml
+- middleware/issdk/yml_v3/common/add_issdk_ads.yml
+- middleware/issdk/yml_v3/common/add_issdk_utils.yml
+- middleware/issdk/yml_v3/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v3/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v3/common/add_issdk_sensors.yml
+__hierarchy__:
+  tmp_issdk_sensors_example_lpc55s16_set:
+    section-type: application
+    dependency:
+    - driver.common
+    - driver.power
+    - driver.clock
+    - driver.lpc_iocon
+    - driver.inputmux
+    - driver.inputmux_connections
+    contents:
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define: 
+                cx-define: 
+              debug:
+                cc-define:
+                  DEBUG: 
+                cx-define:
+                  DEBUG: 
+          iar:
+            config:
+              __common__: 
+              release:
+                cc-define: 
+                cx-define: 
+          mdk:
+            config:
+              release:
+                cc-define: 
+                cx-define: 
+      modules:
+        boardset:
+          required: true
+          cc-include:
+          - path: boards/${board}
+            package_path: project-root-path
+            project_path: board
+          files:
+          - source: boards/${board}/board.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.h
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.h
+            package_path: project-root-path
+            project_path: board
+        readme:
+          files:
+          - source: project-root-path/readme.txt
+            toolchains: iar mdk mcux armgcc
+            project_path: doc
+fxas21002_fifo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-AGM01-FXAS21002-FIFO-CORE0.bin
+          config:
+            __common__: {}
+    modules:
+      fxas21002_fifo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxas21002_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxas21002
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-AGM01-FXAS21002-POLL-CORE0.bin
+          config:
+            __common__: {}
+    modules:
+      fxas21002_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxos8700_fifo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-AGM01-FXOS8700-FIFO-CORE0.bin
+          config:
+            __common__: {}
+    modules:
+      fxos8700_fifo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxos8700_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxos8700
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+    project-root-path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-AGM01-fxos8700-FIFO-CORE0.bin
+          config:
+            __common__: {}
+    modules:
+      fxos8700_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_poll
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8974-FXLS8974-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_interrupt
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8974-FXLS8974-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_freemaster_demo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  - middleware.fmstr
+  - middleware.fmstr.platform_gen32le
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_freemaster_demo
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8974-FXLS8974-FREEMASTER.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_freemaster_demo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_freemaster_demo.c
+          package_path: project-root-path
+          project_path: source
+        - source: middleware/issdk/driverexamples/fxls8974cf/freemaster_cfg.h
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_freemaster_demo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_spi:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_spi
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8974-FXLS8974-POLL-SPI.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_spi_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_spi.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_motion_wakeup:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_motion_wakeup
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8974-FXLS8974-Motion-WAKEUP.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_motion_wakeup_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8974cf/fxls8974cf_motion_wakeup.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8964af_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8964af_poll
+    project-root-path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8964-FXLS8964-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8964af_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8964af_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8964af_interrupt
+    project-root-path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8964-FXLS8964-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8964af_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8964af_freemaster_demo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  - middleware.fmstr
+  - middleware.fmstr.platform_gen32le
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8964af_freemaster_demo
+    project-root-path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8964-FXLS8964-FREEMASTER.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8964af_freemaster_demo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_freemaster_demo.c
+          package_path: project-root-path
+          project_path: source
+        - source: middleware/issdk/driverexamples/fxls896xaf/freemaster_cfg.h
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8964af_spi:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8964af_spi
+    project-root-path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8964-FXLS8964-POLL-SPI.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8964af_spi_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_spi.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8964af_motion_wakeup:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8964af_motion_wakeup
+    project-root-path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8964-FXLS8964-Motion-WAKEUP.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8964af_motion_wakeup_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_motion_wakeup.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8964/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8967af_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8967af_poll
+    project-root-path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8967-FXLS8967-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8967af_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8967af_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8967af_interrupt
+    project-root-path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8967-FXLS8967-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8967af_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_interrupt/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8967af_freemaster_demo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  - middleware.fmstr
+  - middleware.fmstr.platform_gen32le
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8967af_freemaster_demo
+    project-root-path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8967-FXLS8967-FREEMASTER.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8967af_freemaster_demo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_freemaster_demo.c
+          package_path: project-root-path
+          project_path: source
+        - source: middleware/issdk/driverexamples/fxls896xaf/freemaster_cfg.h
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_freemaster_demo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8967af_spi:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8967af_spi
+    project-root-path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8967-FXLS8967-POLL-SPI.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8967af_spi_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_spi.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_spi/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8967af_motion_wakeup:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls896xaf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8967af_motion_wakeup
+    project-root-path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8967-FXLS8967-Motion-WAKEUP.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8967af_motion_wakeup_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls896xaf/fxls896xaf_motion_wakeup.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8967/issdk_examples/sensors/fxls896xaf/fxls896xaf_motion_wakeup/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8971cf_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8971cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8971cf_poll
+    project-root-path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8971-FXLS8971-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8971cf_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8971cf/fxls8971cf_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8971cf_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8971cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8971cf_interrupt
+    project-root-path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_interrupt
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8971-FXLS8971-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8971cf_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8971cf/fxls8971cf_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_interrupt/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_interrupt/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_interrupt/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8971cf_freemaster_demo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8971cf
+  - middleware.fmstr
+  - middleware.fmstr.platform_gen32le
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8971cf_freemaster_demo
+    project-root-path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_freemaster_demo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8971-FXLS8971-FREEMASTER.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8971cf_freemaster_demo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_freemaster_demo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8971cf/fxls8971cf_freemaster_demo.c
+          package_path: project-root-path
+          project_path: source
+        - source: middleware/issdk/driverexamples/fxls8971cf/freemaster_cfg.h
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_freemaster_demo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_freemaster_demo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_freemaster_demo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8971cf_spi:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8971cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8971cf_spi
+    project-root-path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_spi
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8971-FXLS8971-POLL-SPI.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8971cf_spi_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_spi
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8971cf/fxls8971cf_spi.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_spi/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_spi/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_spi/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8971cf_motion_wakeup:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8971cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8971cf_motion_wakeup
+    project-root-path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_motion_wakeup
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8971-FXLS8971-Motion-WAKEUP.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8971cf_motion_wakeup_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_motion_wakeup
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8971cf/fxls8971cf_motion_wakeup.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_motion_wakeup/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_motion_wakeup/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8971/issdk_examples/sensors/fxls8971cf/fxls8971cf_motion_wakeup/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8961af_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8961af
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8961af_poll
+    project-root-path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_poll
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8961-FXLS8961-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8961af_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8961af/fxls8961af_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_poll/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8961af_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8961af
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8961af_interrupt
+    project-root-path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_interrupt
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8961-FXLS8961-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8961af_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8961af/fxls8961af_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_interrupt/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_interrupt/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_interrupt/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8961af_freemaster_demo:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8961af
+  - middleware.fmstr
+  - middleware.fmstr.platform_gen32le
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8961af_freemaster_demo
+    project-root-path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_freemaster_demo
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8961-FXLS8961-FREEMASTER.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8961af_freemaster_demo_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_freemaster_demo
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8961af/fxls8961af_freemaster_demo.c
+          package_path: project-root-path
+          project_path: source
+        - source: middleware/issdk/driverexamples/fxls8961af/freemaster_cfg.h
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_freemaster_demo/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_freemaster_demo/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_freemaster_demo/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8961af_spi:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8961af
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8961af_spi
+    project-root-path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_spi
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8961-FXLS8961-POLL-SPI.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8961af_spi_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_spi
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8961af/fxls8961af_spi.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_spi/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_spi/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_spi/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8961af_motion_wakeup:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_lpc
+  - driver.port
+  - driver.lpc_dma
+  - driver.gpio
+  - driver.gint
+  - driver.flexcomm
+  - driver.flexcomm_i2c
+  - driver.flexcomm_i2c_dma
+  - driver.cmsis_flexcomm_i2c
+  - driver.flexcomm_spi
+  - driver.flexcomm_spi_dma
+  - driver.cmsis_flexcomm_spi
+  - driver.flexcomm_usart
+  - driver.flexcomm_usart_dma
+  - driver.cmsis_flexcomm_usart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8961af
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8961af_motion_wakeup
+    project-root-path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_motion_wakeup
+    configuration:
+      tools:
+        __common__:
+          binary-file: LPC55S16-A8961-FXLS8961-Motion-WAKEUP.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8961af_motion_wakeup_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_motion_wakeup
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/fxls8961af/fxls8961af_motion_wakeup.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_motion_wakeup/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_motion_wakeup/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8961/issdk_examples/sensors/fxls8961af/fxls8961af_motion_wakeup/readme.txt
+          project_path: doc
+          package_path: project-root-path

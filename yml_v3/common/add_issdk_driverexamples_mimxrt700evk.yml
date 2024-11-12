@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+container.middleware.issdk.sensor.driverexamples.mimxrt700evk:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: driverexamples/fxls8974cf/mimxrt700evk/*c
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - mimxrt700evk_a8974

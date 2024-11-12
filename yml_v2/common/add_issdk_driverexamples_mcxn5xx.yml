@@ -1,0 +1,19 @@
+---
+middleware.issdk.sensor.driverexamples.mcxn5xx:
+  section-type: component
+  meta-name: middleware.issdk.sensor.driverexamples.mcxn5xx
+  __requires__:
+  - middleware.issdk.support.MCX-N5XX-EVK-A8974
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: issdk
+    files:
+    - source: driverexamples/mcx/mcxn5xx/fxls8974cf/*c
+  component_info:
+    common:
+      description: ISSDK Sensor Driver Examples files for mcxn5xx
+      manifest_name: issdk_driverexamples_mcxn5xx
+      type: other
+      user_visible: false
+      version: 1.8.0
+      full_name: Middleware issdk sensor driverexamples mcxn5xx

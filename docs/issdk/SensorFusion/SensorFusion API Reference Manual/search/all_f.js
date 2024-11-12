@@ -1,0 +1,18 @@
+var searchData=
+[
+  ['r',['R',['../status_8c.html#a5c71a5e59a53413cd6c270266d63b031',1,'status.c']]],
+  ['rateresolution',['RATERESOLUTION',['../output__stream_8c.html#a9badfcf686c8cfb2afabc3c9e3ba11d3',1,'output_stream.c']]],
+  ['read',['read',['../structPhysicalSensor.html#a8dcb713c71ef9c193bd7c17c6bf10cb5',1,'PhysicalSensor']]],
+  ['read_5ftask',['read_task',['../main__agm01__freertos__two__tasks_8c.html#ad4761540f9eeaae0661637c047c892b0',1,'read_task(void *pvParameters):&#160;main_agm01_freertos_two_tasks.c'],['../main__freertos__agm02_8c.html#ad4761540f9eeaae0661637c047c892b0',1,'read_task(void *pvParameters):&#160;main_freertos_agm02.c'],['../main__freertos__agm02__power__cycling_8c.html#ad4761540f9eeaae0661637c047c892b0',1,'read_task(void *pvParameters):&#160;main_freertos_agm02_power_cycling.c'],['../main__freertos__single__task_8c.html#ad4761540f9eeaae0661637c047c892b0',1,'read_task(void *pvParameters):&#160;main_freertos_single_task.c'],['../main__freertos__two__tasks_8c.html#ad4761540f9eeaae0661637c047c892b0',1,'read_task(void *pvParameters):&#160;main_freertos_two_tasks.c']]],
+  ['readcommon',['readCommon',['../output__stream_8c.html#a96da70ac128170ff0d03feffa05ef769',1,'output_stream.c']]],
+  ['readsensor_5ft',['readSensor_t',['../sensor__fusion_8h.html#a2c12de378ddfbb05f2f9549b62eddb87',1,'sensor_fusion.h']]],
+  ['readsensors',['readSensors',['../structSensorFusionGlobals.html#a15e66ae3ad63ad091317ad0aefa53ce7',1,'SensorFusionGlobals::readSensors()'],['../sensor__fusion_8h.html#ae645f944ac29c74108a8af89411ce81e',1,'readSensors():&#160;sensor_fusion.h'],['../sensor__fusion_8c.html#a0d688188b65f43d38ac760a79d9eb116',1,'readSensors(SensorFusionGlobals *sfg, uint16_t read_loop_counter):&#160;sensor_fusion.c']]],
+  ['readsensors_5ft',['readSensors_t',['../sensor__fusion_8h.html#a9f12e2c588a4e45fd7f62d41b7c5eeb5',1,'sensor_fusion.h']]],
+  ['receiving_5fwired',['RECEIVING_WIRED',['../sensor__fusion_8h.html#a69ee883e1c22b117df163c0bd83f66dda07ce7fbb8426233b33e7e7512bb0f55d',1,'sensor_fusion.h']]],
+  ['receiving_5fwireless',['RECEIVING_WIRELESS',['../sensor__fusion_8h.html#a69ee883e1c22b117df163c0bd83f66dda60ca895e5ed18a6e1928d4750c7968a0',1,'sensor_fusion.h']]],
+  ['reserved0',['RESERVED0',['../board__encodings_8h.html#a33aef9a07b67896698c78308a04e22f5',1,'board_encodings.h']]],
+  ['resetflag',['resetflag',['../structSV__1DOF__P__BASIC.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_1DOF_P_BASIC::resetflag()'],['../structSV__3DOF__G__BASIC.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_3DOF_G_BASIC::resetflag()'],['../structSV__3DOF__B__BASIC.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_3DOF_B_BASIC::resetflag()'],['../structSV__3DOF__Y__BASIC.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_3DOF_Y_BASIC::resetflag()'],['../structSV__6DOF__GB__BASIC.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_6DOF_GB_BASIC::resetflag()'],['../structSV__6DOF__GY__KALMAN.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_6DOF_GY_KALMAN::resetflag()'],['../structSV__9DOF__GBY__KALMAN.html#ae14fa8fca4cd18c4354a8ccadce7a4ea',1,'SV_9DOF_GBY_KALMAN::resetflag()']]],
+  ['rpcpacketon',['RPCPacketOn',['../structControlSubsystem.html#a6c5365ebe170e2ee207212da7531ccea',1,'ControlSubsystem']]],
+  ['runfusion',['runFusion',['../structSensorFusionGlobals.html#afc72aca0c3842cde4aa4bb0dcdfb4237',1,'SensorFusionGlobals::runFusion()'],['../sensor__fusion_8h.html#a78120ff16602bda9664a1874f66b3d72',1,'runFusion():&#160;sensor_fusion.h'],['../sensor__fusion_8c.html#a8b90119fee979d0309cc923bf1fad543',1,'runFusion(SensorFusionGlobals *sfg):&#160;sensor_fusion.c']]],
+  ['runfusion_5ft',['runFusion_t',['../sensor__fusion_8h.html#ac61c78a9576e68e664fbc850d7ceaa3e',1,'sensor_fusion.h']]]
+];

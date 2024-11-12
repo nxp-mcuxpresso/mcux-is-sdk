@@ -1,0 +1,25 @@
+---
+middleware.issdk.drivers.systick_utils.evkmimxrt595:
+  section-type: component
+  meta-name: middleware.issdk.drivers.systick_utils.evkmimxrt595
+  __requires__:
+  - middleware.issdk.support.EVK-MIMXRT595-AGM01
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: utilities
+    cc-include:
+    - repo_relative_path: drivers/systick
+      project_relative_path: "./"
+    files:
+    - source: drivers/systick/systick_utils.c
+      project_relative_path: "./"
+    - source: drivers/systick/systick_utils.h
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Utils
+      user_visible: false
+      manifest_name: systick_utils
+      version: 1.7.0
+      full_name: Middleware issdk drivers systick_utils evkmimxrt595
+      type: middleware

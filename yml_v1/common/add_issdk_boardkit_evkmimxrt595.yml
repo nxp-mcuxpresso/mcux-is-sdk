@@ -1,0 +1,19 @@
+---
+middleware.issdk.sensor.boardkit.evkmimxrt595:
+  section-type: component
+  meta-name: middleware.issdk.sensor.boardkit.evkmimxrt595
+  __requires__:
+  - middleware.issdk.support.EVK-MIMXRT595-AGM01
+  contents:
+    virtual-dir: issdk_boardkit
+    files:
+    - source: middleware/issdk/boardkit/evk-mimxrt595/*.*
+    - source: middleware/issdk/boardkit/evk-mimxrt595/frdm-stbc-agm01/*.*
+  component_info:
+    common:
+      description: ISSDK Board-Kit files for i.MXRT595 kit
+      manifest_name: issdk_boardkit_evkmimxrt595
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk sensor boardkit evkmimxrt595 # This value is temporarily added, please replace it with suitable value and then remove this comment.

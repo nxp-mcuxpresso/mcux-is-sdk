@@ -1,0 +1,356 @@
+/*
+ * Copyright 2017 NXP
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * o Redistributions of source code must retain the above copyright notice, this list
+ *   of conditions and the following disclaimer.
+ *
+ * o Redistributions in binary form must reproduce the above copyright notice, this
+ *   list of conditions and the following disclaimer in the documentation and/or
+ *   other materials provided with the distribution.
+ *
+ * o Neither the name of the copyright holder nor the names of its
+ *   contributors may be used to endorse or promote products derived from this
+ *   software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+/**
+ * @file diff_p.h
+ * @brief The diff_p.h contains the DIFF_P Pressure sensor register definitions, access macros, and
+ * its bit mask.
+ */
+#ifndef DIFF_P_H_
+#define DIFF_P_H_
+
+/**
+ **
+ **  DIFF_P Sensor Internal Registers
+ */
+enum {
+	DIFF_P_INT_STATUS_0           = 0x00,
+	DIFF_P_INT_STATUS_1           = 0x01,
+	DIFF_P_OUT_P_LSB              = 0x02,
+	DIFF_P_OUT_P_MSB              = 0x03,
+	DIFF_P_OUT_T                  = 0x04,
+	DIFF_P_P_MIN_LSB              = 0x05,
+	DIFF_P_P_MIN_MSB              = 0x06,
+	DIFF_P_T_MIN                  = 0x07,
+	DIFF_P_P_MAX_LSB              = 0x08,
+	DIFF_P_P_MAX_MSB              = 0x09,
+	DIFF_P_T_MAX                  = 0x0A,
+	DIFF_P_INT_MASK0              = 0x0B,
+	DIFF_P_INT_MASK1              = 0x0C,
+    /* Reserved:                    0x0D - 0x11 */
+	DIFF_P_STATUS                 = 0x12,
+	DIFF_P_WHO_AM_I               = 0x13,
+	DIFF_P_OFF_P_LSB              = 0x14,
+	DIFF_P_OFF_P_MSB              = 0x15,
+	DIFF_P_OFF_CAL_P_LSB          = 0x16,
+	DIFF_P_OFF_CAL_P_MSB          = 0x17,
+	DIFF_P_OFF_T                  = 0x18,
+	DIFF_P_P_TGT0_LSB             = 0x19,
+	DIFF_P_P_TGT0_MSB             = 0x1A,
+	DIFF_P_P_TGT1_LSB             = 0x1B,
+	DIFF_P_P_TGT1_MSB             = 0x1C,
+	DIFF_P_P_TGT2_LSB             = 0x1D,
+	DIFF_P_P_TGT2_MSB             = 0x1E,
+	DIFF_P_T_TGT                  = 0x1F,
+	DIFF_P_CTRL_REG1              = 0x20,
+	DIFF_P_CTRL_REG2              = 0x21,
+	DIFF_P_CTRL_REG3              = 0x22,
+	DIFF_P_INT_ROUTE0             = 0x23,
+	DIFF_P_INT_ROUTE1             = 0x24,
+    /* Reserved:                    0x25 - 0x5F */
+	DIFF_P_I2C_ADDRESS            = 0x61,
+	DIFF_P_WHO_AM_I_              = 0x62,
+	DIFF_P_PROD_REV               = 0x63,
+	DIFF_P_OFF_MOP_LSB            = 0x64,
+	DIFF_P_OFF_MOP_MSB            = 0x65,
+	DIFF_P_SERIALNUMBER_BYTE7     = 0x66,
+	DIFF_P_SERIALNUMBER_BYTE6     = 0x67,
+	DIFF_P_SERIALNUMBER_BYTE5     = 0x68,
+	DIFF_P_SERIALNUMBER_BYTE4     = 0x69,
+	DIFF_P_SERIALNUMBER_BYTE3     = 0x6A,
+	DIFF_P_SERIALNUMBER_BYTE2     = 0x6B,
+	DIFF_P_SERIALNUMBER_BYTE1     = 0x6C,
+	DIFF_P_SERIALNUMBER_BYTE0     = 0x6D,
+    /* Reserved:                    0x6E - 0x7F */
+};
+
+#define DIFF_P_NPS3000VV_WHOAMI_VALUE    (0xD0)  /* DIFF_P Who_Am_I Value of Part Number NPS3000VV. */
+#define DIFF_P_NPS3001DV_WHOAMI_VALUE    (0xD1)  /* DIFF_P Who_Am_I Value of Part Number NPS3001DV. */
+#define DIFF_P_NPS3002VV_WHOAMI_VALUE    (0xD2)  /* DIFF_P Who_Am_I Value of Part Number NPS3000VV. */
+#define DIFF_P_NPS3005DV_WHOAMI_VALUE    (0xD3)  /* DIFF_P Who_Am_I Value of Part Number NPS3000VV. */
+
+// INT_STATUS_0     : 0x00 - Sensor Status Information Register 1.
+#add pdu        0x01    Pressure data underflow. Pressure exceeded lower limit of operating range..
+#val UNDERFLOW     1    Underflow occurred.
+#val NO_UNDERFLOW  0    No Underflow occurred.
+#add pdo        0x02    Pressure data overflow. Pressure exceeded upper limit of operating range.
+#val OVERFLOW      1    Overflow occurred.
+#val NO_OVERFLOW   0    No overflow occurred.
+#add verra      0x08    Analog voltage brown-out error status bit. This bit is only set when BRWNOUT_EN bit in CTRL_REG2 is set to 1 enabling brownout detection.
+#val BRWNOUT       1    Analog voltage brownout occurred.
+#val NO_BRWNOUT    0    No brownout occurred.
+#add tdr        0x10    Temperature new Data Ready. TDR is set to logic ‘1’ whenever a Temperature data acquisition is completed.
+#val DRDY          1    A new Temperature data is ready.
+#add pdr        0x20    Pressure new Data Ready. PDR is set to logic ‘1’ whenever a new Pressure data acquisition is completed..
+#val DRDY          1    A new set of Pressure data is ready.
+#add tow        0x40    Temperature Data Overwrite. TOW is set to logic ‘1’ whenever a new Temperature acquisition is completed before the TDR flag is cleared.
+#val OWR           1    Previous Temperature data was overwritten by new Temperature data before it was read.
+#add pow        0x80    Pressure Data Overwrite. POW is set to logic ‘1’ whenever a new Pressure acquisition is completed before the PDR flag has been cleared.
+#val OWR           1    Previous Pressure data was overwritten by new Pressure data before it was read.
+
+// INT_STATUS_1     : 0x01 - Sensor Status Information Register 2.
+#add p_wchg     0x02    Window threshold interrupt.
+#val TH_CROSSED    1    pressure has crossed the window threshold defined by P_TGT1 and P_TGT2.
+#add p_tgt2     0x04    Pressure target value 2.
+#val REACHED       1    Temperature target reached.
+#add p_tgt1     0x08    Pressure target value 1.
+#val REACHED       1    Temperature target reached.
+#add p_tgt0     0x10    Pressure target value 0.
+#val REACHED       1    Temperature target reached.
+#add t_tgt      0x20    Temperature target value.
+#val REACHED       1    Temperature target reached.
+#add tdu        0x40    Temperature data underflow. Temperature exceeded lower limit of operating range.
+#val UNDERFLOW     1    Underflow occurred.
+#val NO_UNDERFLOW  0    No Underflow occurred.
+#add tdo        0x80    Temperature data overflow. Temperature exceeded upper limit of operating range.
+#val OVERFLOW      1    Overflow occurred.
+#val NO_OVERFLOW   0    No overflow occurred.
+
+// OUT_P_LSB    	: 0x02 - 8 LSBs of 16 bit Pressure Data LSB.
+// OUT_P_MSB    	: 0x03 - 8 MSBs of 16 bit Pressure Data MSB.
+// OUT_T    	    : 0x04 - Temperature Data.
+
+// P_MIN_LSB    	: 0x05 - 8 LSBs of 16 bit Minimum Pressure Data LSB.
+// P_MIN_MSB    	: 0x06 - 8 MSBs of 16 bit Minimum Pressure Data MSB.
+// T_MIN    	    : 0x07 - Minimum Temperature Data.
+
+// P_MAX_LSB    	: 0x08 - 8 LSBs of 16 bit Maximum Pressure Data LSB.
+// P_MAX_MSB    	: 0x09 - 8 MSBs of 16 bit Maximum Pressure Data MSB.
+// T_MAX    	    : 0x0A - Maximum Temperature Data.
+
+// INT_MASK0        : 0x0B - Interrupt Mask Register 1.
+#add pdu        0x01    Interrupt Mask for PDU interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add pdo        0x02    Interrupt Mask for PDO interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add verra      0x08    Interrupt Mask for VERRA interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add tdr        0x10    Interrupt Mask for TDR interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add pdr        0x20    Interrupt Mask for PDR interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add tow        0x40    Interrupt Mask for TOW interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add pow        0x80    Interrupt Mask for POW interrupt.
+#val INT_EN        1    Interrupt Enabled.
+
+// INT_MASK1        : 0x0C - Interrupt Mask Register 2.
+#add p_wchg     0x02    Interrupt Mask for P_WCHG interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add p_tgt2     0x04    Interrupt Mask for P_TGT2 interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add p_tgt1     0x08    Interrupt Mask for P_TGT1 interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add p_tgt0     0x10    Interrupt Mask for P_TGT0 interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add t_tgt      0x20    Interrupt Mask for T_TGT interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add tdu        0x40    Interrupt Mask for TDU interrupt.
+#val INT_EN        1    Interrupt Enabled.
+#add tdo        0x80    Interrupt Mask for TDO interrupt.
+#val INT_EN        1    Interrupt Enabled.
+
+// STATUS           : 0x12 - Calibration and I2C reprogram status.
+#add rst_status 0x01    This bit is set whenever the part comes out of POR.
+#val RST           1    Part has come out of POR, brownout or soft reset.
+#val NO_RST        0    No POR, brownout or soft reset has occurred.
+#add osr_err    0x02    OSR Error. Bit is set on illegal combination of OSR and ODR..
+#val ERR           1    Illegal ODR/OSR combination.
+#val NO_ERR        0    No Error.
+#add stat_cplt  0x04    Completion Status. STAT_CPLT notifies the user when the calibration routine has successfully completed.
+#val SUCCESS       1    Calibration routine was successful.
+#val NO_SUCCESS    0    Calibration routine was not successful.
+#add stat_ep    0x08    Existing Pressure Status. STAT_EP is set to logic ‘1’ when the calibration routine detects an existing pressure condition in the system.
+#val DETECTED      1    Existing pressure has been detected.
+#val NOTDETECTED   0    No existing pressure detected.
+#add i2c_rpg_status 0x10    I2C Address Reprograming status bit. Bit is set to logic 1 at the beginning of the reprograming cycle.
+#val RPG_INIT      1    Reprograming cycle initiated.
+#val RPG_CPLT      0    Reprograming cycle completed.
+#add i2c_rpg    0x20    Completion Status of I2C Address Reprograming. This notifies the user that the I2C reprograming has been completed successfully.
+#val RPG_SUCCESS   1    I2C Reprograming successful.
+#val NO_RPG        0    No Reprograming has taken place.
+#add i2c_rpg_cnt 0x40   I2C Reprograming count status bit.
+#val CANT_RPG      1    I2C address cannot be reprogrammed.
+#val CAN_RPG       0    I2C address can be reprogrammed.
+#add active_mode 0x80   Active mode status bit.
+#val ACTIVE        1    Sensor is in active mode.
+#val STANDBY       0    Sensor is in standby mode.
+
+// WHO_AM_I    	    : 0x13 - This register contains the device identifier.
+
+// OFF_P_LSB    	: 0x14 - 8 LSBs of 16 bit Pressure Data Offset LSB.
+// OFF_P_MSB    	: 0x15 - 8 MSBs of 16 bit Pressure Data Offset MSB.
+// OFF_CAL_P_LSB    : 0x16 - 8 LSBs of 16 bit Existing Pressure Offset LSB.
+// OFF_CAL_P_MSB    : 0x17 - 8 MSBs of 16 bit Existing Pressure Offset MSB.
+// OFF_T    	    : 0x18 - Temperature Data Offset.
+
+// P_TGT0_LSB    	: 0x19 - 8 LSBs of 16 bit Pressure Data Offset LSB.
+// P_TGT0_MSB    	: 0x1A - 8 MSBs of 16 bit Pressure Data Offset MSB.
+// P_TGT1_LSB    	: 0x1B - 8 LSBs of 16 bit Pressure Data Offset LSB.
+// P_TGT1_MSB    	: 0x1C - 8 MSBs of 16 bit Pressure Data Offset MSB.
+// P_TGT2_LSB    	: 0x1D - 8 LSBs of 16 bit Pressure Data Offset LSB.
+// P_TGT2_MSB    	: 0x1E - 8 MSBs of 16 bit Pressure Data Offset MSB.
+// T_TGT    	    : 0x1F - Temperature Target Value.
+
+// CTRL_REG1    	: 0x20 - Control Register 1.
+#add sbyb       0x01    This bit sets the mode to ACTIVE.
+#val ACTIVE        1    Part is ACTIVE.
+#val STANDBY       0    Part is in STANDBY mode.
+#add ost        0x02    One Shot Mode. The OST bit, when set, will initiate a measurement immediately and take the samples indicated by the OSR[4:0] bits.
+#val ONESHOT       1    One Shot Mode.
+#val NORMAL        0    Normal operating mode.
+#add rst        0x04    Software Reset. This bit is used to activate the software reset.
+#val RESET         1    Device will be reset.
+#val NORMAL        0    Normal operating mode.
+#add osr        0xF8    Interrupt Mask for P_TGT1 interrupt.
+#val OSR1          0    Oversampling Rate#1.
+#val OSR2          1    Oversampling Rate#2.
+#val OSR4          2    Oversampling Rate#4.
+#val OSR8          3    Oversampling Rate#8.
+#val OSR16         4    Oversampling Rate#16.
+#val OSR32         5    Oversampling Rate#32.
+#val OSR64         6    Oversampling Rate#64.
+#val OSR128        7    Oversampling Rate#128.
+#val OSR256        8    Oversampling Rate#256.
+#val OSR512        9    Oversampling Rate#512.
+#val OSR768        10   Oversampling Rate#768.
+#val OSR1024       11   Oversampling Rate#1024.
+#val OSR1280       12   Oversampling Rate#1280.
+#val OSR1536       13   Oversampling Rate#1536.
+#val OSR2048       14   Oversampling Rate#2048.
+#val OSR2560       15   Oversampling Rate#2560.
+#val OSR3072       16   Oversampling Rate#3072.
+#val OSR4096       17   Oversampling Rate#4096.
+#val OSR5120       18   Oversampling Rate#5120.
+#val OSR6144       19   Oversampling Rate#6144.
+#val OSR7168       20   Oversampling Rate#7168.
+#val OSR8192       21   Oversampling Rate#8192.
+/* osr >= 21 will select OSR8192 */
+
+// CTRL_REG2    	: 0x21 - Control Register 2.
+#add odr        0x0F    Output Data Rate. Sets the output data rate.
+#val ODR3200       0    Output Data Rate#3200.
+#val ODR1600       1    Output Data Rate#1600.
+#val ODR800        2    Output Data Rate#800.
+#val ODR400        3    Output Data Rate#400.
+#val ODR200        4    Output Data Rate#200.
+#val ODR100        5    Output Data Rate#100.
+#val ODR50         6    Output Data Rate#50.
+#val ODR25         7    Output Data Rate#25.
+#val ODR12P5       8    Output Data Rate#12.5.
+#val ODR6P25       9    Output Data Rate#6.25.
+#val ODR3P125      10   Output Data Rate#3.125.
+#val ODR1P563      11   Output Data Rate#1.563.
+#val ODR0P781      12   Output Data Rate#0.781.
+/* odr >= 12 will select ODR0P781 */
+#add f_read     0x20    Fast Read Mode. Selects the auto-increment address methodology.
+#val NORMAL        1    Loops between all register addresses.
+#val FASTREAD      0    Loops between register address 0x00 and 0x04.
+#add brwnout_en 0x40    Enables or disables internal brown out circuit..
+#val ENABLED       1    Internal brown out circuit is enabled.
+#val DISABLED      0    Internal brown out circuit is disabled.
+#add ctrl_ac    0x80    This bit controls when the Calibration Algorithm is to be run..
+#val CALRUN        1    Run Calibration Algorithm.
+#val NOCALRUN      0    Calibration Algorithm not run.
+
+// CTRL_REG3    	: 0x22 - Control Register 3.
+#add pp_od2     0x01    This bit configures the interrupt pin to Push-Pull or in Open Drain mode.Push-Pull/Open Drain selection on interrupt pad INT2.
+#val OPENDRAIN     1    Open drain.
+#val PUSHPULL      0    Push-pull.
+#add ipol2      0x02    The IPOL bit selects the polarity of the interrupt signal on pin INT2.
+#val ACTIVE_HIGH   1    Active High.
+#val ACTIVE_LOW    0    Active Low.
+#add pp_od1     0x10    This bit configures the interrupt pin to Push-Pull or in Open Drain mode.Push-Pull/Open Drain selection on interrupt pad INT1.
+#val OPENDRAIN     1    Open drain.
+#val PUSHPULL      0    Push-pull.
+#add ipol1      0x20    The IPOL bit selects the polarity of the interrupt signal on pin INT1.
+#val ACTIVE_HIGH   1    Active High.
+#val ACTIVE_LOW    0    Active Low.
+
+// INT_ROUTE0       : 0x23 - Interrupt Route Register 0.
+#add pdu        0x01    Pressure data underflow.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add pdo        0x02    Pressure data overflow.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add verra      0x08    Analog voltage brown-out error status bit.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add tdr        0x10    Temperature new Data Ready.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add pdr        0x20    Pressure new Data Ready.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add tow        0x40    Temperature Data Overwrite.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add pow        0x80    Pressure Data Overwrite.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+
+// INT_ROUTE1       : 0x24 - Interrupt Route Register 1.
+#add p_wchg     0x02    Window threshold interrupt.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add p_tgt2     0x04    Pressure target value 2.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add p_tgt1     0x08    Pressure target value 1.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add p_tgt0     0x10    Pressure target value 0.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add t_tgt      0x20    Temperature target value.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add tdu        0x40    Temperature data underflow.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+#add tdo        0x80    Temperature data overflow.
+#val INT2          1    Interrupt routed to INT2 pin.
+#val INT1          0    Interrupt routed to INT1 pin.
+
+// I2C_ADDRESS    	: 0x61 - This register configures the I2C address of the device.
+// PROD_REV    	    : 0x63 - This register keeps track of ASIC and MEMS die revisions.
+
+// OFF_MOP_LSB      : 0x64 - 8 LSBs of 16 bit Maximum Offset Pressure LSB.
+// OFF_MOP_MSB      : 0x65 - 8 MSBs of 16 bit Maximum Offset Pressure MSB.
+
+// SERIALNUMBER_BYTE7 :0x66 - SerialNumber byte 7 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE6 :0x67 - SerialNumber byte 6 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE5 :0x68 - SerialNumber byte 5 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE4 :0x69 - SerialNumber byte 4 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE3 :0x6A - SerialNumber byte 3 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE2 :0x6B - SerialNumber byte 2 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE1 :0x6C - SerialNumber byte 1 stored in NVM memory and will be programmed at final test.
+// SERIALNUMBER_BYTE0 :0x6D - SerialNumber byte 0 stored in NVM memory and will be programmed at final test.
+
+#endif  /* DIFF_P_H_ */

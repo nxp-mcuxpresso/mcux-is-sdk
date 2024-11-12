@@ -1,0 +1,7 @@
+Overview
+========
+The FXPQ3115BV FIFO example application demonstrates the use of the FXPQ3115BV sensor in Buffered (FIFO) Mode.
+The example demonstrates configuration of all registers reguired to put the sensor in FIFO Mode and read out Pressure+Temperature samples.
+
+The sensor reads samples as per the configured Auto acquisition time step and are buffered upto the configured Water Mark Level and then a Flag is set.
+The application consistently checks the Flag and when set, reads out all(count=Water Mark Level) samples.

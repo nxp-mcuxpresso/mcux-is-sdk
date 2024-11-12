@@ -1,0 +1,346 @@
+__hierarchy__:
+  tmp_common_issdk_utils:
+    section-type: component
+    meta-path:
+      - path : middleware\issdk\issdk_utils.meta
+  tmp_common_issdk_utils_support:
+    section-type: component_support
+    meta-path:
+      - path : middleware\issdk\issdk_utils.meta
+
+middleware.issdk.drivers.systick_utils:
+  section-type: component
+  meta-name: middleware.issdk.drivers.systick_utils
+  meta-requires:
+    - middleware.issdk.sensor.boardkit middleware.issdk.sensor.driverexamples middleware.issdk.sensor.tools middleware.issdk.scr middleware.issdk
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/systick
+    virtual-dir: utilities
+    files:
+      - source: middleware/issdk/drivers/systick/systick_utils.c
+      - source: middleware/issdk/drivers/systick/systick_utils.h
+    component_info:
+      meta:
+        description: "ISSDK Utils"
+        user_visible: false
+        manifest_name: systick_utils #IDE will show this as component name
+
+middleware.issdk.support.FRDM-K22F-AGM01:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K22F-AGM01
+  meta-requires:
+    - kits.FRDM-K22F-AGM01
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDM-K64F-AGM01:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K64F-AGM01
+  meta-requires:
+    - kits.FRDM-K64F-AGM01
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDM-K64F-MULT2B:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K64F-MULT2B
+  meta-requires:
+    - kits.FRDM-K64F-MULT2B
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKL25-A8471:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKL25-A8471
+  meta-requires:
+    - kits.FRDMKL25-A8471
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKL25-A8491:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKL25-A8491
+  meta-requires:
+    - kits.FRDMKL25-A8491
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKL25-P3115:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKL25-P3115
+  meta-requires:
+    - kits.FRDMKL25-P3115
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKL27-B3115:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKL27-B3115
+  meta-requires:
+    - kits.FRDMKL27-B3115
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKL27-AGMP03:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKL27-AGMP03
+  meta-requires:
+    - kits.FRDMKL27-AGMP03
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDM-K22F-SA9500:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K22F-SA9500
+  meta-requires:
+    - kits.FRDM-K22F-SA9500
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDM-K22F-AGMP03:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K22F-AGMP03
+  meta-requires:
+    - kits.FRDM-K22F-AGMP03
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDM-K64F-AGM04:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K64F-AGM04
+  meta-requires:
+    - kits.FRDM-K64F-AGM04
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.LPCXPRESSO54114-AGMP03:
+  section-type: component_support
+  meta-name: middleware.issdk.support.LPCXPRESSO54114-AGMP03
+  meta-requires:
+    - kits.LPCXPRESSO54114-AGMP03
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.LPCXPRESSO54114-AGM01:
+  section-type: component_support
+  meta-name: middleware.issdk.support.LPCXPRESSO54114-AGM01
+  meta-requires:
+    - kits.LPCXPRESSO54114-AGM01
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKE15-DP5004:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKE15-DP5004
+  meta-requires:
+    - kits.FRDMKE15-DP5004
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDMKE15-DP300x:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDMKE15-DP300x
+  meta-requires:
+    - kits.FRDMKE15-DP300x
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.FRDM-K32W042-AGM01:
+  section-type: component_support
+  meta-name: middleware.issdk.support.FRDM-K32W042-AGM01
+  meta-requires:
+    - kits.FRDM-K32W042-AGM01
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.EVK-MIMXRT1050-AGM01:
+  section-type: component_support
+  meta-name: middleware.issdk.support.EVK-MIMXRT1050-AGM01
+  meta-requires:
+    - kits.EVK-MIMXRT1050-AGM01
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.EVKB-IMXRT1050-AGM01:
+  section-type: component_support
+  meta-name: middleware.issdk.support.EVKB-IMXRT1050-AGM01
+  meta-requires:
+    - kits.EVKB-IMXRT1050-AGM01
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.kit
+
+middleware.issdk.support.frdmk22f:
+  section-type: component_support
+  meta-name: middleware.issdk.support.frdmk22f
+  meta-requires:
+    - devices.boards.frdmk22f
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.frdmk64f:
+  section-type: component_support
+  meta-name: middleware.issdk.support.frdmk64f
+  meta-requires:
+    - devices.boards.frdmk64f
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.frdmkl25z:
+  section-type: component_support
+  meta-name: middleware.issdk.support.frdmkl25z
+  meta-requires:
+    - devices.boards.frdmkl25z
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.frdmkl27z:
+  section-type: component_support
+  meta-name: middleware.issdk.support.frdmkl27z
+  meta-requires:
+    - devices.boards.frdmkl27z
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.frdmke15z:
+  section-type: component_support
+  meta-name: middleware.issdk.support.frdmke15z
+  meta-requires:
+    - devices.boards.frdmke15z
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.frdmk32w042:
+  section-type: component_support
+  meta-name: middleware.issdk.support.frdmk32w042
+  meta-requires:
+    - devices.boards.frdmk32w042
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.lpcxpresso54114:
+  section-type: component_support
+  meta-name: middleware.issdk.support.lpcxpresso54114
+  meta-requires:
+    - devices.boards.lpcxpresso54114
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.evkmimxrt1050:
+  section-type: component_support
+  meta-name: middleware.issdk.support.evkmimxrt1050
+  meta-requires:
+    - devices.boards.evkmimxrt1050
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.support.evkbimxrt1050:
+  section-type: component_support
+  meta-name: middleware.issdk.support.evkbimxrt1050
+  meta-requires:
+    - devices.boards.evkbimxrt1050
+  contents:
+    component_info:
+      meta:
+        provides: middleware.issdk.support.board
+
+middleware.issdk.ui.kit:
+  section-type: component_support
+  meta-name: middleware.issdk.ui.kit
+  meta-requires:
+    - middleware.issdk.support.kit
+  contents:
+    cc-include:
+      - path: middleware/issdk
+        virtual-dir: ./
+    files:
+      - source: middleware/issdk/*.meta
+    component_info:
+      meta:
+        type: middleware
+        provides: middleware.issdk
+        ui_name: ISSDK
+        ui_description: "IoT Sensing SDK"
+        ui_category: "Middleware"
+        ui_control: true
+        ui_control_inactive: true
+        ui_control_default: true
+        ui_release_specific: true
+        ui_control_hiding: true
+        version: "1.7.0"
+
+middleware.issdk.ui.board:
+  section-type: component_support
+  meta-name: middleware.issdk.ui.board
+  meta-requires:
+    - middleware.issdk.support.board
+  contents:
+    cc-include:
+      - path: middleware/issdk
+        virtual-dir: ./
+    files:
+      - source: middleware/issdk/*.meta
+    component_info:
+      meta:
+        type: middleware
+        provides: middleware.issdk
+        ui_name: ISSDK
+        ui_description: "IoT Sensing SDK"
+        ui_category: "Middleware"
+        ui_control: true
+        ui_control_default: false
+        ui_release_specific: true
+        ui_control_hiding: true
+        version: "1.7.0"

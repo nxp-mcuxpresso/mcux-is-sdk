@@ -1,0 +1,31 @@
+---
+middleware.issdk.sensor.driverexamples:
+  section-type: component
+  meta-name: middleware.issdk.sensor.driverexamples
+  __requires__:
+  - middleware.issdk.ui_control
+  contents:
+    virtual-dir: issdk_driverexamples
+    files:
+    - source: middleware/issdk/driverexamples/fxas21002/*c
+    - source: middleware/issdk/driverexamples/fxls8471q/*.c
+    - source: middleware/issdk/driverexamples/fxls8962/*.c
+    - source: middleware/issdk/driverexamples/fxos8700/*.c
+    - source: middleware/issdk/driverexamples/mag3110/*.c
+    - source: middleware/issdk/driverexamples/mma845x/*.c
+    - source: middleware/issdk/driverexamples/mma8491q/*.c
+    - source: middleware/issdk/driverexamples/mma865x/*.c
+    - source: middleware/issdk/driverexamples/mpl3115/*.c
+    - source: middleware/issdk/driverexamples/fxlc95000/*.c
+    - source: middleware/issdk/driverexamples/mma9553/*.c
+    - source: middleware/issdk/driverexamples/fxpq3115/*.c
+    - source: middleware/issdk/driverexamples/dp5004/*.c
+    - source: middleware/issdk/driverexamples/demos/*.c
+  component_info:
+    common:
+      description: ISSDK Sensor Driver Examples files
+      manifest_name: issdk_driverexamples
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk sensor driverexamples # This value is temporarily added, please replace it with suitable value and then remove this comment.

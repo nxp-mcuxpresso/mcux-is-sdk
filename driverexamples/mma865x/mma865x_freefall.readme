@@ -1,0 +1,7 @@
+Overview
+========
+The MMA865x Freefall example application demonstrates the use of the MMA865x sensor to detect freefall.
+The example demonstrates configuration of all registers reguired (including FF_MT) to put the sensor into Freefall detection mode and read detection events.
+
+When the sensor detects freefall it sets a Flag.
+The application consistently checks the Flag and when set, displays a message stating Freefall has been detected.

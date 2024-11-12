@@ -1,0 +1,138 @@
+__hierarchy__:
+  tmp_common_issdk_gpio_drivers:
+    section-type: component
+    meta-path:
+      - path : middleware\issdk\issdk_gpio_driver.meta
+
+middleware.issdk.drivers.gpio_kinetis:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_kinetis
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/kinetis
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver_irq.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for Kinetis"
+        user_visible: false
+        manifest_name: gpio_kinetis #IDE will show this as component name
+
+middleware.issdk.drivers.gpio_kinetis_kl27z:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_kinetis_kl27z
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/kinetis
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver_irq_kl27z.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for Kinetis FRDM-KL27Z"
+        user_visible: false
+        manifest_name: gpio_kinetis_kl27z #IDE will show this as component name
+
+middleware.issdk.drivers.gpio_kinetis_ke15z:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_kinetis_ke15z
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/kinetis
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver_irq_ke15z.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for Kinetis FRDM-KE15Z"
+        user_visible: false
+        manifest_name: gpio_kinetis_ke15z #IDE will show this as component name
+
+middleware.issdk.drivers.gpio_kinetis_kw41z:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_kinetis_kw41z
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/kinetis
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver_irq_kw41z.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/kinetis/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for Kinetis FRDM-KW41Z"
+        user_visible: false
+        manifest_name: gpio_kinetis_kw41z #IDE will show this as component name
+
+middleware.issdk.drivers.gpio_lpc:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_lpc
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/lpc
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/lpc/gpio_driver_irq.c
+      - source        : middleware/issdk/drivers/gpio/lpc/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/lpc/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for LPC"
+        user_visible: false
+        manifest_name: gpio_lpc #IDE will show this as component name
+
+middleware.issdk.drivers.gpio_imx:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_imx
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/i.mx
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/i.mx/gpio_driver_irq.c
+      - source        : middleware/issdk/drivers/gpio/i.mx/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/i.mx/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for i.MXRT10xx"
+        user_visible: false
+        manifest_name: gpio_imx #IDE will show this as component name
+
+middleware.issdk.drivers.gpio_imx8:
+  section-type: component
+  meta-name: middleware.issdk.drivers.gpio_imx
+  contents:
+    cc-include:
+      - path: middleware/issdk/drivers/gpio
+      - path: middleware/issdk/drivers/gpio/i.mx
+    virtual-dir       : gpio_driver
+    files:
+      - source        : middleware/issdk/drivers/gpio/i.mx/gpio_driver.c
+      - source        : middleware/issdk/drivers/gpio/i.mx/gpio_driver.h
+      - source        : middleware/issdk/drivers/gpio/Driver_GPIO.h
+    component_info:
+      meta:
+        description: "ISSDK GPIO Driver for i.MX8xx"
+        user_visible: false
+        manifest_name: gpio_imx #IDE will show this as component name
+

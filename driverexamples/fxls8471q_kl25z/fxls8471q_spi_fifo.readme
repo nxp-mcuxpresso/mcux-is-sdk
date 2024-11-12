@@ -1,0 +1,6 @@
+Overview
+========
+The FXLS8741Q FIFO example application demonstrates the use of the FXLS8741Q sensor in Buffered (FIFO) Mode.
+The example demonstrates configuration of all registers reguired to put the sensor in FIFO Mode and read out samples through spi interface.
+
+The application constantly checks for the FIFO status flag and read all the samples from the FIFO when it's ready.

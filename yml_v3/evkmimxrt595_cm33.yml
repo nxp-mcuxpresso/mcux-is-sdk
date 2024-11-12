@@ -1,0 +1,316 @@
+---
+__load__:
+- middleware/issdk/yml_v3/common/sensor_examples_evkmimxrt595.yml
+- bin/generator/records_v3/set/device/MIMXRT595S/index_cm33.yml
+- bin/generator/records_v3/set/board/evkmimxrt595/project_segment_evkmimxrt595_cm33.yml
+- middleware/issdk/yml_v3/agm01.yml
+__variable__:
+  ConfigName_var: ConfigName
+__hierarchy__:
+  tmp_evkmimxrt595_configurations_components:
+    section-type: application
+    dependency:
+    - driver.clock
+    - driver.common
+    - device.${platform_devices_soc_name}_CMSIS
+    - utility.debug_console
+    - utility.assert
+    - component.usart_adapter
+    - driver.power
+    - driver.flexspi
+    - driver.cache_cache64
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.flexcomm_usart
+    - component.lists
+    - driver.flash_config.${board}
+    - device.${platform_devices_soc_name}_startup
+    - driver.flexcomm
+    - driver.lpc_iopctl
+    - driver.lpc_gpio
+    - driver.reset
+    merge_segment:
+    - evkmimxrt595_options
+    - evkmimxrt595_flash_options
+    contents:
+      document:
+        platform_devices_soc_name: MIMXRT595S
+        board: evkmimxrt595
+        board_kit: evkmimxrt595_agm01
+        core: cm33
+        core_id: cm33
+        fpu: SP_FPU
+        dsp: DSP
+        device_id: MIMXRT595S
+        compilers:
+        - armclang
+      configuration:
+        tools:
+          __common__:
+            binary-file: sdk20-app.bin
+            config:
+              __common__:
+                cc-define:
+                  PRINTF_ADVANCED_ENABLE: 1
+                  MIMXRT500_AGM01:
+          iar:
+            project-templates:
+            - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+            - bin/generator/templates/iar/app_cmsisdap/generic_dsp.ewp
+            - bin/generator/templates/iar/general.eww
+          mdk:
+            project-templates:
+            - bin/generator/templates/mdk/app_evkmimxrt595/app_evkmimxrt595.uvoptx
+            - bin/generator/templates/mdk/app_evkmimxrt595/app_evkmimxrt595.uvprojx
+            - bin/generator/templates/mdk/app_evkmimxrt595/JLinkSettings.ini
+          armgcc:
+          mcux:
+            project-templates:
+            - bin/generator/templates/mcux/cproject/mcux_template.xml
+            memory-config:
+              partnumber: MIMXRT595S
+              sections:
+                QSPI_FLASH:
+                  access: RO
+                  type: ExtFlash
+                  addr: '08000000'
+                  size: '04000000'
+                  driver: devices/MIMXRT595S/mcuxpresso/MIMXRT500_SFDP_MXIC_OSPI.cfx
+                SRAM:
+                  access: RW
+                  type: RAM
+                  addr: '20280000'
+                  size: '00280000'
+                USB_RAM:
+                  access: RW
+                  type: RAM
+                  addr: '40140000'
+                  size: '00004000'
+      modules:
+        linker-file:
+          files:
+          - source: devices/MIMXRT595S/iar/MIMXRT595Sxxxx_cm33_ram.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: debug release
+            project_path: MIMXRT595S/iar
+          - source: devices/MIMXRT595S/arm/MIMXRT595Sxxxx_cm33_ram.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: debug release
+            project_path: MIMXRT595S/arm
+          - source: devices/MIMXRT595S/gcc/MIMXRT595Sxxxx_cm33_ram.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: debug release
+            project_path: MIMXRT595S/gcc
+          - source: devices/MIMXRT595S/iar/MIMXRT595Sxxxx_cm33_flash.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: flash_debug flash_release
+            project_path: MIMXRT595S/iar
+          - source: devices/MIMXRT595S/arm/MIMXRT595Sxxxx_cm33_flash.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: flash_debug flash_release
+            project_path: MIMXRT595S/arm
+          - source: devices/MIMXRT595S/gcc/MIMXRT595Sxxxx_cm33_flash.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: flash_debug flash_release
+            project_path: MIMXRT595S/gcc
+fxas21002_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt595_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt595_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxas21002_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt595_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXAS21002 Poll example application demonstrates the use of the FXAS21002
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt595_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxos8700_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt595_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt595_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxos8700_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt595_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt595_agm01
+      brief: The FXOS8700 Poll example application demonstrates the use of the FXOS8700
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt595_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/evkmimxrt595.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt595_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.evkmimxrt595_agm01:
+  section-type: component
+  meta-name: project_template.evkmimxrt595_agm01
+  belong_to: set.kit.evkmimxrt595_agm01.issdk
+  contents:
+    repo_base_path: boards/evkmimxrt595_agm01/project_template
+    project_base_path: evkmimxrt595_agm01/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+    configuration:
+      cc-define:
+        FSL_SDK_DRIVER_QUICK_ACCESS_ENABLE: 1
+        XIP_EXTERNAL_FLASH: 1
+        XIP_BOOT_HEADER_ENABLE: 1
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template evkmimxrt595_agm01
+    description: Board_project_template evkmimxrt595_agm01
+    user_visible: never
+    taxonomy:
+      csub: evkmimxrt595_agm01
+      cvariant: evkmimxrt595_agm01
+      belong_to: board_project_templates
+    display_name: evkmimxrt595_agm01
+  dependency:
+    allOf:
+    - device.${platform_devices_soc_name}_startup
+    - driver.power
+    - driver.flexcomm_usart
+    - driver.common
+    - driver.lpc_iopctl
+    - driver.lpc_gpio
+    - driver.reset
+    - utility.debug_console
+    - driver.clock
+    - driver.flash_config.${board}
+    - component.usart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.flexspi
+    - driver.cache_cache64

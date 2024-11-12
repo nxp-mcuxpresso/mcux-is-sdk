@@ -1,0 +1,386 @@
+---
+__load__:
+- bin/generator/records_v3/set/device/MIMXRT1021/index.yml
+- bin/generator/records_v3/set/board/evkmimxrt1020/project_segment_evkmimxrt1020.yml
+- middleware/issdk/yml_v3/common/sensor_examples_evkmimxrt1020.yml
+- middleware/issdk/yml_v3/agm01.yml
+__hierarchy__:
+  tmp_evkmimxrt1020_configurations_components:
+    section-type: application
+    dependency:
+    - driver.clock
+    - driver.flash
+    - driver.common
+    - device.${platform_devices_soc_name}_CMSIS
+    - utility.debug_console
+    - component.lpuart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.lpuart
+    - component.lists
+    - device.${platform_devices_soc_name}_startup
+    - driver.gpio
+    - driver.iomuxc
+    - utility.assert
+    - driver.igpio
+    - driver.xip_device
+    - driver.xip_board.${board}
+    merge_segment:
+    - evkmimxrt1020_options
+    - evkmimxrt1020_noncacheable_sram_dtc_option
+    contents:
+      document:
+        platform_devices_soc_name: MIMXRT1021
+        board: evkmimxrt1020
+        board_kit: evkmimxrt1020_agm01
+        core: cm7f
+        fpu: DP_FPU
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define:
+                  PRINTF_ADVANCED_ENABLE: 1
+          iar:
+            project-templates:
+            - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+            - bin/generator/templates/iar/app_cmsisdap/generic.ewp
+            - bin/generator/templates/iar/general.eww
+          armgcc:
+            project-templates:
+          mdk:
+            project-templates:
+            - bin/generator/templates/mdk/app_evkmimxrt1020/app_evkmimxrt1020.uvprojx
+            - bin/generator/templates/mdk/app_evkmimxrt1020/app_evkmimxrt1020.uvoptx
+          mcux:
+            memory-config:
+              partnumber: evkmimxrt1020_agm01
+              sections:
+                BOARD_FLASH:
+                  access: RO
+                  type: ExtFlash
+                  addr: '60000000'
+                  size: '00800000'
+                  driver: devices/MIMXRT1021/mcuxpresso/MIMXRT1020-EVK_IS25LP064.cfx
+                SRAM_DTC:
+                  access: RW
+                  type: RAM
+                  addr: '20000000'
+                  size: '00010000'
+                SRAM_ITC:
+                  access: RW
+                  type: RAM
+                  addr: '00000000'
+                  size: '00010000'
+                SRAM_OC:
+                  access: RW
+                  type: RAM
+                  addr: '20200000'
+                  size: '00020000'
+                BOARD_SDRAM:
+                  access: RW
+                  type: RAM
+                  addr: '80000000'
+                  size: 01E00000
+                NCACHE_REGION:
+                  access: RW
+                  type: RAM
+                  addr: 81E00000
+                  size: '00200000'
+      modules:
+        device_configuration_data:
+          required: true
+        linker-file:
+          files:
+          - source: devices/MIMXRT1021/iar/MIMXRT1021xxxxx_ram.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: debug release
+            project_path: MIMXRT1021/iar
+          - source: devices/MIMXRT1021/iar/MIMXRT1021xxxxx_sdram.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: sdram_debug sdram_release
+            project_path: MIMXRT1021/iar
+          - source: devices/MIMXRT1021/iar/MIMXRT1021xxxxx_flexspi_nor.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: flexspi_nor_debug flexspi_nor_release
+            project_path: MIMXRT1021/iar
+          - source: devices/MIMXRT1021/arm/MIMXRT1021xxxxx_ram.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: debug release
+            project_path: MIMXRT1021/arm
+          - source: devices/MIMXRT1021/arm/MIMXRT1021xxxxx_sdram.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: sdram_debug sdram_release
+            project_path: MIMXRT1021/arm
+          - source: devices/MIMXRT1021/arm/MIMXRT1021xxxxx_flexspi_nor.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: flexspi_nor_debug flexspi_nor_release
+            project_path: MIMXRT1021/arm
+          - source: devices/MIMXRT1021/gcc/MIMXRT1021xxxxx_ram.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: debug release
+            project_path: MIMXRT1021/gcc
+          - source: devices/MIMXRT1021/gcc/MIMXRT1021xxxxx_sdram.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: sdram_debug sdram_release
+            project_path: MIMXRT1021/gcc
+          - source: devices/MIMXRT1021/gcc/MIMXRT1021xxxxx_flexspi_nor.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: flexspi_nor_debug flexspi_nor_release
+            project_path: MIMXRT1021/gcc
+        macro-file:
+          files:
+          - source: boards/${board}/evkmimxrt1020_sdram_init.mac
+            attribute: macro-file
+            toolchains: iar
+            targets: sdram_debug sdram_release
+            choose: true
+            package_path: project-root-path/iar
+            project_path: "${board}"
+        initialization_file:
+          files:
+          - source: boards/${board}/evkmimxrt1020_ram.ini
+            attribute: initialization_file
+            toolchains: mdk
+            targets: debug release
+            package_path: project-root-path/mdk
+            project_path: "${board}"
+          - source: boards/${board}/evkmimxrt1020_sdram_init.ini
+            attribute: initialization_file
+            toolchains: mdk
+            targets: sdram_debug sdram_release
+            package_path: project-root-path/mdk
+            project_path: "${board}"
+          - source: boards/${board}/evkmimxrt1020_flexspi_nor.ini
+            attribute: initialization_file
+            toolchains: mdk
+            targets: flexspi_nor_debug flexspi_nor_release
+            package_path: project-root-path/mdk
+            project_path: "${board}"
+        jlink_script_file:
+          files:
+          - source: boards/${board}/evkmimxrt1020_sdram_init.jlinkscript
+            attribute: jlink_script_file
+            toolchains: iar
+            targets: sdram_debug sdram_release
+            package_path: project-root-path
+            project_path: "${board}"
+fxas21002_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt1020_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt1020_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt1020_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxas21002_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt1020_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt1020_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt1020_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxos8700_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt1020_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt1020_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt1020_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxos8700_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.evkmimxrt1020_agm01.issdk
+  contents:
+    document:
+      board_kit: evkmimxrt1020_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/evkmimxrt1020_agm01
+          project_path: board
+        files:
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/evkmimxrt1020.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/frdm_stbc_agm01_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/evkmimxrt1020_agm01/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.evkmimxrt1020_agm01:
+  section-type: component
+  meta-name: project_template.evkmimxrt1020_agm01
+  contents:
+    repo_base_path: boards
+    project_base_path: "./"
+    cc-include:
+    - repo_relative_path: "${board}"
+      package_relative_path: "${board}/project_template"
+      project_relative_path: "${board}"
+      target_file:
+      - dcd.h
+    - repo_relative_path: evkmimxrt1020_agm01/project_template
+      target_file:
+      - board.h
+      - clock_config.h
+      - pin_mux.h
+      - peripherals.h
+    files:
+    - source: "${board}/dcd.h"
+      package_relative_path: "${board}/project_template"
+      project_relative_path: "${board}"
+      attribute: config
+    - source: "${board}/dcd.c"
+      package_relative_path: "${board}/project_template"
+      project_relative_path: "${board}"
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/board.c
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/board.h
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/clock_config.c
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/clock_config.h
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/pin_mux.c
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/pin_mux.h
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/peripherals.c
+      attribute: config
+    - source: evkmimxrt1020_agm01/project_template/peripherals.h
+      attribute: config
+    configuration:
+      cc-define:
+        XIP_EXTERNAL_FLASH: 1
+        XIP_BOOT_HEADER_ENABLE: 1
+  belong_to: set.kit.evkmimxrt1020_agm01.issdk
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template evkmimxrt1020_agm01
+    description: Board_project_template evkmimxrt1020_agm01
+    user_visible: never
+    taxonomy:
+      csub: evkmimxrt1020_agm01
+      cvariant: evkmimxrt1020_agm01
+      belong_to: board_project_templates
+    display_name: evkmimxrt1020_agm01
+  dependency:
+    allOf:
+    - device.MIMXRT1021_startup
+    - driver.lpuart
+    - driver.common
+    - driver.iomuxc
+    - driver.igpio
+    - driver.xip_device
+    - driver.xip_board.${board}
+    - utility.debug_console
+    - driver.clock
+    - component.lpuart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager

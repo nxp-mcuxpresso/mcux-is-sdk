@@ -1,0 +1,480 @@
+% Latex header for doxygen 1.8.11
+\nonstopmode
+\documentclass[twoside,12pt]{book}
+%\documentclass[oneside, 12pt]{book}
+\usepackage{longtable}
+\usepackage{floatrow}
+\DeclareFloatFont{small}{\small}% "scriptsize" is defined by floatrow, "small" not
+\floatsetup[table]{font=small,   objectset=raggedright,  justification=raggedright}
+\newcommand{\+}{\discretionary{\mbox{\scriptsize$\hookleftarrow$}}{}{}}
+%Custom packages - FSL (B46481)
+\usepackage{svg}
+\usepackage{transparent}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{textpos}
+\usepackage{bookmark}
+\usepackage{appendix}
+\usepackage[bookmarksopen,bookmarksdepth=5]{hyperref}
+\usepackage[bottom]{footmisc}
+% Packages required by doxygen
+\usepackage{calc}
+\usepackage{doxygen}
+\usepackage{datetime}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{makeidx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{textcomp}
+\usepackage{verbatim}  %  for multi-line commenting
+\usepackage[table]{xcolor}
+\usepackage{titletoc}
+\usepackage{tocloft}
+\usepackage[nottoc]{tocbibind}
+\usepackage{afterpage}
+\usepackage{titlesec}  %Set up the chapter and section titles for the content pages
+\usepackage{enumitem} % Work with bulleted list
+\usepackage{longtable}
+
+% Font selection
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{amssymb}
+\usepackage{sectsty}
+\renewcommand{\familydefault}{\sfdefault}
+\allsectionsfont{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+\renewcommand{\DoxyLabelFont}{%
+  \fontseries{bc}\selectfont%
+  \color{darkgray}%
+}
+
+%----------------------------------------------
+%--User Changed Variables
+%----------------------------------------------
+% --Supported Device
+% This will change the Supported Device List.
+% To add a new line, use \\ ... This must end with a \\ to make the list looked good
+% There might be an issue when the number of lines exceed 3
+% Change the information between { }
+\def\supportedDevice{}
+% --Document Number
+%--Change the information between { }
+\def\documentNumber{}
+%-----------------------------------------------
+%  NXP/Freescale POPI NDA Footer Information
+%  -- Uncomment the line that is needed ... For Example
+%  -- If you need NXP CONFIDENTIAL, uncomment the line with NXP CONFIDENTIAL at the very beginning and comment all other lines
+%  -- To comment a line or part of line, use the character '%' ....
+
+%\def\footerNDA{\bfseries\textcolor{red}{COMPANY PUBLIC}} % NXP PUBLIC
+%\def\footerNDA{\bfseries\textcolor{red}{COMPANY PROPRIETARY}} % NXP INTERNAL/PROPRIETARY
+\def\footerNDA{\bfseries\textcolor{red}{COMPANY CONFIDENTIAL}} % NXP CONFIDENTIAL
+%\def\footerNDA{\bfseries\textcolor{red}{COMPANY SECRET}} % NXP SECRET
+
+%Do not use the Freescale Footer Information after 25th March, 2016 as per the Rebranding Guidelines.
+%\def\footerNDA{\bfseries\textcolor{red}{Freescale Confidential Proprietary\\ Non-Disclosure Agreement Required}} % Freescale FCP
+%\def\footerNDA{\bfseries\textcolor{red}{Freescale Internal Use Only\\ Non-Disclosure Agreement Required}} % Freescale FIUO
+%\def\footerNDA{\bfseries\textcolor{black}{General Business Information}} % Freescale GBI
+
+%\def\footerNDA{} % No NDA Information
+% -------------------------------------------------------
+% -- End of User Changed Variables
+% ------------------------------------------------
+
+%----------------------------------
+% Table Work
+%----------------------------------
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.0}
+
+%----------------------------------
+% -- End of Table Work
+% ---------------------------------
+
+% Change the date
+\newdateformat{mydate}{\shortmonthname[\THEMONTH] \THEYEAR} 
+
+% Page & text layout
+\usepackage{geometry}
+\geometry{%
+  letterpaper,%
+  top=1.0in,%
+  bottom=1.0in,%
+  left=0.75in,%
+  right=0.75in%
+}
+\tolerance=750
+\hfuzz=30pt
+\hbadness=750
+\setlength{\emergencystretch}{15pt}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+\raggedbottom
+
+\makeatletter
+\renewcommand{\paragraph}{%
+  \@startsection{paragraph}{4}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@parafont%
+  }%
+}
+\renewcommand{\subparagraph}{%
+  \@startsection{subparagraph}{5}{0ex}{-1.0ex}{1.0ex}{%
+    \normalfont\normalsize\bfseries\SS@subparafont%
+  }%
+}
+\@addtoreset{chapter}{part}
+
+\let\titlesec@part\part
+\renewcommand{\part}{\@ifstar\part@star\part@nostar}
+\def\part@star#1{\NR@gettitle{#1}\titlesec@part*{#1}}
+\def\part@nostar{\@ifnextchar[\part@nostar@opt\part@nostar@nopt}
+\def\part@nostar@nopt#1{\NR@gettitle{#1}\titlesec@part{#1}}
+\def\part@nostar@opt[#1]#2{\NR@gettitle{#2}\titlesec@part[#1]{#2}}
+
+\makeatother
+
+% Change the page number to be 3-10
+\usepackage{chappg}
+
+
+% ------------------------------------
+% Headers & footers
+% ------------------------------------
+
+% ------------------------------------
+%  --- Start of Header for ordinary pages
+% ------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE]{{\includegraphics{momentum-bar-right-page.png}\\\nouppercase{\bfseries\leftmark}}}
+\fancyhead[RO]{{\includegraphics{momentum-bar-left-page.png}\\\nouppercase{\bfseries\leftmark}}}
+\fancyhead[CE,CO]{{}}
+\fancyhead[RE,LO]{{}}
+\fancyfoot[LO,RE]{{\vspace*{6pt} NXP Semiconductors}}
+\fancyfoot[CE,CO]{{{\bfseries $projectname} \\ {\footerNDA}}}
+\fancyfoot[RO,LE]{{\vspace*{6pt} \thepage}}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{28pt}
+\renewcommand{\footrule}{{\color{black}%
+\hrule width\headwidth height\footrulewidth \vspace*{-1 em} \vskip-\footrulewidth}}
+
+% ---------------------------------------
+% --  Plain Style is used for the First Page of the Chapter
+% ----------------------------------------
+\fancypagestyle{plain}{%
+  \fancyhead[LE]{{\includegraphics{momentum-bar-right-page.png}}}
+  \fancyhead[RO]{{\includegraphics{momentum-bar-left-page.png}}}
+  \fancyhead[CE,CO]{{}}
+  \fancyhead[RE,LO]{{}}
+  \fancyfoot[LO,RE]{{\vspace*{6pt} NXP Semiconductors}}
+  \fancyfoot[CE,CO]{{{\bfseries $projectname} \\ {\footerNDA}}}
+  \fancyfoot[RO,LE]{{\vspace*{6pt} \thepage}}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+% ------------------------------------
+%  --- Start of Header for First Page
+% ------------------------------------
+\fancypagestyle{titlepage}{%
+   \fancyhf{}
+   \renewcommand{\footrulewidth}{0pt}
+   \renewcommand{\headrulewidth}{8pt}
+   \renewcommand{\headrule}{{\color{lightgray}%
+      \hrule width\headwidth height\headrulewidth \vspace*{7pt} \vskip-\headrulewidth}}
+}
+
+% ------------------------------------
+% --- Start of Header and Footer for ToC Pages
+% ------------------------------------
+\fancypagestyle{tocpage}{%
+   \fancyhf{}
+   \fancyhead[RE]{\includesvg{momentum-bar-right-page}\\{\bfseries{\vspace*{7pt} Page}}}
+   \fancyhead[LO]{{\bfseries{Section number}}}
+   \fancyhead[CE,CO]{\vspace*{2pt}{\vspace*{7pt}\bfseries{Title}}}
+   \fancyhead[LE]{{\bfseries{Section number}}}
+   \fancyhead[RO]{\includesvg{momentum-bar-left-page}\\{\bfseries{\vspace*{7pt} Page}}}
+   \fancyfoot[LO,RE]{{\vspace*{6pt} NXP Semiconductors}}
+   \fancyfoot[CE,CO]{{{\bfseries $projectname} \\ {\footerNDA}}}
+   \fancyfoot[RO,LE]{{\vspace*{6pt} \thepage}}
+   \renewcommand{\footrulewidth}{0.4pt}
+   \renewcommand{\headrulewidth}{0pt}
+%   \setlength{\headheight}{27pt} % fixes \headheight warning
+
+}
+
+\fancypagestyle{lofpage}{%
+   \fancyhf{}
+   \fancyhead[RE]{\includesvg{momentum-bar-right-page}\\{\bfseries{\vspace*{7pt} Page\\Number}}}
+   \fancyhead[LO]{{\bfseries{Figure\\Number}}}
+   \fancyhead[CE,CO]{\vspace*{2pt}{\Large{\bfseries{Figures\\}}}{\vspace*{7pt}\bfseries{Title}}}
+   \fancyhead[LE]{{\bfseries{Figure\\Number}}}
+   \fancyhead[RO]{\includesvg{momentum-bar-left-page}\\{\bfseries{\vspace*{7pt} Page\\Number}}}
+   \fancyfoot[LO,RE]{{\vspace*{6pt} NXP Semiconductors}}
+   \fancyfoot[CE,CO]{{{\bfseries $projectname} \\ {\footerNDA}}}
+   \fancyfoot[RO,LE]{{\vspace*{6pt} \thepage}}
+   \renewcommand{\footrulewidth}{0.4pt}
+   \renewcommand{\headrulewidth}{0pt}
+   \setlength{\headheight}{32pt} % fixes \headheight warning
+}
+
+\fancypagestyle{lotpage}{%
+   \fancyhf{}
+   \fancyhead[RE]{\includesvg{momentum-bar-right-page}\\{\bfseries{\vspace*{7pt} Page\\Number}}}
+   \fancyhead[LO]{{\bfseries{Table\\Number}}}
+   \fancyhead[CE,CO]{\vspace*{2pt}{\Large{\bfseries{Tables\\}}}{\vspace*{7pt}\bfseries{Title}}}
+   \fancyhead[LE]{{\bfseries{Table\\Number}}}
+   \fancyhead[RO]{\includesvg{momentum-bar-left-page}\\{\bfseries{\vspace*{7pt} Page\\Number}}}
+   \fancyfoot[LO,RE]{{\vspace*{6pt} NXP Semiconductors}}
+   \fancyfoot[CE,CO]{{{\bfseries $projectname} \\ {\footerNDA}}}
+   \fancyfoot[RO,LE]{{\vspace*{6pt} \thepage}}
+   \renewcommand{\footrulewidth}{0.4pt}
+   \renewcommand{\headrulewidth}{0pt}
+   \setlength{\headheight}{32pt} % fixes \headheight warning
+}
+
+% ------------------------------------
+% End of Headers & footers
+% ------------------------------------
+
+% -----------------------------------
+% Format Titles
+%     \chapter --> Chapter Format
+%     \section --> Section Format  (e.g.  1.1, 1.2, 1.3)
+%     \subsection --> Subsection Format (e.g. 1.1.1, 1.2.1, 1.3.1)
+%     \subsubsection --> SubSubSection Format (e.g. 1.2.3.4)
+%   
+% -----------------------------------
+
+%Format for titleformat
+% \titleformat  {level} [display | runin] {title format}
+
+\renewcommand \thepart{{Chapter \arabic{part}{\hspace{2.8in}}{\n}}}
+
+\titleclass{\part}{top}
+\titleformat{\part}[display]
+  {\fontfamily{phv}\fontseries{b}\fontsize{18pt}{18pt}\selectfont\color{black}}
+ {\thepart}{-6pt}{\fontfamily{phv}\fontseries{b}\fontsize{18pt}{18pt}\selectfont\color{black}}
+\titlespacing{\part}{0pt}{0.375in}{*0.5}
+
+\addtocontents{toc}{\cftpagenumbersoff{part}}
+
+\renewcommand{\thechapter}{\arabic{part}.\arabic{chapter}}
+\titleclass{\chapter}{straight}
+\titleformat{\chapter}[hang]
+  {\fontfamily{phv}\fontseries{b}\fontsize{15pt}{15pt}\selectfont\color{black}}
+  {\thechapter}{16pt}{\fontfamily{phv}\fontseries{b}\fontsize{15pt}{15pt}\selectfont\color{black}}
+\titlespacing{\chapter}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\section}[runin]
+  {\fontfamily{phv}\fontseries{b}\fontsize{14pt}{14pt}\selectfont\color{red}}
+  {\sectiontitlename\ \thesection}{14pt}{\fontfamily{phv}\fontseries{b}\fontsize{14pt}{14pt}\selectfont\color{red}}
+\titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+\titleformat{\subsection}[runin]
+  {\fontfamily{phv}\fontseries{b}\fontsize{13pt}{13pt}\selectfont\color{blue}}
+  {\subsectiontitlename\ \thesubsection}{12pt}{\fontfamily{phv}\fontseries{b}\fontsize{13pt}{13pt}\selectfont\color{blue}}
+\titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\subsubsection}[runin]
+  {\fontfamily{phv}\fontseries{b}\fontsize{12pt}{12pt}\selectfont\color{blue}}
+  {\subsubsectiontitlename\ \thesubsubsection}{10pt}{\fontfamily{phv}\fontseries{b}\fontsize{12pt}{12pt}\selectfont\color{blue}}
+\titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\paragraph}[runin]
+  {\fontfamily{phv}\fontseries{b}\fontsize{12pt}{12pt}\selectfont\color{blue}}
+  {\paragraphtitlename\ \theparagraph}{10pt}{\fontfamily{phv}\fontseries{b}\fontsize{12pt}{12pt}\selectfont\color{blue}}
+\titlespacing{\paragraph}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\subparagraph}[runin]
+  {\fontfamily{phv}\fontseries{b}\fontsize{12pt}{12pt}\selectfont\color{blue}}
+  {\subparagraphtitlename\ \thesubparagraph}{10pt}{\fontfamily{phv}\fontseries{b}\fontsize{12pt}{12pt}\selectfont\color{blue}}
+\titlespacing{\subparagraph}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+% ------------------------------------
+%  Bullets
+% ------------------------------------
+\setlist{nosep}    %This sets the seperation between items to 0.  Usually the items are double-spaced without this.
+
+% ------------------------------------
+% Freescale Standard Fonts --- Taken from FrameMaker Template
+% ------------------------------------
+\titlefont{\fontfamily{phv}\fontseries{b}\fontsize{18pt}{20pt}\selectfont}
+\partfont{\fontfamily{phv}\fontseries{b}\fontsize{15pt}{17pt}\selectfont}
+\chapterfont{\fontfamily{phv}\fontseries{b}\fontsize{15pt}{17pt}\selectfont}
+\sectionfont{\fontfamily{phv}\fontseries{b}\fontsize{14pt}{16pt}\selectfont}
+\subsectionfont{\fontfamily{phv}\fontseries{b}\fontsize{13pt}{15pt}\selectfont}
+\subsubsectionfont{\fontfamily{phv}\fontseries{b}\fontsize{12pt}{14pt}\selectfont}
+\paragraphfont{\fontfamily{phv}\fontseries{b}\fontsize{12pt}{14pt}\selectfont}
+\subparagraphfont{\fontfamily{phv}\fontseries{b}\fontsize{12pt}{14pt}\selectfont}
+\renewcommand{\familydefault}{\rmdefault}
+
+\renewcommand{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand{\sectionmark}[1]{%
+  \markright{\thesection\ #1}%
+}
+\setlength{\headheight}{21pt} % fixes \headheight warning
+
+
+% Indices & bibliography
+\usepackage{natbib}
+\usepackage{tocloft}
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+%\let\cleardoublepage\clearpage % remove blank page
+\makeindex
+
+% Hyperlinks (required, but should be loaded last)
+\usepackage{ifpdf}
+\ifpdf
+  \usepackage[pdftex,pagebackref=true]{hyperref}
+\else
+  \usepackage[ps2pdf,pagebackref=true]{hyperref}
+\fi
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  unicode%
+}
+
+% Custom commands
+\newcommand{\clearemptydoublepage}{%
+  \newpage{\pagestyle{empty}\cleardoublepage}%
+}
+% -------------------------------------
+% Title Page
+% -------------------------------------
+\newcommand*{\titleBC}{\begingroup % Create the command for including the title page in the document
+\def\CP{\fontfamily{phv}\fontseries{b}\fontsize{28pt}{36pt}\selectfont\color{black} $projectname} % Title
+
+\vspace*{-1.0in}
+\includesvg{momentum-bar-left-page}\\[\baselineskip]
+
+\vspace*{1.5in}
+{\raggedleft {\CP} \\[\baselineskip]} % Print title
+
+\vspace*{0.875in}
+% Tagline or further description
+{\raggedleft {\fontfamily{phv}\fontsize{18pt}{18pt}\fontseries{b}\selectfont\color{black} $projectbrief \\}}
+
+{\raggedleft {\fontfamily{phv}\fontsize{18pt}{18pt}\selectfont\color{black} \supportedDevice}}
+
+\vspace*{1.625in} % Whitespace between the title and the author name
+{\raggedleft {\fontfamily{phv}\fontsize{12pt}{14pt}\selectfont\color{black} \documentNumber \\ $projectnumber \\ \mydate\today \\}}
+\vspace*{2.5in} % Whitespace between the title and the author name
+%\hfill \includesvg[height=1.7cm]{freescale}\\[0.5\baselineskip] % Publisher logo
+%\hfill \includesvg[height=2.8cm]{AirFastColor}\\[0.5\baselineskip] % Publisher logo
+\hfill \includesvg[height=1.5cm]{NXP_color}\\[0.5\baselineskip] % Publisher logo
+\endgroup}
+% ---------------------------------------
+% End of Title Page
+% ---------------------------------------
+
+% ---------------------------------------
+% Table of Contents
+% ---------------------------------------
+\AtBeginDocument{%
+   \renewcommand\contentsname{Contents}}
+\AtBeginDocument{%
+   \renewcommand\listfigurename{Figures}}
+\AtBeginDocument{%
+   \renewcommand\listtablename{Tables}}
+
+\newcommand\tocheading{\bfseries{Paragraph\hspace*{5.51in} Page\\ Number\hfill Title\hfill Number}}
+\newcommand\lofheading{\bfseries{Figure\hspace*{5.75in} Page\\ Number\hfill Title\hfill Number}}
+\newcommand\lotheading{\bfseries{Table\hspace*{5.8in} Page\\ Number\hfill Title\hfill Number}}
+
+\renewcommand{\cftsetpnumwidth}{1.0in}
+
+\renewcommand{\cfttoctitlefont}{\hfil \LARGE\bfseries}
+\renewcommand{\cftaftertoctitle}{ \hfill }
+\renewcommand{\cftaftertoctitleskip}{0.1in}
+\renewcommand{\cftloftitlefont}{\hfil \LARGE\bfseries}
+\renewcommand{\cftafterloftitle}{ \hfill }
+\renewcommand{\cftafterloftitleskip}{0.1in}
+\renewcommand{\cftlottitlefont}{\hfil \LARGE\bfseries}
+\renewcommand{\cftafterlottitle}{ \hfill }
+\renewcommand{\cftafterlottitleskip}{0.1in}
+
+% Indents for the numbers
+\renewcommand{\cftpartindent}{3.1in \linebreak}
+\renewcommand{\cftchapindent}{0.0in}
+\renewcommand{\cftsecindent}{0.0in}
+\renewcommand{\cftsubsecindent}{0.0in}
+\renewcommand{\cftsubsubsecindent}{0.0in}
+\renewcommand{\cftparaindent}{0.0in}
+\renewcommand{\cftsubparaindent}{0.0in}
+\renewcommand{\cftfigindent}{0.0in}
+\renewcommand{\cfttabindent}{0.0in}
+
+
+\renewcommand{\cftchapnumwidth}{1.0in}
+\renewcommand{\cftsecnumwidth}{1.20in}
+\renewcommand{\cftsubsecnumwidth}{1.40in}
+\renewcommand{\cftsubsubsecnumwidth}{1.60in}
+\renewcommand{\cftparanumwidth}{1.70in}
+\renewcommand{\cftsubparanumwidth}{1.80in}
+\renewcommand{\cftfignumwidth}{1.0in}
+\renewcommand{\cfttabnumwidth}{1.0in}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % for chapters
+%Part Working
+
+\renewcommand{\cftbeforepartskip}{0.25in}
+%\renewcommand{\cftpartaftersnumb}{\hfil \par \vspace*{0.25in}}
+
+\cftpagenumbersoff{part}
+
+% Chapter Working
+\renewcommand{\cftbeforepartskip}{0.25in}
+\renewcommand{\cftpartafterpnum}{\hfil \par \vspace*{0.25in}}
+\renewcommand{\cftpartnumwidth}{1.6in \centering}
+
+%\cftpagenumbersoff{chap}
+
+%\renewcommand{\cftpartpresnum}{\hfil Chapter }
+%\renewcommand{\cftpartaftersnum}{\hfil \par \hspace*{-6.6875in} \hfil }
+
+
+%===== C O N T E N T S =====
+
+\begin{document}
+
+% Titlepage & ToC
+\hypersetup{pageanchor=false}
+\pagenumbering{roman}
+\begin{titlepage}
+% \thispagestyle{titlepage}
+\titleBC % This command includes the title page
+\clearemptydoublepage
+\end{titlepage}
+\begin{tocpage}
+\pagestyle{tocpage}
+\clearemptydoublepage
+\tableofcontents
+\clearemptydoublepage
+%\pagestyle{lofpage}
+%\listoffigures
+%\clearemptydoublepage
+%\pagestyle{lotpage}
+%\listoftables
+%\clearemptydoublepage
+\end{tocpage}
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true}
+\pagestyle{fancy}
+
+%Begin contents here
+

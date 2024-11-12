@@ -1,0 +1,1677 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__load__:
+  - middleware/issdk/yml/common/add_issdk_sensors.yml
+  - middleware/issdk/yml/common/add_issdk_interfaces.yml
+  - middleware/issdk/yml/common/add_issdk_gpio_drivers.yml
+  - middleware/issdk/yml/common/add_issdk_utils.yml
+  - middleware/issdk/yml/common/add_issdk_ads.yml
+  - middleware/issdk/yml/common/add_issdk_host.yml
+  - middleware/issdk/yml/common/add_issdk_others.yml
+  - middleware/issdk/yml/common/add_issdk_boardkit.yml
+  - middleware/issdk/yml/common/add_issdk_driverexamples.yml
+  - middleware/issdk/yml/common/add_issdk_tools.yml
+  - middleware/issdk/yml/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_set:
+    section-type: application
+    configuration:
+      tools:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--misra2004"
+              - "--vla"
+    modules:
+      boardset:
+        required: true
+        virtual-dir: board
+        files:
+        - source        : boards/${board}/clock_config.c
+          release-dir   : project-root-path
+        - source        : boards/${board}/clock_config.h
+          release-dir   : project-root-path
+        - source        : boards/${board}/board.c
+          release-dir   : project-root-path
+        - source        : boards/${board}/board.h
+          release-dir   : project-root-path
+      readme:
+        files:
+        - source: "../readme.txt"
+          rootdir: project-path
+          virtual-dir: doc
+          toolchains: iar mdk mcux
+############################# FRDMKL27-ONBOARD kit projects ###########################
+################################## mma845x_fifo ##############################
+mma845x_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-ONBOARD-MMA845x-FIFO.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_fifo/
+    document:
+      category: issdk/sensors
+      name: mma845x_fifo
+      readme:
+      - boards/${board}/issdk_examples/sensors/mma8451q/mma845x_fifo/readme.txt
+      - middleware/issdk/driverexamples/mma845x/mma845x_fifo.readme
+    outdir: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_fifo
+  modules:
+    mma845x_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma845x/mma845x_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma845x
+################################## mma845x_poll ##############################
+mma845x_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-ONBOARD-MMA845x-POLL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_poll/
+    document:
+      category: issdk/sensors
+      name: mma845x_poll
+      readme:
+      - boards/${board}/issdk_examples/sensors/mma8451q/mma845x_poll/readme.txt
+      - middleware/issdk/driverexamples/mma845x/mma845x_poll.readme
+    outdir: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_poll
+  modules:
+    mma845x_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma845x/mma845x_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma845x
+################################## mma845x_interrupt ##############################
+mma845x_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-ONBOARD-MMA845x-INTERRUPT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_interrupt/
+    document:
+      category: issdk/sensors
+      name: mma845x_interrupt
+      readme:
+      - boards/${board}/issdk_examples/sensors/mma8451q/mma845x_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mma845x/mma845x_interrupt.readme
+    outdir: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_interrupt
+  modules:
+    mma845x_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma845x/mma845x_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mma8451q/mma845x_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma845x
+################################## mag3110_normal_onboard ##############################
+mag3110_normal_onboard:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-ONBOARD-MAG3110-NORMAL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/mag3110/mag3110_normal/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_onboard
+      readme:
+      - boards/${board}/issdk_examples/sensors/mag3110/mag3110_normal/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal.readme
+    outdir: boards/${board}/issdk_examples/sensors/mag3110/mag3110_normal
+  modules:
+    mag3110_normal_onboard_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_oneshot_onboard ##############################
+mag3110_oneshot_onboard:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-ONBOARD-MAG3110-ONESHOT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/mag3110/mag3110_oneshot/
+    document:
+      category: issdk/sensors
+      name: mag3110_oneshot_onboard
+      readme:
+      - boards/${board}/issdk_examples/sensors/mag3110/mag3110_oneshot/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_oneshot.readme
+    outdir: boards/${board}/issdk_examples/sensors/mag3110/mag3110_oneshot
+  modules:
+    mag3110_oneshot_onboard_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################ FRDMKL27-B3115 kit projects ############################
+################################## fxpq3115_altitude ##############################
+fxpq3115_altitude:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-B3115-ALTITUDE.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_b3115/
+            - path: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_altitude/
+    document:
+      category: issdk/sensors
+      name: fxpq3115_altitude
+      readme:
+      - boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_altitude/readme.txt
+      - middleware/issdk/driverexamples/fxpq3115/fxpq3115_altitude.readme
+    outdir: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_altitude
+  modules:
+    fxpq3115_altitude_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxpq3115/fxpq3115_altitude.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_altitude/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_altitude/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxpq3115
+################################## fxpq3115_fifo ##############################
+fxpq3115_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-B3115-FIFO.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_b3115/
+            - path: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_fifo/
+    document:
+      category: issdk/sensors
+      name: fxpq3115_fifo
+      readme:
+      - boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxpq3115/fxpq3115_fifo.readme
+    outdir: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_fifo
+  modules:
+    fxpq3115_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxpq3115/fxpq3115_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxpq3115
+################################## fxpq3115_normal ##############################
+fxpq3115_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-B3115-NORMAL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_b3115/
+            - path: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_normal/
+    document:
+      category: issdk/sensors
+      name: fxpq3115_normal
+      readme:
+      - boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_normal/readme.txt
+      - middleware/issdk/driverexamples/fxpq3115/fxpq3115_normal.readme
+    outdir: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_normal
+  modules:
+    fxpq3115_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxpq3115/fxpq3115_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxpq3115
+################################## fxpq3115_oneshot ##############################
+fxpq3115_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-B3115-ONESHOT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_b3115/
+            - path: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_oneshot/
+    document:
+      category: issdk/sensors
+      name: fxpq3115_oneshot
+      readme:
+      - boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_oneshot/readme.txt
+      - middleware/issdk/driverexamples/fxpq3115/fxpq3115_oneshot.readme
+    outdir: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_oneshot
+  modules:
+    fxpq3115_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxpq3115/fxpq3115_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_b3115/issdk_examples/sensors/fxpq3115/fxpq3115_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxpq3115
+
+################################ FRDMKL27-AGMP03 kit projects #############################
+################################## fxls8962_freefall ##############################
+fxls8962_freefall:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXLS8962-FREEFALL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/
+    document:
+      category: issdk/sensors
+      name: fxls8962_freefall
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/readme.txt
+      - middleware/issdk/driverexamples/fxls8962/fxls8962_freefall.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall
+  modules:
+    fxls8962_freefall_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_freefall.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_freefall/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fxls8962_normal ##############################
+fxls8962_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXLS8962-NORMAL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/
+    document:
+      category: issdk/sensors
+      name: fxls8962_normal
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/readme.txt
+      - middleware/issdk/driverexamples/fxls8962/fxls8962_normal.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal
+  modules:
+    fxls8962_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fxls8962_interrupt ##############################
+fxls8962_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXLS8962-INTERRUPT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxls8962_interrupt
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxls8962/fxls8962_interrupt.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt
+  modules:
+    fxls8962_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fxls8962_normal_spi ##############################
+fxls8962_normal_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXLS8962-NORMAL-SPI.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/
+    document:
+      category: issdk/sensors
+      name: fxls8962_normal_spi
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/readme.txt
+      - middleware/issdk/driverexamples/fxls8962/fxls8962_normal_spi.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi
+  modules:
+    fxls8962_normal_spi_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8962/fxls8962_normal_spi.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxls8962/fxls8962_normal_spi/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962
+################################## fifo_fxas21002 ##############################
+fifo_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXAS21002-FIFO.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fifo_fxas21002
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fifo_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## interrupt_fxas21002 ##############################
+interrupt_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXAS21002-INTERRUPT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/
+    document:
+      category: issdk/sensors
+      name: interrupt_fxas21002
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    interrupt_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## poll_fxas21002 ##############################
+poll_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXAS21002-POLL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: poll_fxas21002
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_poll.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    poll_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll_spi ##############################
+fxas21002_poll_spi:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-FXAS21002-POLL-SPI.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll_spi
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_poll_spi.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi
+  modules:
+    fxas21002_poll_spi_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll_spi.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/fxas21002/fxas21002_poll_spi/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## mag3110_normal ##############################
+mag3110_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MAG3110-NORMAL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal
+  modules:
+    mag3110_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_normal_interrupt ##############################
+mag3110_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MAG3110-NORMAL-INTERRUPT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_interrupt
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt
+  modules:
+    mag3110_normal_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_oneshot ##############################
+mag3110_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MAG3110-ONESHOT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/
+    document:
+      category: issdk/sensors
+      name: mag3110_oneshot
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_oneshot.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot
+  modules:
+    mag3110_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mpl3115_altitude ##############################
+mpl3115_altitude:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MPL3115-ALTITUDE.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/
+    document:
+      category: issdk/sensors
+      name: mpl3115_altitude
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_altitude.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude
+  modules:
+    mpl3115_altitude_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_altitude.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo ##############################
+mpl3115_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MPL3115-FIFO.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_fifo.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo
+  modules:
+    mpl3115_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo_interrupt ##############################
+mpl3115_fifo_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MPL3115-FIFO-INTERRUPT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_interrupt
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_fifo_interrupt.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt
+  modules:
+    mpl3115_fifo_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_normal ##############################
+mpl3115_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MPL3115-NORMAL.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_normal.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal
+  modules:
+    mpl3115_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_normal_interrupt ##############################
+mpl3115_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MPL3115-NORMAL-INTERRUPT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal_interrupt
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_normal_interrupt.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt
+  modules:
+    mpl3115_normal_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_oneshot ##############################
+mpl3115_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-MPL3115-ONESHOT.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/
+    document:
+      category: issdk/sensors
+      name: mpl3115_oneshot
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_oneshot.readme
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot
+  modules:
+    mpl3115_oneshot_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+
+################# STB-CE Host I/O Demo Project Templates #######################
+################################## hostdemo_kl27z ##############################
+hostdemo_kl27z:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-ONBOARD-HOST-DEMO.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}/issdk_examples/
+            - path: boards/${board}/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_kl27z
+      readme:
+      - boards/${board}/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_kl27z_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host
+################################## hostdemo_b3115 ##############################
+hostdemo_b3115:
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-B3115-HOST-DEMO.srec
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_b3115/
+            - path: boards/${board}_b3115/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_b3115
+      readme:
+      - boards/${board}_b3115/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_b3115/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_b3115_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_b3115/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_b3115/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host
+################################## hostdemo_agmp03 ##############################
+hostdemo_agmp03:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KL27Z-AGMP03-HOST-DEMO.srec
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agmp03/
+            - path: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_agmp03
+      readme:
+      - boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agmp03_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agmp03/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpuart
+    driver.gpio
+    driver.i2c
+    driver.spi
+    driver.lpsci
+    driver.lptmr
+    driver.smc
+    driver.i2c_dma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.dma
+    driver.spi_dma
+    driver.cmsis_spi
+    driver.lpsci_dma
+    driver.cmsis_lpsci
+    driver.lpuart_dma
+    driver.cmsis_lpuart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_kl27z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host

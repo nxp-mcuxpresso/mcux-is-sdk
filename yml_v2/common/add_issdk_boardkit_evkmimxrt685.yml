@@ -1,0 +1,22 @@
+---
+middleware.issdk.sensor.boardkit.evkmimxrt685:
+  section-type: component
+  meta-name: middleware.issdk.sensor.boardkit.evkmimxrt685
+  __requires__:
+  - middleware.issdk.support.EVK-MIMXRT685-AGM01
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: issdk_boardkit
+    files:
+    - source: boardkit/evk-mimxrt685/*.*
+      project_relative_path: "./"
+    - source: boardkit/evk-mimxrt685/frdm-stbc-agm01/*.*
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Board-Kit files for RT685 kit
+      manifest_name: issdk_boardkit_evkmimxrt685
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk sensor boardkit evkmimxrt685

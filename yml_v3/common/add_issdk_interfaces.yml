@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+middleware.issdk.sensor.interface.common:
+  section-type: component
+  meta-name: middleware.issdk.sensor.interface.common
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: interfaces
+    cc-include:
+    - repo_relative_path: sensors
+      project_relative_path: "./"
+    files:
+    - source: sensors/register_io_i2c.c
+      project_relative_path: "./"
+    - source: sensors/register_io_spi.c
+      project_relative_path: "./"
+    - source: sensors/sensor_io_spi.c
+      project_relative_path: "./"
+    - source: sensors/sensor_io_i2c.c
+      project_relative_path: "./"
+    - source: sensors/register_io_i2c.h
+      project_relative_path: "./"
+    - source: sensors/register_io_spi.h
+      project_relative_path: "./"
+    - source: sensors/sensor_io_spi.h
+      project_relative_path: "./"
+    - source: sensors/sensor_io_i2c.h
+      project_relative_path: "./"
+    - source: sensors/sensor_drv.h
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  section_info:
+    description: ISSDK Sensor Interface Common
+    version: 1.7.0
+    full_name: Middleware issdk sensor interface common
+    type: middleware
+    user_visible: never
+    display_name: issdk_interfaces
+    taxonomy:
+      belong_to: issdk_driver
+      csub: issdk_interfaces
+  dependency:
+    allOf:
+    - CMSIS_Driver_Include.I2C
+    - CMSIS_Driver_Include.SPI

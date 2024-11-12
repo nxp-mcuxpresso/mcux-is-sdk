@@ -1,0 +1,2306 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__load__:
+  - middleware/issdk/yml/common/add_issdk_sensors.yml
+  - middleware/issdk/yml/common/add_issdk_interfaces.yml
+  - middleware/issdk/yml/common/add_issdk_gpio_drivers.yml
+  - middleware/issdk/yml/common/add_issdk_utils.yml
+  - middleware/issdk/yml/common/add_issdk_ads.yml
+  - middleware/issdk/yml/common/add_issdk_host.yml
+  - middleware/issdk/yml/common/add_issdk_others.yml
+  - middleware/issdk/yml/common/add_issdk_boardkit.yml
+  - middleware/issdk/yml/common/add_issdk_driverexamples.yml
+  - middleware/issdk/yml/common/add_issdk_tools.yml
+  - middleware/issdk/yml/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_set:
+    section-type: application
+    configuration:
+      tools:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--misra2004"
+              - "--vla"
+    modules:
+      boardset:
+        required: true
+        virtual-dir: board
+        files:
+        - source        : boards/${board}/clock_config.c
+          release-dir   : project-root-path
+        - source        : boards/${board}/clock_config.h
+          release-dir   : project-root-path
+        - source        : boards/${board}/board.c
+          release-dir   : project-root-path
+        - source        : boards/${board}/board.h
+          release-dir   : project-root-path
+      readme:
+        files:
+        - source: "../readme.txt"
+          rootdir: project-path
+          virtual-dir: doc
+          toolchains: iar mdk mcux
+################################ FRDM-K64F-AGM01 kit projects #############################
+################################## fxas21002_fifo ##############################
+fxas21002_fifo:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-FXAS21002-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.readme
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fxas21002_fifo_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_interrupt ##############################
+fxas21002_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-FXAS21002-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxas21002_interrupt
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.readme
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    fxas21002_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll ##############################
+fxas21002_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-FXAS21002-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_poll.readme
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    fxas21002_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxos8700_fifo ##############################
+fxos8700_fifo:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-FXOS8700-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.readme
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+  modules:
+    k22f_agm01_fxos8700_fifo_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_interrupt ##############################
+fxos8700_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-FXOS8700-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxos8700_interrupt
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.readme
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+  modules:
+    fxos8700_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_poll ##############################
+fxos8700_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-FXOS8700-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+      - middleware/issdk/driverexamples/fxos8700/fxos8700_poll.readme
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+  modules:
+    fxos8700_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################ FRDM-K64F-AGM04 kit projects #############################
+################################## fifo_fxas21002 ##############################
+fifo_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-FXAS21002-FIFO.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fifo_fxas21002
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fifo_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## interrupt_fxas21002 ##############################
+interrupt_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-FXAS21002-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_interrupt/
+    document:
+      category: issdk/sensors
+      name: interrupt_fxas21002
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    interrupt_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## poll_fxas21002 ##############################
+poll_fxas21002:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-FXAS21002-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: poll_fxas21002
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_poll.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    poll_fxas21002_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## mag3110_normal ##############################
+mag3110_normal:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MAG3110-NORMAL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal
+  modules:
+    mag3110_normal_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_normal_interrupt ##############################
+mag3110_normal_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MAG3110-NORMAL-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_interrupt
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal_interrupt
+  modules:
+    mag3110_normal_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_oneshot ##############################
+mag3110_oneshot:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MAG3110-ONESHOT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_oneshot/
+    document:
+      category: issdk/sensors
+      name: mag3110_oneshot
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_oneshot/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_oneshot.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_oneshot
+  modules:
+    mag3110_oneshot_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mma865x_fifo ##############################
+mma865x_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MMA865X-FIFO.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_fifo/
+    document:
+      category: issdk/sensors
+      name: mma865x_fifo
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_fifo/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_fifo.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_fifo
+  modules:
+    mma865x_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma865x_freefall ##############################
+mma865x_freefall:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MMA865X-FREEFALL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_freefall/
+    document:
+      category: issdk/sensors
+      name: mma865x_freefall
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_freefall/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_freefall.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_freefall
+  modules:
+    mma865x_freefall_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_freefall.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_freefall/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_freefall/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma865x_interrupt ##############################
+mma865x_interrupt:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MMA865X-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_interrupt/
+    document:
+      category: issdk/sensors
+      name: mma865x_interrupt
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_interrupt.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_interrupt
+  modules:
+    mma865x_interrupt_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma865x_poll ##############################
+mma865x_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-MMA865X-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_poll/
+    document:
+      category: issdk/sensors
+      name: mma865x_poll
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_poll/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_poll.readme
+    outdir: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_poll
+  modules:
+    mma865x_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/mma865x/mma865x_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################ FRDM-K64F with MULT2B kit projects #############################
+################################## fxas21002_fifo_mult2b ##############################
+fxas21002_fifo_mult2b:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXAS21002-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fxas21002_fifo_mult2b_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_interrupt_mult2b ##############################
+fxas21002_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXAS21002-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxas21002_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_interrupt
+  modules:
+    fxas21002_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll_mult2b ##############################
+fxas21002_poll_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXAS21002-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+      - middleware/issdk/driverexamples/fxas21002/fxas21002_poll.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    fxas21002_poll_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxos8700_fifo_mult2b ##############################
+fxos8700_fifo_mult2b:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXOS8700-FIFO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_fifo/
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_fifo
+  modules:
+    k22f_mult2b_fxos8700_fifo_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_interrupt_mult2b ##############################
+fxos8700_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXOS8700-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxos8700_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_interrupt
+  modules:
+    fxos8700_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_poll_mult2b ##############################
+fxos8700_poll_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXOS8700-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_poll/
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+      - middleware/issdk/driverexamples/fxos8700/fxos8700_poll.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_poll
+  modules:
+    fxos8700_poll_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## mag3110_normal_mult2b ##############################
+mag3110_normal_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MAG3110-NORMAL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal
+  modules:
+    mag3110_normal_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_normal_interrupt_mult2b ##############################
+mag3110_normal_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MAG3110-NORMAL-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mag3110_normal_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal_interrupt
+  modules:
+    mag3110_normal_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_normal_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mag3110_oneshot_mult2b ##############################
+mag3110_oneshot_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MAG3110-ONESHOT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_oneshot/
+    document:
+      category: issdk/sensors
+      name: mag3110_oneshot_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_oneshot/readme.txt
+      - middleware/issdk/driverexamples/mag3110/mag3110_oneshot.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_oneshot
+  modules:
+    mag3110_oneshot_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mag3110/mag3110_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mag3110/mag3110_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mag3110
+################################## mpl3115_altitude_mult2b ##############################
+mpl3115_altitude_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MPL3115-ALTITUDE.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_altitude/
+    document:
+      category: issdk/sensors
+      name: mpl3115_altitude_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_altitude/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_altitude.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_altitude
+  modules:
+    mpl3115_altitude_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_altitude.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_altitude/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo_mult2b ##############################
+mpl3115_fifo_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MPL3115-FIFO.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_fifo.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo
+  modules:
+    mpl3115_fifo_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_fifo_interrupt_mult2b ##############################
+mpl3115_fifo_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MPL3115-FIFO-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpl3115_fifo_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_fifo_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt
+  modules:
+    mpl3115_fifo_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_fifo_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_fifo_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_normal_mult2b ##############################
+mpl3115_normal_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MPL3115-NORMAL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal/
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_normal.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal
+  modules:
+    mpl3115_normal_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_normal_interrupt_mult2b ##############################
+mpl3115_normal_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MPL3115-NORMAL-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpl3115_normal_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_normal_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt
+  modules:
+    mpl3115_normal_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_normal_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_normal_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## mpl3115_oneshot_mult2b ##############################
+mpl3115_oneshot_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MPL3115-ONESHOT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_oneshot/
+    document:
+      category: issdk/sensors
+      name: mpl3115_oneshot_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_oneshot/readme.txt
+      - middleware/issdk/driverexamples/mpl3115/mpl3115_oneshot.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_oneshot
+  modules:
+    mpl3115_oneshot_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mpl3115/mpl3115_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mpl3115/mpl3115_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mpl3115
+################################## fxls8471q_spi_fifo_mult2b ##############################
+fxls8471q_spi_fifo_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXLS8471Q-SPI-FIFO.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_fifo/
+    document:
+      category: issdk/sensors
+      name: fxls8471q_spi_fifo_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_fifo/readme.txt
+      - middleware/issdk/driverexamples/fxls8471q/fxls8471q_spi_fifo.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_fifo
+  modules:
+    fxls8471q_spi_fifo_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8471q/fxls8471q_spi_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8471q
+################################## fxls8471q_spi_interrupt_mult2b ##############################
+fxls8471q_spi_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXLS8471Q-SPI-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_interrupt/
+    document:
+      category: issdk/sensors
+      name: fxls8471q_spi_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_interrupt/readme.txt
+      - middleware/issdk/driverexamples/fxls8471q/fxls8471q_spi_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_interrupt
+  modules:
+    fxls8471q_spi_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8471q/fxls8471q_spi_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8471q
+################################## fxls8471q_spi_poll_mult2b ##############################
+fxls8471q_spi_poll_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-FXLS8471Q-SPI-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_poll/
+    document:
+      category: issdk/sensors
+      name: fxls8471q_spi_poll_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_poll/readme.txt
+      - middleware/issdk/driverexamples/fxls8471q/fxls8471q_spi_poll.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_poll
+  modules:
+    fxls8471q_spi_poll_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxls8471q/fxls8471q_spi_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/fxls8471q/fxls8471q_spi_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8471q
+################################## mma865x_fifo_mult2b ##############################
+mma865x_fifo_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MMA865X-FIFO.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_fifo/
+    document:
+      category: issdk/sensors
+      name: mma865x_fifo_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_fifo/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_fifo.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_fifo
+  modules:
+    mma865x_fifo_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_fifo/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma865x_freefall_mult2b ##############################
+mma865x_freefall_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MMA865X-FREEFALL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_freefall/
+    document:
+      category: issdk/sensors
+      name: mma865x_freefall_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_freefall/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_freefall.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_freefall
+  modules:
+    mma865x_freefall_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_freefall.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_freefall/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_freefall/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma865x_interrupt_mult2b ##############################
+mma865x_interrupt_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MMA865X-INTERRUPT.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_interrupt/
+    document:
+      category: issdk/sensors
+      name: mma865x_interrupt_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_interrupt.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_interrupt
+  modules:
+    mma865x_interrupt_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma865x_poll_mult2b ##############################
+mma865x_poll_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MMA865X-POLL.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_poll/
+    document:
+      category: issdk/sensors
+      name: mma865x_poll_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_poll/readme.txt
+      - middleware/issdk/driverexamples/mma865x/mma865x_poll.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_poll
+  modules:
+    mma865x_poll_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma865x/mma865x_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma865x/mma865x_poll/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.pit
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma865x
+################################## mma9553_pedometer_i2c_mult2b ##############################
+mma9553_pedometer_i2c_mult2b:
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-MMA9553-PEDOMETER-I2C.bin
+        libraries:
+        include:
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/mma9553/mma9553_pedometer_i2c/
+    document:
+      category: issdk/sensors
+      name: mma9553_pedometer_i2c_mult2b
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/mma9553/mma9553_pedometer_i2c/readme.txt
+      - middleware/issdk/driverexamples/mma9553/mma9553_pedometer_i2c.readme
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/mma9553/mma9553_pedometer_i2c
+  modules:
+    mma9553_pedometer_i2c_mult2b_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/mma9553/mma9553_pedometer_i2c.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma9553/mma9553_pedometer_i2c/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/mma9553/mma9553_pedometer_i2c/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.lptmr
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.mma9553
+################# STB-CE Host I/O Demo Project Templates #######################
+####################### hostdemo_agm01 ##########################
+hostdemo_agm01:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM01-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_agm01
+      readme:
+      - boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agm01_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host
+####################### hostdemo_agm04 ##########################
+hostdemo_agm04:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-AGM04-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm04/
+            - path: boards/${board}_agm04/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_agm04
+      readme:
+      - boards/${board}_agm04/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_agm04/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_agm04_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm04/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm04/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host
+####################### hostdemo_mult2b ##########################
+hostdemo_mult2b:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: K64F-MULT2B-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_mult2b/
+            - path: boards/${board}_mult2b/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: host_demo_template
+      readme:
+      - boards/${board}_mult2b/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_mult2b/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_mult2b_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_mult2b/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_mult2b/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.uart
+    driver.uart_edma
+    driver.cmsis_uart
+    driver.gpio
+    driver.i2c
+    driver.i2c_edma
+    driver.cmsis_i2c
+    driver.dmamux
+    driver.edma
+    driver.dspi
+    driver.dspi_edma
+    driver.cmsis_dspi
+    driver.smc
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host

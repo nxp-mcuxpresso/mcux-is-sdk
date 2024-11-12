@@ -1,0 +1,72 @@
+
+% Backmatter
+
+\begin{titlepage}
+\topmargin -0.5in
+
+\newcolumntype{A}{ >{\centering\arraybackslash} p{8cm} }
+\newcolumntype{B}{ >{\centering\arraybackslash} m{2.3cm} }
+\newcolumntype{C}{ >{\centering\arraybackslash} m{1cm} }
+\newcolumntype{D}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{E}{ >{\centering\arraybackslash} m{1cm} }
+
+\newcolumntype{P}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{Q}{ >{\centering\arraybackslash} m{3cm} }
+\newcolumntype{R}{ >{\centering\arraybackslash} m{2cm} }
+\newcolumntype{S}{ >{\centering\arraybackslash} m{2.5cm} }
+
+\vspace*{-2.0in} 
+%For increasing the Top Margin. Decrease the input between {} to increase the margin and vice versa.
+%If updated, also update textblocks for Logos
+
+\begin{tabular}{ A B C D E }
+\vbox to 60pt {\vfil
+\hbox to 3cm{}%
+\vfil
+}
+&\hspace{0cm}
+%\centering{\includegraphics[width=2.2cm]{energy.pdf}}
+&\hspace{0cm}
+%\centering{\includesvg[height=1.1cm]{safeassure}}
+&\hspace{0.5cm}
+&\hspace{0cm}
+%\centering{\includesvg[height=0.7cm]{RoHS_Color}}
+%\centering{\includesvg[height=0.7cm]{RoHS_bw}}
+\\
+\end{tabular}
+\vspace*{-0.2in}
+
+\begin{group}
+\begin{left}%
+\setlength{\tabcolsep}{28pt}
+\hskip-1.0cm
+\begin{tabular}{p{5cm} p{10.05cm}}
+\footnotesize{\input{contact}}&\footnotesize{\input{copyright_attribution}}\\
+\end{tabular}
+\end{left}
+\begin{textblock}{3}(9.5,1.45)
+\hfill
+\centering{\includesvg[height=1.25cm]{NXP_color}} %Back page logo - NXP
+\end{textblock}
+\end{group}
+
+\begin{textblock}{3}(0.01,-0.0)
+\begin{tabular}{ P Q R S }
+\hspace{0cm}
+%\centering{\includesvg[height=0.7cm]{ARM}}
+&\hspace{0.7cm}
+%\centering{\includesvg[height=1.4cm]{ARMSquare}}
+&\hspace{0cm}
+%\centering{\includesvg[height=1.5cm]{ARMBlack}}
+%\centering{\includesvg[height=0.25cm]{autosar}}
+&\hspace{0cm}
+%\centering{\includesvg[height=1.7cm]{builtonpower}}
+%\centering{\includesvg[height=1.6cm]{power}}
+%\centering{\includesvg[height=1.7cm]{powersource}}
+\\
+\end{tabular}
+\end{textblock}
+
+
+\end{titlepage}
+\end{document}

@@ -1,0 +1,15 @@
+---
+container.middleware.issdk.sensor.boardkit.evkcmimxrt1060:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: boardkit/evkc-mimxrt1060/*.*
+      project_relative_path: "./"
+    - source: boardkit/evkc-mimxrt1060/frdm-stbi-a8974/*.*
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - evkcmimxrt1060_a8974

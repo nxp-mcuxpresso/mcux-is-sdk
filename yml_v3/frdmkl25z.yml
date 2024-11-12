@@ -1,0 +1,889 @@
+---
+__load__:
+- bin/generator/records_v3/set/device/MKL25Z4/index.yml
+- bin/generator/records_v3/set/board/frdmkl25z/project_segment_frdmkl25z.yml
+- middleware/issdk/yml_v3/common/sensor_examples_frdmkl25z.yml
+- middleware/issdk/yml_v3/common/algorithm_examples_frdmkl25z.yml
+- middleware/issdk/yml_v3/a8491.yml
+- middleware/issdk/yml_v3/a8471.yml
+- middleware/issdk/yml_v3/p3115.yml
+__hierarchy__:
+  tmp_frdmkl25z_configurations_components:
+    section-type: application
+    dependency:
+    - driver.clock
+    - driver.flash
+    - driver.common
+    - device.${platform_devices_soc_name}_CMSIS
+    - device.${platform_devices_soc_name}_startup
+    - driver.lpsci
+    - driver.uart
+    - driver.port
+    - driver.smc
+    - utility.debug_console
+    - component.lpsci_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - component.lists
+    - driver.gpio
+    - utility.assert
+    merge_segment:
+    - frdmkl25z_options
+    contents:
+      document:
+        platform_devices_soc_name: MKL25Z4
+        board: frdmkl25z
+        core: cm0p
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define:
+                  FRDM_KL25Z:
+                  FREEDOM:
+                  PRINTF_ADVANCED_ENABLE:
+          iar:
+            project-templates:
+            - bin/generator/templates/iar/app_peswd/generic.ewd
+            - bin/generator/templates/iar/app_peswd/generic.ewp
+            - bin/generator/templates/iar/app_peswd/generic.dni
+            - bin/generator/templates/iar/general.eww
+          mdk:
+            project-templates:
+            - bin/generator/templates/mdk/app_frdmkl25z/frdmkl25z.uvprojx
+            - bin/generator/templates/mdk/app_frdmkl25z/pemicro_connection_settings.ini
+          armgcc:
+      modules:
+        linker-file:
+          files:
+          - source: devices/MKL25Z4/iar/MKL25Z128xxx4_flash.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: debug release
+            project_path: MKL25Z4/iar
+          - source: devices/MKL25Z4/arm/MKL25Z128xxx4_flash.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: debug release
+            project_path: MKL25Z4/arm
+          - source: devices/MKL25Z4/gcc/MKL25Z128xxx4_flash.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: debug release
+            project_path: MKL25Z4/gcc
+mma845x_fifo:
+  section-type: application
+  required: true
+  belong_to: set.board.${board}
+  contents:
+    document:
+      brief: The MMA845X FIFO example application demonstrates the use of the MMA845X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z/issdk_examples
+          project_path: board
+        files:
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mma845x_poll:
+  section-type: application
+  required: true
+  belong_to: set.board.${board}
+  contents:
+    document:
+      brief: The MMA845X FIFO example application demonstrates the use of the MMA845X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z/issdk_examples
+          project_path: board
+        files:
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mma845x_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.board.${board}
+  contents:
+    document:
+      brief: The MMA845X FIFO example application demonstrates the use of the MMA845X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z/issdk_examples
+          project_path: board
+        files:
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+hostdemo_kl25z:
+  section-type: application
+  required: true
+  belong_to: set.board.${board}
+  contents:
+    document:
+      brief: The KL25Z FIFO example application demonstrates the use of the KL25Z
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z/issdk_examples
+          project_path: board
+        files:
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+pedometer_mma8451:
+  section-type: application
+  required: true
+  belong_to: set.board.${board}
+  contents:
+    document:
+      brief: The MMA8451 FIFO example application demonstrates the use of the MMA8451
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    configuration:
+      tools:
+        __remove__:
+          mdk:
+          armgcc:
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z/issdk_examples
+          project_path: board
+        files:
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z/issdk_examples/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mma8491q:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_a8491.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_a8491
+      brief: The MMA8491Q FIFO example application demonstrates the use of the MMA8491Q
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_a8491
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_a8491/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/frdm_stbc_a8491_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+hostdemo_a8491:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_a8491.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_a8491
+      brief: The A8491 FIFO example application demonstrates the use of the A8491
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_a8491
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_a8491/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/frdm_stbc_a8491_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8491/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8471q_spi_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_a8471.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_a8471
+      brief: The FXAS8471Q FIFO example application demonstrates the use of the FXAS8471Q
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_a8471
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_stbc_a8471_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8471q_spi_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_a8471.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_a8471
+      brief: The FXAS8471Q FIFO example application demonstrates the use of the FXAS8471Q
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_a8471
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_stbc_a8471_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8471q_spi_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_a8471.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_a8471
+      brief: The FXAS8471Q FIFO example application demonstrates the use of the FXAS8471Q
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_a8471
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_stbc_a8471_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+hostdemo_a8471:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_a8471.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_a8471
+      brief: The A8471 FIFO example application demonstrates the use of the A8471
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_a8471
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/frdm_stbc_a8471_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_a8471/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mpl3115_altitude:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The MPL3115 FIFO example application demonstrates the use of the MPL3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mpl3115_fifo:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The MPL3115 FIFO example application demonstrates the use of the MPL3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mpl3115_fifo_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The MPL3115 FIFO example application demonstrates the use of the MPL3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mpl3115_normal:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The MPL3115 FIFO example application demonstrates the use of the MPL3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mpl3115_normal_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The MPL3115 FIFO example application demonstrates the use of the MPL3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+mpl3115_oneshot:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The MPL3115 FIFO example application demonstrates the use of the MPL3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+hostdemo_p3115:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    document:
+      board_kit: frdmkl25z_p3115
+      brief: The P3115 FIFO example application demonstrates the use of the P3115
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmkl25z_p3115
+          project_path: board
+        files:
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_kl25z.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/frdm_stbc_p3115_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmkl25z_p3115/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.frdmkl25z_a8471:
+  section-type: component
+  meta-name: project_template.frdmkl25z_a8471
+  belong_to: set.kit.frdmkl25z_a8471.issdk
+  contents:
+    repo_base_path: boards/frdmkl25z_a8471/project_template
+    project_base_path: frdmkl25z_a8471/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template frdmkl25z_a8471
+    description: Board_project_template frdmkl25z_a8471
+    user_visible: never
+    taxonomy:
+      csub: frdmkl25z_a8471
+      belong_to: board_project_templates
+    display_name: frdmkl25z_a8471
+  dependency:
+    allOf:
+    - device.MKL25Z4_startup
+    - driver.lpsci
+    - driver.uart
+    - driver.port
+    - driver.common
+    - utility.debug_console
+    - driver.gpio
+    - driver.smc
+    - component.lpsci_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.clock
+BOARD_Project_Template.frdmkl25z_a8491:
+  section-type: component
+  meta-name: project_template.frdmkl25z_a8491
+  belong_to: set.kit.frdmkl25z_a8491.issdk
+  contents:
+    repo_base_path: boards/frdmkl25z_a8491/project_template
+    project_base_path: frdmkl25z_a8491/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template frdmkl25z_a8491
+    description: Board_project_template frdmkl25z_a8491
+    user_visible: never
+    taxonomy:
+      csub: frdmkl25z_a8491
+      belong_to: board_project_templates
+    display_name: frdmkl25z_a8491
+  dependency:
+    allOf:
+    - device.MKL25Z4_startup
+    - driver.lpsci
+    - driver.uart
+    - driver.port
+    - driver.common
+    - utility.debug_console
+    - driver.gpio
+    - driver.smc
+    - component.lpsci_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.clock
+BOARD_Project_Template.frdmkl25z_b3115:
+  section-type: component
+  meta-name: project_template.frdmkl25z_b3115
+  belong_to: set.kit.frdmkl25z_b3115.issdk
+  contents:
+    repo_base_path: boards/frdmkl25z_b3115/project_template
+    project_base_path: frdmkl25z_b3115/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template frdmkl25z_b3115
+    description: Board_project_template frdmkl25z_b3115
+    user_visible: never
+    taxonomy:
+      csub: frdmkl25z_b3115
+      belong_to: board_project_templates
+    display_name: frdmkl25z_b3115
+  dependency:
+    allOf:
+    - device.MKL25Z4_startup
+    - driver.lpsci
+    - driver.uart
+    - driver.port
+    - driver.common
+    - utility.debug_console
+    - driver.gpio
+    - driver.smc
+    - component.lpsci_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.clock
+BOARD_Project_Template.frdmkl25z_p3115:
+  section-type: component
+  meta-name: project_template.frdmkl25z_p3115
+  belong_to: set.kit.frdmkl25z_p3115.issdk
+  contents:
+    repo_base_path: boards/frdmkl25z_p3115/project_template
+    project_base_path: frdmkl25z_p3115/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: Board_project_template frdmkl25z_p3115
+    description: Board_project_template frdmkl25z_p3115
+    user_visible: never
+    taxonomy:
+      csub: frdmkl25z_p3115
+      belong_to: board_project_templates
+    display_name: frdmkl25z_p3115
+  dependency:
+    allOf:
+    - device.MKL25Z4_startup
+    - driver.lpsci
+    - driver.uart
+    - driver.port
+    - driver.common
+    - utility.debug_console
+    - driver.gpio
+    - driver.smc
+    - component.lpsci_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.clock

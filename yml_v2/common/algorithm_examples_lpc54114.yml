@@ -1,0 +1,184 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/add_issdk_sensors.yml
+- middleware/issdk/yml_v2/common/add_issdk_algorithms.yml
+- middleware/issdk/yml_v2/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v2/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v2/common/add_issdk_utils.yml
+- middleware/issdk/yml_v2/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v2/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v2/common/add_issdk_tools.yml
+- middleware/issdk/yml_v2/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_algorithm_examples_lpc54114_set:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+              cx-define:
+            debug:
+              cc-define:
+                DEBUG:
+              cx-define:
+                DEBUG:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--vla"
+              ld-flags:
+              - "--fill 0xFF;0x00-0x2fb"
+    modules:
+      boardset:
+        required: true
+        cc-include:
+        - path: boards/${board}
+          package_path: project-root-path
+          project_path: board
+        files:
+        - source: boards/${board}/board.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/board.h
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/clock_config.c
+          package_path: project-root-path
+          project_path: board
+        - source: boards/${board}/clock_config.h
+          package_path: project-root-path
+          project_path: board
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          toolchains: iar mdk mcux
+          project_path: doc
+    __requires__:
+    - driver.common driver.clock driver.power driver.lpc_iocon driver.inputmux
+sensorfusion_freertos_agm01:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-SENSORFUSION-FREERTOS.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_freertos_agm01
+    outdir: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+  modules:
+    sensorfusion_freertos_agm01_sources:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+        project_path: source
+      - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+        project_path: board
+      as-include:
+      - path: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01
+        project_path: source
+      files:
+      - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/build.h
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/FreeRTOSConfig.h
+        project_path: source
+      - source: middleware/issdk/algorithms/sensorfusion/sources/main_agm01_freertos_two_tasks.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/algorithms/sensorfusion/freertos_agm01/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_lpc driver.port driver.lpc_dma driver.gpio driver.flexcomm driver.gint driver.flashiap
+    driver.i2c driver.i2c_dma driver.cmsis_flexcomm_i2c driver.spi driver.spi_dma
+    driver.cmsis_flexcomm_spi driver.usart driver.usart_dma driver.cmsis_flexcomm_usart
+    cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.algorithms.sensor_fusion_lpc_agm01.common middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002 middleware.issdk.sensor.fxos8700 middleware.issdk.sensor.mpl3115
+    middleware.freertos-kernel middleware.freertos-kernel.heap_1
+sensorfusion_freertos_agmp03:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGMP03-SENSORFUSION-FREERTOS.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/algorithms
+      name: sensorfusion_freertos_agmp03
+    outdir: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03
+  modules:
+    sensorfusion_freertos_agmp03_sources:
+      required: true
+      cc-include:
+      - path: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03
+        project_path: source
+      - path: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03
+        project_path: board
+      as-include:
+      - path: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03
+        project_path: source
+      files:
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03/build.h
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03/FreeRTOSConfig.h
+        project_path: source
+      - source: middleware/issdk/algorithms/sensorfusion/sources/main_agmp03_freertos_two_tasks.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agmp03/issdk_examples/algorithms/sensorfusion/freertos_agmp03/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_lpc driver.port driver.lpc_dma driver.gpio driver.flexcomm driver.gint driver.flashiap
+    driver.i2c driver.i2c_dma driver.cmsis_flexcomm_i2c driver.spi driver.spi_dma
+    driver.cmsis_flexcomm_spi driver.usart driver.usart_dma driver.cmsis_flexcomm_usart
+    cmsis.drivers.include middleware.issdk.drivers.systick_utils
+    middleware.issdk.algorithms.sensor_fusion_lpc_agmp03.common middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxls8962 middleware.issdk.sensor.mag3110 middleware.issdk.sensor.fxas21002
+    middleware.issdk.sensor.mpl3115 middleware.freertos-kernel middleware.freertos-kernel.heap_1
+pedometer_agm01:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC54114-AGM01-PEDOMETER.bin
+        config:
+          __common__: {}
+    document:
+      category: issdk/algorithms
+      name: pedometer_agm01
+    outdir: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01
+  modules:
+    lpedometer_agm01_source:
+      required: true
+      cc-include:
+      - path: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01
+        project_path: board
+      files:
+      - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_fxos8700.c
+        package_path: project-root-path
+        project_path: source
+      - source: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01/pin_mux.c
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01/pin_mux.h
+        project_path: board
+      - source: boards/${board}_agm01/issdk_examples/algorithms/pedometer/pedometer_agm01/readme.txt
+        project_path: doc
+  section-type: application
+  __requires__:
+  - middleware.issdk.drivers.gpio_lpc driver.port driver.lpc_dma driver.gpio driver.flexcomm driver.gint driver.i2c
+    driver.i2c_dma driver.cmsis_flexcomm_i2c driver.spi driver.spi_dma driver.cmsis_flexcomm_spi
+    driver.usart driver.usart_dma driver.cmsis_flexcomm_usart cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils middleware.issdk.algorithms.pedometer.common
+    middleware.issdk.sensor.interface.common middleware.issdk.sensor.fxos8700 middleware.issdk.algorithms.pedometer.lib_cm4

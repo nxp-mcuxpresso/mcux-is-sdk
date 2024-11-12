@@ -1,0 +1,1573 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>799351080</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_common.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_clock.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\cmsis_drivers\fsl_i2c_cmsis.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_clock.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_uart.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\output_stream.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\board.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\clock_config.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\heap_1.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\port.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\croutine.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_smc.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\frdm_k22f.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\pin_mux.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\precisionAccelerometer.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\timers.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_tickless_systick.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_tickless_systick.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\event_groups.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\sensor_io_i2c.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_gpio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_flash.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_flash.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_systick.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fusion.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\board.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\hal_frdm_fxs_mult2_b.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\portasm.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_FXAS21002.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_FXLS8962.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_common.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_clock.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_FXLS8962.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_MPL3115.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\main_agmp03_freertos_two_tasks.o</file>
+      <file>$PROJ_DIR$\Debug\Exe\c.out</file>
+      <file>$PROJ_DIR$\Debug\Obj\status.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_MK22F51212.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\precisionAccelerometer.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_smc.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_gpio.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_pit.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\startup_MK22F51212.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_i2c.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_pit.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\tasks.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\port.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\control.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\list.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\sensor_fusion.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_debug_console.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\matrix.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\approximations.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\main_agmp03_freertos_two_tasks.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\matrix.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\sensor_fusion.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\orientation.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\hal_frdm_fxs_mult2_b.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\tasks.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\orientation.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\pin_mux.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\clock_config.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\debug.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\magnetic.o</file>
+      <file>$PROJ_DIR$\Debug\List\system_MK22F51212.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\DecodeCommandBytes.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\status.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\register_io_i2c.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\frdm_k22f.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\control.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\calibration_storage.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\sensor_io_i2c.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_MAG3110.o</file>
+      <file>$PROJ_DIR$\Debug\List\system_MK22F51212.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\cmsis_drivers\fsl_dspi_cmsis.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Driver\Include\Driver_SPI.h</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_lpuart.s</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_lpuart.lst</file>
+      <file>$PROJ_DIR$\Debug\List\timers.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_uart.lst</file>
+      <file>$PROJ_DIR$\Debug\List\queue.s</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_uart.s</file>
+      <file>$PROJ_DIR$\Debug\List\list.lst</file>
+      <file>$PROJ_DIR$\Debug\List\sensor_io_i2c.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_i2c_edma.h</file>
+      <file>$PROJ_DIR$\Debug\List\list.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\RTE_Device.h</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_i2c_cmsis.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_tickless_systick.s</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_i2c_cmsis.s</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_debug_console.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_dspi_edma.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\drivers\systick\systick_utils.h</file>
+      <file>$PROJ_DIR$\Debug\List\timers.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_edma.h</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_debug_console.lst</file>
+      <file>$PROJ_DIR$\Debug\List\port.s</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_gpio.lst</file>
+      <file>$PROJ_DIR$\Debug\List\sensor_io_i2c.lst</file>
+      <file>$PROJ_DIR$\Debug\List\queue.lst</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\fsl_tickless_generic.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_dmamux.h</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_tickless_systick.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_common.lst</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_dspi.h</file>
+      <file>$PROJ_DIR$\Debug\List\board.lst</file>
+      <file>$PROJ_DIR$\Debug\List\board.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\MK22F51212_features.h</file>
+      <file>$PROJ_DIR$\Debug\List\precisionAccelerometer.s</file>
+      <file>$PROJ_DIR$\Debug\List\fusion.lst</file>
+      <file>$PROJ_DIR$\Debug\List\output_stream.lst</file>
+      <file>$PROJ_DIR$\Debug\List\calibration_storage.s</file>
+      <file>$PROJ_DIR$\Debug\List\output_stream.s</file>
+      <file>$PROJ_DIR$\Debug\List\main_agmp03_freertos_two_tasks.s</file>
+      <file>$PROJ_DIR$\Debug\List\debug.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_MPL3115.lst</file>
+      <file>$PROJ_DIR$\Debug\List\status.s</file>
+      <file>$PROJ_DIR$\Debug\List\driver_FXAS21002.lst</file>
+      <file>$PROJ_DIR$\Debug\List\frdm_k22f.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_FXAS21002.s</file>
+      <file>$PROJ_DIR$\Debug\List\calibration_storage.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_KSDK_NVM.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_KSDK_NVM.s</file>
+      <file>$PROJ_DIR$\Debug\List\driver_MPL3115.s</file>
+      <file>$PROJ_DIR$\Debug\List\debug.s</file>
+      <file>$PROJ_DIR$\Debug\List\frdm_k22f.s</file>
+      <file>$PROJ_DIR$\Debug\List\driver_systick.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fusion.s</file>
+      <file>$PROJ_DIR$\Debug\List\driver_systick.s</file>
+      <file>$PROJ_DIR$\Debug\List\matrix.s</file>
+      <file>$PROJ_DIR$\Debug\List\sensor_fusion.lst</file>
+      <file>$PROJ_DIR$\Debug\List\status.lst</file>
+      <file>$PROJ_DIR$\Debug\List\matrix.lst</file>
+      <file>$PROJ_DIR$\Debug\List\precisionAccelerometer.lst</file>
+      <file>$PROJ_DIR$\Debug\List\main_agmp03_freertos_two_tasks.lst</file>
+      <file>$PROJ_DIR$\Debug\List\sensor_fusion.s</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$TOOLKIT_DIR$\CMSIS\Lib\IAR\iar_cortexM4lf_math.a</file>
+      <file>$PROJ_DIR$\..\..\..\..\drivers\gpio\kinetis\gpio_driver.h</file>
+      <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+      <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
+      <file>$PROJ_DIR$\Debug\List\c.map</file>
+      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+      <file>$PROJ_DIR$\MK22FN512xxx12_flash.icf</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\register_io_spi.h</file>
+      <file>$PROJ_DIR$\Debug\List\driver_pit.lst</file>
+      <file>$PROJ_DIR$\Debug\List\magnetic.s</file>
+      <file>$PROJ_DIR$\Debug\List\driver_MAG3110.s</file>
+      <file>$PROJ_DIR$\Debug\List\DecodeCommandBytes.s</file>
+      <file>$PROJ_DIR$\Debug\List\control.lst</file>
+      <file>$PROJ_DIR$\Debug\List\register_io_i2c.s</file>
+      <file>$PROJ_DIR$\Debug\List\DecodeCommandBytes.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_pit.s</file>
+      <file>$PROJ_DIR$\Debug\List\hal_frdm_fxs_mult2_b.s</file>
+      <file>$PROJ_DIR$\Debug\List\hal_frdm_fxs_mult2_b.lst</file>
+      <file>$PROJ_DIR$\Debug\List\orientation.s</file>
+      <file>$PROJ_DIR$\Debug\List\control.s</file>
+      <file>$PROJ_DIR$\Debug\Obj\croutine.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\debug.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_lpuart.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\timers.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_uart.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_i2c.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\heap_1.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\event_groups.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_KSDK_NVM.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fusion.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_pit.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_systick.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_clock.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\list.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_common.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\output_stream.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\register_io_i2c.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_debug_console.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_i2c.s</file>
+      <file>$PROJ_DIR$\Debug\List\clock_config.s</file>
+      <file>$PROJ_DIR$\Debug\List\clock_config.lst</file>
+      <file>$PROJ_DIR$\Debug\List\tasks.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_flash.s</file>
+      <file>$PROJ_DIR$\Debug\List\pin_mux.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_i2c.lst</file>
+      <file>$PROJ_DIR$\Debug\List\heap_1.lst</file>
+      <file>$PROJ_DIR$\Debug\List\event_groups.s</file>
+      <file>$PROJ_DIR$\Debug\List\event_groups.lst</file>
+      <file>$PROJ_DIR$\Debug\List\croutine.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\deprecated_definitions.h</file>
+      <file>$PROJ_DIR$\Debug\List\croutine.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_smc.lst</file>
+      <file>$PROJ_DIR$\Debug\List\tasks.s</file>
+      <file>$PROJ_DIR$\Debug\List\pin_mux.s</file>
+      <file>$TOOLKIT_DIR$\inc\c\time.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\mpl3115_drv.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Include\core_cmSimd.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Include\core_cmFunc.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\cmsis_iar.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Include\core_cmInstr.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Include\core_cm4.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\MK22F51212.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stddef.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\assert.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_common.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\drivers\gpio\Driver_GPIO.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$PROJ_DIR$\Debug\List\port.lst</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_gpio.s</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_lpuart.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\magnetic.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_KSDK_NVM.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\queue.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_MK22F51212.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_i2c_cmsis.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_i2c_cmsis.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_FXAS21002.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\DecodeCommandBytes.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_MAG3110.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\approximations.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\driver_MPL3115.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\queue.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\fsl_pit.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\calibration_storage.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\board.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\board.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\clock_config.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\clock_config.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\frdm_k22f.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\frdm_k22f.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\frdm-stbc-agmp03\frdm_stbc_agmp03_shield.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\frdm-stbc-agmp03\issdk_hal.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\pin_mux.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\pin_mux.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Driver\Include\Driver_Common.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\CMSIS\Driver\Include\Driver_I2C.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\cmsis_drivers\fsl_i2c_cmsis.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_common.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\fsl_device_registers.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_flash.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_flash.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_gpio.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_gpio.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_i2c.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_i2c.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_i2c_freertos.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_lpuart.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_lpuart.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_pit.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_pit.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_port.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_smc.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_smc.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_uart.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_uart.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\MemMang\heap_1.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\port.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\portasm.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\portmacro.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\croutine.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\croutine.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\event_groups.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\event_groups.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\FreeRTOS.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\list.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\fsl_tickless_systick.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\list.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\mpu_wrappers.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\portable.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\projdefs.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\queue.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\queue.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\semphr.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\StackMacros.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\task.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\tasks.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\timers.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\include\timers.h</file>
+      <file>$PROJ_DIR$\..\..\sources\approximations.c</file>
+      <file>$PROJ_DIR$\..\..\sources\approximations.h</file>
+      <file>$PROJ_DIR$\..\..\sources\calibration_storage.c</file>
+      <file>$PROJ_DIR$\..\..\sources\calibration_storage.h</file>
+      <file>$PROJ_DIR$\..\..\sources\control.c</file>
+      <file>$PROJ_DIR$\..\..\sources\control.h</file>
+      <file>$PROJ_DIR$\..\..\sources\debug.c</file>
+      <file>$PROJ_DIR$\..\..\sources\debug.h</file>
+      <file>$PROJ_DIR$\..\..\sources\DecodeCommandBytes.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_FXAS21002.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_FXLS8962.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_KSDK_NVM.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_KSDK_NVM.h</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_MAG3110.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_MPL3115.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_pit.c</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_pit.h</file>
+      <file>$PROJ_DIR$\..\..\sources\driver_systick.c</file>
+      <file>$PROJ_DIR$\..\..\sources\drivers.h</file>
+      <file>$PROJ_DIR$\..\..\sources\fusion.c</file>
+      <file>$PROJ_DIR$\..\..\sources\fusion.h</file>
+      <file>$PROJ_DIR$\..\..\sources\hal_frdm_fxs_mult2_b.c</file>
+      <file>$PROJ_DIR$\..\..\sources\hal_frdm_fxs_mult2_b.h</file>
+      <file>$PROJ_DIR$\..\..\sources\hal_frdm_k22f.h</file>
+      <file>$PROJ_DIR$\..\..\sources\magnetic.c</file>
+      <file>$PROJ_DIR$\..\..\sources\magnetic.h</file>
+      <file>$PROJ_DIR$\..\..\sources\main_agmp03_freertos_two_tasks.c</file>
+      <file>$PROJ_DIR$\..\..\sources\matrix.c</file>
+      <file>$PROJ_DIR$\..\..\sources\matrix.h</file>
+      <file>$PROJ_DIR$\..\..\sources\orientation.c</file>
+      <file>$PROJ_DIR$\..\..\sources\orientation.h</file>
+      <file>$PROJ_DIR$\..\..\sources\output_stream.c</file>
+      <file>$PROJ_DIR$\..\..\sources\precisionAccelerometer.c</file>
+      <file>$PROJ_DIR$\..\..\sources\precisionAccelerometer.h</file>
+      <file>$PROJ_DIR$\..\..\sources\sensor_fusion.c</file>
+      <file>$PROJ_DIR$\..\..\sources\sensor_fusion.h</file>
+      <file>$PROJ_DIR$\..\..\sources\status.c</file>
+      <file>$PROJ_DIR$\..\..\sources\status.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\fxas21002.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\fxls8962.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\mag3110.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\mpl3115.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\register_io_i2c.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\register_io_i2c.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\sensor_drv.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\sensor_io_i2c.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\sensors\sensor_io_i2c.h</file>
+      <file>$PROJ_DIR$\build.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\iar\startup_MK22F51212.s</file>
+      <file>$PROJ_DIR$\FreeRTOSConfig.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\system_MK22F51212.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\system_MK22F51212.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\utilities\fsl_debug_console.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\utilities\fsl_debug_console.h</file>
+      <file>$PROJ_DIR$\Debug\List\orientation.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_FXLS8962.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_clock.lst</file>
+      <file>$PROJ_DIR$\Debug\List\magnetic.lst</file>
+      <file>$PROJ_DIR$\Debug\List\register_io_i2c.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_flash.lst</file>
+      <file>$PROJ_DIR$\Debug\List\driver_FXLS8962.s</file>
+      <file>$PROJ_DIR$\Debug\List\driver_MAG3110.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_pit.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_smc.s</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_pit.s</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdlib.h</file>
+      <file>$PROJ_DIR$\Debug\List\heap_1.s</file>
+      <file>$TOOLKIT_DIR$\inc\c\xtgmath.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ymath.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\math.h</file>
+      <file>$PROJ_DIR$\Debug\List\approximations.s</file>
+      <file>$PROJ_DIR$\Debug\List\approximations.lst</file>
+      <file>$PROJ_DIR$\Debug\List\fsl_clock.s</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\c.bin</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_common.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 172</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 214 104 31</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 250 212 211 213 203 200 206 207 341 194 196 343 205 204 201 1 216 208 210 209 202 108 199 198 249 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 343</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_clock.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 170</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 362 346 32</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 205 1 341 201 212 207 213 198 204 203 200 194 196 206 211 250 216 208 210 209 202 108 199 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 1 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 364 142</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\c.out</name>
+      <inputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 144 53 6 71 7 70 10 63 66 29 30 223 73 34 42 24 165 12 32 31 51 23 41 44 226 221 234 11 16 4 25 27 8 171 64 35 52 60 5 13 9 28 14 233 68 56 72 43 67 225 59 15 138 137 143 141 140</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\board.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 107 106 6</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 216 212 213 250 249 209 211 202 343 208 210 206 203 108 199 195 236 207 205 204 201 1 200 341 197 239 198 194 196 254</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 211 212 213 216 210 209 208 207 249 206 205 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 343 236 239 254</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\clock_config.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 62</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 177 178 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 341 206 212 207 213 249 211 250 203 200 195 239 205 204 201 1 216 208 210 209 202 108 199 197 264 198 194 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 264 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 239</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\frdm_k22f.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 126 119 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 246 93 196 249 208 210 212 205 1 194 211 213 201 202 108 199 139 264 216 209 262 204 203 215 87 245 200 207 254 206 250 341 198 241 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 241 215 246 201 212 213 216 210 209 208 207 203 211 205 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\boardkit\frdm-k22f\pin_mux.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 191 181 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 204 199 209 108 203 198 216 212 213 249 245 205 201 1 208 210 202 262 206 211 250 207 200 341 194 196 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 262 245</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\cmsis_drivers\fsl_i2c_cmsis.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 227</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 90 88 226</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 201 207 213 205 247 1 108 199 198 256 85 204 95 249 87 102 206 211 250 216 208 210 209 203 202 200 341 194 196 2 195 197 246</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 2 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 247 246 87 256 102 85 95</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_flash.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 22</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 180 349 23</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 205 1 341 198 201 212 207 213 204 203 200 249 206 211 250 216 208 210 209 202 108 199 194 196 252 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 252 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_gpio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 220 98 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 205 1 341 198 201 212 207 213 249 204 203 200 206 211 250 216 208 210 209 202 108 199 194 196 254 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 254 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 163</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 176 182 44</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 211 202 198 250 213 208 210 212 206 216 209 203 341 249 205 204 201 1 207 200 194 196 256 108 199 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 256 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_lpuart.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 160</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 77 78 221</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 201 207 213 198 205 1 204 341 249 206 211 250 216 208 210 209 203 200 194 196 259 202 108 199 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 259 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_pit.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 354 352 234</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 206 212 207 213 249 341 197 211 250 203 200 205 204 201 1 216 208 210 209 202 108 199 195 261 198 194 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 261 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_smc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 40</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 353 189 11</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 204 213 203 200 195 211 249 205 201 1 207 341 252 206 250 216 208 210 209 202 108 199 197 264 198 194 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 264 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 252</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\drivers\fsl_uart.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 162</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 82 80 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 201 212 207 213 198 249 205 1 204 341 206 211 250 216 208 210 209 203 200 194 196 266 202 108 199 195 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 266 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\MemMang\heap_1.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 164</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 356 183 8</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 208 210 212 275 213 209 211 270 196 278 286 203 216 207 281 279 355 201 339 280 337 187</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 275 201 211 339 337 281 280 187 270 196 279 286 278</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\port.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 47</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 97 218 9</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 281 212 337 286 203 216 213 275 101 211 208 207 187 196 201 339 280 210 209 270 279 278</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 196 212 275 201 213 216 210 209 208 207 203 211 339 337 281 280 187 270 279 286 278 101</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\portasm.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 28</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>AARM</name>
+          <file> 339 337</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\croutine.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 158</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 188 10</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 210 212 211 281 203 209 270 196 278 286 201 339 280 213 216 208 207 279 275 272 337 187</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 275 201 212 213 216 210 209 208 207 203 211 339 337 281 280 187 270 196 279 286 278 272</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\event_groups.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 184 185 165</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 213 289 337 275 208 207 339 286 274 203 216 201 280 187 355 210 209 211 281 270 279 196 278</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 275 201 211 339 337 281 280 187 270 196 279 286 278 289 274</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\list.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 86 83 171</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 339 212 208 207 213 278 203 216 337 275 210 209 201 280 187 355 211 281 270 279 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 275 201 211 339 337 281 280 187 270 196 279 278</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\portable\IAR\ARM_CM4F\fsl_tickless_systick.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 89 103 16</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 270 281 213 196 286 211 209 278 275 201 339 280 210 279 101 203 216 208 207 337 187</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 196 212 275 201 213 216 210 209 208 207 203 211 339 337 281 280 187 270 279 286 278 101</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\queue.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 224</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 81 100 233</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 213 337 212 286 208 207 203 339 216 202 201 280 187 204 275 283 210 209 211 281 270 279 196 278 355</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 204 202 275 201 211 339 337 281 280 187 270 196 279 286 278 283</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\tasks.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 190 179 59</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 213 337 286 208 207 203 339 285 216 202 201 280 187 204 275 289 210 209 211 281 270 279 196 355 278</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 204 202 275 201 211 339 337 281 280 187 270 196 279 286 278 289 285</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\rtos\freertos_9.0.0\Source\timers.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 161</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 94 79 15</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 196 212 213 211 270 283 210 278 275 208 286 289 203 216 209 281 279 355 207 201 339 280 337 187</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 275 201 211 339 337 281 280 187 270 196 279 286 278 283 289</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\approximations.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 231</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 360 361 53</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 211 357 213 355 291 358 207 208 359 216 210 209 203</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 359 212 358 213 216 210 209 208 207 357 355 203 211 291</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\calibration_storage.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 235</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 112 121 71</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 219 318 341 211 213 87 250 302 217 212 315 357 200 205 203 249 198 325 293 216 208 207 359 243 320 241 215 245 201 246 262 206 194 196 334 210 209 337 323 145 358 242 139 93 264 254 204 1 202 108 199 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 212 213 216 210 209 208 207 203 217 325 359 358 357 205 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 302 293</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\control.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 48</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 157 150 70</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 315 211 202 357 213 215 341 249 245 201 262 250 208 210 212 198 219 318 217 241 295 206 216 209 203 200 194 196 254 359 243 320 87 205 76 236 266 325 204 1 207 108 199 195 197 239 337 323 145 358 242 139 93 264 246 343 334</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 343 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 236 239 254 245 266 262 325 359 358 357 219 217 243 241 215 246 139 87 93 264 242 337 315 323 320 145 76 334 318 295</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\debug.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 159</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 125 115 63</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 201 323 245 209 249 211 213 212 246 206 334 203 355 205 337 145 358 216 241 215 262 200 194 196 295 359 219 243 315 320 208 210 217 87 250 341 198 325 318 357 207 242 139 93 264 254 204 1 202 108 199 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 295 355</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\DecodeCommandBytes.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 229</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 149 152 66</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 213 203 211 198 217 249 200 205 310 323 208 210 87 250 341 295 293 337 145 358 216 209 212 241 215 245 201 246 262 206 194 196 334 325 359 219 243 315 320 318 357 207 242 139 93 264 254 204 1 202 108 199 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 295 310 293</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_FXAS21002.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 228</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 120 118 29</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 200 211 209 203 139 249 206 194 196 242 246 334 308 216 212 213 323 264 254 250 208 210 202 341 198 205 337 145 358 93 262 325 336 328 239 204 201 1 207 108 199 195 197 359 219 243 315 320 318 357 217 241 215 87 245 76 247 236 333</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236 239 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 254 325 359 358 357 219 217 243 241 215 246 139 262 87 93 245 264 242 337 315 323 320 145 76 334 318 336 247 333 308 328</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_FXLS8962.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 350 345 30</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 217 213 215 212 195 211 249 219 318 241 329 204 315 357 245 201 334 336 239 205 1 207 108 199 197 359 243 320 87 200 254 246 325 308 206 250 216 208 210 209 203 202 341 198 194 196 337 323 145 358 242 139 93 264 262 247 76 236 333</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236 239 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 254 325 359 358 357 219 217 243 241 215 246 139 262 87 93 245 264 242 337 315 323 320 145 76 334 318 336 247 333 329 308</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_KSDK_NVM.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 166</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 123 122 223</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 139 201 207 213 315 357 212 202 211 242 246 108 199 197 219 318 203 264 215 205 1 249 252 359 243 320 93 254 204 195 76 302 337 323 145 358 216 208 210 209 217 241 87 245 200 262 206 250 341 198 194 196 334 325</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 302 252</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_MAG3110.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 230</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 148 351 73</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 197 239 359 200 205 201 212 207 213 320 254 308 1 108 199 211 243 87 249 334 204 195 219 315 318 357 217 241 215 245 76 333 246 325 336 330 206 250 216 208 210 209 203 202 341 198 194 196 337 323 145 358 242 139 93 264 262 247 236</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236 239 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 254 325 359 358 357 219 217 243 241 215 246 139 262 87 93 245 264 242 337 315 323 320 145 76 334 318 336 247 333 308 330</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_MPL3115.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 232</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 124 116 34</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 211 202 246 212 337 358 341 93 308 254 250 213 208 210 198 205 145 203 262 201 247 336 249 206 216 209 200 194 196 323 242 139 264 325 193 239 204 1 207 108 199 195 197 359 219 243 315 320 318 357 217 241 215 87 245 76 333 236 334 331</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236 239 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 254 325 359 358 357 219 217 243 241 215 246 139 262 87 93 245 264 242 337 315 323 320 145 76 334 318 336 247 333 193 331 308</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_pit.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 168</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 153 146 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 87 215 207 213 206 239 200 201 212 195 211 249 261 241 245 205 203 254 250 341 236 242 139 93 264 246 216 208 210 209 262 204 1 202 108 199 197 243 198 194 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 243 241 215 246 201 212 213 216 210 209 208 207 203 211 205 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 236 239 261</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\driver_systick.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 169</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 129 127 24</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 247 246 334 337 213 212 206 205 145 209 245 201 249 211 323 358 216 241 215 262 200 194 196 308 359 219 243 315 320 208 210 217 87 203 250 341 198 325 318 357 207 242 139 93 264 254 204 1 202 108 199 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 308 247</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\fusion.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 167</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 128 110 25</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 213 200 205 246 308 211 203 262 310 208 210 323 87 206 194 196 355 318 216 209 357 337 145 241 215 245 201 249 250 341 334 325 359 320 291 295 217 207 358 219 243 315 242 139 93 264 254 204 1 202 108 199 198 76 195 197 247</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 212 213 216 210 209 208 207 203 217 359 358 357 355 325 205 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 310 291 308 247 295</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\hal_frdm_fxs_mult2_b.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 58</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 154 155 27</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 241 243 200 246 359 320 358 216 212 215 262 194 196 219 315 209 213 245 201 206 249 334 205 211 337 323 145 208 210 217 87 203 250 341 198 325 318 357 207 242 139 93 264 254 204 1 202 108 199 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\magnetic.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 222</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 147 347 64</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 205 212 249 145 93 337 254 204 203 334 355 211 323 357 207 213 242 139 264 246 215 201 1 202 108 199 194 196 359 192 219 243 315 320 318 358 216 208 210 209 217 241 87 245 200 262 206 250 341 198 325 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 355 192</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\main_agmp03_freertos_two_tasks.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 54</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 114 135 35</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 262 219 239 75 202 211 201 318 209 108 199 256 249 246 241 274 329 308 339 216 212 270 250 213 247 205 85 95 217 215 283 236 333 295 280 208 210 279 289 206 203 195 102 315 357 245 286 343 328 330 2 325 327 281 207 337 187 196 278 204 1 200 341 198 194 197 87 92 359 243 320 334 76 275 254 105 323 145 358 242 139 93 264</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 275 201 212 213 216 210 209 208 207 203 211 339 337 281 280 187 270 196 279 286 278 283 289 274 343 249 206 205 204 202 250 200 199 198 197 195 194 341 108 1 236 239 254 245 262 256 328 329 330 333 334 247 246 2 87 102 85 95 75 76 92 105 325 359 358 357 219 217 243 241 215 139 93 264 242 315 323 320 145 318 295 327 308</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\matrix.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 55</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 130 133 52</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 76 212 264 211 219 318 213 254 204 203 195 205 325 208 210 315 242 139 246 249 355 216 209 357 359 243 320 93 215 201 1 202 108 199 197 192 217 207 358 337 323 145 241 87 245 200 262 206 250 341 198 194 196 334</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 212 213 216 210 209 208 207 203 217 359 358 357 355 192 325 205 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\orientation.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 57</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 156 344 60</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 197 212 323 87 318 203 246 206 204 213 207 202 211 200 205 262 108 199 355 320 217 358 337 145 241 215 245 201 249 250 195 334 325 359 192 310 291 216 208 210 209 357 219 243 315 242 139 93 264 254 1 341 198 194 196 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 212 213 216 210 209 208 207 203 217 359 358 357 355 192 204 202 325 205 211 243 241 215 246 201 139 249 206 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 310 291</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\output_stream.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 173</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 113 111 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 200 241 337 358 216 212 215 262 194 196 205 145 209 213 245 201 246 206 297 211 323 208 210 217 87 203 249 250 341 198 295 359 219 243 315 320 318 357 207 242 139 93 264 254 204 1 202 108 199 195 197 334 325 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 325 359 212 358 213 216 210 209 208 207 357 205 219 203 217 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 295 297</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\precisionAccelerometer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 109 134 14</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 200 359 241 249 320 215 262 194 196 213 207 243 212 245 201 246 206 334 325 310 217 219 315 318 357 87 205 203 211 250 341 198 216 208 210 209 337 323 145 358 242 139 93 264 254 204 1 202 108 199 195 197 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 212 213 216 210 209 208 207 203 217 325 359 358 357 205 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 310</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\sensor_fusion.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 136 131 56</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 203 315 211 198 213 357 217 249 212 200 205 334 219 318 87 250 341 325 295 207 359 243 320 241 215 245 201 246 262 206 194 196 308 327 310 216 208 210 209 337 323 145 358 242 139 93 264 254 204 1 202 108 199 195 197 247 76</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 219 212 213 216 210 209 208 207 203 217 325 359 358 357 205 211 243 241 215 246 201 139 249 206 204 202 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 337 315 323 320 145 76 334 318 308 247 327 295 310</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\sources\status.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 117 132 67</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 212 246 249 216 337 358 213 93 211 327 206 209 203 200 194 196 205 145 262 334 325 254 250 208 210 202 341 198 323 242 139 264 308 239 204 201 1 207 108 199 195 197 359 219 243 315 320 318 357 217 241 215 87 245 76 247 236</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 236 239 249 206 212 213 216 210 209 208 207 205 211 204 203 202 201 250 200 199 198 197 196 195 194 341 108 1 254 262 325 359 358 357 219 217 243 241 215 246 139 87 93 245 264 242 337 315 323 320 145 76 334 318 308 247 327</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sensors\register_io_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 174</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 151 348 68</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 211 245 249 203 250 213 195 212 207 241 215 205 254 243 87 200 201 206 108 199 204 333 208 216 210 209 202 242 139 93 264 246 262 1 341 197 334 355 198 194 196 247</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 204 202 243 241 215 246 201 211 205 139 249 206 250 200 199 198 197 196 195 194 341 108 1 254 262 87 93 245 264 242 333 334 247</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\sensors\sensor_io_i2c.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 19</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84 99 72</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 207 213 208 211 216 334 246 201 205 212 203 210 209 247 93 336 333</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 247 246 201 212 213 216 210 209 208 207 203 211 205 334 93 336 333</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\iar\startup_MK22F51212.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 43</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\system_MK22F51212.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 38</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 74 65 225</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 199 195 209 108 216 212 208 210 211 250 213 207 200 341 198 194 196 197</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 211 212 213 216 210 209 208 207 250 200 199 198 197 196 195 194 341 108</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\SDK_2.2_FRDM-K22F\devices\MK22F51212\utilities\fsl_debug_console.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 175</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 91 96 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 249 213 202 250 359 266 207 212 211 195 355 343 259 203 357 206 108 199 197 363 216 208 210 209 358 205 204 201 1 200 341 198 194 196</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 355 212 213 216 210 209 208 207 203 359 358 357 343 249 206 205 211 204 202 201 250 200 199 198 197 196 195 194 341 108 1 266 259</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\c.bin</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 142</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 144 53 6 71 7 70 10 63 66 29 30 223 73 34 42 24 165 12 32 31 51 23 41 44 226 221 234 11 16 4 25 27 8 171 64 35 52 60 5 13 9 28 14 233 68 56 72 43 67 225 59 15 138 137 143 141 140</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>ILINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

@@ -1,0 +1,528 @@
+---
+__load__:
+- middleware/issdk/yml/common/algorithm_examples_frdmkl27z.yml
+- middleware/issdk/yml/common/sensor_examples_frdmkl27z.yml
+- bin/generator/records/msdk/options/frdmkl27z.yml
+- bin/generator/records/msdk/components/socs/MKL27Z644/components.yml
+__hierarchy__:
+  tmp_frdmkl27z_configurations_components:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          libraries:
+          include:
+          config:
+            __common__:
+              cc-include:
+              - path: CMSIS/Include
+              - path: devices
+              - path: platform/drivers
+              - path: boards/frdmkl27z
+              cc-define:
+                FRDM_KL27Z:
+                FREEDOM:
+                PRINTF_ADVANCED_ENABLE:
+        iar:
+          project-templates:
+          - bin/generator/templates/iar/app_peswd/generic.ewd
+          - bin/generator/templates/iar/app_peswd/generic.ewp
+          - bin/generator/templates/iar/app_peswd/generic.dni
+          - bin/generator/templates/iar/general.eww
+        mdk:
+          project-templates:
+          - bin/generator/templates/mdk/app_frdmkl27z/frdmkl27z.uvprojx
+          - bin/generator/templates/mdk/app_frdmkl27z/pemicro_connection_settings.ini
+        armgcc:
+      document:
+        platform_devices_soc_name: MKL27Z644
+        board: frdmkl27z
+        core: cm0p
+    __requires__:
+    - frdmkl27z_options driver.clock driver.flash driver.common device.${platform_devices_soc_name}_CMSIS
+      device.${platform_devices_soc_name}_startup driver.uart driver.lpuart driver.port
+      driver.smc utility.debug_console driver.gpio utility.assert
+mma845x_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+mma845x_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+mma845x_interrupt:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+mag3110_normal_onboard:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+mag3110_oneshot_onboard:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+hostdemo_kl27z:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+pedometer_mma8451:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.c
+      - source: boards/frdmkl27z/issdk_examples/frdm_kl27z.h
+      - source: boards/frdmkl27z/issdk_examples/issdk_hal.h
+      - source: boards/frdmkl27z/issdk_examples/RTE_Device.h
+  required: true
+  configuration:
+    tools:
+      __remove__:
+        mdk:
+        armgcc:
+fxpq3115_altitude:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.c
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.h
+      - source: boards/frdmkl27z_b3115/frdm_stbc_b3115_shield.h
+      - source: boards/frdmkl27z_b3115/issdk_hal.h
+      - source: boards/frdmkl27z_b3115/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_b3115
+  __requires__: middleware.issdk.kits.FRDMKL27-B3115
+fxpq3115_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.c
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.h
+      - source: boards/frdmkl27z_b3115/frdm_stbc_b3115_shield.h
+      - source: boards/frdmkl27z_b3115/issdk_hal.h
+      - source: boards/frdmkl27z_b3115/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_b3115
+  __requires__: middleware.issdk.kits.FRDMKL27-B3115
+fxpq3115_normal:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.c
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.h
+      - source: boards/frdmkl27z_b3115/frdm_stbc_b3115_shield.h
+      - source: boards/frdmkl27z_b3115/issdk_hal.h
+      - source: boards/frdmkl27z_b3115/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_b3115
+  __requires__: middleware.issdk.kits.FRDMKL27-B3115
+fxpq3115_oneshot:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.c
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.h
+      - source: boards/frdmkl27z_b3115/frdm_stbc_b3115_shield.h
+      - source: boards/frdmkl27z_b3115/issdk_hal.h
+      - source: boards/frdmkl27z_b3115/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_b3115
+  __requires__: middleware.issdk.kits.FRDMKL27-B3115
+hostdemo_b3115:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.c
+      - source: boards/frdmkl27z_b3115/frdm_kl27z.h
+      - source: boards/frdmkl27z_b3115/frdm_stbc_b3115_shield.h
+      - source: boards/frdmkl27z_b3115/issdk_hal.h
+      - source: boards/frdmkl27z_b3115/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_b3115
+  __requires__: middleware.issdk.kits.FRDMKL27-B3115
+fxls8962_freefall:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+fxls8962_normal:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+fxls8962_interrupt:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+fxls8962_normal_spi:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+fifo_fxas21002:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+interrupt_fxas21002:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+poll_fxas21002:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mag3110_normal_interrupt:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mag3110_normal:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mag3110_oneshot:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mpl3115_altitude:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mpl3115_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+# mpl3115_fifo_interrupt:
+  # section-type: application
+  # modules:
+    # sensors:
+      # required: true
+      # virtual-dir: board
+      # files:
+      # - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      # - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      # - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      # - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      # - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  # required: true
+  # configuration:
+    # document:
+      # board_kit: frdmkl27z_agmp03
+  # __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mpl3115_normal:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+# mpl3115_normal_interrupt:
+  # section-type: application
+  # modules:
+    # sensors:
+      # required: true
+      # virtual-dir: board
+      # files:
+      # - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      # - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      # - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      # - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      # - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  # required: true
+  # configuration:
+    # document:
+      # board_kit: frdmkl27z_agmp03
+  # __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+mpl3115_oneshot:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+pedometer_agmp03:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    tools:
+      __remove__:
+        mdk:
+        armgcc:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03
+hostdemo_agmp03:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir: board
+      files:
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.c
+      - source: boards/frdmkl27z_agmp03/frdm_kl27z.h
+      - source: boards/frdmkl27z_agmp03/frdm_stbc_agmp03_shield.h
+      - source: boards/frdmkl27z_agmp03/issdk_hal.h
+      - source: boards/frdmkl27z_agmp03/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: frdmkl27z_agmp03
+  __requires__: middleware.issdk.kits.FRDMKL27-AGMP03

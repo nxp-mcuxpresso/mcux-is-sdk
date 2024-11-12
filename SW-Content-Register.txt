@@ -1,0 +1,23 @@
+Release Name: IoT Sensing Software Development Kit (ISSDK)
+Release Version: 1.8
+Release Details: ISSDK is released as part of MCUXpresso SDK 2.x release ecosystem: https://mcuxpresso.nxp.com.
+
+ISSDK                      Name: ISSDK
+                           Version: 1.8
+                           Outgoing License: BSD-3-Clause
+                           License File: https://spdx.org/licenses/BSD-3-Clause.html
+                           Format: source code
+                           Description: NXP IoT Sensing SDK. It combines a set of robust Sensor Drivers and
+                           algorithms along with example applications.
+                           Location: middleware/issdk
+                           Origin: NXP (BSD-3-Clause)
+
+Pedometer Library          Name: Pedometer Library
+                           Version: 1.0
+                           Outgoing License: LA_OPT_NXP_Software_License
+                           License File: middleware/issdk/algorithms/pedometer/lib/LA_OPT_NXP_Software_License.txt
+                           Format: binary library
+                           Description: Pedometer algorithm library for Arm Cortex M0+
+						   and M4 processors.
+                           Location: middleware/issdk/algorithms/pedometer/lib
+                           Origin: KEYnetik, Inc (Commercially licensed by Freescale/NXP)

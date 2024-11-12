@@ -1,0 +1,7 @@
+Overview
+========
+The FXLS8952 FIFO Interrupt example application demonstrates the use of the FXLS8952 sensor in Buffered (FIFO) Mode with Interrupts.
+The example demonstrates configuration of all registers reguired to put the sensor in FIFO Mode, enable Interrupts and read out samples.
+
+The sensor reads samples and are buffered upto the configured Water Mark Level and then an Interrupt is raised (Pin is set high).
+The application waits for the Interrupt signal and when received reads out all(count=Water Mark Level) samples.

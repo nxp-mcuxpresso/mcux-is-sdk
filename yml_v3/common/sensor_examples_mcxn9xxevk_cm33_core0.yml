@@ -1,0 +1,291 @@
+---
+__load__:
+- middleware/issdk/yml_v3/common/add_issdk_utils.yml
+- middleware/issdk/yml_v3/common/add_issdk_tools.yml
+- middleware/issdk/yml_v3/common/add_issdk_driverexamples_mcxn9xx.yml
+- middleware/issdk/yml_v3/common/add_issdk_boardkit_mcxn9xx.yml
+- middleware/issdk/yml_v3/common/add_issdk_host.yml
+- middleware/issdk/yml_v3/common/add_issdk_ads.yml
+- middleware/issdk/yml_v3/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v3/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v3/common/add_issdk_sensors.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_mcxn9xx_set:
+    section-type: application
+    dependency:
+    - driver.common
+    contents:
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define:
+                cx-define:
+              debug:
+                cc-define:
+                  DEBUG:
+                cx-define:
+                  DEBUG:
+          iar:
+            config:
+              __common__:
+                cc-flags:
+              release:
+                cc-define:
+                cx-define:
+          mdk:
+            config:
+              release:
+                cc-define:
+                cx-define:
+      modules:
+        boardset:
+          required: true
+          cc-include:
+          - path: boards/${board}
+            package_path: project-root-path
+            project_path: board
+          files:
+          - source: boards/${board}/board.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.h
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.h
+            package_path: project-root-path
+            project_path: board
+        device_configuration_data:
+          required: false
+          cc-include:
+          - path: boards/${board}
+            package_path: project-root-path
+            project_path: board
+          files:
+          - source: boards/${board}/dcd.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/dcd.h
+            package_path: project-root-path
+            project_path: board
+        readme:
+          files:
+          - source: project-root-path/readme.txt
+            toolchains: iar mdk mcux
+            project_path: doc
+fxls8974cf_poll:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_mcx
+  - driver.port
+  - driver.clock
+  - driver.edma4
+  - driver.dmamux
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.intmux
+  - driver.igpio
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.lpuart_dma
+  - driver.cmsis_lpuart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_poll
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/cm33_core0
+    configuration:
+      tools:
+        __common__:
+          binary-file: MCX-N9XX-EVK-A8974-POLL.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_poll_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/mcx/mcxn9xx/fxls8974cf/fxls8974cf_poll.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_poll/cm33_core0/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_spi:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_mcx
+  - driver.port
+  - driver.clock
+  - driver.edma4
+  - driver.dmamux
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.intmux
+  - driver.igpio
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.lpuart_dma
+  - driver.cmsis_lpuart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_spi
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/cm33_core0
+    configuration:
+      tools:
+        __common__:
+          binary-file: MCX-N9XX-EVK-A8974-SPI.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_spi_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/mcx/mcxn9xx/fxls8974cf/fxls8974cf_spi.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_spi/cm33_core0/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_interrupt:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_mcx
+  - driver.port
+  - driver.clock
+  - driver.edma4
+  - driver.dmamux
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.intmux
+  - driver.igpio
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.lpuart_dma
+  - driver.cmsis_lpuart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_interrupt
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/cm33_core0
+    configuration:
+      tools:
+        __common__:
+          binary-file: MCX-N9XX-EVK-A8974-INTERRUPT.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_interrupt_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/mcx/mcxn9xx/fxls8974cf/fxls8974cf_interrupt.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_interrupt/cm33_core0/readme.txt
+          project_path: doc
+          package_path: project-root-path
+fxls8974cf_motion_wakeup:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_mcx
+  - driver.port
+  - driver.clock
+  - driver.edma4
+  - driver.dmamux
+  - driver.lpi2c
+  - driver.lpi2c_edma
+  - driver.cmsis_lpi2c
+  - driver.intmux
+  - driver.igpio
+  - driver.lpspi
+  - driver.lpspi_edma
+  - driver.cmsis_lpspi
+  - driver.lpuart
+  - driver.lpuart_edma
+  - driver.lpuart_dma
+  - driver.cmsis_lpuart
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.fxls8974cf
+  contents:
+    document:
+      category: issdk/sensors
+      name: fxls8974cf_motion_wakeup
+    project-root-path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/cm33_core0
+    configuration:
+      tools:
+        __common__:
+          binary-file: MCX-N9XX-EVK-A8974-MOTION-WAKEUP.bin
+          config:
+            __common__: {}
+    modules:
+      fxls8974cf_motion_wakeup_source:
+        required: true
+        cc-include:
+        - path: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup
+          project_path: board
+        files:
+        - source: middleware/issdk/driverexamples/mcx/mcxn9xx/fxls8974cf/fxls8974cf_motion_wakeup.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}_a8974/issdk_examples/sensors/fxls8974cf/fxls8974cf_motion_wakeup/cm33_core0/readme.txt
+          project_path: doc
+          package_path: project-root-path

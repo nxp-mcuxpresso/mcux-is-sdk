@@ -1,0 +1,44 @@
+---
+set.kit.${board}_mult2b.issdk:
+  section-type: set
+  belong_to: set.kit.${board}_mult2b.issdk
+  dependency:
+    allOf:
+    - set.middleware.issdk
+    - kit:
+      - "${board}_mult2b"
+  section_info:
+    fixed_id: kit.${board}.mult2b
+    display_name: mult2b
+    full_name: NXP kit ${board} mult2b
+    description: NXP MCUXpresso kit ${board} mult2b
+    type: kit
+    version: 1.0.0
+    vendor: NXP
+    component_taxonomy:
+      board_project_templates:
+        cclass: Sensors
+        cgroup: ISSDK project template
+    set_location:
+      repo_base_path: boards/${board}_mult2b
+    product:
+      cmsis_pack:
+        supported: true
+        pack_root:
+          pack_type: sBSP
+          pack_name: "${board}_mult2b_BSP"
+          pack_version: 1.0.0
+        scr:
+        - scr.kit.${board}_mult2b.issdk
+scr.kit.${board}_mult2b.issdk:
+  section-type: scr
+  belong_to: set.kit.${board}_mult2b.issdk
+  contents:
+    Name: ISSDK ${board} mult2b example
+    Version: NA
+    license:
+    - license.bsd-3
+    Format: source code, linker files
+    Description: ISSDK ${board} mult2b example
+    Location: boards/${board}_mult2b
+    Origin: NXP (BSD-3-Clause)

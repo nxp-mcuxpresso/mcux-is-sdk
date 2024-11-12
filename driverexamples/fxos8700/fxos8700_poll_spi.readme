@@ -1,0 +1,6 @@
+Overview
+========
+The FXOS8700 SPI example application demonstrates the use of the FXOS8700 sensor in the hybrid(Accel + Mag) mode using SPI interface.
+The example demonstrates configuration of all registers required to put the sensor into hybrid mode and read out samples via SPI.
+
+The application consistently checks for the data ready flag and reads out the sample when it is ready.

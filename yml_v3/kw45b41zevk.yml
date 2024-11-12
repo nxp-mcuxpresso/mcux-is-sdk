@@ -1,0 +1,291 @@
+---
+__load__:
+- bin/generator/records_v3/set/device/KW45B41Z83/index.yml
+- bin/generator/records_v3/set/board/kw45b41zevk/project_segment_kw45b41zevk.yml
+- middleware/issdk/yml_v3/common/sensor_examples_kw45b41zevk.yml
+- middleware/issdk/yml_v3/a8964.yml
+
+__hierarchy__:
+  tmp_kw45b41zevk_configurations_components:
+    section-type: application
+    dependency:
+    - driver.clock
+    - driver.common
+    - device.${platform_devices_soc_name}_CMSIS
+    - utility.debug_console
+    - component.lpuart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.lpuart
+    - component.lists
+    - device.${platform_devices_soc_name}_startup
+    - driver.port
+    - driver.gpio
+    - driver.ccm32k
+    - driver.spc
+    - utility.assert
+    merge_segment:
+    - kw45b41zevk_options
+    contents:
+      document:
+        platform_devices_soc_name: KW45B41Z83
+        board: kw45b41zevk
+        board_kit: kw45b41zevk_a8964
+        core: cm33
+        fpu: SP_FPU
+        dsp: DSP
+        compilers:
+        - armcc
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define:
+                  PRINTF_ADVANCED_ENABLE: 1
+          iar:
+            project-templates:
+            - bin/generator/templates/iar/app_cmsisdap_m33/generic_fixed_jlink_debug_speed.ewd
+            - bin/generator/templates/iar/app_cmsisdap_m33/generic.ewp
+            - bin/generator/templates/iar/general.eww
+          mdk:
+            project-templates:
+            - bin/generator/templates/mdk/app_kw45b41zevk/app_kw45b41zevk.uvprojx
+          armgcc:
+          mcux:
+            project-templates:
+            - bin/generator/templates/mcux/cproject/mcux_template.xml
+      modules:
+        linker-file:
+          files:
+          - source: devices/KW45B41Z83/iar/kw45b41z8_flash.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: debug release
+            project_path: KW45B41Z83/iar
+          - source: devices/KW45B41Z83/arm/kw45b41z8_flash.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: debug release
+            project_path: KW45B41Z83/arm
+          - source: devices/KW45B41Z83/gcc/kw45b41z8_flash.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: debug release
+            project_path: KW45B41Z83/gcc
+fxls896xaf_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.kw45b41zevk_a8964.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: kw45b41zevk_a8964
+      brief: The FXLS8964AF POLL example application demonstrates the use of the FXLS8964AF
+        sensor in polling Mode using I2C interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Poll Mode and read out samples. The polls for
+        dataready and when samples are available sensor reads samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/kw45b41zevk_a8964
+          project_path: board
+        files:
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/frdm_stba_a896x_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls896xaf_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.kit.kw45b41zevk_a8964.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: kw45b41zevk_a8964
+      brief: The FXLS8964AF Interrupt example application demonstrates the use of the FXLS8964AF
+        sensor in data ready interrupt Mode using I2C interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Interrupt mode and read out samples when dataready event raises interrupt.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/kw45b41zevk_a8964
+          project_path: board
+        files:
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/frdm_stba_a896x_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls896xaf_motion_wakeup:
+  section-type: application
+  required: true
+  belong_to: set.kit.kw45b41zevk_a8964.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: kw45b41zevk_a8964
+      brief: The FXLS8964AF motion wakeup example demonstrates SDCD configuration to wake up sensor on motion detection
+        and autonomously go to sleep mode when no-motion detected for ASLP time out. The example configures sensors to
+        detect 125mg of motion on all the 3-axes and go to sleep if there is no motion for ~5sec.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/kw45b41zevk_a8964
+          project_path: board
+        files:
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/frdm_stba_a896x_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls896xaf_spi:
+  section-type: application
+  required: true
+  belong_to: set.kit.kw45b41zevk_a8964.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: kw45b41zevk_a8964
+      brief: The FXLS8964AF POLL example application demonstrates the use of the FXLS8964AF
+        sensor in polling Mode using SPI interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Poll Mode and read out samples. The polls for
+        dataready and when samples are available sensor reads samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/kw45b41zevk_a8964
+          project_path: board
+        files:
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/kw45b41zevk.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/frdm_stba_a896x_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/kw45b41zevk_a8964/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.kw45b41zevk_a8964:
+  section-type: component
+  meta-name: project_template.kw45b41zevk_a8964
+  belong_to: set.kit.kw45b41zevk_a8964.issdk
+  dependency:
+    allOf:
+    - device.${platform_devices_soc_name}_startup
+    - utility.debug_console
+    - component.lpuart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - component.lists
+    - driver.lpuart
+    - driver.port
+    - driver.gpio
+    - driver.ccm32k
+    - driver.spc
+    - utility.assert
+  contents:
+    repo_base_path: boards/kw45b41zevk_a8964/project_template
+    project_base_path: kw45b41zevk_a8964/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: BOARD_Project_Template kw45b41zevk_a8964
+    description: BOARD_Project_Template kw45b41zevk_a8964
+    user_visible: never
+    taxonomy:
+      csub: kw45b41zevk_a8964
+      belong_to: board_project_templates
+    display_name: kw45b41zevk_a8964

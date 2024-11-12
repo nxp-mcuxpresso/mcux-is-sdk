@@ -1,0 +1,31 @@
+__hierarchy__:
+  tmp_issdk_sensors:
+    section-type: component
+    meta-path:
+      - path: middleware\issdk\issdk_interfaces.meta
+
+middleware.issdk.sensor.interface.common:
+  section-type: component
+  required: true
+  meta-name: middleware.issdk.sensor.interface.common
+  __requires__:
+    - CMSIS_Driver_Include.I2C CMSIS_Driver_Include.SPI
+  contents:
+    cc-include:
+      - path          : middleware/issdk/sensors
+    virtual-dir   : interfaces
+    files:
+      - source        : middleware/issdk/sensors/register_io_i2c.c
+      - source        : middleware/issdk/sensors/register_io_spi.c
+      - source        : middleware/issdk/sensors/sensor_io_spi.c
+      - source        : middleware/issdk/sensors/sensor_io_i2c.c
+      - source        : middleware/issdk/sensors/register_io_i2c.h
+      - source        : middleware/issdk/sensors/register_io_spi.h
+      - source        : middleware/issdk/sensors/sensor_io_spi.h
+      - source        : middleware/issdk/sensors/sensor_io_i2c.h
+      - source        : middleware/issdk/sensors/sensor_drv.h
+    component_info:
+      meta:
+        description: "ISSDK Sensor Interface Common"
+        user_visible: false
+        manifest_name: issdk_interfaces #IDE will show this as component name

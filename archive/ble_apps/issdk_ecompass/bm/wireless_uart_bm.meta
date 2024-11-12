@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<metadata>
+  <components>
+    <component name="boards.frdmkw41z.wireless_examples.bluetooth.wireless_uart.bm" manifest_external="./wireless_uart_bm.xml" toolchains="iar mcuxpresso" requires="middleware.wireless.framework.osa_bm middleware.wireless.framework.flash.internal middleware.wireless.framework.gpio_adapter middleware.wireless.framework.keyboard middleware.wireless.framework.led middleware.wireless.framework.reset middleware.wireless.framework.common middleware.wireless.framework.mem_manager middleware.wireless.framework.messaging middleware.wireless.framework.osa middleware.wireless.framework.panic middleware.wireless.framework.rng middleware.wireless.framework.nvm middleware.wireless.framework.smgr middleware.wireless.framework.smgr.uart_adapter middleware.wireless.framework.shell middleware.wireless.framework.tmr middleware.wireless.framework.module_info middleware.wireless.framework.function_lib middleware.framework.generic_lists middleware.wireless.framework.sec_lib middleware.wireless.ble_host middleware.wireless.ble_controller middleware.wireless.ble_appl_main middleware.wireless.ble_hci_transport middleware.wireless.ble_gatt_db middleware.wireless.ble_gatt_service_discovery middleware.wireless.ble_profiles.battery_service middleware.wireless.ble_profiles.device_info_service middleware.wireless.ble_profiles.wireless_uart middleware.wireless.framework.coexistence platform.drivers.common platform.drivers.trng platform.drivers.flash platform.drivers.lpuart platform.drivers.gpio platform.drivers.port platform.drivers.tpm platform.drivers.dspi platform.drivers.i2c platform.drivers.lptmr platform.drivers.rtc platform.drivers.llwu platform.drivers.ltc platform.drivers.pmc platform.drivers.adc16 middleware.wireless.framework.dcdc middleware.wireless.xcvr_kw41z platform.drivers.smc platform.drivers.clock platform.devices.MKW41Z4_CMSIS platform.utilities.debug_console platform.devices.MKW41Z4_startup devices.boards.frdmkw41z" provides="examples.board.wireless_examples">
+      <source path="./">
+        <files mask="*.h"/>
+        <files mask="*.c"/>
+        <files mask="*.ld"/>
+        <files mask="*.txt"/>
+        <files mask="*.meta"/>
+        <files mask="*.bin"/>
+        <files mask="*.xml"/>
+      </source>
+      <source path="../">
+        <files mask="*.c"/>
+        <files mask="*.h"/>
+        <files mask="*.txt"/>
+      </source>
+      <source path="./iar/" requires="iar">
+        <files mask="*.*"/>
+      </source>
+      <source path="./iar/settings/" requires="iar">
+        <files mask="*.*"/>
+      </source>
+    </component>
+  </components>
+</metadata>

@@ -1,0 +1,658 @@
+/*
+ * Copyright (c) 2015 - 2016, Freescale Semiconductor, Inc.
+ * Copyright 2016-2017 NXP
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *
+ * o Redistributions of source code must retain the above copyright notice, this list
+ *   of conditions and the following disclaimer.
+ *
+ * o Redistributions in binary form must reproduce the above copyright notice, this
+ *   list of conditions and the following disclaimer in the documentation and/or
+ *   other materials provided with the distribution.
+ *
+ * o Neither the name of the copyright holder nor the names of its
+ *   contributors may be used to endorse or promote products derived from this
+ *   software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/*! File: fxls8471q.regdef
+* @brief The \b fxls8471q.regdef file contains the register definitions for fxls8471q sensor driver.
+*/
+
+#ifndef FXLS8471Q_H_
+#define FXLS8471Q_H_
+
+/**
+ **  FXLS8471Q I2C Address
+ */
+#define   FXLS8471Q_I2C_ADDRESS_SA0_0_SA1_0     0x1E  /*fxls8471q Address - SA0 = 0 and SA1 = 0*/
+#define   FXLS8471Q_I2C_ADDRESS_SA0_1_SA1_0     0x1D  /*fxls8471q Address - SA0 = 1 and SA1 = 0*/
+#define   FXLS8471Q_I2C_ADDRESS_SA0_0_SA1_1     0x1C  /*fxls8471q Address - SA0 = 0 and SA1 = 1*/
+#define   FXLS8471Q_I2C_ADDRESS_SA0_1_SA1_1     0x1F  /*fxls8471q Address - SA0 = 1 and SA1 = 1*/
+
+/**
+ **
+ **  fxls8471q Sensor Internal Registers
+ */
+enum {
+    FXLS8471Q_STATUS =               0x00, /* FMODE = 0, real time status  */
+    FXLS8471Q_F_STATUS =             0x00, /* FMODE > 0, FIFO status  */
+    FXLS8471Q_OUT_X_MSB =            0x01, /* data registers  */
+    FXLS8471Q_OUT_X_LSB =            0x02, /* data registers  */
+    FXLS8471Q_OUT_Y_MSB =            0x03, /* data registers  */
+    FXLS8471Q_OUT_Y_LSB =            0x04, /* data registers  */
+    FXLS8471Q_OUT_Z_MSB =            0x05, /* data registers  */
+    FXLS8471Q_OUT_Z_LSB =            0x06, /* data registers  */
+    FXLS8471Q_F_SETUP =              0x09, /* FIFO setup  */
+    FXLS8471Q_TRIG_CFG =             0x0A, /* Map of FIFO data capture events  */
+    FXLS8471Q_SYSMOD =               0x0B, /* SYSMOD System Mode register  */
+    FXLS8471Q_INT_SOURCE =           0x0C, /* INT_SOURCE System Interrupt Status register  */
+    FXLS8471Q_WHO_AM_I =             0x0D, /* WHO_AM_I Device ID register  */
+    FXLS8471Q_XYZ_DATA_CFG =         0x0E, /* XYZ_DATA_CFG register  */
+    FXLS8471Q_HP_FILTER_CUTOFF =     0x0F, /* FXLS8471Q only  */
+    FXLS8471Q_PL_STATUS =            0x10, /* PL_STATUS Portrait/Landscape Status register  */
+    FXLS8471Q_PL_CFG =               0x11, /* Portrait/Landscape Configuration register  */
+    FXLS8471Q_PL_COUNT =             0x12, /* Portrait/Landscape Debounce register  */
+    FXLS8471Q_PL_BF_ZCOMP =          0x13, /* PL_BF_ZCOMP Back/Front and Z Compensation register  */
+    FXLS8471Q_PL_THS_REG  =          0x14, /* P_L_THS_REG Portrait/Landscape Threshold and Hysteresis register  */
+    FXLS8471Q_A_FFMT_CFG =           0x15, /* A_FFMT_CFG Freefall/Motion Configuration register  */
+    FXLS8471Q_A_FFMT_SRC =           0x16, /* A_FFMT_SRC Freefall/Motion Source register  */
+    FXLS8471Q_A_FFMT_THS =           0x17, /* A_FFMT_THS Freefall and Motion Threshold register  */
+    FXLS8471Q_A_FFMT_COUNT =         0x18, /* A_FFMT_COUNT Debounce register  */
+    FXLS8471Q_TRANSIENT_CFG =        0x1D, /* Transient_CFG register  */
+    FXLS8471Q_TRANSIENT_SRC =        0x1E, /* TRANSIENT_SRC register  */
+    FXLS8471Q_TRANSIENT_THS =        0x1F, /* TRANSIENT_THS register  */
+    FXLS8471Q_TRANSIENT_COUNT =      0x20, /* TRANSIENT_COUNT register  */
+    FXLS8471Q_PULSE_CFG =            0x21, /* PULSE_CFG Pulse Configuration register  */
+    FXLS8471Q_PULSE_SRC =            0x22, /* PULSE_SRC Pulse Source register  */
+    FXLS8471Q_PULSE_THSX =           0x23, /* PULSE_THSX, Y, Z Pulse Threshold for X, Y and Z registers  */
+    FXLS8471Q_PULSE_THSY =           0x24, /* PULSE_THSX, Y, Z Pulse Threshold for X, Y and Z registers  */
+    FXLS8471Q_PULSE_THSZ =           0x25, /* PULSE_THSX, Y, Z Pulse Threshold for X, Y and Z registers  */
+    FXLS8471Q_PULSE_TMLT =           0x26, /* PULSE_TMLT Pulse Time Window 1 register  */
+    FXLS8471Q_PULSE_LTCY =           0x27, /* PULSE_LTCY Pulse Latency Timer register  */
+    FXLS8471Q_PULSE_WIND =           0x28, /* PULSE_WIND register (Read/Write)  */
+    FXLS8471Q_ASLP_COUNT =           0x29, /* ASLP_COUNT, Auto-WAKE/SLEEP Detection register (Read/Write)  */
+    FXLS8471Q_CTRL_REG1 =            0x2A, /* CTRL_REG1 System Control 1 register  */
+    FXLS8471Q_CTRL_REG2 =            0x2B, /* CTRL_REG2 System Control 1 register  */
+    FXLS8471Q_CTRL_REG3 =            0x2C, /* CTRL_REG3 Interrupt Control register  */
+    FXLS8471Q_CTRL_REG4 =            0x2D, /* CTRL_REG4 Interrupt Enable register (Read/Write)  */
+    FXLS8471Q_CTRL_REG5 =            0x2E, /* CTRL_REG5 Interrupt Configuration register (Read/Write)  */
+    FXLS8471Q_OFF_X =                0x2F, /* OFF_X Offset Correction X register  */
+    FXLS8471Q_OFF_Y =                0x30, /* OFF_Y Offset Correction Y register  */
+    FXLS8471Q_OFF_Z =                0x31, /* OFF_Z Offset Correction Z register  */
+    FXLS8471Q_A_VECM_CFG =           0x5F, /* A_VECM_CFG Acceleration vectormagnitude configuration register */
+    FXLS8471Q_A_VECM_THS_MSB =       0x60, /* A_VECM_THS_MSB Acceleration vectormagnitude threshold MSB */
+    FXLS8471Q_A_VECM_THS_LSB =       0x61, /* A_VECM_THS_LSB Acceleration vectormagnitude threshold LSB */
+    FXLS8471Q_A_VECM_CNT =           0x62, /* A_VECM_CNT Acceleration vectormagnitude  debounce count */
+    FXLS8471Q_A_VECM_INITX_MSB =     0x63, /* A_VECM_INITX_MSB Acceleration vectormagnitude  X-axis reference value MSB */  
+    FXLS8471Q_A_VECM_INITX_LSB =     0x64, /* A_VECM_INITX_LSB Acceleration vectormagnitude  X-axis reference value LSB */ 
+    FXLS8471Q_A_VECM_INITY_MSB =     0x65, /* A_VECM_INITY_MSB Acceleration vectormagnitude  Y-axis reference value MSB */  
+    FXLS8471Q_A_VECM_INITY_LSB =     0x66, /* A_VECM_INITY_LSB Acceleration vectormagnitude  y-axis reference value LSB */  
+    FXLS8471Q_A_VECM_INITZ_MSB =     0x67, /* A_VECM_INITZ_MSB Acceleration vectormagnitude  Y-axis reference value MSB */  
+    FXLS8471Q_A_VECM_INITZ_LSB =     0x68, /* A_VECM_INITZ_LSB Acceleration vectormagnitude  Z-axis reference value LSB */
+    FXLS8471Q_A_FFMT_THS_X_MSB =     0x73, /* A_FFMT_THS_X_MSB X-axis FMT threshold MSB	*/
+    FXLS8471Q_A_FFMT_THS_X_LSB =     0x74, /* A_FFMT_THS_X_LSB X-axis FMT threshold LSB	*/
+    FXLS8471Q_A_FFMT_THS_Y_MSB =     0x75, /* A_FFMT_THS_Y_MSB Y-axis FMT threshold MSB	*/
+    FXLS8471Q_A_FFMT_THS_Y_LSB =     0x76, /* A_FFMT_THS_Y_LSB Y-axis FMT threshold LSB	*/	
+    FXLS8471Q_A_FFMT_THS_Z_MSB =     0x77, /* A_FFMT_THS_Z_MSB Z-axis FMT threshold MSB	*/
+    FXLS8471Q_A_FFMT_THS_Z_LSB =     0x78, /* A_FFMT_THS_Z_LSB Z-axis FMT threshold LSB	*/	
+};
+
+// STATUS       	: 0x00 - Real time status.
+#add xdr 		0x01 -  X-axis new Data Available.
+#val XDATAREADY     1   A new X-axis data is ready.
+#add ydr 		0x02 -  Y-axis new Data Available.
+#val YDATAREADY     1   A new Y-axis data is ready.
+#add zdr 		0x04 -  Z-axis new Data Available.
+#val ZDATAREADY     1   A new Z-axis data is ready.
+#add zyxdr 		0x08 -  X, Y, Z-axis new Data Ready.
+#val ZYXDATAREADY   1   A new set of XYZ data is ready.
+#add xow 		0x10 -  X-axis Data Overwrite.
+#val XDATAOW        1   Previous X-axis data was overwritten by new X-axis data before it was read.
+#add yow 		0x20 -  Y-axis Data Overwrite.
+#val YDATAOW        1   Previous Y-axis data was overwritten by new X-axis data before it was read.
+#add zow 		0x40 -  Z-axis Data Overwrite
+#val ZDATAOW        1   Previous Z-axis data was overwritten by new X-axis data before it was read.
+#add zyxow 		0x80 -  X, Y, Z-axis Data Overwrite.
+#val XYZDATAOW      1   Previous X, Y, or Z data was overwritten by new X, Y, or Z data before it was read.
+
+// F_STATUS       	: 0x00 - FIFO STATUS Register.
+#add f_cnt 		 0x3F -  FIFO sample counter. 00_0001 to 10_0000 indicates 1 to 32 samples stored in FIFO.
+#add f_wmrk_flag 0x40 -  FIFO watermark flag.
+#val NOTDETECTED    0   No FIFO watermark events detected.
+#val DETECTED       1   FIFO Watermark event detected. FIFO sample count is greater than watermark value.
+#add f_ovf       0x80 -  FIFO overflow flag.
+#val NOTDETECTED    0   No FIFO overflow events detected.
+#val DETECTED       1   FIFO event detected; FIFO has overflowed.
+
+// OUT_X_MSB    	: 0x01 - Bits 4-11 of 12-bit X Axis current sample data.
+// OUT_X_LSB    	: 0x02 - Bits 0-3 of 12-bit X Axis current sample data.
+
+// OUT_Y_MSB    	: 0x03 - Bits 4-11 of 12-bit Y Axis current sample data.
+// OUT_Y_LSB    	: 0x04 - Bits 0-3 of 12-bit Y Axis current sample data.
+
+// OUT_Z_MSB    	: 0x05 - Bits 4-11 of 12-bit Z Axis current sample data.
+// OUT_Z_LSB    	: 0x06 - Bits 0-3 of 12-bit Z Axis current sample data.
+
+// F_SETUP		    : 0x09 - FIFO Setup Register.
+#add f_wmrk 		0x3F -  FIFO Event Sample Count Watermark. These bits set the number of FIFO samples required to trigger a watermark interrupt.
+#add f_mode 		0xC0 -  FIFO buffer overflow mode.
+#val FIFODISABLED   0    	FIFO is disabled.
+#val FIFOMOSTRECENT 1    	FIFO contains the Most Recent samples when overflowed (circular buffer).
+#val FIFOSTOP       2    	FIFO stops accepting new samples when overflowed.
+#val TRIGGERMODE    3    	The FIFO will be in a circular mode up to the number of samples in the watermark. The FIFO will be in a circular mode until the trigger event occurs.
+
+// TRIG_CFG		    : 0x0A - Trigger Configuration Register.
+#add trig_a_vecm    0x02
+#val EN             0x01     Enable the vector-magnitude FIFO trigger 
+#val DIS            0x00     Disable the vector-magnitude FIFO trigger 
+#add trig_ff_mt 	0x04 -  Freefall/Motion trigger bit.
+#val CLEARED        0    	Freefall/Motion trigger bit is cleared.
+#val SET            1    	Pulse interrupt trigger bit bit is set.
+#add trig_pulse 	0x08 -  Pulse interrupt trigger bit.
+#val CLEARED        0    	Pulse interrupt trigger bit is cleared.
+#val SET            1    	Pulse interrupt trigger bit is set.
+#add trig_lndprt 	0x10 -  Landscape/Portrait Orientation interrupt trigger bit.
+#val CLEARED        0    	Landscape/Portrait Orientation interrupt trigger bit is cleared.
+#val SET            1    	Landscape/Portrait Orientation interrupt trigger bit is set.
+#add trig_trans 	0x20 -  Transient interrupt trigger bit.
+#val CLEARED        0    	Transient interrupt trigger bit is cleared.
+#val SET            1    	Transient interrupt trigger bit is set.
+
+// SYSMOD		    : 0x0B - System Mode Register indicates the current device operating mode.
+#add sysmod 		0x03 -  System mode data bits.
+#val STANDBY      	0    	STANDBY Mode.
+#val WAKE      	    1    	ACTIVE Mode.
+#val SLEEP      	2    	SLEEP Mode.
+#add fgt 		    0x7C -  Number of ODR time units since FGERR was asserted. Reset when FGERR Cleared.
+#add fgerr 		    0x80 -  FIFO Gate Error.
+#val NTDETECTED     0    	No FIFO Gate Error detected.
+#val DETECTED      	1    	FIFO Gate Error was detected.
+
+// INT_SOURCE		: 0x0C - System Interrupt Status Register. The bits that are set (logic ‘1’) indicate which function has asserted its interrupt and conversely, bits that are cleared (logic ‘0’) indicate which function has not asserted its interrupt.
+#add src_drdy   	0x01	Data Ready Interrupt bit status.
+#add src_a_vecm     0x02    Accelerometer vector-magnitude interrupt status bit
+#add src_ff_mt   	0x04    Freefall/Motion interrupt status bit.
+#add src_pulse  	0x08    Pulse interrupt status bit.
+#add src_lndprt   	0x10    Landscape/Portrait Orientation interrupt status bit.
+#add src_trans   	0x20    Transient interrupt status bit.
+#add src_fifo   	0x40    FIFO interrupt status bit.
+#add src_aslp  	    0x80    Auto-SLEEP/WAKE interrupt status bit.
+
+// WHO_AM_I			: 0x0D - Fixed Device ID Number.
+#add whoami         0xFF    The WHO_AM_I register contains the device identifier which is factory programmed.
+
+/*
+** WHO_AM_I - Bit field value definitions  
+*/
+
+#define FXLS8471Q_WHO_AM_I_WHOAMI_VALUE          ((uint8_t) 0x6a)  /*  Device identifier for FXLS8471       */
+
+// XYZ_DATA_CFG		: 0x0E - XYZ Data Configuration Register. sets the dynamic range and sets the high-pass filter for the output data.
+#add fs             0x03    Output buffer data format full scale.
+#val FS_RANGE_2G    0    	Output buffer data full scale range is 2g.
+#val FS_RANGE_4G    1    	Output buffer data full scale range is 4g.
+#val FS_RANGE_8G    2    	Output buffer data full scale range is 8g.
+#add hpf_out   		0x10	Enable High-Pass output data.
+#val DISABLED       0    	High-Pass output data disabled.
+#val ENABLED        1    	High-Pass output data enabled.
+
+// HP_FILTER_CUTOFF	: 0x0F - HP_FILTER_CUTOFF High-Pass Filter Register. This register sets the high-pass filter cutoff frequency for removal of the offset and slower changing acceleration data.
+#add sel            0x03    HPF Cutoff frequency selection.
+#add pulse_lpf_en   0x10	Enable Low-Pass Filter for Pulse Processing Function.
+#val DISABLED       0    	LPF disabled for Pulse Processing.
+#val ENABLED        1    	LPF Enabled for Pulse Processing.
+#add pulse_hpf_byp  0x20	Bypass High-Pass Filter for Pulse Processing Function.
+#val DISABLED       0    	HPF enabled for Pulse Processing.
+#val ENABLED        1    	HPF Bypassed for Pulse Processing.
+
+// PL_STATUS	    : 0x10 - Portrait/Landscape Status Register.
+#add bafro          0x01    Back or Front orientation.
+#val FRONT          0    	Front: Equipment is in the front facing orientation.
+#val BACK           1    	Back: Equipment is in the back facing orientation.
+#add lapo           0x06    Landscape/Portrait orientation.
+#val UP             0    	Portrait Up: Equipment standing vertically in the normal orientation.
+#val DOWN           1    	Portrait Down: Equipment standing vertically in the inverted orientation.
+#val RIGHT          2    	Landscape Right: Equipment is in landscape mode to the right.
+#val LEFT           3    	Landscape Left: Equipment is in landscape mode to the left.
+#add lo             0x40	Z-Tilt Angle Lockout.
+#val NOTDETECTED    0    	Lockout condition has not been detected.
+#val DETECTED       1    	Z-Tilt lockout trip angle has been exceeded. Lockout has been detected.
+#add newlp          0x80	Landscape/Portrait status change flag.
+#val NOCHANGE       0    	No change.
+#val DETECTED       1    	BAFRO and/or LAPO and/or Z-Tilt lockout value has changed.
+
+// PL_CFG	        : 0x11 - Portrait/Landscape Configuration Register.
+#add reserved 		0x3F -  Bits 5-0 are reserved, will always read 0.
+#add pl_en 		    0x40 -  Portrait/Landscape Detection Enable.
+#val DISABLED       0    	Portrait/Landscape Detection is Disabled.
+#val ENABLED        1    	Portrait/Landscape Detection is Enabled.
+#add dbcntm 		0x80 -  Debounce counter mode selection.
+#val DEC      	    0    	Decrements debounce whenever condition of interest is no longer valid.
+#val CLR      	    1    	Clears counter whenever condition of interest is no longer valid.
+
+// PL_COUNT	        : 0x12 - Portrait/Landscape Debounce Counter.
+#add dbcne 		    0xFF -   Debounce Count value.
+
+// PL_BF_ZCOMP	    : 0x13 - Back/Front and Z Compensation Register.
+#add zlock 		    0x07 -   Z-Lock Angle Fixed Threshold.
+#val MIN13_6_MAX14_5  00
+#val MIN17_1_MAX18_2  01
+#val MIN20_7_MAX22_0  02
+#val MIN24_4_MAX25_9  03
+#val MIN28_1_MAX30_0  04
+#val MIN32_0_MAX34_2  05
+#val MIN36_1_MAX38_7  06
+#val MIN40_4_MAX43_4  07
+#add bkfr 		    0xC0 -   Back Front Trip Angle Fixed Threshold.
+#val 80_280           00       
+#val 75_285           01
+#val 70_290           02
+#val 65_295           03   
+
+// PL_THS_REG	    : 0x14 - Portrait/Landscape Threshold and Hysteresis Register.
+#add hys 		    0x07 -   Hysteresis, This is a fixed angle added to the threshold angle for a smoother transition from Portrait to Landscape and Landscape to Portrait.
+#val 45_45          00
+#val 49_41          01
+#val 52_38          02
+#val 56_34          03
+#val 59_31          04
+#val 62_28          05
+#val 66_24          06
+#val 69_21          07       
+#add pl_ths 		0xF8 -   Portrait/Landscape Fixed Threshold angle.
+#val 15             0x07     
+#val 20             0x09     
+#val 30             0x0C
+#val 35             0x0D     
+#val 40             0x0F     
+#val 45             0x10     
+#val 55             0x13    
+#val 60             0x14
+#val 70             0x17
+#val 75             0x19               
+
+
+// A_FFMT_CFG	    : 0x15 - Freefall/Motion Configuration Register.
+#add reserved 		0x07 -  Bits 2-0 are reserved, will always read 0.
+#add xefe 		    0x08 -  Event flag enable on X event.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Raise event flag on measured acceleration value beyond preset threshold.
+#add yefe 		    0x10 -  Event flag enable on Y event.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Raise event flag on measured acceleration value beyond preset threshold.
+#add zefe 		    0x20 -  Event flag enable on Z event.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Raise event flag on measured acceleration value beyond preset threshold.
+#add oae 		    0x40 -  Motion detect / Freefall detect flag selection.
+#val FREEFALL       0    	Freefall Flag.
+#val MOTION         0    	Motion Flag.
+#add ele 		    0x80 -  Event Latch Enable.
+#val DISABLED       0    	Event flag latch disabled.
+#val ENABLED        1    	Event flag latch enabled.
+
+// A_FFMT_SRC	    : 0x16 - Freefall/Motion Source Register.
+#add xhp 		    0x01 -  Event flag enable on X event.
+#val POSITIVE       0    	X event was Positive.
+#val NEGATIVE       1    	X event was Negative.
+#add xhe 		    0x02 -  Event flag enable on Y event.
+#val NOTDETECTED    0    	No X Motion event detected.
+#val DETECTED       1    	X Motion has been detected.
+#add yhp 		    0x04 -  Event flag enable on Z event.
+#val POSITIVE       0    	Y event was Positive.
+#val NEGATIVE       1    	Y event was Negative.
+#add yhe            0x08 -  Motion detect / Freefall detect flag selection.
+#val NOTDETECTED    0    	No Y Motion event detected.
+#val DETECTED       1    	Y Motion has been detected.
+#add zhp 		    0x10 -  Event Latch Enable.
+#val POSITIVE       0    	Z event was Positive.
+#val NEGATIVE       1    	Z event was Negative.
+#add zhe 		    0x20 -  Event Latch Enable.
+#val NOTDETECTED    0    	No Z Motion event detected.
+#val DETECTED       1    	Z Motion has been detected.
+#add ea 		    0x80 -  Event Latch Enable.
+#val NOTDETECTED    0    	No event flag has been asserted.
+#val DETECTED       1    	one or more event flag has been asserted.
+
+// A_FFMT_THS	    : 0x17 - Freefall and Motion Threshold Register.
+#add ths 		    0x7F -  Freefall /Motion Threshold.
+#add dbcntm 		0x80 -  Debounce counter mode selection.
+#val DEC      	    0    	Increments or decrements debounce.
+#val CLR      	    1    	Increments or clears counter.
+
+// A_FFMT_COUNT	    : 0x18 - Debounce Register.
+#add d 		        0xFF -  Count value.
+
+// TRANSIENT_CFG	: 0x1D - Transient_CFG Register.
+#add hpf_byp 		0x01 -  Bypass High-Pass filter.
+#val THROUGH        0    	Data to transient acceleration detection block is through HPF.
+#val BYPASS         1    	Data to transient acceleration detection block is NOT through HPF.
+#add xtefe 		    0x02 -  Event flag enable on X transient acceleration greater than transient threshold event.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Raise event flag on measured acceleration delta value greater than transient threshold.
+#add ytefe 		    0x04 -  Event flag enable on Y transient acceleration greater than transient threshold event.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Raise event flag on measured acceleration delta value greater than transient threshold.
+#add ztefe 		    0x08 -  Event flag enable on Z transient acceleration greater than transient threshold event.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Raise event flag on measured acceleration delta value greater than transient threshold.
+#add ele 		    0x10 -  Transient event flags are latched into the TRANSIENT_SRC register.
+#val DISABLED       0    	Event flag latch disabled.
+#val ENABLED        1    	Event flag latch enabled.
+#add reserved 		0xE0 -  Bits 7-5 are reserved, will always read 0.
+
+// TRANSIENT_SRC	: 0x1E - Transient_SRC Register.
+#add x_trans_pol 	0x01 -  Polarity of X Transient Event that triggered interrupt.
+#val POSITIVE       0    	X event was Positive.
+#val NEGATIVE       1    	X event was Negative.
+#add xtrans 		0x02 -  X transient event.
+#val NOTDETECTED    0    	no interrupt.
+#val DETECTED       1    	X Transient acceleration greater than the value of TRANSIENT_THS event has occurred.
+#add y_trans_pol 	0x04 -  Polarity of Y Transient Event that triggered interrupt.
+#val POSITIVE       0    	Y event was Positive.
+#val NEGATIVE       1    	Y event was Negative.
+#add ytrans 		0x08 -  Y transient event.
+#val NOTDETECTED    0    	no interrupt.
+#val DETECTED       1    	Y Transient acceleration greater than the value of TRANSIENT_THS event has occurred.
+#add z_trans_pol 	0x10 -  Polarity of Z Transient Event that triggered interrupt.
+#val POSITIVE       0    	Z event was Positive.
+#val NEGATIVE       1    	Z event was Negative.
+#add ztrans 		0x20 -  Z transient event.
+#val NOTDETECTED    0    	no interrupt.
+#val DETECTED       1    	Z Transient acceleration greater than the value of TRANSIENT_THS event has occurred.
+#add ea 		    0x40 -  Event Active Flag.
+#val NOTDETECTED    0    	No event flag has been asserted.
+#val DETECTED       1    	one or more event flag has been asserted.
+
+// TRANSIENT_THS	: 0x1F - TRANSIENT_THS Register.
+#add ths 		    0x7F -  Transient Threshold.
+#add dbcntm 		0x80 -  Debounce counter mode selection.
+#val DEC      	    0    	Increments or decrements debounce.
+#val CLR      	    1    	Increments or clears counter.
+
+// TRANSIENT_COUNT  : 0x20 - TRANSIENT_COUNT Register.
+#add d 		        0xFF -  Count value.
+
+// PULSE_CFG	    : 0x21 - Pulse Configuration Register.
+#add xspefe 		0x01 -  Event flag enable on single pulse event on X-axis.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Event detection enabled.
+#add xdpefe 		0x02 -  Event flag enable on double pulse event on X-axis.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Event detection enabled.
+#add yspefe 		0x04 -  Event flag enable on single pulse event on Y-axis.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Event detection enabled.
+#add ydpefe 		0x08 -  Event flag enable on double pulse event on Y-axis.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Event detection enabled.
+#add zspefe 		0x10 -  Event flag enable on single pulse event on Z-axis.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Event detection enabled.
+#add zdpefe 		0x20 -  Event flag enable on double pulse event on Z-axis.
+#val DISABLED       0    	Event detection disabled.
+#val ENABLED        1    	Event detection enabled.
+#add ele 		    0x40 -  Pulse event flags are latched into the PULSE_SRC register.
+#val DISABLED       0    	Event flag latch disabled.
+#val ENABLED        1    	Event flag latch enabled.
+#add dpa 		    0x80 -  Double Pulse Abort.
+#val DISABLED       0    	Double Pulse detection is not aborted if the start of a pulse is detected.
+#val ENABLED        1    	Double tap detection is aborted if the start of a pulse is detected.
+
+// PULSE_SRC	    : 0x22 - Pulse Source Register.
+#add polx 	        0x01 -  Pulse polarity of X-axis Event.
+#val POSITIVE       0    	Pulse Event that triggered interrupt was Positive.
+#val NEGATIVE       1    	Pulse Event that triggered interrupt was negative.
+#add poly 	        0x02 -  Pulse polarity of Y-axis Event.
+#val POSITIVE       0    	Pulse Event that triggered interrupt was Positive.
+#val NEGATIVE       1    	Pulse Event that triggered interrupt was negative.
+#add polz 	        0x04 -  Pulse polarity of Z-axis Event.
+#val POSITIVE       0    	Pulse Event that triggered interrupt was Positive.
+#val NEGATIVE       1    	Pulse Event that triggered interrupt was negative.
+#add dpe 	        0x08 -  Double pulse on first event.
+#val SINGLEPULSE    0    	Single Pulse Event triggered interrupt.
+#val DOUBLEPULSE    1    	Double Pulse event triggered interrupt.
+#add axx 	        0x10 -  X-axis event.
+#val NOTDETECTED    0    	No interrupt.
+#val DETECTED       1    	X-axis event has occurred.
+#add axy 	        0x20 -  Y-axis event.
+#val NOTDETECTED    0    	No interrupt.
+#val DETECTED       1    	Y-axis event has occurred.
+#add axz 	        0x40 -  Z-axis event.
+#val NOTDETECTED    0    	No interrupt.
+#val DETECTED       1    	Z-axis event has occurred.
+#add ea 		    0x80 -  Event Active Flag.
+#val NOTDETECTED    0    	No interrupt has been generated.
+#val DETECTED       1    	One or more event flag has been asserted.
+
+// PULSE_THSX	    : 0x23 - Pulse Threshold for X.
+#add thsx 		    0x7F -  Pulse Threshold on X-axis.
+#add reserved 		0x80 -  Bit 8 is reserved, will always read 0.
+
+// PULSE_THSY	    : 0x24 - Pulse Threshold for Y.
+#add thsy 		    0x7F -  Pulse Threshold on Y-axis.
+#add reserved 		0x80 -  Bit 8 is reserved, will always read 0.
+
+// PULSE_THSZ	    : 0x25 - Pulse Threshold for Z.
+#add thsz 		    0x7F -  Pulse Threshold on Z-axis.
+#add reserved 		0x80 -  Bit 8 is reserved, will always read 0.
+
+// PULSE_TMLT	    : 0x26 - Pulse Time Window 1 Register.
+#add tmlt 		    0xFF -  Pulse Time Limit.
+
+// PULSE_LTCY	    : 0x27 - Pulse Latency Timer Register.
+#add ltcy 		    0xFF -  Latency Time Limit.
+
+// PULSE_WIND	    : 0x28 - Second Pulse Time Window Register.
+#add wind 		    0xFF -  Second Pulse Time Window.
+
+// ASLP_COUNT	    : 0x29 - Auto-WAKE/SLEEP count Register.
+#add d 		        0xFF -  Duration value.
+
+// CTRL_REG1	    : 0x2A - System Control 1 Register.
+#add mode 		0x01 -  Full Scale selection.
+#val STANDBY        0    	STANDBY mode.
+#val ACTIVE         1    	ACTIVE mode.
+#add f_read 		0x02 -  Fast Read mode.
+#val NORMAL         0    	Normal mode.
+#val FASTREAD       1    	Fast Read Mode.
+#add lnoise 		0x04 -  Reduced noise reduced Maximum range mode.
+#val NORMAL         0    	Normal mode.
+#val REDUCED        1    	Reduced Noise mode.
+#add dr 		    0x38 -  Data rate selection.
+#val 800HZ          0    	800HZ ODR.
+#val 400HZ          1    	400HZ ODR.
+#val 200HZ          2    	200HZ ODR.
+#val 100HZ          3    	100HZ ODR.
+#val 50HZ           4    	50HZ ODR.
+#val 12DOT5HZ       5    	12.5HZ ODR.
+#val 6DOT25HZ       6    	6.25HZ ODR.
+#val 1DOT56HZ       7    	1.56HZ ODR.
+#add aslp_rate 		0xC0 -  Configures the Auto-WAKE sample frequency when the device is in SLEEP Mode.
+#val 50HZ           0    	800HZ.
+#val 12DOT5HZ       1    	12.5HZ.
+#val 6DOT25HZ       2    	6.25HZ.
+#val 1DOT56HZ       3    	1.56HZ.
+
+// CTRL_REG2	    : 0x2B - System Control 2 Register.
+#add mods 		    0x03 -  ACTIVE mode power scheme selection.
+#val NORMAL         0    	Normal power mode.
+#val LOWNOISE       1    	Low Noise Low Power mode.
+#val HIGHRES        2    	High Resolution mode.
+#val LOWPOW         3    	Low Power mode.
+#add slpe 		    0x04 -  Auto-SLEEP enable.
+#val DISABLED       0    	Auto-SLEEP is not enabled.
+#val ENABLED        1    	Auto-SLEEP is enabled.
+#add smods 		    0x18 -  SLEEP mode power scheme selection.
+#val NORMAL         0    	Normal power mode.
+#val LOWNOISE       1    	Low Noise Low Power mode.
+#val HIGHRES        2    	High Resolution mode.
+#val LOWPOW         3    	Low Power mode.
+#add rst 		    0x40 -  Software Reset.
+#val DISABLED       0    	Device reset disabled.
+#val ENABLED        1    	Device reset enabled.
+#add st 		    0x80 -  Self-Test Enable.
+#val DISABLED       0    	Self-Test disabled;.
+#val ENABLED        1    	Self-Test enabled.
+
+// CTRL_REG3	    : 0x2C - Interrupt Control Register.
+#add pp_od 		    0x01 -  Push-Pull/Open Drain selection on interrupt pad.
+#val PUSHPULL       0    	Push-Pull.
+#val OPENDRAIN      1    	Open Drain.
+#add ipol 		    0x02 -  Interrupt polarity ACTIVE high, or ACTIVE low.
+#val LOW            0    	ACTIVE low.
+#val HIGH           1    	ACTIVE high.
+#add wake_en_a_vecm 0x04    vector magnitude wake mode en/dis
+#val EN 		    0x01    Acceleration vector-magnitude function is enabled in Sleep mode and can generate an interrupt to wake the system
+#val DIS            0x00    Acceleration vector-magnitude function is disabled in Sleep mode
+#add wake_ff_mt     0x08 -  Freefall/Motion wake up interrupt.
+#val BYPASS         0    	Freefall/Motion function is bypassed in SLEEP mode.
+#val WAKEUP         1    	Freefall/Motion function interrupt can wake up.
+#add wake_pulse     0x10 -  Pulse wake up interrupt.
+#val BYPASS         0    	Pulse function is bypassed in SLEEP mode.
+#val WAKEUP         1    	Pulse function interrupt can wake up.
+#add wake_lndprt    0x20 -  Orientation wake up interrupt.
+#val BYPASS         0    	Orientation function is bypassed in SLEEP mode.
+#val WAKEUP         1    	Orientation function interrupt can wake up.
+#add wake_trans     0x40 -  Transient wake up interrupt.
+#val BYPASS         0    	Transient function is bypassed in SLEEP mode.
+#val WAKEUP         1    	Transient function interrupt can wake up.
+#add fifo_gate      0x80 -  FIFO Gate wake up interrupt.
+#val BYPASS         0    	FIFO gate is bypassed. FIFO is flushed upon the system mode transitioning from WAKE to SLEEP mode or from SLEEP to WAKE mode.
+#val WAKEUP         1    	The FIFO input buffer is blocked when transitioning from WAKE to SLEEP mode or from SLEEP to WAKE mode until the FIFO is flushed.
+
+// CTRL_REG4	    : 0x2D - Interrupt Enable register (Read/Write).
+#add int_en_drdy    0x01 -  Interrupt Enable.
+#val DISABLED       0    	Data Ready interrupt disabled.
+#val ENABLED        1    	Data Ready interrupt enabled.
+#add int_en_a_vecm  0x02    Vector magnitude interrupt
+#val DISABLED       0    	Vector magnitude interrupt disabled.
+#val ENABLED        1    	Vector magnitude interrupt enabled.
+#add int_en_ff_mt   0x04 -  Interrupt Enable.
+#val DISABLED       0    	Freefall/Motion interrupt disabled.
+#val ENABLED        1    	Freefall/Motion interrupt enabled.
+#add int_en_pulse   0x08 -  Interrupt Enable.
+#val DISABLED       0    	Pulse Detection interrupt disabled.
+#val ENABLED        1    	Pulse Detection interrupt enabled.
+#add int_en_lndprt  0x10 -  Interrupt Enable.
+#val DISABLED       0    	Orientation (Landscape/Portrait) interrupt disabled.
+#val ENABLED        1    	Orientation (Landscape/Portrait) interrupt enabled.
+#add int_en_trans   0x20 -  Interrupt Enable.
+#val DISABLED       0    	Transient interrupt disabled.
+#val ENABLED        1    	Transient interrupt enabled.
+#add int_en_fifo   0x40 -  Interrupt Enable.
+#val DISABLED       0    	FIFO interrupt disabled.
+#val ENABLED        1    	FIFO interrupt enabled.
+#add int_en_aslp   0x80 -  Interrupt Enable.
+#val DISABLED       0    	Auto-SLEEP/WAKE interrupt disabled.
+#val ENABLED        1    	Auto-SLEEP/WAKE interrupt enabled.
+
+// CTRL_REG5	    : 0x2E - Interrupt Configuration Register.
+#add int_cfg_drdy   0x01 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+#add int_cfg_a_vecm 0x02    Acceleration vector-magnitude interrupt routing
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin. 
+#add int_cfg_ff_mt  0x04 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+#add int_cfg_pulse  0x08 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+#add int_cfg_lndprt 0x10 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+#add int_cfg_trans  0x20 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+#add int_cfg_fifo   0x40 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+#add int_cfg_aslp   0x80 -  INT1/INT2 Configuration.
+#val INT2           0    	Interrupt is routed to INT2 pin.
+#val INT1           1    	Interrupt is routed to INT1 pin.
+
+// OFF_X	    : 0x2F - Offset Correction X Register.
+#add d          0xFF -  X-axis offset value.
+
+// OFF_Y	    : 0x30 - Offset Correction Y Register.
+#add d          0xFF -  Y-axis offset value.
+
+// OFF_Z	    : 0x31 - Offset Correction Z Register.
+#add d          0xFF -  Z-axis offset value.
+
+// A_VECM_CFG	    : 0x5F - Acceleration vectormagnitude configuration register
+#add a_vecm_ele   0x08 - Control bit a_vecm_ele defines the event latch enable mode.
+#val EN           0x01   The interrupt flag is latched in and held until the host application reads the INT_SOURCE register(0x0C)
+#val DIS          0x00    Event latching is disabled 
+#add a_vecm_initm 0x10 - Control bit a_vecm_initm defines how the initial reference values (x_ref, y_ref, and z_ref) are chosen
+#val EN           0x01   The function uses the data from A_VECM_INIT_X/Y/Z registers as the initial reference values
+#val DIS          0x00   The function uses the current x/y/z accelerometer output data at the time when the vector magnitude function is enabled
+#add  a_vecm_updm 0x20 - How the reference values are updated once the vector-magnitude function has been triggered.
+#val EN           0x01   The function does not update the reference values when the interrupt is triggered.
+#val DIS          0x00   The function updates the reference value with the current x, y, and z accelerometer output data values.
+#add a_vecm_en    0x40 - The accelerometer vector-magnitude function enable/disable  
+#val EN           0x01   The accelerometer vector-magnitude function is enabled.
+#val DIS          0x00   The accelerometer vector-magnitude function is disabled.
+
+// A_VECM_THS_MSB  : 0x60 - Acceleration vectormagnitude threshold MSB 
+#add a_vecm_ths    0x1F  Five MSBs of the 13-bit unsigned A_VECM_THS value
+#add a_vecm_dbcntm 0x80  How the debounce timer is reset when the condition for triggering the interrupt is no longer true 
+
+// A_VECM_THS_LSB  : 0x61 - Acceleration vectormagnitude threshold LSB 
+
+// A_VECM_CNT      : 0x62 - Acceleration vectormagnitude  debounce count 
+#add a_vecm_cnt     0xFF Vector-magnitude function debounce count value.
+
+// A_VECM_INITX_MSB  0x63 - Acceleration vectormagnitude  X-axis reference value MSB 
+#add a_vecm_initx    0x3F  Most significant 6 bits of the signed 14-bit initial X-axis value
+
+// A_VECM_INITX_LSB  0x64 - Acceleration vectormagnitude  X-axis reference value LSB  
+
+// A_VECM_INITY_MSB  0x65 - Acceleration vectormagnitude  Y-axis reference value MSB  
+#add a_vecm_inity   0x3F  Most significant 6 bits of the signed 14-bit initial Y-axis value
+
+// A_VECM_INITY_LSB  0x66 - Acceleration vectormagnitude  y-axis reference value LSB  
+
+// A_VECM_INITZ_MSB  0x67 - Acceleration vectormagnitude  Y-axis reference value MSB  
+#add a_vecm_initZ   0x3F  Most significant 6 bits of the signed 14-bit initial Z-axis value
+
+// A_VECM_INITZ_LSB  0x68 - Acceleration vectormagnitude  Z-axis reference value LSB 
+
+// A_FFMT_THS_X_MSB  0x73 - X-axis FMT threshold MSB	
+#add a_ffmt_ths_x   7F    7-bit MSB of X-axis acceleration threshold
+#add a_ffmt_ths_xyz_en 0x80
+#val EN                0x01 the ASIC ignores the common 7-bit G_FFMT_THS value located in register x17 when executing the FFMT function, and the following independent threshold values are used for each axis
+#val DIS               0x00 the ASIC uses the ffmt_ths[6:0] value located in register x17[6:0] as a common threshold for the X, Y, and Z-axis acceleration detection. The common unsigned 7-bit acceleration threshold has a fixed resolution of 63 mg/LSB, with a range of 0-127 counts
+
+// A_FFMT_THS_X_LSB  0x74 - X-axis FMT threshold LSB
+#add a_ffmt_ths_x   0x3F 
+
+// A_FFMT_THS_Y_MSB  0x75 - Y-axis FMT threshold MSB
+#add a_ffmt_ths_y   0x7F
+#add a_ffmt_trans_ths_en 0x80
+
+// A_FFMT_THS_Y_LSB  0x76 - Y-axis FMT threshold LSB		
+#add a_ffmt_ths_y   0x3F 
+
+// A_FFMT_THS_Z_MSB  0x77 - Z-axis FMT threshold MSB	
+#add a_ffmt_ths_z   0x7F
+
+// A_FFMT_THS_Z_LSB  0x78 - Z-axis FMT threshold LSB	
+#add a_ffmt_ths_x   0x3F 
+
+#endif  /* _FXLS8471Q_H_ */

@@ -1,0 +1,9 @@
+doc
+*~
+*.swp
+*.lnk
+*.zip
+/exampleprojects/*/Debug
+/exampleprojects/*/settings
+/exampleprojects/*/iar/cm4/debug
+/exampleprojects/*/iar/cm4/settings

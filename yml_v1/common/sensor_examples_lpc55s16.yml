@@ -1,0 +1,259 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__load__:
+  - middleware/issdk/yml_v1/common/add_issdk_sensors.yml
+  - middleware/issdk/yml_v1/common/add_issdk_interfaces.yml
+  - middleware/issdk/yml_v1/common/add_issdk_gpio_drivers.yml
+  - middleware/issdk/yml_v1/common/add_issdk_utils.yml
+  - middleware/issdk/yml_v1/common/add_issdk_ads.yml
+  - middleware/issdk/yml_v1/common/add_issdk_host.yml
+  - middleware/issdk/yml_v1/common/add_issdk_boardkit.yml
+  - middleware/issdk/yml_v1/common/add_issdk_driverexamples.yml
+  - middleware/issdk/yml_v1/common/add_issdk_tools.yml
+  - middleware/issdk/yml_v1/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensors_example_lpc55s16_set:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+              cx-define:
+              cc-include:
+              - path: boards/${board}
+            debug:
+              cc-define:
+                DEBUG:
+              cx-define:
+                DEBUG:
+        iar:
+          config:
+            __common__:
+            release:
+              cc-define:
+              cx-define:
+        mdk:
+          config:
+            release:
+              cc-define:
+              cx-define:
+    modules:
+      boardset:
+        required: true
+        virtual-dir: board
+        files:
+        - source: boards/${board}/board.c
+          release-dir: project-root-path
+        - source: boards/${board}/board.h
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.c
+          release-dir: project-root-path
+        - source: boards/${board}/clock_config.h
+          release-dir: project-root-path
+      readme:
+        files:
+        - source: project-root-path/readme.txt
+          virtual-dir: doc
+          toolchains: iar mdk mcux armgcc
+    __requires__:
+    - driver.common driver.clock driver.power driver.lpc_iocon driver.inputmux driver.inputmux_connections
+################################ LPCXpresso55S16 with AGM01 kit projects ######################
+################################## fxas21002_fifo ##############################
+fxas21002_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC55S16-AGM01-FXAS21002-FIFO-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/
+    document:
+      category: issdk/sensors
+      name: fxas21002_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo
+  modules:
+    fxas21002_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_fifo/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.gint
+    driver.flexcomm
+    driver.flexcomm_i2c
+    driver.flexcomm_i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.flexcomm_spi
+    driver.flexcomm_spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.flexcomm_usart
+    driver.flexcomm_usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxas21002_poll ##############################
+fxas21002_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC55S16-AGM01-FXAS21002-POLL-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/
+    document:
+      category: issdk/sensors
+      name: fxas21002_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll
+  modules:
+    fxas21002_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxas21002/fxas21002_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxas21002/fxas21002_poll/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.gint
+    driver.flexcomm
+    driver.flexcomm_i2c
+    driver.flexcomm_i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.flexcomm_spi
+    driver.flexcomm_spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.flexcomm_usart
+    driver.flexcomm_usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxas21002
+################################## fxos8700_fifo ##############################
+fxos8700_fifo:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC55S16-AGM01-FXOS8700-FIFO-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/
+    document:
+      category: issdk/sensors
+      name: fxos8700_fifo
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo
+  modules:
+    fxos8700_fifo_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_fifo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_fifo/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.gint
+    driver.flexcomm
+    driver.flexcomm_i2c
+    driver.flexcomm_i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.flexcomm_spi
+    driver.flexcomm_spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.flexcomm_usart
+    driver.flexcomm_usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700
+################################## fxos8700_poll ##############################
+fxos8700_poll:
+  configuration:
+    tools:
+      __common__:
+        binary-file: LPC55S16-AGM01-fxos8700-FIFO-CORE0.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_agm01/
+            - path: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/
+    document:
+      category: issdk/sensors
+      name: fxos8700_poll
+    outdir: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll
+  modules:
+    fxos8700_poll_source:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/fxos8700/fxos8700_poll.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/pin_mux.h
+        virtual-dir: board
+      - source: boards/${board}_agm01/issdk_examples/sensors/fxos8700/fxos8700_poll/readme.txt
+        virtual-dir: doc
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpc_dma
+    driver.gpio
+    driver.gint
+    driver.flexcomm
+    driver.flexcomm_i2c
+    driver.flexcomm_i2c_dma
+    driver.cmsis_flexcomm_i2c
+    driver.flexcomm_spi
+    driver.flexcomm_spi_dma
+    driver.cmsis_flexcomm_spi
+    driver.flexcomm_usart
+    driver.flexcomm_usart_dma
+    driver.cmsis_flexcomm_usart
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_lpc
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.fxos8700

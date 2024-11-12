@@ -1,0 +1,44 @@
+---
+set.kit.${board}_a8974.issdk:
+  section-type: set
+  belong_to: set.kit.${board}_a8974.issdk
+  dependency:
+    allOf:
+    - set.middleware.issdk
+    - kit:
+      - "${board}_a8974"
+  section_info:
+    fixed_id: kit.${board}.a8974
+    display_name: a8974
+    full_name: NXP kit ${board} a8974
+    description: NXP MCUXpresso kit ${board} a8974
+    type: kit
+    version: 1.0.0
+    vendor: NXP
+    component_taxonomy:
+      board_project_templates:
+        cclass: Sensors
+        cgroup: ISSDK project template
+    set_location:
+      repo_base_path: boards/${board}_a8974
+    product:
+      cmsis_pack:
+        supported: true
+        pack_root:
+          pack_type: sBSP
+          pack_name: "${board}_a8974_BSP"
+          pack_version: 1.0.0
+        scr:
+        - scr.kit.${board}_a8974.issdk
+scr.kit.${board}_a8974.issdk:
+  section-type: scr
+  belong_to: set.kit.${board}_a8974.issdk
+  contents:
+    Name: ISSDK ${board} a8974 example
+    Version: NA
+    license:
+    - license.bsd-3
+    Format: source code, linker files
+    Description: ISSDK ${board} a8974 example
+    Location: boards/${board}_a8974
+    Origin: NXP (BSD-3-Clause)

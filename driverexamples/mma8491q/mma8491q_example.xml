@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<metadata>
+  <components>
+    <component name="boards.frdmkl25z.sensor_driver_examples.mma8941q_example" requires="platform.devices.device platform.devices.MKL25Z4 platform.devices.MKL25Z4_startup platform.drivers platform.drivers.lpsci platform.drivers.uart platform.drivers.port platform.drivers.i2c platform.drivers.common platform.utilities platform.utilities.debug_console platform.drivers.gpio platform.drivers.smc devices.boards.frdmkl25z" provides="examples.board.driver_examples">    
+      <source path="./">
+        <files mask="mma8941q_example.c"/>
+        <files mask="*.txt"/>
+        <files mask="*.meta"/>
+        <files mask="*.bin"/>
+      </source>
+      <source path="../../sensors/">
+        <files mask="mma8941q*.c"/>
+        <files mask="mma8941q*.h"/>
+        <files mask="register*.c"/>
+        <files mask="register*.h"/>
+        <files mask="sensor*.c"/>
+        <files mask="sensor*.h"/>        
+      </source>
+      <source path="../../cmsis/">
+        <files mask="*.c"/>
+        <files mask="*.h"/>
+      </source> 
+      <source path="./iar/" requires="iar">
+        <files mask="*.*"/>
+      </source>
+      <source path="./mdk/" requires="mdk">
+        <files mask="*.*"/>
+      </source>
+      <source path="./kds/" requires="kds">
+        <files mask="*.*"/>
+      </source>
+      <source path="./kds/Settings/" requires="kds">
+        <files mask="*.*"/>
+      </source>
+      <source path="./atl/" requires="atl">
+        <files mask="*.*"/>
+      </source>
+      <source path="./atl/Settings/" requires="atl">
+        <files mask="*.*"/>
+      </source>
+      <source path="./atl/.settings/" requires="atl">
+        <files mask="*.*"/>
+      </source>
+      <source path="./armgcc/" requires="armgcc">
+        <files mask="*.*"/>
+      </source>
+    </component>
+  </components>
+</metadata>

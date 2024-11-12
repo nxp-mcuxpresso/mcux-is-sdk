@@ -1,0 +1,44 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+container.middleware.issdk.sensor.driverexamples:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: driverexamples/fxas21002/*c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8471q/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8962/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxos8700/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mag3110/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma845x/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma8491q/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma865x/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mpl3115/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxlc95000/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma9553/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxpq3115/*.c
+      project_relative_path: "./"
+    - source: driverexamples/dp5004/*.c
+      project_relative_path: "./"
+    - source: driverexamples/demos/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls896xaf/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8974cf/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8961af/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8971cf/*.c
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk

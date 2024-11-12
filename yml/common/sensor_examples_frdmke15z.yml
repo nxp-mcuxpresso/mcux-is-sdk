@@ -1,0 +1,478 @@
+################################################################################
+# WARNING: DO NOT TOUCH === START
+################################################################################
+__load__:
+  - middleware/issdk/yml/common/add_issdk_sensors.yml
+  - middleware/issdk/yml/common/add_issdk_interfaces.yml
+  - middleware/issdk/yml/common/add_issdk_gpio_drivers.yml
+  - middleware/issdk/yml/common/add_issdk_utils.yml
+  - middleware/issdk/yml/common/add_issdk_ads.yml
+  - middleware/issdk/yml/common/add_issdk_host.yml
+  - middleware/issdk/yml/common/add_issdk_others.yml
+  - middleware/issdk/yml/common/add_issdk_boardkit.yml
+  - middleware/issdk/yml/common/add_issdk_driverexamples.yml
+  - middleware/issdk/yml/common/add_issdk_tools.yml
+  - middleware/issdk/yml/common/add_issdk_cmsis_drivers.yml
+__hierarchy__:
+  tmp_issdk_sensor_examples_set:
+    section-type: application
+    configuration:
+      tools:
+        iar:
+          config:
+            __common__:
+              cc-flags:
+              - "--misra2004"
+              - "--vla"
+    modules:
+      boardset:
+        required: true
+        virtual-dir: board
+        files:
+        - source        : boards/${board}/clock_config.c
+          release-dir   : project-root-path
+        - source        : boards/${board}/clock_config.h
+          release-dir   : project-root-path
+        - source        : boards/${board}/board.c
+          release-dir   : project-root-path
+        - source        : boards/${board}/board.h
+          release-dir   : project-root-path
+      readme:
+        files:
+        - source: "../readme.txt"
+          rootdir: project-path
+          virtual-dir: doc
+          toolchains: iar mdk mcux
+################################ FRDMKE15-DP5004 kit projects #############################
+########################### mpxv5004dp_interrupt ##########################
+mpxv5004dp_interrupt:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP5004-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp5004/
+            - path: boards/${board}_dp5004/issdk_examples/sensors/mpxv5004dp/mpxv5004dp_interrupt/
+    document:
+      category: issdk/sensors
+      name: mpxv5004dp_interrupt
+      readme:
+      - boards/${board}_dp5004/issdk_examples/sensors/mpxv5004dp/mpxv5004dp_interrupt/readme.txt
+      - middleware/issdk/driverexamples/mpxv5004dp/mpxv5004dp_interrupt.readme
+    outdir: boards/${board}_dp5004/issdk_examples/sensors/mpxv5004dp/mpxv5004dp_interrupt
+  modules:
+    mpxv5004dp_interrupt_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/dp5004/dp5004_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp5004/issdk_examples/sensors/mpxv5004dp/mpxv5004dp_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp5004/issdk_examples/sensors/mpxv5004dp/mpxv5004dp_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.adc12
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+
+################################ FRDMKE15-DP300x kit projects #############################
+########################### nps300x_interrupt ##########################
+nps300x_interrupt:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP300x-INTERRUPT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp300x/
+            - path: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_interrupt/
+    document:
+      category: issdk/sensors
+      name: nps300x_interrupt
+      readme:
+      - boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_interrupt/readme.txt
+    outdir: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_interrupt
+  modules:
+    nps300x_interrupt_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/diff_p/diff_p_interrupt.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_interrupt/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_interrupt/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.nps300x
+
+########################### nps300x_normal ##########################
+nps300x_normal:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP300x-NORMAL.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp300x/
+            - path: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_normal/
+    document:
+      category: issdk/sensors
+      name: nps300x_normal
+      readme:
+      - boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_normal/readme.txt
+    outdir: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_normal
+  modules:
+    nps300x_normal_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/diff_p/diff_p_normal.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_normal/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_normal/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.nps300x
+
+########################### nps300x_oneshot ##########################
+nps300x_oneshot:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP300x-ONESHOT.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp300x/
+            - path: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_oneshot/
+    document:
+      category: issdk/sensors
+      name: nps300x_oneshot
+      readme:
+      - boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_oneshot/readme.txt
+    outdir: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_oneshot
+  modules:
+    nps300x_oneshot_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/diff_p/diff_p_oneshot.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_oneshot/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_oneshot/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.nps300x
+
+########################### nps300x_spi ##########################
+nps300x_spi:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP300x-SPI.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp300x/
+            - path: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_spi/
+    document:
+      category: issdk/sensors
+      name: nps300x_spi
+      readme:
+      - boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_spi/readme.txt
+    outdir: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_spi
+  modules:
+    nps300x_spi_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/diff_p/diff_p_spi.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_spi/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_spi/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.nps300x
+
+########################### nps300x_threshold ##########################
+nps300x_threshold:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP300x-THRESHOLD.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp300x/
+            - path: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_threshold/
+    document:
+      category: issdk/sensors
+      name: nps300x_threshold
+      readme:
+      - boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_threshold/readme.txt
+    outdir: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_threshold
+  modules:
+    nps300x_threshold_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/diff_p/diff_p_threshold.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_threshold/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp300x/issdk_examples/sensors/nps300x/nps300x_threshold/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.nps300x
+
+################# STB-CE Host I/O Demo Project Templates #######################
+################################## hostdemo_mpxv5004dp ##############################
+hostdemo_mpxv5004dp:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP5004-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp5004/
+            - path: boards/${board}_dp5004/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_mpxv5004dp
+      readme:
+      - boards/${board}_dp5004/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_dp5004/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_mpxv5004dp_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp5004/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp5004/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.adc12
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host
+
+################################## hostdemo_nps300x ##############################
+hostdemo_nps300x:
+  section-type: application
+  configuration:
+    tools:
+      __common__:
+        binary-file: KE15Z-DP300x-HOST-DEMO.bin
+        config:
+          __common__:
+            cc-include:
+            - path: boards/${board}_dp300x/
+            - path: boards/${board}_dp300x/issdk_examples/sensors/hostdemo/host_demo_template/
+    document:
+      category: issdk/sensors
+      name: hostdemo_nps300x
+      readme:
+      - boards/${board}_dp300x/issdk_examples/sensors/hostdemo/host_demo_template/readme.txt
+    outdir: boards/${board}_dp300x/issdk_examples/sensors/hostdemo/host_demo_template
+  modules:
+    hostdemo_mpxv5004dp_sources:
+      required: true
+      files:
+      - source: middleware/issdk/driverexamples/demos/host_demo.c
+        virtual-dir: source
+        release-dir: project-root-path
+      - source: boards/${board}_dp300x/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.c
+        virtual-dir: board
+      - source: boards/${board}_dp300x/issdk_examples/sensors/hostdemo/host_demo_template/pin_mux.h
+        virtual-dir: board
+  section-type: application
+  __requires__:
+  - driver.port
+    driver.adc12
+    driver.lpi2c
+    driver.lpi2c_edma
+    driver.cmsis_lpi2c
+    driver.cmsis_lpi2c_edma
+    driver.lpspi
+    driver.lpspi_edma
+    driver.cmsis_lpspi
+    driver.cmsis_lpspi_edma
+    driver.lpuart
+    driver.lpuart_edma
+    driver.cmsis_lpuart
+    driver.dmamux
+    driver.edma
+    driver.trgmux
+    driver.lptmr
+    cmsis.drivers.include
+    middleware.issdk.drivers.systick_utils
+    middleware.issdk.drivers.gpio_kinetis_ke15z
+    middleware.issdk.sensor.interface.common
+    middleware.issdk.sensor.allregdefs
+    middleware.issdk.drivers.ads
+    middleware.issdk.drivers.host

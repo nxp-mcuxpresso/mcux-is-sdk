@@ -1,0 +1,17 @@
+middleware.issdk.sensor.boardkit.evkmimxrt1050:
+  section-type: component
+  meta-name: middleware.issdk.sensor.boardkit.evkmimxrt1050
+  meta-path:
+    - path: middleware/issdk/issdk_boardkit_evkmimxrt1050.meta
+  contents:
+    files:
+      - source : middleware/issdk/boardkit/evk-mimxrt1050/*.*
+      - source : middleware/issdk/boardkit/evk-mimxrt1050/frdm-stbc-agm01/*.*
+    component_info:
+      __common__:
+        description: "ISSDK Board-Kit files for RT1050 kit"
+        manifest_name: issdk_boardkit_evkmimxrt1050 #IDE will show this as component name
+      meta:
+        type: other
+        user_visible: false
+        ignore_dependency: true  

@@ -1,0 +1,7 @@
+Overview
+========
+The FXLS8952 Normal example application demonstrates the use of the FXLS8952 sensor in the Normal (Non-Buffered) Mode.
+The example demonstrates configuration of all registers reguired to put the sensor into Standard Mode and read out a sample.
+
+The sensor reads samples as per the configured ODR and sets a Flag.
+The application consistently checks the Flag and when set reads out the sample.

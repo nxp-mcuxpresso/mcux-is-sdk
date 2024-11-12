@@ -1,0 +1,19 @@
+---
+container.middleware.issdk.sensor.boardkit.frdmmcxn947:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: boardkit/frdmmcxn947/*.*
+      project_relative_path: "./"
+    - source: boardkit/frdmmcxn947/frdm-stbi-a8974/*.*
+    - source: boardkit/frdmmcxn947/frdmstbc-p3115/*.*
+    - source: boardkit/frdmmcxn947/frdmstbi-nmh1000/*.*
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - frdmmcxn947_a8974
+      - frdmmcxn947_p3115
+      - frdmmcxn947_nmh1000

@@ -1,0 +1,292 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/sensor_examples_evkmimxrt1015.yml
+- bin/generator/records_v2/msdk/options/evkmimxrt1015.yml
+- bin/generator/records_v2/msdk/components/socs/MIMXRT1015/components.yml
+__hierarchy__:
+  tmp_evkmimxrt1015_configurations_components:
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+                PRINTF_ADVANCED_ENABLE: 1
+        iar:
+          project-templates:
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewp
+          - bin/generator/templates/iar/general.eww
+        armgcc:
+          project-templates:
+        mdk:
+          project-templates:
+          - bin/generator/templates/mdk/app_evkmimxrt1015/app_evkmimxrt1015.uvprojx
+          - bin/generator/templates/mdk/app_evkmimxrt1015/app_evkmimxrt1015.uvoptx
+        mcux:
+          config:
+            __common__:
+              ad-flags:
+              - isd=*(NonCacheable.init);region=SRAM_DTC;type=.data
+              - isd=*(NonCacheable);region=SRAM_DTC;type=.bss
+          memory-config:
+            partnumber: evkmimxrt1015
+            sections:
+              BOARD_FLASH:
+                access: RO
+                type: ExtFlash
+                addr: '60000000'
+                size: '01000000'
+                driver: devices/MIMXRT1015/mcuxpresso/MIMXRT1015_SFDP_QSPI.cfx
+              SRAM_DTC:
+                access: RW
+                type: RAM
+                addr: '20000000'
+                size: '00008000'
+              SRAM_ITC:
+                access: RW
+                type: RAM
+                addr: '00000000'
+                size: '00008000'
+              SRAM_OC:
+                access: RW
+                type: RAM
+                addr: '20200000'
+                size: '00010000'
+              NCACHE_REGION:
+                access: RW
+                type: RAM
+                addr: '20210000'
+                size: '00000000'
+      document:
+        platform_devices_soc_name: MIMXRT1015
+        board: evkmimxrt1015
+        board_kit: evkmimxrt1015_agm01
+        core: cm7f
+        fpu: DP_FPU
+    __requires__:
+    - evkmimxrt1015_options evkmimxrt1015_flexspi_nor_options driver.clock driver.flash
+      driver.common device.${platform_devices_soc_name}_CMSIS utility.debug_console
+      component.lpuart_adapter component.serial_manager(component.serial_manager_uart)
+      component.serial_manager_uart(driver.lpuart) component.lists device.${platform_devices_soc_name}_startup
+      driver.lpuart driver.gpio driver.iomuxc driver.iomuxc utility.assert driver.igpio
+      driver.xip_device driver.xip_board.${board} utility.debug_console
+    section-type: application
+    modules:
+      linker-file:
+        files:
+        - source: devices/MIMXRT1015/iar/MIMXRT1015xxxxx_ram.icf
+          attribute: linker-file
+          toolchains: iar
+          targets: debug release
+          project_path: MIMXRT1015/iar
+        - source: devices/MIMXRT1015/arm/MIMXRT1015xxxxx_ram.scf
+          attribute: linker-file
+          toolchains: mdk
+          targets: debug release
+          project_path: MIMXRT1015/arm
+        - source: devices/MIMXRT1015/gcc/MIMXRT1015xxxxx_ram.ld
+          attribute: linker-file
+          toolchains: armgcc
+          targets: debug release
+          project_path: MIMXRT1015/gcc
+      initialization_file:
+        files:
+        - source: boards/${board}/evkmimxrt1015_ram.ini
+          attribute: initialization_file
+          toolchains: mdk
+          targets: debug release
+          package_path: project-root-path/mdk
+          project_path: "${board}"
+fxas21002_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/evkmimxrt1015_agm01
+        project_path: board
+      files:
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.c
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1015_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.
+    tools:
+      armgcc:
+        config:
+          __remove__:
+            debug:
+  __requires__: middleware.issdk.support.EVK-MIMXRT1015-AGM01
+fxas21002_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/evkmimxrt1015_agm01
+        project_path: board
+      files:
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.c
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1015_agm01
+      brief: The FXAS21002 Poll example application demonstrates the use of the on-board
+        FXAS21002 sensor in the Poll (Non-Buffered) Mode. The example demonstrates
+        configuration of all registers reguired to put the sensor into Standard polling
+        Mode and read out a sample.
+    tools:
+      armgcc:
+        config:
+          __remove__:
+            debug:
+  __requires__: middleware.issdk.support.EVK-MIMXRT1015-AGM01
+fxos8700_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/evkmimxrt1015_agm01
+        project_path: board
+      files:
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.c
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1015_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.
+    tools:
+      armgcc:
+        config:
+          __remove__:
+            debug:
+  __requires__: middleware.issdk.support.EVK-MIMXRT1015-AGM01
+fxos8700_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/evkmimxrt1015_agm01
+        project_path: board
+      files:
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.c
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/evkmimxrt1015.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/evkmimxrt1015_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1015_agm01
+      brief: The FXOS8700 Poll example application demonstrates the use of the on-board
+        FXOS8700 sensor in the Poll (Non-Buffered) Mode. The example demonstrates
+        configuration of all registers reguired to put the sensor into Standard polling
+        Mode and read out a sample.
+    tools:
+      armgcc:
+        config:
+          __remove__:
+            debug:
+  __requires__: middleware.issdk.support.EVK-MIMXRT1015-AGM01
+kit.evkmimxrt1015_agm01.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.EVK-MIMXRT1015-AGM01
+  contents:
+  - key: description
+    bindings: kit.EVK-MIMXRT1015-AGM01
+    content: "\nSensor Toolbox Development Platform for FXAS21002C and FXOS8700C 9-Axis
+      Solution\n        "
+  - key: href
+    value: http://www.nxp.com/FRDM-STBC-AGM01
+    bindings: kit.EVK-MIMXRT1015-AGM01
+  - key: image
+    value: docs/images/EVK-MIMXRT1015-AGM01.gif
+    bindings: kit.EVK-MIMXRT1015-AGM01
+  - key: vendor
+    value: NXP
+    bindings: kit.EVK-MIMXRT1015-AGM01
+  - key: html
+    bindings: kit.EVK-MIMXRT1015-AGM01
+    content: |2
+
+      EVK-MIMXRT1015 with FRDM-STBC-AGM01 Custom Kit (FRDM-STBC-AGM01 Sensor Shield Development Board with EVK-MIMXRT1015 Board):
+      <ul>
+      <li> FRDM-STBC-AGM01 Sensor Shield board is a sensor expansion board enabling NXP’s 9-axis solution (FXAS21002C 3-Axis Gyroscope with FXOS8700CQ 3-Axis Accelerometer + 3-Axis Magnetometer).</li>
+      </ul>
+BOARD_Project_Template.evkmimxrt1015_agm01:
+  section-type: component
+  meta-name: project_template.evkmimxrt1015_agm01
+  component_info:
+    common:
+      type: project_template
+      component_bundle: bundles.board_project_templates
+      variant: evkmimxrt1015_agm01
+      manifest_name: evkmimxrt1015_agm01
+      version: 1.0.0
+      full_name: Board_project_template evkmimxrt1015_agm01
+      description: Board_project_template evkmimxrt1015_agm01
+      user_visible: false
+  __requires__:
+  - device.${platform_devices_soc_name} device.MIMXRT1015 device.MIMXRT1015_startup  driver.lpuart
+    driver.common driver.iomuxc driver.igpio driver.xip_device driver.xip_board.${board}  utility.debug_console
+    driver.clock component.lpuart_adapter component.serial_manager_uart component.serial_manager
+    kit.EVK-MIMXRT1015-AGM01
+  contents:
+    repo_base_path: boards/evkmimxrt1015_agm01/project_template
+    project_base_path: evkmimxrt1015_agm01/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h

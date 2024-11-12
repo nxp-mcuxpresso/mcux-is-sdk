@@ -1,0 +1,30 @@
+---
+middleware.issdk.sensor.driverexamples.agm01:
+  section-type: component
+  meta-name: middleware.issdk.sensor.driverexamples.agm01
+  contents:
+    virtual-dir: issdk_driverexamples
+    files:
+    - source: middleware/issdk/driverexamples/fxas21002/*c
+    - source: middleware/issdk/driverexamples/fxos8700/*.c
+  component_info:
+    common:
+      description: ISSDK Sensor Driver Examples files for sensors on FRDM-STBC-AGM01
+      manifest_name: issdk_driverexamples_agm01
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk sensor driverexamples agm01 # This value is temporarily added, please replace it with suitable value and then remove this comment.
+  __requires__:
+  - middleware.issdk.sensor.driverexamples.agm01.support
+middleware.issdk.sensor.driverexamples.agm01.support:
+  section-type: component_support
+  __requires__:
+  - middleware.issdk.support.FRDM-K22F-AGM01
+  - middleware.issdk.support.FRDM-K64F-AGM01
+  - middleware.issdk.support.LPCXPRESSO54114-AGM01
+  - middleware.issdk.support.FRDM-K32W042-AGM01
+  - middleware.issdk.support.EVKB-IMXRT1050-AGM01
+  - middleware.issdk.support.EVK-MIMXRT1050-AGM01
+  - middleware.issdk.support.EVK-MIMXRT1020-AGM01
+  - middleware.issdk.support.EVK-MIMXRT1060-AGM01

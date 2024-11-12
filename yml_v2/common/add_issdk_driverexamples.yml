@@ -1,0 +1,54 @@
+---
+middleware.issdk.sensor.driverexamples:
+  section-type: component
+  meta-name: middleware.issdk.sensor.driverexamples
+  __requires__:
+  - middleware.issdk.ui_control
+  contents:
+    repo_base_path: middleware/issdk
+    project_base_path: issdk_driverexamples
+    files:
+    - source: driverexamples/fxas21002/*c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8471q/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8962/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxos8700/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mag3110/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma845x/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma8491q/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma865x/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mpl3115/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxlc95000/*.c
+      project_relative_path: "./"
+    - source: driverexamples/mma9553/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxpq3115/*.c
+      project_relative_path: "./"
+    - source: driverexamples/dp5004/*.c
+      project_relative_path: "./"
+    - source: driverexamples/demos/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls896xaf/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8974cf/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8961af/*.c
+      project_relative_path: "./"
+    - source: driverexamples/fxls8971cf/*.c
+      project_relative_path: "./"
+  component_info:
+    common:
+      description: ISSDK Sensor Driver Examples files
+      manifest_name: issdk_driverexamples
+      type: other
+      user_visible: false
+      version: 1.7.0
+      full_name: Middleware issdk sensor driverexamples

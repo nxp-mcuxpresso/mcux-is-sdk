@@ -1,0 +1,133 @@
+/**
+ * @file mag3110.h
+ * @brief The mag3110.h contains the MAG3110 Magnetic sensor register definitions, access macros, and
+ * device access functions.
+ *
+ * @copyright Copyright (c) 2016, Freescale Semiconductor, Inc.
+ */
+#ifndef MAG3110_H_
+#define MAG3110_H_
+
+/**
+ **
+ **  MAG3110 Sensor Internal Registers
+ */
+enum {
+    MAG3110_DR_STATUS              = 0x00,
+    MAG3110_OUT_X_MSB              = 0x01,
+    MAG3110_OUT_X_LSB              = 0x02,
+    MAG3110_OUT_Y_MSB              = 0x03,
+    MAG3110_OUT_Y_LSB              = 0x04,
+    MAG3110_OUT_Z_MSB              = 0x05,
+    MAG3110_OUT_Z_LSB              = 0x06,
+    MAG3110_WHO_AM_I               = 0x07,
+    MAG3110_SYSMOD                 = 0x08,
+    MAG3110_OFF_X_MSB              = 0x09,
+    MAG3110_OFF_X_LSB              = 0x0A,
+    MAG3110_OFF_Y_MSB              = 0x0B,
+    MAG3110_OFF_Y_LSB              = 0x0C,
+    MAG3110_OFF_Z_MSB              = 0x0D,
+    MAG3110_OFF_Z_LSB              = 0x0E,
+    MAG3110_DIE_TEMP               = 0x0F,
+    MAG3110_CTRL_REG1              = 0x10,
+    MAG3110_CTRL_REG2              = 0x11,
+};
+
+#define MAG3110_I2C_ADDRESS     (0x0E)  /* MAG3110 I2C Slave Address. */
+#define MAG3110_WHOAMI_VALUE    (0xC4)  /* MAG3110 Who_Am_I Value. */
+
+
+// DR_STATUS      : 0x00 -  Data-ready status information
+#add xdr            0x01 -  X-Axis new Data Available.
+#val DRDY           1    -  Set to 1 whenever new X-axis data acquisition is completed. XDR is cleared any time OUT_X_MSB register is read.
+#add ydr            0x02 -  Y-Axis new data available.
+#val DRDY           1    -  Set to 1 whenever new Y-axis data acquisition is completed. YDR is cleared any time OUT_Y_MSB register is read.
+#add zdr            0x04 -  Z-Axis new data available.
+#val DRDY           1    -  Set to 1 whenever new Z-axis data acquisition is completed. ZDR is cleared any time OUT_Z_MSB register is read.
+#add zyxdr          0x08 -  X or Y or Z-Axis new data available.
+#val DRDY           1    -  Signals that new acquisition for any of the enabled channels is available. ZYXDR is cleared when the high-bytes of the data (OUT_X_MSB, OUT_Y_MSB, OUT_Z_MSB) of all the enabled channels are read.
+#add xow            0x10 -  X-Axis data overwrite.
+#val OWR            1    -  Set to 1 whenever new X-axis acquisition is completed before the retrieval of the previous data. When this occurs the previous data is overwritten. XOW is cleared any time OUT_X_MSB register is read.
+#add yow            0x20 -  Y-Axis data overwrite.
+#val OWR            1    -  Set to 1 whenever new Y-axis acquisition is completed before the retrieval of the previous data. When this occurs the previous data is overwritten. YOW is cleared any time OUT_Y_MSB register is read.
+#add zow            0x40 -  Z-Axis data overwrite.
+#val OWR            1    -  Set to 1 whenever new Z-axis acquisition is completed before the retrieval of the previous data. When this occurs the previous data is overwritten. ZOW is cleared any time OUT_Z_MSB register is read.
+#add zyxow          0x80 -  X, Y, Z-Axis data overwrite.
+#val OWR            1    -  Set to 1 whenever new data is acquired before completing the retrieval of the previous set. This event occurs when the content of at least one data register (i.e. OUT_X, OUT_Y, OUT_Z) has been overwritten. ZYXOW is cleared when the highbytes of the data (OUT_X_MSB, OUT_Y_MSB, OUT_Z_MSB) of all active channels are read.
+
+
+// OUT_X_MSB      : 0x01 -  Bits 8-15 of 16-bit real-time Magnetic Field Strength sample expressed as signed 2's complement numbers.
+// OUT_X_LSB      : 0x02 -  Bits 0-7  of 16-bit real-time Magnetic Field Strength sample expressed as signed 2's complement numbers.
+// OUT_Y_MSB      : 0x03 -  Bits 8-15 of 16-bit real-time Magnetic Field Strength sample expressed as signed 2's complement numbers.
+// OUT_Y_LSB      : 0x04 -  Bits 0-7  of 16-bit real-time Magnetic Field Strength sample expressed as signed 2's complement numbers.
+// OUT_Z_MSB      : 0x05 -  Bits 8-15 of 16-bit real-time Magnetic Field Strength sample expressed as signed 2's complement numbers.
+// OUT_Z_LSB      : 0x06 -  Bits 0-7  of 16-bit real-time Magnetic Field Strength sample expressed as signed 2's complement numbers.
+ 
+
+// WHO_AM_I       : 0x07 -  Device identification register containing Fixed Device ID Number.
+
+
+// SYSMOD         : 0x08 -  The read-only system mode register indicating the current device operating mode.
+#add sysmod         0x03 -  System mode data bits 0-1. (Bits 7-2 will always read 0.)
+#val STANDBY        0    -  STANDBY Mode.
+#val ACTIVE_RAW     1    -  ACTIVE Mode, RAW Data.
+#val ACTIVE         2    -  ACTIVE Mode, non-RAW user-corrected Data.
+
+
+// OFF_X_MSB      : 0x09 -  Bits 7-14 of X-Axis user defined offsets in 2's complement format which are used when CTRL_REG2[RAW] = 0.
+
+// OFF_X_LSB      : 0x0A -  Bits 0-6 of X-Axis user defined offsets in 2's complement format which are used when CTRL_REG2[RAW] = 0.
+#add off_x_lsb      0xFE -  OFF_X_LSB register bits 1-7. (Bit 0 will always be 0.)
+
+// OFF_Y_MSB      : 0x0B -  Bits 7-14 of Y-Axis user defined offsets in 2's complement format which are used when CTRL_REG2[RAW] = 0.
+
+// OFF_Y_LSB      : 0x0C -  Bits 0-6 of Y-Axis user defined offsets in 2's complement format which are used when CTRL_REG2[RAW] = 0.
+#add off_y_lsb      0xFE -  OFF_Y_LSB register bits 1-7. (Bit 0 will always be 0.)
+
+// OFF_Z_MSB      : 0x0D -  Bits 7-14 of Z-Axis user defined offsets in 2's complement format which are used when CTRL_REG2[RAW] = 0.
+
+// OFF_Z_LSB      : 0x0E -  Bits 0-6 of Z-Axis user defined offsets in 2's complement format which are used when CTRL_REG2[RAW] = 0.
+#add off_z_lsb      0xFE -  OFF_Z_LSB register bits 1-7. (Bit 0 will always be 0.)
+
+
+// DIE_TEMP       : 0x0F -  The die temperature in °C expressed as an 8-bit 2's complement number.
+
+
+// CTRL_REG1      : 0x10 -  Control Register 1: Modes, Trigger, ODR, OSR.
+#add ac             0x01 -  Operating Mode.
+#val STANDBY        0    -  Standby Mode.
+#val ACTIVE         1    -  Active Mode.
+#add tm             0x02 -  Trigger immediate measurement (if the ac bit is set to standby).
+#val NORMAL         0    -  Normal operation based on AC condition.
+#val TRIGGER        1    -  Trigger Measurement.
+#add fr             0x04 -  Fast Read selection Mode. 8-bit values are read from the MSB registers (Auto-increment skips over the LSB register in burst-read mode).
+#val FULL           0    -  The full 16-bit values are read.
+#val FAST           1    -  8-bit values read from the MSB registers.
+#add os             0x18 -  These bits configures the over sampling ratio for the measurement.
+#val OSR_16         0    -  OSR = 16.
+#val OSR_32         1    -  OSR = 32.
+#val OSR_64         2    -  OSR = 64.
+#val OSR_128        3    -  OSR = 128.
+#add dr             0xE0 -  These bits configures the Output Data Rate.
+#val ODR_0          0    -  ADC Rate = 1280Hz; Output Rate = ADC/OS.
+#val ODR_1          1    -  ADC Rate = 640Hz;  Output Rate = ADC/OS.
+#val ODR_2          2    -  ADC Rate = 320Hz;  Output Rate = ADC/OS.
+#val ODR_3          3    -  ADC Rate = 160Hz;  Output Rate = ADC/OS.
+#val ODR_4          4    -  ADC Rate = 80Hz;   Output Rate = ADC/OS.
+#val ODR_5          5    -  ADC Rate = 80Hz;   Output Rate = ADC/OS.
+#val ODR_6          6    -  ADC Rate = 80Hz;   Output Rate = ADC/OS.
+#val ODR_7          7    -  ADC Rate = 80Hz;   Output Rate = ADC/OS.
+
+
+// CTRL_REG2      : 0x11 -  Control Register 2: Correction, Reset.
+#add mag_rst        0x10 -  Magnetic Sensor Reset (One-Shot) Bit.
+#val EN             1    -  Reset cycle initiate or Reset cycle busy/active.
+#add raw            0x20 -  Data output correction Bit.
+#val NORMAL         0    -  The data values are corrected by the user offset register values.
+#val RAW            1    -  The data values are not corrected by the user offset register values.
+#add auto_msrt_en   0x80 -  Automatic Magnetic Sensor Reset Bit.
+#val DIS            0    -  Automatic magnetic sensor resets disabled.
+#val EN             1    -  Automatic magnetic sensor resets enabled.
+
+
+#endif  /* MAG3110_H_ */

@@ -1,0 +1,19 @@
+middleware.issdk.sensor.driverexamples.mekmimx8qm:
+  section-type: component
+  meta-name: middleware.issdk.sensor.driverexamples.mekmimx8qm
+  meta-path:
+    - path: middleware/issdk/issdk_driverexamples_mekmimx8qm.meta
+  contents:
+    files:
+      - source:  middleware/issdk/driverexamples/imx/mekmimx8qm/fxas21002/*c
+      - source:  middleware/issdk/driverexamples/imx/mekmimx8qm/fxos8700/*.c
+      - source:  middleware/issdk/driverexamples/imx/mekmimx8qm/mpl3115/*.c
+      - source:  middleware/issdk/driverexamples/imx/mekmimx8qm/isl29023/*.c
+    component_info:
+      __common__:
+        description: "ISSDK Sensor Driver Examples files for on-board sensors on MEK-MIMX8QM"
+        manifest_name: issdk_driverexamples_mekmimx8qm #IDE will show this as component name
+      meta:
+        type: other
+        user_visible: false
+        ignore_dependency: true

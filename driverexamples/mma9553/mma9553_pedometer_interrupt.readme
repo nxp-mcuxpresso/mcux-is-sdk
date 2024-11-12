@@ -1,0 +1,7 @@
+Overview
+========
+The MMA9553L Pedometer Interrupt I2C example application demonstrates the use of the MMA9553L as a Pedometer in I2C Mode with Interrupts.
+The example demonstrates all commands reguired to put the sensor into Legacy Mode and read out Pedometer data (and samples).
+
+The Pedometer reads samples as per the configured ODR and updates the output mailbox registers.
+The application reads out Pedometer Data as well as samples when its ODR Timer expires.

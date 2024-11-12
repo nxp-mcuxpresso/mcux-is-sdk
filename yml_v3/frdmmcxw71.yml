@@ -1,0 +1,303 @@
+---
+__load__:
+- bin/generator/records_v3/set/device/MCXW716C/index.yml
+- bin/generator/records_v3/set/board/frdmmcxw71/project_segment_frdmmcxw71.yml
+- middleware/issdk/yml_v3/common/sensor_examples_frdmmcxw71.yml
+- middleware/issdk/yml_v3/a8974.yml
+
+__variable__:
+  LPCX_ConfigName_var: ConfigName
+  ProjName: "${ProjName}"
+  config_name: "${ProjName}: ${config_name:${ProjName}}"
+  TOOLCHAIN_DIR: "${TOOLCHAIN_DIR}"
+  CMAKE_BUILD_TYPE: "${CMAKE_BUILD_TYPE}"
+__hierarchy__:
+  tmp_frdmmcxw71_configurations_components:
+    section-type: application
+    belong_to: set.board.${board}
+    dependency:
+    - driver.clock
+    - driver.common
+    - device.${platform_devices_soc_name}_CMSIS
+    - utility.debug_console
+    - component.lpuart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - driver.lpuart
+    - component.lists
+    - device.${platform_devices_soc_name}_startup
+    - driver.port
+    - driver.gpio
+    - driver.ccm32k
+    - driver.spc
+    - utility.assert
+    - allof:
+      - utilities.gcov
+      - utilities.gcov.board_init.${board}
+    merge_segment:
+    - frdmmcxw71_options
+    contents:
+      document:
+        platform_devices_soc_name: MCXW716C
+        board: frdmmcxw71
+        core: cm33
+        fpu: SP_FPU
+        dsp: DSP
+        compilers:
+        - armcc
+      configuration:
+        tools:
+          __common__:
+            config:
+              __common__:
+                cc-define:
+                  PRINTF_ADVANCED_ENABLE: 1
+          iar:
+            project-templates:
+            - bin/generator/templates/iar/app_cmsisdap_m33/generic_fixed_jlink_debug_speed.ewd
+            - bin/generator/templates/iar/app_cmsisdap_m33/generic.ewp
+            - bin/generator/templates/iar/general.eww
+          mdk:
+            project-templates:
+            - bin/generator/templates/mdk/app_frdmmcxw71/app_frdmmcxw71.uvprojx
+          armgcc:
+          mcux:
+            project-templates:
+            - bin/generator/templates/mcux/cproject/mcux_template.xml
+          __remove__:
+            mdk:
+      modules:
+        linker-file:
+          files:
+          - source: devices/MCXW716C/iar/mcxw716_flash.icf
+            attribute: linker-file
+            toolchains: iar
+            targets: debug release
+            project_path: MCXW716C/iar
+          - source: devices/MCXW716C/arm/mcxw716_flash.scf
+            attribute: linker-file
+            toolchains: mdk
+            targets: debug release
+            project_path: MCXW716C/arm
+          - source: devices/MCXW716C/gcc/mcxw716_flash.ld
+            attribute: linker-file
+            toolchains: armgcc
+            targets: debug release
+            project_path: MCXW716C/gcc
+fxls8974cf_poll:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmmcxw71_a8974.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: frdmmcxw71_a8974
+      brief: The FXLSA8974CF POLL example application demonstrates the use of the FXLSA8974CF
+        sensor in polling Mode using I2C interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Poll Mode and read out samples. The polls for
+        dataready and when samples are available sensor reads samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmmcxw71_a8974
+          project_path: board
+        files:
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8974cf_interrupt:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmmcxw71_a8974.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: frdmmcxw71_a8974
+      brief: The FXLSA8974CF Interrupt example application demonstrates the use of the FXLSA8974CF
+        sensor in data ready interrupt Mode using I2C interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Interrupt mode and read out samples when dataready event raises interrupt.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmmcxw71_a8974
+          project_path: board
+        files:
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8974cf_motion_wakeup:
+  section-type: application
+  required: true
+  belong_to: set.kit.frdmmcxw71_a8974.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: frdmmcxw71_a8974
+      brief: The FXLSA8974CF motion wakeup example demonstrates SDCD configuration to wake up sensor on motion detection
+        and autonomously go to sleep mode when no-motion detected for ASLP time out. The example configures sensors to
+        detect 125mg of motion on all the 3-axes and go to sleep if there is no motion for ~5sec.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmmcxw71_a8974
+          project_path: board
+        files:
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+fxls8974cf_spi:
+  section-type: application
+  required: true
+  internal: true
+  belong_to: set.kit.frdmmcxw71_a8974.issdk
+  dependency:
+  - utility.debug_console_lite
+  - utility.assert_lite
+  __remove__:
+    dependency:
+    - utility.debug_console
+    - utility.assert
+    - component.serial_manager
+    - component.serial_manager_uart
+  contents:
+    document:
+      board_kit: frdmmcxw71_a8974
+      brief: The FXLSA8974CF POLL example application demonstrates the use of the FXLSA8974CF
+        sensor in polling Mode using SPI interface.The example demonstrates configuration sensor
+        registers reguired to put the sensor in Poll Mode and read out samples. The polls for
+        dataready and when samples are available sensor reads samples.
+    modules:
+      sensors:
+        required: true
+        cc-include:
+        - path: boards/frdmmcxw71_a8974
+          project_path: board
+        files:
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdmmcxw71.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/frdm_stbi_a8974_shield.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/issdk_hal.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/frdmmcxw71_a8974/RTE_Device.h
+          project_path: board
+          package_path: project-root-path
+BOARD_Project_Template.frdmmcxw71_a8974:
+  section-type: component
+  meta-name: project_template.frdmmcxw71_a8974
+  belong_to: set.kit.frdmmcxw71_a8974.issdk
+  dependency:
+    allOf:
+    - device.${platform_devices_soc_name}_startup
+    - utility.debug_console
+    - component.lpuart_adapter
+    - component.serial_manager_uart
+    - component.serial_manager
+    - component.lists
+    - driver.lpuart
+    - driver.port
+    - driver.gpio
+    - driver.ccm32k
+    - driver.spc
+    - utility.assert
+  contents:
+    repo_base_path: boards/frdmmcxw71_a8974/project_template
+    project_base_path: frdmmcxw71_a8974/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+      attribute: config
+    - source: board.h
+      attribute: config
+    - source: clock_config.c
+      attribute: config
+    - source: clock_config.h
+      attribute: config
+    - source: pin_mux.c
+      attribute: config
+    - source: pin_mux.h
+      attribute: config
+    - source: peripherals.c
+      attribute: config
+    - source: peripherals.h
+      attribute: config
+  section_info:
+    type: project_template
+    version: 1.0.0
+    full_name: BOARD_Project_Template frdmmcxw71_a8974
+    description: BOARD_Project_Template frdmmcxw71_a8974
+    user_visible: never
+    taxonomy:
+      csub: frdmmcxw71_a8974
+      belong_to: board_project_templates
+    display_name: frdmmcxw71_a8974

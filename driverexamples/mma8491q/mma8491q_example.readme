@@ -1,0 +1,7 @@
+Overview
+========
+The MMA8491Q example application demonstrates the use of the MMA8491Q sensor.
+The example demonstrates how to put the sensor into Active Mode and read XYZ samples and Tilt output from the sensor.
+
+The sensor reads samples as per the acquisition time and sets a Flag in the status register.
+The application consistently checks the Flag after Turn On period and and when set reads out the sample.

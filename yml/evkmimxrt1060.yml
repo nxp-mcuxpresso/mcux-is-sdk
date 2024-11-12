@@ -1,0 +1,151 @@
+---
+__load__:
+- middleware/issdk/yml/common/sensor_examples_evkmimxrt1060.yml
+- bin/generator/records/msdk/options/evkmimxrt1060.yml
+- bin/generator/records/msdk/components/socs/MIMXRT1062/components.yml
+__hierarchy__:
+  tmp_evkmimxrt1060_configurations_components:
+    configuration:
+      tools:
+        __common__:
+          libraries:
+          include:
+          config:
+            __common__:
+              cc-include:
+              - path: CMSIS/Include
+              - path: devices
+              cc-define:
+        iar:
+          project-templates:
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewp
+          - bin/generator/templates/iar/general.eww
+        armgcc:
+          project-templates:
+          - bin/generator/templates/atl/app_cortex_m7f/.cproject
+          - bin/generator/templates/atl/app_cortex_m7f/.project
+          - bin/generator/templates/atl/app_cortex_m7f/Debug Jlink.launch
+          - bin/generator/templates/atl/app_cortex_m7f/Release Jlink.launch
+          - bin/generator/templates/atl/app_cortex_m7f/.settings
+        mdk:
+          project-templates:
+          - bin/generator/templates/mdk/app_evkmimxrt1060_m7/app_evkmimxrt1060_m7.uvprojx
+          - bin/generator/templates/mdk/app_evkmimxrt1060_m7/app_evkmimxrt1060_m7.uvoptx
+        mcux:
+          config:
+            __common__:
+              ad-flags:
+                - "isd=*(NonCacheable.init);region=SRAM_DTC;type=.data"
+                - "isd=*(NonCacheable);region=SRAM_DTC;type=.bss"
+          memory-config:
+            partnumber: evkmimxrt1060
+            sections:
+              BOARD_FLASH:
+                access: RO
+                type: ExtFlash
+                addr: '60000000'
+                size: '00800000'
+                driver: devices/MIMXRT1062/mcuxpresso/MIMXRT1060_SFDP_QSPI.cfx
+              SRAM_DTC:
+                access: RW
+                type: RAM
+                addr: '20000000'
+                size: '00020000'
+              SRAM_ITC:
+                access: RW
+                type: RAM
+                addr: '00000000'
+                size: '00020000'
+              SRAM_OC:
+                access: RW
+                type: RAM
+                addr: '20200000'
+                size: '000C0000'
+              BOARD_SDRAM:
+                access: RW
+                type: RAM
+                addr: '80000000'
+                size: '02000000'
+      document:
+        platform_devices_soc_name: MIMXRT1062
+        board: evkmimxrt1060
+        board_kit: evkmimxrt1060_agm01
+        core: cm7f
+    __requires__:
+    - evkmimxrt1060_options driver.clock driver.flash driver.common device.${platform_devices_soc_name}_CMSIS
+      device.${platform_devices_soc_name}_startup driver.lpuart driver.gpio utility.debug_console driver.iomuxc
+      driver.iomuxc utility.assert driver.igpio driver.xip
+    section-type: application
+fxas21002_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir   : board
+      files:
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.c
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.h
+        - source        : boards/evkmimxrt1060_agm01/frdm_stbc_agm01_shield.h
+        - source        : boards/evkmimxrt1060_agm01/issdk_hal.h
+        - source        : boards/evkmimxrt1060_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1060_agm01
+  __requires__:
+    middleware.issdk.kits.EVK-MIMXRT1060-AGM01
+fxas21002_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir   : board
+      files:
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.c
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.h
+        - source        : boards/evkmimxrt1060_agm01/frdm_stbc_agm01_shield.h
+        - source        : boards/evkmimxrt1060_agm01/issdk_hal.h
+        - source        : boards/evkmimxrt1060_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1060_agm01
+  __requires__:
+    middleware.issdk.kits.EVK-MIMXRT1060-AGM01
+fxos8700_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir   : board
+      files:
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.c
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.h
+        - source        : boards/evkmimxrt1060_agm01/frdm_stbc_agm01_shield.h
+        - source        : boards/evkmimxrt1060_agm01/issdk_hal.h
+        - source        : boards/evkmimxrt1060_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1060_agm01
+  __requires__:
+    middleware.issdk.kits.EVK-MIMXRT1060-AGM01
+fxos8700_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      virtual-dir   : board
+      files:
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.c
+        - source        : boards/evkmimxrt1060_agm01/evkmimxrt1060.h
+        - source        : boards/evkmimxrt1060_agm01/frdm_stbc_agm01_shield.h
+        - source        : boards/evkmimxrt1060_agm01/issdk_hal.h
+        - source        : boards/evkmimxrt1060_agm01/RTE_Device.h
+  required: true
+  configuration:
+    document:
+      board_kit: evkmimxrt1060_agm01
+  __requires__:
+    middleware.issdk.kits.EVK-MIMXRT1060-AGM01

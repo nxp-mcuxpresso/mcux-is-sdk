@@ -1,0 +1,654 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/sensor_examples_frdmke15z.yml
+- bin/generator/records_v2/msdk/options/frdmke15z.yml
+- bin/generator/records_v2/msdk/components/socs/MKE15Z7/components.yml
+__hierarchy__:
+  tmp_frdmke15z_configurations_components:
+    section-type: application
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+                FRDM_KE15Z: 
+                FREEDOM: 
+                PRINTF_ADVANCED_ENABLE: 
+                PRINTF_FLOAT_ENABLE: 
+        iar:
+          project-templates:
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewp
+          - bin/generator/templates/iar/app_peswd/generic.dni
+          - bin/generator/templates/iar/general.eww
+        mdk:
+          project-templates:
+          - bin/generator/templates/mdk/app_frdmke15z/frdmke15z.uvprojx
+          - bin/generator/templates/mdk/app_frdmke15z/frdmke15z.uvoptx
+          - bin/generator/templates/mdk/app_frdmke15z/pemicro_connection_settings.ini
+        armgcc: 
+      document:
+        platform_devices_soc_name: MKE15Z7
+        board: frdmke15z
+        core: cm0p
+    __requires__:
+    - frdmke15z_options driver.clock driver.flash driver.common device.${platform_devices_soc_name}_CMSIS
+      device.${platform_devices_soc_name}_startup driver.lpuart driver.port driver.smc
+      utility.debug_console component.lpuart_adapter component.serial_manager(component.serial_manager_uart)
+      component.serial_manager_uart(driver.lpuart) component.lists driver.gpio utility.assert
+    modules:
+      linker-file:
+        files:
+        - source: devices/MKE15Z7/iar/MKE15Z256xxx7_flash.icf
+          attribute: linker-file
+          toolchains: iar
+          targets: debug release
+          project_path: MKE15Z7/iar
+        - source: devices/MKE15Z7/arm/MKE15Z256xxx7_flash.scf
+          attribute: linker-file
+          toolchains: mdk
+          targets: debug release
+          project_path: MKE15Z7/arm
+        - source: devices/MKE15Z7/gcc/MKE15Z256xxx7_flash.ld
+          attribute: linker-file
+          toolchains: armgcc
+          targets: debug release
+          project_path: MKE15Z7/gcc
+mpxv5004dp_interrupt:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp5004
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp5004/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp5004/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp5004/frdm-stbc-dp5004_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp5004/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp5004/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp5004
+      brief: The MPXV5004DP Interrupt example application demonstrates the use of
+        the MPXV5004DP analog sensor with in ADC. The example demonstrates configuration
+        of ADC0 and LPTMR0 reguired to get the Pressure Sample and read out samples
+        at periodic intervals.
+fxps7250a4_interrupt:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_pa7250
+        project_path: board
+      files:
+      - source: boards/frdmke15z_pa7250/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_pa7250/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_pa7250/frdm-stba-pa7250_shield.h
+        project_path: board
+      - source: boards/frdmke15z_pa7250/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_pa7250/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_pa7250
+      brief: The FXPS7250A4 Interrupt example application demonstrates the use of
+        the FXPS7250A4 analog sensor with in ADC. The example demonstrates configuration
+        of ADC0 and LPTMR0 reguired to get the Pressure Sample and read out samples
+        at periodic intervals.
+nps300x_interrupt:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp300x
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm-stbi-dp300x_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp300x
+      brief: The NPS300X FIFO example application demonstrates the use of the NPS300X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP300x
+nps300x_normal:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp300x
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm-stbi-dp300x_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp300x
+      brief: The NPS300X FIFO example application demonstrates the use of the NPS300X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP300x
+nps300x_oneshot:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp300x
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm-stbi-dp300x_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp300x
+      brief: The NPS300X FIFO example application demonstrates the use of the NPS300X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP300x
+nps300x_spi:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp300x
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm-stbi-dp300x_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp300x
+      brief: The NPS300X FIFO example application demonstrates the use of the NPS300X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP300x
+nps300x_threshold:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp300x
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm-stbi-dp300x_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp300x
+      brief: The NPS300X FIFO example application demonstrates the use of the NPS300X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP300x
+fxps7250d4_app:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_pd7250
+        project_path: board
+      files:
+      - source: boards/frdmke15z_pd7250/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_pd7250/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_pd7250/frdm-stba-pd7250_shield.h
+        project_path: board
+      - source: boards/frdmke15z_pd7250/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_pd7250/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_pd7250
+      brief: The FXPS7250D4 example application demonstrates the use of the FXPS7250D4 sensor in poll Mode using I2C.
+        The example demonstrates configuration of all registers reguired to put the sensor into polling mode to keep
+        checking sensor status and read out a raw pressure, pressure in kPa & temperature sample.
+  __requires__: middleware.issdk.support.FRDMKE15-PD7250
+hostdemo_mpxv5004dp:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp5004
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp5004/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp5004/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp5004/frdm-stbc-dp5004_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp5004/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp5004/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp5004
+      brief: The MPXV5004DP FIFO example application demonstrates the use of the MPXV5004DP
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP5004
+hostdemo_nps300x:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_dp300x
+        project_path: board
+      files:
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/frdm-stbi-dp300x_shield.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_dp300x/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_dp300x
+      brief: The NPS300X FIFO example application demonstrates the use of the NPS300X
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__: middleware.issdk.support.FRDMKE15-DP300x
+nmh1000_example:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmke15z_nmh1000
+        project_path: board
+      files:
+      - source: boards/frdmke15z_nmh1000/frdm_ke15z.c
+        project_path: board
+      - source: boards/frdmke15z_nmh1000/frdm_ke15z.h
+        project_path: board
+      - source: boards/frdmke15z_nmh1000/frdmstbi-nmh1000_shield.h
+        project_path: board
+      - source: boards/frdmke15z_nmh1000/issdk_hal.h
+        project_path: board
+      - source: boards/frdmke15z_nmh1000/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmke15z_nmh1000
+      brief: The NMH1000 FIFO example application demonstrates configuration of all
+        registers reguired to put the sensor in Auto Mode and read out samples.
+  __requires__: middleware.issdk.support.FRDMKE15-NMH1000
+kit.frdmke15z_dp300x.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.FRDMKE15-DP300x
+  contents:
+  - key: description
+    bindings: kit.FRDMKE15-DP300x
+    content: "\nSensor Toolbox Development Platform for DP300x Differential Pressure
+      Sensor\n        "
+  - key: href
+    value: http://www.nxp.com/products/developer-resources/hardware-development-tools/freedom-development-boards/sensor-toolbox-development-platform-for-mpxv5004dp-differential-pressure-sensor:FRDMSTBCDP5004
+    bindings: kit.FRDMKE15-DP5004
+  - key: image
+    value: docs/images/FRDMKE15-DP300x.gif
+    bindings: kit.FRDMKE15-DP300x
+  - key: vendor
+    value: NXP
+    bindings: kit.FRDMKE15-DP300x
+  - key: html
+    bindings: kit.FRDMKE15-DP300x
+    content: |2
+
+      FRDMKE15-DP300x Demonstration Kit (FRDMSTBI-DP300x Sensor Shield Development Board with FRDM-KE15Z Board):
+      <ul>
+      <li> FRDMSTBI-DP300x Sensor Shield board is a sensor expansion board enabling NXP’s DP300x differential pressure sensor.</li>
+      </ul>
+kit.frdmke15z_nmh1000.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.FRDMKE15-NMH1000
+  contents:
+  - key: description
+    bindings: kit.FRDMKE15-NMH1000
+    content: "\nSensor Toolbox Development Platform for NMH1000 Magnetic Switch
+      Sensor\n        "
+  - key: href
+    value: https://www.nxp.com/design/software/development-software/sensor-toolbox-sensor-development-ecosystem/frdmstbi-nmh1000-freedom-shield-evaluation-board:FRDMSTBI-NMH1000
+    bindings: kit.FRDMKE15-NMH1000
+  - key: image
+    value: docs/images/FRDMKE15-NMH1000.gif
+    bindings: kit.FRDMKE15-NMH1000
+  - key: vendor
+    value: NXP
+    bindings: kit.FRDMKE15-NMH1000
+  - key: html
+    bindings: kit.FRDMKE15-NMH1000
+    content: |2
+
+      FRDMKE15-NMH1000 Demonstration Kit (FRDMSTBI-NMH1000 Sensor Shield Development Board with FRDM-KE15Z Board):
+      <ul>
+      <li> FRDMSTBI-NMH1000 Sensor Shield board is a sensor expansion board enabling NXP’s NMH1000 magnetic switch sensor.</li>
+      </ul>
+kit.frdmke15z_dp5004.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.FRDMKE15-DP5004
+  contents:
+  - key: description
+    bindings: kit.FRDMKE15-DP5004
+    content: "\nSensor Toolbox Development Platform for MPXV5004DP Differential Pressure
+      Sensor\n        "
+  - key: href
+    value: http://www.nxp.com/products/developer-resources/hardware-development-tools/freedom-development-boards/sensor-toolbox-development-platform-for-mpxv5004dp-differential-pressure-sensor:FRDMSTBCDP5004
+    bindings: kit.FRDMKE15-DP5004
+  - key: image
+    value: docs/images/FRDMKE15-DP5004.gif
+    bindings: kit.FRDMKE15-DP5004
+  - key: vendor
+    value: NXP
+    bindings: kit.FRDMKE15-DP5004
+  - key: html
+    bindings: kit.FRDMKE15-DP5004
+    content: |2
+
+      FRDMKE15-DP5004 Demonstration Kit (FRDMSTBC-DP5004 Sensor Shield Development Board with FRDM-KE15Z Board):
+      <ul>
+      <li> FRDMSTBC-DP5004 Sensor Shield board is a sensor expansion board enabling NXP’s MPXV5004 differential pressure sensor.</li>
+      </ul>
+kit.frdmke15z_pa7250.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.FRDMKE15-PA7250
+  contents:
+  - key: description
+    bindings: kit.FRDMKE15-PA7250
+    content: "\nSensor Toolbox Development Platform for FXPS7250A4 Analog absolute
+      pressure sensor Sensor\n        "
+  - key: href
+    value: http://www.nxp.com/products/developer-resources/hardware-development-tools/freedom-development-boards/sensor-toolbox-development-platform-for-mpxv5004dp-differential-pressure-sensor:FRDMSTBCDP5004
+    bindings: kit.FRDMKE15-PA7250
+  - key: image
+    value: docs/images/FRDMKE15-PA7250.gif
+    bindings: kit.FRDMKE15-PA7250
+  - key: vendor
+    value: NXP
+    bindings: kit.FRDMKE15-PA7250
+  - key: html
+    bindings: kit.FRDMKE15-PA7250
+    content: |2
+
+      FRDMKE15-PA7250 Demonstration Kit (FRDMSTBC-PA7250 Sensor Shield Development Board with FRDM-KE15Z Board):
+      <ul>
+      <li> FRDMSTBC-PA7250 Sensor Shield board is a sensor expansion board enabling NXP’s FXPS7250A4 analog pressure sensor.</li>
+      </ul>
+kit.frdmke15z_pd7250.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.FRDMKE15-PD7250
+  contents:
+  - key: description
+    bindings: kit.FRDMKE15-PD7250
+    content: "\nSensor Toolbox Development Platform for FXPS7250D4 Digital absolute
+      pressure sensor Sensor\n        "
+  - key: href
+    value: http://www.nxp.com/products/developer-resources/hardware-development-tools/freedom-development-boards/sensor-toolbox-development-platform-for-mpxv5004dp-differential-pressure-sensor:FRDMSTBCDP5004
+    bindings: kit.FRDMKE15-PD7250
+  - key: image
+    value: docs/images/FRDMKE15-PD7250.gif
+    bindings: kit.FRDMKE15-PD7250
+  - key: vendor
+    value: NXP
+    bindings: kit.FRDMKE15-PD7250
+  - key: html
+    bindings: kit.FRDMKE15-PD7250
+    content: |2
+
+      FRDMKE15-PD7250 Demonstration Kit (FRDMSTBC-PD7250 Sensor Shield Development Board with FRDM-KE15Z Board):
+      <ul>
+      <li> FRDMSTBC-PD7250 Sensor Shield board is a sensor expansion board enabling NXP’s FXPS7250D4 digital pressure sensor.</li>
+      </ul>
+BOARD_Project_Template.frdmke15z_dp300x:
+  section-type: component
+  meta-name: project_template.frdmke15z_dp300x
+  component_info:
+    common:
+      component_bundle: bundles.board_project_templates
+      type: project_template
+      version: 1.0.0
+      full_name: Board_project_template frdmke15z_dp300x
+      description: Board_project_template frdmke15z_dp300x
+      manifest_name: frdmke15z_dp300x
+      user_visible: false
+  __requires__:
+  - device.${platform_devices_soc_name} device.MKE15Z7 device.MKE15Z7_startup  driver.lpuart
+    driver.port driver.common  utility.debug_console driver.gpio driver.smc kit.FRDMKE15-DP300x
+    component.lpuart_adapter component.serial_manager_uart component.serial_manager
+  contents:
+    repo_base_path: boards/frdmke15z_dp300x/project_template
+    project_base_path: frdmke15z_dp300x/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h
+BOARD_Project_Template.frdmke15z_nmh1000:
+  section-type: component
+  meta-name: project_template.frdmke15z_nmh1000
+  component_info:
+    common:
+      component_bundle: bundles.board_project_templates
+      type: project_template
+      version: 1.0.0
+      full_name: Board_project_template frdmke15z_nmh1000
+      description: Board_project_template frdmke15z_nmh1000
+      manifest_name: frdmke15z_nmh1000
+      user_visible: false
+  __requires__:
+  - device.${platform_devices_soc_name} device.MKE15Z7 device.MKE15Z7_startup  driver.lpuart
+    driver.port driver.common  utility.debug_console driver.gpio driver.smc kit.FRDMKE15-NMH1000
+    component.lpuart_adapter component.serial_manager_uart component.serial_manager
+  contents:
+    repo_base_path: boards/frdmke15z_nmh1000/project_template
+    project_base_path: frdmke15z_nmh1000/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h
+BOARD_Project_Template.frdmke15z_dp5004:
+  section-type: component
+  meta-name: project_template.frdmke15z_dp5004
+  component_info:
+    common:
+      component_bundle: bundles.board_project_templates
+      type: project_template
+      version: 1.0.0
+      full_name: Board_project_template frdmke15z_dp5004
+      description: Board_project_template frdmke15z_dp5004
+      manifest_name: frdmke15z_dp5004
+      user_visible: false
+  __requires__:
+  - device.${platform_devices_soc_name} device.MKE15Z7 device.MKE15Z7_startup  driver.lpuart
+    driver.port driver.common  utility.debug_console driver.gpio driver.smc kit.FRDMKE15-DP5004
+    component.lpuart_adapter component.serial_manager_uart component.serial_manager
+  contents:
+    repo_base_path: boards/frdmke15z_dp5004/project_template
+    project_base_path: frdmke15z_dp5004/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h
+BOARD_Project_Template.frdmke15z_pa7250:
+  section-type: component
+  meta-name: project_template.frdmke15z_pa7250
+  component_info:
+    common:
+      component_bundle: bundles.board_project_templates
+      type: project_template
+      version: 1.0.0
+      full_name: Board_project_template frdmke15z_pa7250
+      description: Board_project_template frdmke15z_pa7250
+      manifest_name: frdmke15z_pa7250
+      user_visible: false
+  __requires__:
+  - device.${platform_devices_soc_name} device.MKE15Z7 device.MKE15Z7_startup  driver.lpuart
+    driver.port driver.common  utility.debug_console driver.gpio driver.smc kit.FRDMKE15-PA7250
+    component.lpuart_adapter component.serial_manager_uart component.serial_manager
+  contents:
+    repo_base_path: boards/frdmke15z_pa7250/project_template
+    project_base_path: frdmke15z_pa7250/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h
+BOARD_Project_Template.frdmke15z_pd7250:
+  section-type: component
+  meta-name: project_template.frdmke15z_pd7250
+  component_info:
+    common:
+      component_bundle: bundles.board_project_templates
+      type: project_template
+      version: 1.0.0
+      full_name: Board_project_template frdmke15z_pd7250
+      description: Board_project_template frdmke15z_pd7250
+      manifest_name: frdmke15z_pd7250
+      user_visible: false
+  __requires__:
+  - device.${platform_devices_soc_name} device.MKE15Z7 device.MKE15Z7_startup  driver.lpuart
+    driver.port driver.common  utility.debug_console driver.gpio driver.smc kit.FRDMKE15-PD7250
+    component.lpuart_adapter component.serial_manager_uart component.serial_manager
+  contents:
+    repo_base_path: boards/frdmke15z_pd7250/project_template
+    project_base_path: frdmke15z_pd7250/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h

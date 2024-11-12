@@ -1,0 +1,15 @@
+---
+container.middleware.issdk.sensor.boardkit.evkmimxrt1170:
+  section-type: container
+  contents:
+    repo_base_path: middleware/issdk
+    files:
+    - source: boardkit/evk-mimxrt1170/*.*
+      project_relative_path: "./"
+    - source: boardkit/evk-mimxrt1170/frdm-stbc-agm01/*.*
+      project_relative_path: "./"
+  belong_to: set.middleware.issdk
+  dependency:
+    allOf:
+    - kit:
+      - evkmimxrt1170_agm01

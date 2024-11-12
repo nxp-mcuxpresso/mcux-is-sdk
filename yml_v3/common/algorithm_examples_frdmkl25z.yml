@@ -1,0 +1,103 @@
+# yaml-language-server: $schema=../../../../bin/generator/sdk_generator/data/sdk_data_schema/v3/software_set_and_project_schema.json
+
+__load__:
+- middleware/issdk/yml_v3/common/add_issdk_tools.yml
+- middleware/issdk/yml_v3/common/add_issdk_driverexamples.yml
+- middleware/issdk/yml_v3/common/add_issdk_boardkit.yml
+- middleware/issdk/yml_v3/common/add_issdk_utils.yml
+- middleware/issdk/yml_v3/common/add_issdk_gpio_drivers.yml
+- middleware/issdk/yml_v3/common/add_issdk_interfaces.yml
+- middleware/issdk/yml_v3/common/add_issdk_algorithms.yml
+- middleware/issdk/yml_v3/common/add_issdk_sensors.yml
+__hierarchy__:
+  tmp_issdk_algorithm_examples_set:
+    section-type: application
+    contents:
+      configuration:
+        tools:
+          iar:
+            config:
+              __common__:
+                cc-flags:
+                - "--vla"
+      modules:
+        boardset:
+          required: true
+          cc-include:
+          - path: boards/${board}
+            package_path: project-root-path
+            project_path: board
+          files:
+          - source: boards/${board}/clock_config.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/clock_config.h
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.c
+            package_path: project-root-path
+            project_path: board
+          - source: boards/${board}/board.h
+            package_path: project-root-path
+            project_path: board
+        readme:
+          files:
+          - source: project-root-path/readme.txt
+            toolchains: iar mdk mcux
+            project_path: doc
+pedometer_mma8451:
+  section-type: application
+  dependency:
+  - middleware.issdk.drivers.gpio_kinetis
+  - driver.port
+  - driver.uart
+  - driver.gpio
+  - driver.i2c
+  - driver.spi
+  - driver.lpsci
+  - driver.lptmr
+  - driver.smc
+  - driver.i2c_dma
+  - driver.cmsis_i2c
+  - driver.dmamux
+  - driver.dma
+  - driver.spi_dma
+  - driver.cmsis_spi
+  - driver.lpsci_dma
+  - driver.cmsis_lpsci
+  - driver.uart_dma
+  - middleware.issdk.drivers.systick_utils
+  - middleware.issdk.algorithms.pedometer.common
+  - middleware.issdk.sensor.interface.common
+  - middleware.issdk.sensor.mma845x
+  - middleware.issdk.algorithms.pedometer.lib_cm0
+  contents:
+    document:
+      category: issdk/algorithms
+      name: pedometer_mma8451
+    project-root-path: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451
+    configuration:
+      tools:
+        __common__:
+          binary-file: KL25Z-MMA8451-PEDOMETER.srec
+          config:
+            __common__: {}
+    modules:
+      pedometer_mma8451_source:
+        required: true
+        cc-include:
+        - path: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451
+          project_path: board
+        files:
+        - source: middleware/issdk/algorithms/pedometer/examples/pedometer_stepcount_mma8451.c
+          package_path: project-root-path
+          project_path: source
+        - source: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451/pin_mux.c
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451/pin_mux.h
+          project_path: board
+          package_path: project-root-path
+        - source: boards/${board}/issdk_examples/algorithms/pedometer/pedometer_mma8451/readme.txt
+          project_path: doc
+          package_path: project-root-path

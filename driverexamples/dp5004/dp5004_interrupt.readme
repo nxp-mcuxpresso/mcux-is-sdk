@@ -1,0 +1,9 @@
+Overview
+========
+The MPXV5004DP Interrupt example application demonstrates the use of the MPXV5004DP analog sensor with in ADC.
+The example demonstrates configuration of ADC0 and LPTMR0 reguired to get the Pressure Sample and read out samples at periodic intervals.
+
+The sensor constantly provides analog volatage output based on the perceived pressure differential.
+The application configures LPTMR with the desired ODR and the ADC for voltage conversion and sends the CPU into wait mode.
+The LPTMR periodically triggers ADC to read the voltage and convert it into a value.
+Once the ADC completes conversion, it raises an interrupt and the application wakes up and displays the Pressure.

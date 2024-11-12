@@ -1,0 +1,262 @@
+---
+__load__:
+- middleware/issdk/yml_v2/common/sensor_examples_frdmk32l3a6.yml
+- bin/generator/records_v2/msdk/options/frdmk32l3a6_cm4.yml
+- bin/generator/records_v2/msdk/components/socs/K32L3A60/components.yml
+__variable__:
+  MCUX_ConfigName_var: ConfigName
+__hierarchy__:
+  tmp_frdmk32l3a6_configurations_components:
+    configuration:
+      tools:
+        __common__:
+          config:
+            __common__:
+              cc-define:
+                PRINTF_ADVANCED_ENABLE: 1
+        iar:
+          project-templates:
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewd
+          - bin/generator/templates/iar/app_cmsisdap/generic.ewp
+          - bin/generator/templates/iar/general.eww
+        mdk:
+          project-templates:
+          - bin/generator/templates/mdk/app_frdmk32l3a6_m4/frdmk32l3a6_m4.uvprojx
+          - bin/generator/templates/mdk/app_frdmk32l3a6_m4/frdmk32l3a6_cm4.uvoptx
+        mcux:
+          memory-config:
+            partnumber: K32L3A60xxx
+            sections:
+              PROGRAM_FLASH_cm4:
+                access: RO
+                type: Flash
+                addr: '00000000'
+                size: '00100000'
+                driver: devices/K32L3A60/mcuxpresso/FTFE_4K_K32L3A_cm4.cfx
+              SRAM_DTC_cm4:
+                access: RW
+                type: RAM
+                addr: '20000000'
+                size: '00030000'
+              SRAM_ITC_cm4:
+                access: RW
+                type: RAM
+                addr: '08000000'
+                size: '00010000'
+              FLEX_RAM:
+                access: RW
+                type: RAM
+                addr: '48000000'
+                size: '00001000'
+              USB_RAM:
+                access: RW
+                type: RAM
+                addr: '48010000'
+                size: '00000800'
+      document:
+        platform_devices_soc_name: K32L3A60
+        board: frdmk32l3a6
+        board_kit: frdmk32l3a6_agm01
+        core: cm4f
+        core_id: cm4
+        device_id: K32L3A60xxx
+    __requires__:
+    - frdmk32l3a6_options driver.clock driver.common driver.msmc driver.port driver.lpuart
+      driver.gpio utility.assert utility.debug_console component.lpuart_adapter component.serial_manager(component.serial_manager_uart)
+      component.serial_manager_uart(driver.lpuart) component.lists device.${platform_devices_soc_name}_CMSIS
+      device.${platform_devices_soc_name}_startup
+    section-type: application
+    modules:
+      linker-file:
+        files:
+        - source: devices/K32L3A60/iar/K32L3A60xxx_cm4_flash.icf
+          attribute: linker-file
+          toolchains: iar
+          targets: debug release
+          project_path: K32L3A60/iar
+        - source: devices/K32L3A60/arm/K32L3A60xxx_cm4_flash.scf
+          attribute: linker-file
+          toolchains: mdk
+          targets: debug release
+          project_path: K32L3A60/arm
+        - source: devices/K32L3A60/gcc/K32L3A60xxx_cm4_flash.ld
+          attribute: linker-file
+          toolchains: armgcc
+          targets: debug release
+          project_path: K32L3A60/gcc
+fxas21002_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmk32l3a6_agm01
+        project_path: board
+      files:
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.c
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmk32l3a6_agm01
+      brief: The FXAS21002 FIFO example application demonstrates the use of the FXAS21002
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__:
+  - middleware.issdk.support.FRDM-K32L3A6-AGM01
+fxas21002_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmk32l3a6_agm01
+        project_path: board
+      files:
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.c
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmk32l3a6_agm01
+      brief: The FXAS21002 Poll example application demonstrates the use of the FXAS21002
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+  __requires__:
+  - middleware.issdk.support.FRDM-K32L3A6-AGM01
+fxos8700_fifo:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmk32l3a6_agm01
+        project_path: board
+      files:
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.c
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmk32l3a6_agm01
+      brief: The FXAS8700 FIFO example application demonstrates the use of the FXAS8700
+        sensor in Buffered (FIFO) Mode.The example demonstrates configuration of all
+        registers reguired to put the sensor in FIFO Mode and read out samples.The
+        sensor reads samples and are buffered upto the configured Water Mark Level
+        and then a Flag is set.The application consistently checks the Flag and when
+        set, reads out all(count=Water Mark Level) samples.
+  __requires__:
+  - middleware.issdk.support.FRDM-K32L3A6-AGM01
+fxos8700_poll:
+  section-type: application
+  modules:
+    sensors:
+      required: true
+      cc-include:
+      - path: boards/frdmk32l3a6_agm01
+        project_path: board
+      files:
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.c
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_k32l3a6.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/frdm_stbc_agm01_shield.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/issdk_hal.h
+        project_path: board
+      - source: boards/frdmk32l3a6_agm01/RTE_Device.h
+        project_path: board
+  required: true
+  configuration:
+    document:
+      board_kit: frdmk32l3a6_agm01
+      brief: The FXOS8700 Poll example application demonstrates the use of the FXOS8700
+        sensor in the Poll (Non-Buffered) Mode. The example demonstrates configuration
+        of all registers reguired to put the sensor into Poll Mode and read out a
+        sample.
+  __requires__:
+  - middleware.issdk.support.FRDM-K32L3A6-AGM01
+kit.frdmk32l3a6_agm01.manifest_metadata_set:
+  section-type: manifest_content
+  __requires__:
+  - kit.FRDM-K32L3A6-AGM01
+  contents:
+  - key: description
+    bindings: kit.FRDM-K32L3A6-AGM01
+    content: "\nSensor Toolbox Development Platform for FXAS21002C and FXOS8700C 9-Axis
+      Solution\n        "
+  - key: href
+    value: http://www.nxp.com/products/sensors/sensor-toolbox-sensor-development-ecosystem/evaluation-boards:SNSTOOLBOX
+    bindings: kit.FRDM-K32L3A6-AGM01
+  - key: image
+    value: docs/images/FRDM-K32L3A6-AGM01.gif
+    bindings: kit.FRDM-K32L3A6-AGM01
+  - key: vendor
+    value: NXP
+    bindings: kit.FRDM-K32L3A6-AGM01
+  - key: html
+    bindings: kit.FRDM-K32L3A6-AGM01
+    content: |2
+
+      FRDM-K32L3A6 with FRDM-STBC-AGM01 Custom Kit (FRDM-STBC-AGM01 Sensor Shield Development Board with FRDM-K32L3A6 Board):
+      <ul>
+      <li> FRDM-STBC-AGM01 Sensor Shield board is a sensor expansion board enabling NXP’s 9-axis solution (FXAS21002C 3-Axis Gyroscope with FXOS8700CQ 3-Axis Accelerometer + 3-Axis Magnetometer).</li>
+      </ul>
+BOARD_Project_Template.frdmk32l3a6_agm01:
+  section-type: component
+  meta-name: project_template.frdmk32l3a6_agm01
+  component_info:
+    common:
+      component_bundle: bundles.board_project_templates
+      type: project_template
+      version: 1.0.0
+      full_name: Board_project_template frdmk32l3a6_agm01
+      description: Board_project_template frdmk32l3a6_agm01
+      manifest_name: frdmk32l3a6_agm01
+      user_visible: false
+  __requires__:
+  - utility.assert utility.debug_console component.serial_manager device.${platform_devices_soc_name}
+    device.${platform_devices_soc_name}_startup driver.common driver.gpio driver.port
+    driver.lpuart component.lpuart_adapter driver.msmc driver.lpi2c kit.FRDM-K32L3A6-AGM01
+  contents:
+    repo_base_path: boards/frdmk32l3a6_agm01/project_template
+    project_base_path: frdmk32l3a6_agm01/project_template
+    cc-include:
+    - repo_relative_path: "./"
+    files:
+    - source: board.c
+    - source: board.h
+    - source: clock_config.c
+    - source: clock_config.h
+    - source: pin_mux.c
+    - source: pin_mux.h
+    - source: peripherals.c
+    - source: peripherals.h

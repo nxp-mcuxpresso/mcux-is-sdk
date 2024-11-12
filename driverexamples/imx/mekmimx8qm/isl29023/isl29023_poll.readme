@@ -1,0 +1,6 @@
+Overview
+========
+The ISL29023 Poll example application demonstrates the use of the ISL29023 in ALS continuous mode.
+The example demonstrates configuration of all registers reguired to put the sensor into ISL29023 16-bits ALS continuous mode and read out ambient light samples.
+
+The application consistently checks the IRQ flag bit in the COMMAND-I register and when set reads out the sample.
