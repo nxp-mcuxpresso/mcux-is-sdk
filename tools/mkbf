@@ -1,4 +1,0 @@
-#!/bin/bash
-of=${1/.regdef/.h}
-./mkbitfields.sh $1 2> >(sort -k3) > ${of}
-
