@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['win8',['WIN8',['../standard__build_8h.html#aeed436ce3d08635726e6f2c315659e72',1,'standard_build.h']]]
-];

@@ -1,7 +1,0 @@
-Overview
-========
-The FXLS8952 Free-fall example application demonstrates the use of the FXLS8952 sensor to detect free-fall.
-The example demonstrates configuration of all registers reguired (including SDCD) to put the sensor into Free-fall detection mode and read detection events.
-
-When the sensor detects free-fall it sets a Flag.
-The application consistently checks the Flag and when set, displays a message stating Free-fall has been detected.
