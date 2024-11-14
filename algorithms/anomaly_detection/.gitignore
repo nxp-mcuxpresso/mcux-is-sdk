@@ -1,9 +1,0 @@
-doc
-*~
-*.swp
-*.lnk
-*.zip
-/exampleprojects/*/Debug
-/exampleprojects/*/iar/settings
-/exampleprojects/*/iar/debug
-/exampleprojects/k66f_freertos_hello
