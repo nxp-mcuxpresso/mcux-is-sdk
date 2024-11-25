@@ -1,9 +1,10 @@
 Release Name: ISSDK
-Version: 1.8                      
-Outgoing License: BSD-3-Clause                    
-License File: LICENSE                                    
-Format: source code                               
+Version: 1.8
+Outgoing License: BSD-3-Clause
+License File: LICENSE
+Format: source code
 Description: NXP IoT Sensing SDK. It combines a set of robust Sensor Drivers and algorithms along with example applications.
-Release Location: https://github.com/nxp-mcuxpresso/is-sdk            
+Release Location: https://github.com/nxp-mcuxpresso/is-sdk
 Origin:
        NXP (BSD-3-Clause)
+	   Amazon (MIT) - https://aws.amazon.com/freertos/
