@@ -1,10 +1,13 @@
-Release Name: ISSDK
+NXP Software Content Register
+
+Package: mcux-is-sdk
 Version: 1.8
 Outgoing License: BSD-3-Clause
 License File: LICENSE
-Format: source code
-Description: NXP IoT Sensing SDK. It combines a set of robust Sensor Drivers and algorithms along with example applications.
-Release Location: https://github.com/nxp-mcuxpresso/is-sdk
-Origin:
-       NXP (BSD-3-Clause)
-	   Amazon (MIT) - https://aws.amazon.com/freertos/
+Type of content: source code
+Description and comments: 
+     NXP IoT Sensing SDK. It combines a set of robust Sensor Drivers and algorithms along with example applications.
+Release Location: https://github.com/nxp-mcuxpresso/mcux-is-sdk
+Origin:      
+     NXP (BSD-3-Clause)
+     Amazon (MIT) - https://aws.amazon.com/freertos/
