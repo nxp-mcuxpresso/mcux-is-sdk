@@ -2,7 +2,7 @@ NXP Software Content Register
 
 Package: mcux-is-sdk
 Version: 1.8
-Outgoing License: LA_OPT_Online Code Hosting NXP_Software_License - v1.2 October 2023
+Outgoing License: BSD-3-Clause
 License File: LICENSE
 Type of content: source code
 Description and comments:
@@ -10,15 +10,4 @@ Description and comments:
 Release Location: https://github.com/nxp-mcuxpresso/mcux-is-sdk
 Origin:
      NXP (BSD-3-Clause)
-	 NXP (proprietary)
      Amazon (MIT) - https://aws.amazon.com/freertos/
-
-Pedometer Library          Name: Pedometer Library
-                           Version: 1.0
-                           Outgoing License: LA_OPT_NXP_Software_License
-                           License File: middleware/issdk/algorithms/pedometer/lib/LA_OPT_NXP_Software_License.txt
-                           Format: binary library
-                           Description: Pedometer algorithm library for Arm Cortex M0+
-						   and M4 processors.
-                           Location: middleware/issdk/algorithms/pedometer/lib
-                           Origin: KEYnetik, Inc (Commercially licensed by Freescale/NXP)
